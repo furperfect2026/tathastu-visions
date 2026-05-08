@@ -65,7 +65,7 @@ function HomePage() {
               <Button asChild size="lg" className="group rounded-full bg-gradient-gold px-8 text-base text-ink shadow-gold hover:opacity-90">
                 <Link to="/contact">Get In Touch <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full border-ink/20 px-8 text-base">
+              <Button asChild size="lg" variant="outline" className="rounded-full border-foreground/20 px-8 text-base">
                 <Link to="/projects">View Projects</Link>
               </Button>
             </motion.div>
@@ -110,7 +110,7 @@ function HomePage() {
                       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
                       <Link
                         to="/services"
-                        className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-ink transition-colors hover:bg-gradient-gold"
+                        className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-foreground transition-colors hover:bg-gradient-gold"
                       >
                         Explore <ArrowRight className="h-3.5 w-3.5" />
                       </Link>
