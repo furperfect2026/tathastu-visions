@@ -94,17 +94,27 @@ function AboutPage() {
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {[
-              { name: "Rohit", role: "Founder & CEO" },
-              { name: "Maan Singh", role: "Sales Management — Interior" },
-              { name: "Tathastu Studio", role: "Design & Engineering Team" },
+              { name: "Rohit", role: "Founder & CEO", photo: founder },
+              { name: "Maan Singh", role: "Sales Management — Interior", photo: null as string | null },
+              { name: "Tathastu Studio", role: "Design & Engineering Team", photo: null as string | null },
             ].map((m, i) => (
               <Reveal key={m.name} delay={i * 0.08}>
-                <div className="rounded-3xl bg-card p-8 ring-1 ring-border">
-                  <div className="grid h-16 w-16 place-items-center rounded-full bg-gradient-gold font-display text-2xl font-semibold text-ink">
-                    {m.name[0]}
+                <div className="overflow-hidden rounded-3xl bg-card ring-1 ring-border">
+                  {m.photo ? (
+                    <div className="aspect-[4/5] overflow-hidden bg-muted">
+                      <img src={m.photo} alt={`${m.name}, ${m.role}`} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
+                    </div>
+                  ) : (
+                    <div className="flex aspect-[4/5] items-center justify-center bg-gradient-ivory">
+                      <div className="grid h-24 w-24 place-items-center rounded-full bg-gradient-gold font-display text-4xl font-semibold text-primary-foreground shadow-gold">
+                        {m.name[0]}
+                      </div>
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <h3 className="font-display text-xl font-semibold">{m.name}</h3>
+                    <p className="text-sm text-muted-foreground">{m.role}</p>
                   </div>
-                  <h3 className="mt-5 font-display text-xl font-semibold">{m.name}</h3>
-                  <p className="text-sm text-muted-foreground">{m.role}</p>
                 </div>
               </Reveal>
             ))}

@@ -1,6 +1,6 @@
 import logoUrl from "@/assets/tathastu-logo.png";
 
-export function Logo({ className, light = true }: { className?: string; light?: boolean }) {
+export function Logo({ className, light = false }: { className?: string; light?: boolean }) {
   return (
     <div className={`flex items-center gap-3 ${className ?? ""}`}>
       <img
