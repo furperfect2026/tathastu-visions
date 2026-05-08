@@ -28,7 +28,7 @@ export function SiteNav() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled ? "bg-ivory/85 backdrop-blur-xl shadow-[0_1px_0_0_oklch(0.88_0.02_78)]" : "bg-transparent",
+        scrolled ? "bg-background/80 backdrop-blur-xl shadow-[0_1px_0_0_var(--color-border)]" : "bg-transparent",
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -38,8 +38,8 @@ export function SiteNav() {
             <Link
               key={l.to}
               to={l.to}
-              className="group relative text-sm font-medium text-ink/80 transition-colors hover:text-ink"
-              activeProps={{ className: "text-ink" }}
+              className="group relative text-sm font-medium text-foreground/80 transition-colors hover:text-ink"
+              activeProps={{ className: "text-foreground" }}
               activeOptions={{ exact: l.to === "/" }}
             >
               {({ isActive }) => (
@@ -63,21 +63,21 @@ export function SiteNav() {
         </div>
         <button
           aria-label="Toggle menu"
-          className="md:hidden rounded-full border border-border p-2 text-ink"
+          className="md:hidden rounded-full border border-border p-2 text-foreground"
           onClick={() => setOpen((o) => !o)}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
       {open && (
-        <div className="md:hidden border-t border-border bg-ivory/95 backdrop-blur-xl">
+        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
           <nav className="flex flex-col gap-1 px-6 py-4">
             {links.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-base font-medium text-ink/80 hover:bg-muted"
+                className="rounded-lg px-3 py-3 text-base font-medium text-foreground/80 hover:bg-muted"
               >
                 {l.label}
               </Link>

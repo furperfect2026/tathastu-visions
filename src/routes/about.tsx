@@ -51,7 +51,7 @@ function AboutPage() {
             <p className="mt-4 text-muted-foreground">
               Headquartered in Lohegaon, Maharashtra, Tathastu transforms raw structures into elegant, functional homes and commercial spaces — where luxury, utility and timeless design intersect.
             </p>
-            <blockquote className="mt-8 border-l-2 border-primary pl-5 font-display text-xl italic text-ink">
+            <blockquote className="mt-8 border-l-2 border-primary pl-5 font-display text-xl italic text-foreground">
               "Building spaces that inspire future generations."
             </blockquote>
           </Reveal>

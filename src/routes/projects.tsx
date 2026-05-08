@@ -43,7 +43,7 @@ function ProjectsPage() {
               onClick={() => setFilter(f.key)}
               className={cn(
                 "rounded-full px-5 py-2 text-sm font-medium transition-all",
-                filter === f.key ? "bg-gradient-gold text-ink shadow-gold" : "bg-secondary text-ink/70 hover:bg-accent",
+                filter === f.key ? "bg-gradient-gold text-ink shadow-gold" : "bg-secondary text-foreground/70 hover:bg-accent",
               )}
             >
               {f.label}

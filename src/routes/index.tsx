@@ -1,12 +1,28 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Award, Building2, Users, Calendar } from "lucide-react";
-import { HeroBuilding3D } from "@/components/HeroBuilding3D";
 import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
 import { Button } from "@/components/ui/button";
 import { pillars, projects, stats } from "@/lib/site-data";
+import heroImg from "@/assets/hero-building.jpg";
+import realty1 from "@/assets/realty-1.jpg";
+import realty2 from "@/assets/realty-2.jpg";
+import project1 from "@/assets/project-1.jpg";
+import project2 from "@/assets/project-2.jpg";
+import project4 from "@/assets/project-4.jpg";
+import project6 from "@/assets/project-6.jpg";
+
+const heroImages = [
+  { src: heroImg, alt: "Tathastu signature architectural elevation" },
+  { src: project1, alt: "Aurelia Heights aerial masterplan" },
+  { src: realty1, alt: "Modern apartment facade at golden hour" },
+  { src: project2, alt: "Pool-side villa at dusk" },
+  { src: realty2, alt: "High-rise residential tower" },
+  { src: project4, alt: "Skyline penthouse with floor-to-ceiling glass" },
+  { src: project6, alt: "Palm-lined contemporary apartments" },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,59 +41,65 @@ const headline = "Realty, Construction & Interior Solutions";
 function HomePage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
-        <div className="pointer-events-none absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full bg-gradient-gold opacity-30 blur-3xl" />
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-[400px] w-[400px] rounded-full bg-primary-glow/30 blur-3xl" />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-2 md:items-center">
-          <div>
-            <motion.p
-              className="eyebrow"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              Building Dreams · Creating Reality
-            </motion.p>
-            <h1 className="mt-5 font-display text-5xl font-medium leading-[1.05] md:text-7xl">
-              {headline.split(" ").map((w, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.15 + i * 0.06, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="inline-block pr-3"
-                >
-                  {w === "Interior" || w === "Solutions" ? <span className="text-gradient-gold italic">{w}</span> : w}
-                </motion.span>
-              ))}
-            </h1>
-            <motion.p
-              className="mt-6 max-w-md text-lg text-muted-foreground"
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.8 }}
-            >
-              From concept to creation, we build spaces that inspire and stand the test of time.
-            </motion.p>
-            <motion.div
-              className="mt-8 flex flex-wrap gap-4"
-              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.6 }}
-            >
-              <Button asChild size="lg" className="group rounded-full bg-gradient-gold px-8 text-base text-ink shadow-gold hover:opacity-90">
-                <Link to="/contact">Get In Touch <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full border-ink/20 px-8 text-base">
-                <Link to="/projects">View Projects</Link>
-              </Button>
-            </motion.div>
-          </div>
-          <div className="relative h-[420px] md:h-[560px]">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary-glow/30 to-transparent blur-2xl" />
-            <div className="relative h-full w-full overflow-hidden rounded-3xl bg-gradient-ivory shadow-luxe">
-              <HeroBuilding3D />
-              <p className="absolute bottom-4 left-4 rounded-full bg-ivory/80 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-ink/70 backdrop-blur">drag to rotate</p>
-            </div>
-          </div>
+      {/* HERO — full-bleed continuous slideshow */}
+      <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
+        <AutoSlideshow
+          images={heroImages}
+          interval={4500}
+          showDots={false}
+          rounded="rounded-none"
+          className="absolute inset-0 h-full w-full"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/85 via-background/40 to-transparent" />
+
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-20 pt-32 md:justify-center md:pb-0">
+          <motion.p
+            className="eyebrow"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Building Dreams · Creating Reality
+          </motion.p>
+          <h1 className="mt-5 max-w-3xl font-display text-5xl font-medium leading-[1.05] text-foreground md:text-7xl lg:text-[5.5rem]">
+            {headline.split(" ").map((w, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15 + i * 0.06, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="inline-block pr-3"
+              >
+                {w === "Interior" || w === "Solutions" ? <span className="text-gradient-gold italic">{w}</span> : w}
+              </motion.span>
+            ))}
+          </h1>
+          <motion.p
+            className="mt-6 max-w-xl text-base text-foreground/80 md:text-lg"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.8 }}
+          >
+            From concept to creation, we build spaces that inspire and stand the test of time.
+          </motion.p>
+          <motion.div
+            className="mt-8 flex flex-wrap gap-3 md:gap-4"
+            initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.6 }}
+          >
+            <Button asChild size="lg" className="group rounded-full bg-gradient-gold px-7 text-base text-primary-foreground shadow-gold hover:opacity-90">
+              <Link to="/contact">Get In Touch <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-full border-foreground/30 bg-background/30 px-7 text-base text-foreground backdrop-blur hover:bg-background/50">
+              <Link to="/projects">View Projects</Link>
+            </Button>
+          </motion.div>
         </div>
+
+        <motion.div
+          className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-[10px] uppercase tracking-[0.3em] text-foreground/60"
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4, duration: 0.8 }}
+        >
+          scroll ↓
+        </motion.div>
       </section>
 
       {/* PILLARS with auto-rotating slideshows */}
@@ -110,7 +132,7 @@ function HomePage() {
                       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
                       <Link
                         to="/services"
-                        className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-ink transition-colors hover:bg-gradient-gold"
+                        className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-foreground transition-colors hover:bg-gradient-gold"
                       >
                         Explore <ArrowRight className="h-3.5 w-3.5" />
                       </Link>
