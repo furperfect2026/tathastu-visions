@@ -7,7 +7,7 @@ export function SiteFooter() {
     <footer className="relative mt-32 border-t border-border bg-ink text-ivory">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="invert"><Logo /></div>
+          <Logo light />
           <p className="mt-6 max-w-md text-sm text-ivory/70">
             Tathastu is a multi-disciplinary firm shaping the future of modern living through
             visionary real estate, robust construction and masterful interior design.
