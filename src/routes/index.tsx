@@ -200,15 +200,16 @@ function HomePage() {
         </div>
       </section>
 
-      {/* VISION QUOTE */}
-      <section className="relative overflow-hidden py-28">
-        <div className="mx-auto max-w-4xl px-6 text-center">
+      {/* VISION QUOTE — dark band */}
+      <section className="relative overflow-hidden bg-gradient-ink py-28 text-ivory">
+        <div className="pointer-events-none absolute -top-32 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
+        <div className="relative mx-auto max-w-4xl px-6 text-center">
           <Reveal>
-            <p className="eyebrow">The Vision</p>
+            <p className="eyebrow !text-primary-glow">The Vision</p>
             <p className="mt-6 font-display text-3xl font-medium leading-tight md:text-5xl">
               We don't just pour concrete. We design the <span className="text-gradient-gold italic">backdrops for people's lives</span> — every project an intersection of luxury, utility and timeless architecture.
             </p>
-            <p className="mt-8 text-sm uppercase tracking-[0.28em] text-muted-foreground">— Rohit, Founder & CEO</p>
+            <p className="mt-8 text-sm uppercase tracking-[0.28em] text-ivory/60">— Rohit, Founder & CEO</p>
           </Reveal>
         </div>
       </section>
