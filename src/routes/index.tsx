@@ -145,21 +145,22 @@ function HomePage() {
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="relative bg-gradient-ivory py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-4">
+      {/* STATS — dark band */}
+      <section className="relative bg-gradient-ink py-24 text-ivory">
+        <div className="pointer-events-none absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 20% 0%, var(--color-primary), transparent 40%)" }} />
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-4">
           {stats.map((s, i) => {
             const Icon = [Calendar, Building2, Users, Award][i];
             return (
               <Reveal key={s.label} delay={i * 0.08} className="flex items-center gap-5">
-                <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
+                <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-gold text-primary-foreground shadow-gold">
                   <Icon className="h-6 w-6" />
                 </div>
                 <div>
-                  <div className="font-display text-4xl font-semibold tabular-nums">
+                  <div className="font-display text-4xl font-semibold tabular-nums text-gradient-gold">
                     <CountUp value={s.value} suffix={s.suffix} />
                   </div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{s.label}</div>
+                  <div className="text-xs uppercase tracking-[0.2em] text-ivory/60">{s.label}</div>
                 </div>
               </Reveal>
             );
