@@ -38,67 +38,86 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const headline = "Realty, Construction & Interior Solutions";
+const headlineLine1 = "Where Architecture";
+const headlineLine2 = "Meets Elegance";
 
 function HomePage() {
   return (
     <>
-      {/* HERO — full-bleed continuous slideshow */}
-      <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
+      {/* HERO — cinematic full-bleed slideshow with luxury overlay */}
+      <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-ink">
         <AutoSlideshow
           images={heroImages}
-          interval={4500}
+          interval={5500}
           showDots={false}
           rounded="rounded-none"
           className="absolute inset-0 h-full w-full"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/85 via-background/40 to-transparent" />
+        {/* Cinematic dark gradient — bottom-up + side vignette */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/25" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/30 to-transparent" />
+        {/* Warm gold tint */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_22%,transparent),transparent_55%)]" />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-20 pt-32 md:justify-center md:pb-0">
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-24 pt-32 md:justify-center md:pb-0">
           <motion.p
-            className="eyebrow"
+            className="eyebrow !text-primary-glow"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Building Dreams · Creating Reality
+            Tathastu · Building Dreams Since 2014
           </motion.p>
-          <h1 className="mt-5 max-w-3xl font-display text-5xl font-medium leading-[1.05] text-foreground md:text-7xl lg:text-[5.5rem]">
-            {headline.split(" ").map((w, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15 + i * 0.06, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block pr-3"
-              >
-                {w === "Interior" || w === "Solutions" ? <span className="text-gradient-gold italic">{w}</span> : w}
-              </motion.span>
-            ))}
+          <h1 className="mt-6 max-w-4xl font-display text-5xl font-medium leading-[1.02] text-ivory md:text-7xl lg:text-[5.75rem]">
+            <span className="block">
+              {headlineLine1.split(" ").map((w, i) => (
+                <motion.span
+                  key={`l1-${i}`}
+                  initial={{ opacity: 0, y: 28 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + i * 0.08, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className="inline-block pr-3"
+                >
+                  {w}
+                </motion.span>
+              ))}
+            </span>
+            <span className="mt-2 block italic text-gradient-gold">
+              {headlineLine2.split(" ").map((w, i) => (
+                <motion.span
+                  key={`l2-${i}`}
+                  initial={{ opacity: 0, y: 28 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + i * 0.08, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className="inline-block pr-3"
+                >
+                  {w}
+                </motion.span>
+              ))}
+            </span>
           </h1>
           <motion.p
-            className="mt-6 max-w-xl text-base text-foreground/80 md:text-lg"
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.8 }}
+            className="mt-7 max-w-xl text-base leading-relaxed text-ivory/80 md:text-lg"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.95, duration: 0.9 }}
           >
-            From concept to creation, we build spaces that inspire and stand the test of time.
+            Crafting timeless homes, spaces and experiences across realty, construction and interior design.
           </motion.p>
           <motion.div
-            className="mt-8 flex flex-wrap gap-3 md:gap-4"
-            initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.6 }}
+            className="mt-9 flex flex-wrap gap-3 md:gap-4"
+            initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.15, duration: 0.7 }}
           >
-            <Button asChild size="lg" className="group rounded-full bg-gradient-gold px-7 text-base text-primary-foreground shadow-gold hover:opacity-90">
-              <Link to="/contact">Get In Touch <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
+            <Button asChild size="lg" className="group rounded-full bg-gradient-gold px-8 text-base text-primary-foreground shadow-gold transition-all hover:scale-[1.03] hover:shadow-[0_25px_60px_-15px_color-mix(in_oklab,var(--color-primary)_55%,transparent)]">
+              <a href="#contact">Begin Your Project <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" /></a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full border-foreground/30 bg-background/30 px-7 text-base text-foreground backdrop-blur hover:bg-background/50">
-              <Link to="/projects">View Projects</Link>
+            <Button asChild size="lg" variant="outline" className="rounded-full border-ivory/30 bg-ivory/5 px-8 text-base text-ivory backdrop-blur transition-all hover:border-primary/60 hover:bg-ivory/10">
+              <Link to="/projects">Explore Projects</Link>
             </Button>
           </motion.div>
         </div>
 
         <motion.div
-          className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-[10px] uppercase tracking-[0.3em] text-foreground/60"
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4, duration: 0.8 }}
+          className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-[10px] uppercase tracking-[0.35em] text-ivory/60"
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6, duration: 0.8 }}
         >
           scroll ↓
         </motion.div>
