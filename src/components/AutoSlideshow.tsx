@@ -43,12 +43,20 @@ export function AutoSlideshow({
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
+      {/* Static fallback ensures a visible image even if animation/lazy-load misbehaves */}
+      <img
+        src={images[index].src}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover"
+      />
       <AnimatePresence mode="sync">
         <motion.img
           key={index}
           src={images[index].src}
           alt={images[index].alt}
-          loading="lazy"
+          loading="eager"
+          decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
           initial={{ opacity: 0, scale: 1.08 }}
           animate={{
