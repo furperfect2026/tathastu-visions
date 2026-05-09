@@ -39,7 +39,7 @@ export function AutoSlideshow({
 
   return (
     <div
-      className={cn("relative overflow-hidden bg-muted", rounded, className)}
+      className={cn("relative h-full w-full overflow-hidden bg-muted", rounded, className)}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
