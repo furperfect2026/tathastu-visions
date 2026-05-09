@@ -9,10 +9,10 @@ export function Logo({ className, light = false }: { className?: string; light?:
         className="h-10 w-auto md:h-11"
       />
       <div className="leading-tight">
-        <div className={`font-display text-xl font-semibold tracking-[0.18em] ${light ? "text-ivory" : "text-ink"}`}>
+        <div className={`font-display text-xl font-semibold tracking-[0.18em] transition-colors duration-300 ease-out ${light ? "text-ivory drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]" : "text-ink"}`}>
           TATHASTU
         </div>
-        <div className="text-[9px] uppercase tracking-[0.28em] text-primary">
+        <div className={`text-[9px] uppercase tracking-[0.28em] transition-colors duration-300 ease-out ${light ? "text-primary-glow drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)]" : "text-primary"}`}>
           Building Spaces · Creating Futures
         </div>
       </div>

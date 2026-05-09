@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, Award, Building2, Users, Calendar } from "lucide-react";
+import { ArrowRight, Award, Building2, Users, Calendar, Facebook, Instagram, Linkedin } from "lucide-react";
 import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { PackagesSection } from "@/components/PackagesSection";
 import { ContactSection } from "@/components/ContactSection";
 import { pillars, projects, stats } from "@/lib/site-data";
+import { cn } from "@/lib/utils";
 import heroImg from "@/assets/hero-building.jpg";
 import realty1 from "@/assets/realty-1.jpg";
 import realty2 from "@/assets/realty-2.jpg";
@@ -38,14 +39,51 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const headlineLine1 = "Where Architecture";
-const headlineLine2 = "Meets Elegance";
+const headlineLine1 = "Where Vision";
+const headlineLine2 = "Becomes Reality";
+const socialLinks = [
+  { label: "Facebook", href: "https://facebook.com", Icon: Facebook },
+  { label: "Instagram", href: "https://instagram.com", Icon: Instagram },
+  { label: "LinkedIn", href: "https://linkedin.com", Icon: Linkedin },
+] as const;
+
+function HeroSocialLinks({ mobile = false }: { mobile?: boolean }) {
+  return (
+    <motion.div
+      className={cn(
+        mobile ? "mt-6 flex items-center gap-4 md:hidden" : "absolute left-6 top-1/2 z-10 hidden -translate-y-1/2 flex-col items-center gap-5 md:flex lg:left-8",
+      )}
+      initial={{ opacity: 0, y: mobile ? 12 : 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 1.35, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      aria-label="Tathastu social links"
+    >
+      {!mobile && <span className="h-16 w-px bg-gradient-to-b from-transparent via-ivory/45 to-transparent" />}
+      <div className={cn(mobile ? "flex items-center gap-4" : "flex flex-col items-center gap-4")}>
+        {socialLinks.map(({ label, href, Icon }) => (
+          <motion.a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={label}
+            whileHover={{ y: -3 }}
+            className="grid h-10 w-10 place-items-center rounded-full border border-ivory/20 bg-ivory/[0.04] text-ivory/85 backdrop-blur-sm transition-colors duration-300 hover:border-primary/60 hover:text-primary-glow hover:shadow-[0_0_28px_-10px_var(--color-primary)] md:h-9 md:w-9 lg:h-10 lg:w-10"
+          >
+            <Icon className="h-4 w-4 stroke-[1.5]" />
+          </motion.a>
+        ))}
+      </div>
+      {!mobile && <span className="h-16 w-px bg-gradient-to-b from-transparent via-ivory/45 to-transparent" />}
+    </motion.div>
+  );
+}
 
 function HomePage() {
   return (
     <>
       {/* HERO — cinematic full-bleed slideshow with luxury overlay */}
-      <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-ink">
+      <section id="home" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-ink">
         <AutoSlideshow
           images={heroImages}
           interval={5500}
@@ -58,17 +96,21 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/30 to-transparent" />
         {/* Warm gold tint */}
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_22%,transparent),transparent_55%)]" />
+        <HeroSocialLinks />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-24 pt-32 md:justify-center md:pb-0">
-          <motion.p
-            className="eyebrow !text-primary-glow"
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-24 pt-32 md:justify-center md:pb-0 md:pl-20 lg:pl-20">
+          <motion.div
+            className="space-y-2"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Tathastu · Building Dreams Since 2014
-          </motion.p>
-          <h1 className="mt-6 max-w-4xl font-display text-5xl font-medium leading-[1.02] text-ivory md:text-7xl lg:text-[5.75rem]">
+            <p className="eyebrow !text-primary-glow">Tathastu</p>
+            <p className="max-w-4xl font-display text-2xl font-medium leading-tight text-ivory drop-shadow-[0_3px_18px_rgba(0,0,0,0.4)] md:text-3xl lg:text-[2.1rem]">
+              Turning Dreams Into <span className="italic text-gradient-gold">Timeless Reality</span>
+            </p>
+          </motion.div>
+          <h1 className="mt-4 max-w-4xl font-display text-5xl font-medium leading-[1.02] text-ivory md:text-7xl lg:text-[5.75rem]">
             <span className="block">
               {headlineLine1.split(" ").map((w, i) => (
                 <motion.span
@@ -97,13 +139,13 @@ function HomePage() {
             </span>
           </h1>
           <motion.p
-            className="mt-7 max-w-xl text-base leading-relaxed text-ivory/80 md:text-lg"
+            className="mt-5 max-w-xl text-base leading-relaxed text-ivory/80 md:text-lg"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.95, duration: 0.9 }}
           >
             Crafting timeless homes, spaces and experiences across realty, construction and interior design.
           </motion.p>
           <motion.div
-            className="mt-9 flex flex-wrap gap-3 md:gap-4"
+            className="mt-7 flex flex-wrap gap-3 md:gap-4"
             initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.15, duration: 0.7 }}
           >
             <Button asChild size="lg" className="group rounded-full bg-gradient-gold px-8 text-base text-primary-foreground shadow-gold transition-all hover:scale-[1.03] hover:shadow-[0_25px_60px_-15px_color-mix(in_oklab,var(--color-primary)_55%,transparent)]">
@@ -113,6 +155,7 @@ function HomePage() {
               <Link to="/projects">Explore Projects</Link>
             </Button>
           </motion.div>
+          <HeroSocialLinks mobile />
         </div>
 
         <motion.div
@@ -124,7 +167,7 @@ function HomePage() {
       </section>
 
       {/* PILLARS with auto-rotating slideshows */}
-      <section className="relative py-24">
+      <section id="services" className="relative py-24">
         <div className="mx-auto max-w-7xl px-6">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">Three Pillars</p>
@@ -190,7 +233,7 @@ function HomePage() {
       </section>
 
       {/* FEATURED PROJECTS */}
-      <section className="relative py-24">
+      <section id="projects" className="relative py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex items-end justify-between gap-6">
             <Reveal>
