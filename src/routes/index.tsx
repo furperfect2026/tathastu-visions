@@ -235,16 +235,11 @@ function HomePage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="grain relative overflow-hidden rounded-3xl bg-gradient-gold p-12 text-center shadow-gold md:p-20">
-          <h2 className="font-display text-4xl font-semibold text-ink md:text-5xl">Let's design your next space.</h2>
-          <p className="mx-auto mt-4 max-w-xl text-ink/80">A 30-minute call is all it takes to see if Tathastu is the right partner for your dream.</p>
-          <Button asChild size="lg" className="mt-8 rounded-full bg-ink px-8 text-base text-ivory hover:bg-ink/90">
-            <Link to="/contact">Start a conversation <ArrowRight className="ml-1 h-4 w-4" /></Link>
-          </Button>
-        </div>
-      </section>
+      {/* PACKAGES */}
+      <PackagesSection />
+
+      {/* CONTACT */}
+      <ContactSection />
     </>
   );
 }
