@@ -26,16 +26,6 @@ const heroImages = [
   { src: project6, alt: "Palm-lined contemporary apartments" },
 ];
 
-const heroImages = [
-  { src: heroImg, alt: "Tathastu signature architectural elevation" },
-  { src: project1, alt: "Aurelia Heights aerial masterplan" },
-  { src: realty1, alt: "Modern apartment facade at golden hour" },
-  { src: project2, alt: "Pool-side villa at dusk" },
-  { src: realty2, alt: "High-rise residential tower" },
-  { src: project4, alt: "Skyline penthouse with floor-to-ceiling glass" },
-  { src: project6, alt: "Palm-lined contemporary apartments" },
-];
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
