@@ -1,6 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
 import { Logo } from "./Logo";
+
+const socialLinks = [
+  { label: "YouTube", href: "https://www.youtube.com/@Tathastu_Infra", Icon: Youtube },
+  { label: "Instagram", href: "https://www.instagram.com/tathastu_infra/", Icon: Instagram },
+  { label: "LinkedIn", href: "https://linkedin.com", Icon: Linkedin },
+] as const;
 
 export function SiteFooter() {
   return (
@@ -13,8 +19,8 @@ export function SiteFooter() {
             visionary real estate, robust construction and masterful interior design.
           </p>
           <div className="mt-6 flex gap-3">
-            {[Facebook, Instagram, Linkedin].map((Icon, i) => (
-              <a key={i} href="#" aria-label="social" className="grid h-10 w-10 place-items-center rounded-full border border-ivory/20 text-ivory/80 transition-colors hover:border-primary hover:text-primary">
+            {socialLinks.map(({ label, href, Icon }) => (
+              <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} className="grid h-10 w-10 place-items-center rounded-full border border-ivory/20 text-ivory/80 transition-colors hover:border-primary hover:text-primary">
                 <Icon className="h-4 w-4" />
               </a>
             ))}
@@ -25,7 +31,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2 text-sm">
             {[
               ["/", "Home"], ["/about", "About"], ["/services", "Services"],
-              ["/projects", "Projects"], ["/contact", "Contact"],
+              ["/projects", "Projects"], ["/#contact", "Contact"],
             ].map(([to, label]) => (
               <li key={to}><Link to={to} className="text-ivory/70 transition-colors hover:text-primary-glow">{label}</Link></li>
             ))}
@@ -34,9 +40,9 @@ export function SiteFooter() {
         <div>
           <h4 className="eyebrow !text-primary-glow">Reach Us</h4>
           <ul className="mt-4 space-y-3 text-sm text-ivory/70">
-            <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 text-primary" /> Lohegaon, Pune, Maharashtra</li>
-            <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 text-primary" /> +91 00000 00000</li>
-            <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 text-primary" /> hello@tathastu.in</li>
+            <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 text-primary" /> Shop No. 2, Tathastu, Lohegaon, Pune</li>
+            <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 text-primary" /> +91 78208 64384</li>
+            <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 text-primary" /> tathastu.infra.info@gmail.com</li>
           </ul>
         </div>
       </div>

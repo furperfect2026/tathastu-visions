@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, MessageCircle, Instagram, Facebook, Linkedin, Send, Loader2 } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, Instagram, Linkedin, Send, Loader2, Youtube } from "lucide-react";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Reveal } from "@/components/Reveal";
 import { toast } from "sonner";
+import { submitInquiry } from "@/lib/contact.functions";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(80),
@@ -21,14 +23,16 @@ const schema = z.object({
   message: z.string().trim().min(10, "Tell us a little more").max(1000),
 });
 
-const PHONE = "+91 90670 50909";
-const PHONE_TEL = "+919067050909";
-const EMAIL = "hello@tathastu.in";
-const ADDRESS = "Tathastu, Lohegaon, Pune, Maharashtra 411047";
+const PHONE = "+91 78208 64384";
+const PHONE_TEL = "+917820864384";
+const WHATSAPP_TEL = "+917820864384";
+const EMAIL = "tathastu.infra.info@gmail.com";
+const ADDRESS = "Shop No. 2, Tathastu, DY Patil University Road, opposite Golden Winds Society, Lohegaon, Pune, Maharashtra 411047";
 const MAPS_EMBED =
-  "https://www.google.com/maps?q=Lohegaon%2C%20Pune%2C%20Maharashtra&output=embed";
+  "https://www.google.com/maps?q=TATHASTU%20Real%20Estate%20Builders%20%26%20Construction%20Company%2C%20Shop%20No.2%2C%20DY%20Patil%20University%20Road%2C%20Lohegaon%2C%20Pune&ll=18.6159241,73.9093115&z=18&output=embed";
 
 export function ContactSection() {
+  const submit = useServerFn(submitInquiry);
   const [loading, setLoading] = useState(false);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -47,13 +51,25 @@ export function ContactSection() {
     setLoading(true);
     try {
       // Lightweight client-side handoff — opens user's mail client with prefilled content.
-      const subject = encodeURIComponent(`New enquiry from ${parsed.data.name}`);
-      const body = encodeURIComponent(
-        `Name: ${parsed.data.name}\nPhone: ${parsed.data.phone}\nEmail: ${parsed.data.email}\n\n${parsed.data.message}`,
-      );
-      window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-      toast.success("Thanks! We'll get back to you within 24 hours.");
+      const res = await submit({
+        data: {
+          ...parsed.data,
+          interest: "general",
+        },
+      });
+      if (!res.ok) {
+        toast.error(res.error ?? "Could not submit. Please try again.");
+        return;
+      }
+      if (res.emailSent) {
+        toast.success("Thanks! We'll get back to you within 24 hours.");
+      } else {
+        toast.success("Thanks! Your inquiry was saved. We'll get back to you within 24 hours.");
+      }
       (e.target as HTMLFormElement).reset();
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -137,7 +153,7 @@ export function ContactSection() {
 
               <div className="flex flex-wrap items-center gap-3">
                 <a
-                  href={`https://wa.me/${PHONE_TEL.replace(/\D/g, "")}`}
+                  href={`https://wa.me/${WHATSAPP_TEL.replace(/\D/g, "")}`}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.03]"
@@ -146,15 +162,16 @@ export function ContactSection() {
                 </a>
                 <div className="flex items-center gap-2">
                   {[
-                    { Icon: Instagram, href: "https://instagram.com" },
-                    { Icon: Facebook, href: "https://facebook.com" },
-                    { Icon: Linkedin, href: "https://linkedin.com" },
-                  ].map(({ Icon, href }, i) => (
+                    { label: "Instagram", Icon: Instagram, href: "https://www.instagram.com/tathastu_infra/" },
+                    { label: "YouTube", Icon: Youtube, href: "https://www.youtube.com/@Tathastu_Infra" },
+                    { label: "LinkedIn", Icon: Linkedin, href: "https://linkedin.com" },
+                  ].map(({ label, Icon, href }) => (
                     <motion.a
-                      key={i}
+                      key={label}
                       href={href}
                       target="_blank"
                       rel="noreferrer"
+                      aria-label={label}
                       whileHover={{ y: -3 }}
                       className="grid h-10 w-10 place-items-center rounded-full border border-ivory/15 bg-ivory/5 text-ivory transition hover:border-primary/50 hover:text-primary"
                     >

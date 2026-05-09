@@ -10,7 +10,7 @@ const links = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/projects", label: "Projects" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", hash: "contact", label: "Contact" },
 ] as const;
 
 export function SiteNav() {
@@ -32,7 +32,7 @@ export function SiteNav() {
         { id: "home", to: "/" },
         { id: "services", to: "/services" },
         { id: "projects", to: "/projects" },
-        { id: "contact", to: "/contact" },
+        { id: "contact", to: "/#contact" },
       ] as const;
       const anchor = Math.min(window.innerHeight * 0.38, 360);
       const current = sectionIds.find(({ id }) => {
@@ -67,8 +67,9 @@ export function SiteNav() {
         <nav className="hidden items-center gap-9 md:flex">
           {links.map((l) => (
             <Link
-              key={l.to}
+              key={l.label}
               to={l.to}
+              hash={"hash" in l ? l.hash : undefined}
               className={cn(
                 "group relative text-sm font-medium transition-colors duration-300 ease-out",
                 transparent ? "text-ivory/90 hover:text-primary-glow" : "text-foreground/75 hover:text-ink",
@@ -76,7 +77,8 @@ export function SiteNav() {
               activeOptions={{ exact: l.to === "/" }}
             >
               {({ isActive }) => {
-                const active = pathname === "/" ? activeSection === l.to : isActive;
+                const activeTo = "hash" in l ? `/#${l.hash}` : l.to;
+                const active = pathname === "/" ? activeSection === activeTo : isActive;
 
                 return (
                   <>
@@ -102,7 +104,7 @@ export function SiteNav() {
         </nav>
         <div className="hidden md:block">
           <Button asChild className="rounded-full bg-gradient-gold px-6 text-ink shadow-gold hover:opacity-90">
-            <Link to="/contact">Get In Touch →</Link>
+            <Link to="/" hash="contact">Get In Touch →</Link>
           </Button>
         </div>
         <button
@@ -123,14 +125,16 @@ export function SiteNav() {
           <nav className="flex flex-col gap-1 px-6 py-4">
             {links.map((l) => (
               <Link
-                key={l.to}
+                key={l.label}
                 to={l.to}
+                hash={"hash" in l ? l.hash : undefined}
                 onClick={() => setOpen(false)}
                 className="rounded-lg px-3 py-3 text-base font-medium text-foreground/80 transition-colors duration-300 ease-out hover:bg-muted"
                 activeOptions={{ exact: l.to === "/" }}
               >
                 {({ isActive }) => {
-                  const active = pathname === "/" ? activeSection === l.to : isActive;
+                  const activeTo = "hash" in l ? `/#${l.hash}` : l.to;
+                  const active = pathname === "/" ? activeSection === activeTo : isActive;
 
                   return (
                     <span className={cn(active && "text-ink underline decoration-primary underline-offset-4")}>
@@ -141,7 +145,7 @@ export function SiteNav() {
               </Link>
             ))}
             <Button asChild className="mt-2 rounded-full bg-gradient-gold text-ink">
-              <Link to="/contact" onClick={() => setOpen(false)}>Get In Touch →</Link>
+              <Link to="/" hash="contact" onClick={() => setOpen(false)}>Get In Touch →</Link>
             </Button>
           </nav>
         </div>

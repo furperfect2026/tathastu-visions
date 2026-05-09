@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, Award, Building2, Users, Calendar, Facebook, Instagram, Linkedin } from "lucide-react";
+import { ArrowRight, Award, Building2, Users, Calendar, Instagram, Linkedin, Youtube } from "lucide-react";
 import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
@@ -42,8 +42,8 @@ export const Route = createFileRoute("/")({
 const headlineLine1 = "Where Vision";
 const headlineLine2 = "Becomes Reality";
 const socialLinks = [
-  { label: "Facebook", href: "https://facebook.com", Icon: Facebook },
-  { label: "Instagram", href: "https://instagram.com", Icon: Instagram },
+  { label: "YouTube", href: "https://www.youtube.com/@Tathastu_Infra", Icon: Youtube },
+  { label: "Instagram", href: "https://www.instagram.com/tathastu_infra/", Icon: Instagram },
   { label: "LinkedIn", href: "https://linkedin.com", Icon: Linkedin },
 ] as const;
 
@@ -151,6 +151,9 @@ function HomePage() {
             <Button asChild size="lg" className="group rounded-full bg-gradient-gold px-8 text-base text-primary-foreground shadow-gold transition-all hover:scale-[1.03] hover:shadow-[0_25px_60px_-15px_color-mix(in_oklab,var(--color-primary)_55%,transparent)]">
               <a href="#contact">Begin Your Project <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" /></a>
             </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-full border-primary/50 bg-ink/25 px-8 text-base text-primary-glow backdrop-blur transition-all hover:border-primary hover:bg-primary/10">
+              <a href="#contact">Get Free Quote</a>
+            </Button>
             <Button asChild size="lg" variant="outline" className="rounded-full border-ivory/30 bg-ivory/5 px-8 text-base text-ivory backdrop-blur transition-all hover:border-primary/60 hover:bg-ivory/10">
               <Link to="/projects">Explore Projects</Link>
             </Button>
@@ -180,11 +183,16 @@ function HomePage() {
               const Icon = p.icon;
               return (
                 <Reveal key={p.key} delay={i * 0.1}>
-                  <motion.article
+                  <motion.div
                     whileHover={{ y: -8 }}
                     transition={{ type: "spring", stiffness: 180, damping: 18 }}
-                    className="group flex h-full flex-col overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border"
+                    className="h-full"
                   >
+                    <Link
+                      to={`/${p.key}`}
+                      aria-label={`Explore ${p.title}`}
+                      className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border transition-shadow duration-300 hover:shadow-[0_28px_80px_-35px_color-mix(in_oklab,var(--color-primary)_45%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                    >
                     <div className="relative h-60">
                       <AutoSlideshow images={[...p.images]} startIndex={i} interval={3500 + i * 400} rounded="rounded-none" />
                       <div className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-full bg-gradient-gold text-ink shadow-gold">
@@ -194,18 +202,30 @@ function HomePage() {
                     <div className="flex flex-1 flex-col p-7">
                       <h3 className="font-display text-2xl font-semibold">{p.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
-                      <Link
-                        to="/services"
-                        className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-foreground transition-colors hover:bg-gradient-gold"
+                      <span
+                        className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-foreground transition-all duration-300 group-hover:bg-gradient-gold group-hover:shadow-gold"
                       >
                         Explore <ArrowRight className="h-3.5 w-3.5" />
-                      </Link>
+                      </span>
                     </div>
-                  </motion.article>
+                    </Link>
+                  </motion.div>
                 </Reveal>
               );
             })}
           </div>
+
+          <Reveal className="mt-14">
+            <div className="mx-auto flex max-w-3xl flex-col items-center justify-between gap-5 rounded-3xl border border-primary/20 bg-card px-7 py-6 text-center shadow-luxe md:flex-row md:px-9 md:text-left">
+              <div>
+                <p className="eyebrow">Planning Something?</p>
+                <h3 className="mt-2 font-display text-3xl font-medium">Get a free quote from Tathastu.</h3>
+              </div>
+              <Button asChild size="lg" className="group rounded-full bg-gradient-gold px-7 text-ink shadow-gold">
+                <a href="#contact">Get Free Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></a>
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -280,6 +300,30 @@ function HomePage() {
 
       {/* PACKAGES */}
       <PackagesSection />
+
+      <section className="bg-gradient-ivory py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <Reveal>
+            <div className="relative overflow-hidden rounded-3xl bg-ink p-8 text-ivory shadow-luxe md:p-12">
+              <div className="pointer-events-none absolute -right-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" />
+              <div className="relative grid items-center gap-8 md:grid-cols-[1fr_auto]">
+                <div>
+                  <p className="eyebrow !text-primary-glow">Need a clearer estimate?</p>
+                  <h2 className="mt-3 max-w-2xl font-display text-4xl font-medium leading-tight md:text-5xl">
+                    Get a tailored quote for your <span className="italic text-gradient-gold">dream space.</span>
+                  </h2>
+                  <p className="mt-4 max-w-xl text-sm leading-relaxed text-ivory/70 md:text-base">
+                    Share your site, scope and expectations. Our team will help you understand the right package, timeline and next step.
+                  </p>
+                </div>
+                <Button asChild size="lg" className="group rounded-full bg-gradient-gold px-8 text-base text-ink shadow-gold">
+                  <a href="#contact">Get Free Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></a>
+                </Button>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       {/* CONTACT */}
       <ContactSection />

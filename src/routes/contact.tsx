@@ -62,7 +62,11 @@ function ContactPage() {
     try {
       const res = await submit({ data: parsed.data });
       if (res.ok) {
-        toast.success("Thanks! We'll be in touch within one business day.");
+        if (res.emailSent) {
+          toast.success("Thanks! We'll be in touch within one business day.");
+        } else {
+          toast.success("Thanks! Your inquiry was saved. We'll be in touch within one business day.");
+        }
         (e.target as HTMLFormElement).reset();
         setInterest("general");
       } else {
@@ -132,9 +136,9 @@ function ContactPage() {
               <p className="mt-2 text-sm text-ivory/70">We work by appointment. Coffee is on us.</p>
 
               <ul className="mt-8 space-y-5 text-sm">
-                <li className="flex gap-3"><MapPin className="h-5 w-5 text-primary-glow" /> Lohegaon, Pune,<br /> Maharashtra, India</li>
-                <li className="flex gap-3"><Phone className="h-5 w-5 text-primary-glow" /> +91 00000 00000</li>
-                <li className="flex gap-3"><Mail className="h-5 w-5 text-primary-glow" /> hello@tathastu.in</li>
+                <li className="flex gap-3"><MapPin className="h-5 w-5 text-primary-glow" /> Shop No. 2, Tathastu,<br /> DY Patil University Road,<br /> Lohegaon, Pune</li>
+                <li className="flex gap-3"><Phone className="h-5 w-5 text-primary-glow" /> +91 78208 64384</li>
+                <li className="flex gap-3"><Mail className="h-5 w-5 text-primary-glow" /> tathastu.infra.info@gmail.com</li>
               </ul>
 
               <div className="mt-10 rounded-2xl bg-gradient-gold p-5 text-ink">
