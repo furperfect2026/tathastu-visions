@@ -84,10 +84,10 @@ export function ContactSection() {
   return (
     <section id="contact" className="relative overflow-hidden bg-gradient-ink py-24 text-ivory">
       <div className="pointer-events-none absolute -left-32 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-primary/10 blur-3xl" />
-      <div className="relative mx-auto max-w-7xl px-6">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal className="max-w-2xl">
           <p className="eyebrow !text-primary-glow">Get In Touch</p>
-          <h2 className="mt-3 font-display text-4xl font-medium md:text-5xl">
+          <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
             Let's design <span className="text-gradient-gold italic">your space</span>.
           </h2>
           <p className="mt-4 text-ivory/70">Tell us about your project in Pune, Lohegaon or nearby areas — site, scope or just an idea — and our team will respond within 24 hours.</p>
@@ -98,7 +98,7 @@ export function ContactSection() {
           <Reveal>
             <form
               onSubmit={onSubmit}
-              className="rounded-3xl border border-ivory/10 bg-ivory/[0.04] p-7 backdrop-blur md:p-10"
+              className="rounded-3xl border border-ivory/10 bg-ivory/[0.04] p-5 backdrop-blur sm:p-7 md:p-10"
             >
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
@@ -137,7 +137,7 @@ export function ContactSection() {
                 type="submit"
                 size="lg"
                 disabled={loading}
-                className="group mt-6 rounded-full bg-gradient-gold px-8 text-primary-foreground shadow-gold hover:opacity-90"
+                className="group mt-6 w-full rounded-full bg-gradient-gold px-5 text-primary-foreground shadow-gold hover:opacity-90 sm:w-auto sm:px-8"
               >
                 {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />}
                 Send Message
@@ -149,25 +149,25 @@ export function ContactSection() {
           <Reveal delay={0.1}>
             <div className="flex h-full flex-col gap-5">
               <div className="grid gap-3">
-                <a href={`tel:${PHONE_TEL}`} className="group flex items-center gap-4 rounded-2xl border border-ivory/10 bg-ivory/[0.04] p-4 transition hover:border-primary/40">
+                <a href={`tel:${PHONE_TEL}`} className="group flex min-w-0 items-center gap-4 rounded-2xl border border-ivory/10 bg-ivory/[0.04] p-4 transition hover:border-primary/40">
                   <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-gold text-primary-foreground"><Phone className="h-4 w-4" /></span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-[10px] uppercase tracking-[0.22em] text-ivory/50">Phone</p>
                     <p className="font-medium text-ivory">{PHONE}</p>
                   </div>
                 </a>
-                <a href={`mailto:${EMAIL}`} className="group flex items-center gap-4 rounded-2xl border border-ivory/10 bg-ivory/[0.04] p-4 transition hover:border-primary/40">
+                <a href={`mailto:${EMAIL}`} className="group flex min-w-0 items-center gap-4 rounded-2xl border border-ivory/10 bg-ivory/[0.04] p-4 transition hover:border-primary/40">
                   <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-gold text-primary-foreground"><Mail className="h-4 w-4" /></span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-[10px] uppercase tracking-[0.22em] text-ivory/50">Email</p>
-                    <p className="font-medium text-ivory">{EMAIL}</p>
+                    <p className="break-words font-medium text-ivory">{EMAIL}</p>
                   </div>
                 </a>
-                <div className="flex items-start gap-4 rounded-2xl border border-ivory/10 bg-ivory/[0.04] p-4">
+                <div className="flex min-w-0 items-start gap-4 rounded-2xl border border-ivory/10 bg-ivory/[0.04] p-4">
                   <span className="grid h-11 w-11 flex-none place-items-center rounded-full bg-gradient-gold text-primary-foreground"><MapPin className="h-4 w-4" /></span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-[10px] uppercase tracking-[0.22em] text-ivory/50">Office</p>
-                    <p className="font-medium text-ivory">{ADDRESS}</p>
+                    <p className="break-words font-medium text-ivory">{ADDRESS}</p>
                   </div>
                 </div>
               </div>
@@ -177,7 +177,7 @@ export function ContactSection() {
                   href={`https://wa.me/${WHATSAPP_TEL.replace(/\D/g, "")}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.03]"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.03] sm:w-auto"
                 >
                   <MessageCircle className="h-4 w-4" /> WhatsApp
                 </a>

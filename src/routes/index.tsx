@@ -84,7 +84,7 @@ function HomePage() {
   return (
     <>
       {/* HERO — cinematic full-bleed slideshow with luxury overlay */}
-      <section id="home" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-ink">
+      <section id="home" className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-ink sm:min-h-[640px]">
         <AutoSlideshow
           images={heroImages}
           interval={5500}
@@ -99,7 +99,7 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_22%,transparent),transparent_55%)]" />
         <HeroSocialLinks />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-24 pt-32 md:justify-center md:pb-0 md:pl-20 lg:pl-20">
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-20 pt-28 sm:px-6 sm:pb-24 md:justify-center md:pb-0 md:pl-20 lg:pl-20">
           <motion.div
             className="space-y-2"
             initial={{ opacity: 0, y: 10 }}
@@ -107,11 +107,11 @@ function HomePage() {
             transition={{ duration: 0.6 }}
           >
             <p className="eyebrow !text-primary-glow">Tathastu</p>
-            <p className="max-w-4xl font-display text-2xl font-medium leading-tight text-ivory drop-shadow-[0_3px_18px_rgba(0,0,0,0.4)] md:text-3xl lg:text-[2.1rem]">
+            <p className="max-w-4xl font-display text-xl font-medium leading-tight text-ivory drop-shadow-[0_3px_18px_rgba(0,0,0,0.4)] sm:text-2xl md:text-3xl lg:text-[2.1rem]">
               Building Dreams <span className="italic text-gradient-gold">Since 2014</span>
             </p>
           </motion.div>
-          <h1 className="mt-4 max-w-4xl font-display text-5xl font-medium leading-[1.02] text-ivory md:text-7xl lg:text-[5.75rem]">
+          <h1 className="mt-4 max-w-4xl break-words font-display text-[2.85rem] font-medium leading-[1.02] text-ivory sm:text-5xl md:text-7xl lg:text-[5.75rem]">
             <span className="block">
               {headlineLine1.split(" ").map((w, i) => (
                 <motion.span
@@ -146,16 +146,16 @@ function HomePage() {
             Crafting timeless homes, properties and spaces across Pune through real estate, construction and interior design from our Lohegaon studio.
           </motion.p>
           <motion.div
-            className="mt-7 flex flex-wrap gap-3 md:gap-4"
+            className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap md:gap-4"
             initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.15, duration: 0.7 }}
           >
-            <Button asChild size="lg" className="group rounded-full bg-gradient-gold px-8 text-base text-primary-foreground shadow-gold transition-all hover:scale-[1.03] hover:shadow-[0_25px_60px_-15px_color-mix(in_oklab,var(--color-primary)_55%,transparent)]">
+            <Button asChild size="lg" className="group w-full rounded-full bg-gradient-gold px-5 text-base text-primary-foreground shadow-gold transition-all hover:scale-[1.03] hover:shadow-[0_25px_60px_-15px_color-mix(in_oklab,var(--color-primary)_55%,transparent)] sm:w-auto sm:px-8">
               <a href="#contact">Begin Your Project <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" /></a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full border-primary/50 bg-ink/25 px-8 text-base text-primary-glow backdrop-blur transition-all hover:border-primary hover:bg-primary/10">
+            <Button asChild size="lg" variant="outline" className="w-full rounded-full border-primary/50 bg-ink/25 px-5 text-base text-primary-glow backdrop-blur transition-all hover:border-primary hover:bg-primary/10 sm:w-auto sm:px-8">
               <a href="#contact">Get Free Quote</a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full border-ivory/30 bg-ivory/5 px-8 text-base text-ivory backdrop-blur transition-all hover:border-primary/60 hover:bg-ivory/10">
+            <Button asChild size="lg" variant="outline" className="w-full rounded-full border-ivory/30 bg-ivory/5 px-5 text-base text-ivory backdrop-blur transition-all hover:border-primary/60 hover:bg-ivory/10 sm:w-auto sm:px-8">
               <Link to="/projects">Explore Projects</Link>
             </Button>
           </motion.div>
@@ -172,10 +172,10 @@ function HomePage() {
 
       {/* PILLARS with auto-rotating slideshows */}
       <section id="services" className="relative py-24">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">Three Pillars</p>
-            <h2 className="mt-3 font-display text-4xl font-medium md:text-5xl">A complete craft, end to end.</h2>
+            <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">A complete craft, end to end.</h2>
             <p className="mt-4 text-muted-foreground">From Lohegaon property search and land advisory to Pune homes, construction and interiors, Tathastu is one team for every step.</p>
           </Reveal>
 
@@ -217,12 +217,12 @@ function HomePage() {
           </div>
 
           <Reveal className="mt-14">
-            <div className="mx-auto flex max-w-3xl flex-col items-center justify-between gap-5 rounded-3xl border border-primary/20 bg-card px-7 py-6 text-center shadow-luxe md:flex-row md:px-9 md:text-left">
+            <div className="mx-auto flex max-w-3xl flex-col items-center justify-between gap-5 rounded-3xl border border-primary/20 bg-card px-5 py-6 text-center shadow-luxe sm:px-7 md:flex-row md:px-9 md:text-left">
               <div>
                 <p className="eyebrow">Planning Something?</p>
-                <h3 className="mt-2 font-display text-3xl font-medium">Get a free quote from Tathastu Pune.</h3>
+                <h3 className="mt-2 font-display text-2xl font-medium sm:text-3xl">Get a free quote from Tathastu Pune.</h3>
               </div>
-              <Button asChild size="lg" className="group rounded-full bg-gradient-gold px-7 text-ink shadow-gold">
+              <Button asChild size="lg" className="group w-full rounded-full bg-gradient-gold px-5 text-ink shadow-gold sm:w-auto sm:px-7">
                 <a href="#contact">Get Free Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></a>
               </Button>
             </div>
@@ -233,7 +233,7 @@ function HomePage() {
       {/* STATS — dark band */}
       <section className="relative bg-gradient-ink py-24 text-ivory">
         <div className="pointer-events-none absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 20% 0%, var(--color-primary), transparent 40%)" }} />
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-4">
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-4">
           {stats.map((s, i) => {
             const Icon = [Calendar, Building2, Users, Award][i];
             return (
@@ -255,11 +255,11 @@ function HomePage() {
 
       {/* FEATURED PROJECTS */}
       <section id="projects" className="relative py-24">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex items-end justify-between gap-6">
             <Reveal>
               <p className="eyebrow">Featured</p>
-              <h2 className="mt-3 font-display text-4xl font-medium md:text-5xl">Recent work</h2>
+              <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">Recent work</h2>
             </Reveal>
             <Link to="/projects" className="hidden text-sm font-semibold text-primary hover:underline md:block">View all →</Link>
           </div>
@@ -288,10 +288,10 @@ function HomePage() {
       {/* VISION QUOTE — dark band */}
       <section className="relative overflow-hidden bg-gradient-ink py-28 text-ivory">
         <div className="pointer-events-none absolute -top-32 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
-        <div className="relative mx-auto max-w-4xl px-6 text-center">
+        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
           <Reveal>
             <p className="eyebrow !text-primary-glow">The Vision</p>
-            <p className="mt-6 font-display text-3xl font-medium leading-tight md:text-5xl">
+            <p className="mt-6 font-display text-2xl font-medium leading-tight sm:text-3xl md:text-5xl">
               We don't just pour concrete. We design the <span className="text-gradient-gold italic">backdrops for people's lives</span> across Pune, with every project shaped by luxury, utility and timeless architecture.
             </p>
             <p className="mt-8 text-sm uppercase tracking-[0.28em] text-ivory/60">— Rohit, Founder & CEO</p>
@@ -303,21 +303,21 @@ function HomePage() {
       <PackagesSection />
 
       <section className="bg-gradient-ivory py-16">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl bg-ink p-8 text-ivory shadow-luxe md:p-12">
+            <div className="relative overflow-hidden rounded-3xl bg-ink p-6 text-ivory shadow-luxe sm:p-8 md:p-12">
               <div className="pointer-events-none absolute -right-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" />
               <div className="relative grid items-center gap-8 md:grid-cols-[1fr_auto]">
                 <div>
                   <p className="eyebrow !text-primary-glow">Need a clearer estimate?</p>
-                  <h2 className="mt-3 max-w-2xl font-display text-4xl font-medium leading-tight md:text-5xl">
+                  <h2 className="mt-3 max-w-2xl font-display text-3xl font-medium leading-tight sm:text-4xl md:text-5xl">
                     Get a tailored quote for your <span className="italic text-gradient-gold">dream space.</span>
                   </h2>
                   <p className="mt-4 max-w-xl text-sm leading-relaxed text-ivory/70 md:text-base">
                     Share your site, scope and expectations in Pune or around Lohegaon. Our team will help you understand the right package, timeline and next step.
                   </p>
                 </div>
-                <Button asChild size="lg" className="group rounded-full bg-gradient-gold px-8 text-base text-ink shadow-gold">
+                <Button asChild size="lg" className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8">
                   <a href="#contact">Get Free Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></a>
                 </Button>
               </div>

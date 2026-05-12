@@ -144,10 +144,12 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
-  h1, h2, h3, h4, .font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1, h2, h3, h4, .font-display { font-family: var(--font-display); letter-spacing: 0; }
+  img, video, canvas, iframe { max-width: 100%; }
 }
 
 @layer utilities {

@@ -62,8 +62,8 @@ export function SiteNav() {
           : "border-b border-border/70 bg-background/90 text-foreground shadow-[0_18px_42px_-30px_var(--color-ink)] backdrop-blur-xl",
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link to="/"><Logo light={transparent} /></Link>
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+        <Link to="/" className="min-w-0"><Logo light={transparent} /></Link>
         <nav className="hidden items-center gap-9 md:flex">
           {links.map((l) => (
             <Link
@@ -122,7 +122,7 @@ export function SiteNav() {
       </div>
       {open && (
         <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
-          <nav className="flex flex-col gap-1 px-6 py-4">
+          <nav className="flex flex-col gap-1 px-4 py-4 sm:px-6">
             {links.map((l) => (
               <Link
                 key={l.label}

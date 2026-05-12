@@ -170,10 +170,10 @@ export function PackagesSection() {
 
   return (
     <section id="packages" className="relative py-24">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">Our Packages</p>
-          <h2 className="mt-3 font-display text-4xl font-medium md:text-5xl">
+          <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
             Customised home construction <span className="text-gradient-gold italic">packages</span>
           </h2>
           <p className="mt-4 text-muted-foreground">Transparent inclusions, premium materials and zero-surprise pricing — pick the tier that fits your dream.</p>
@@ -194,13 +194,13 @@ export function PackagesSection() {
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 220, damping: 18 }}
                 className={cn(
-                  "group relative flex flex-col items-center justify-center rounded-2xl border px-4 py-6 text-center transition-all",
+                  "group relative flex min-w-0 flex-col items-center justify-center rounded-2xl border px-3 py-6 text-center transition-all sm:px-4",
                   isActive
                     ? "border-transparent bg-gradient-gold text-primary-foreground shadow-gold"
                     : "border-border bg-card text-foreground hover:border-primary/40 hover:shadow-luxe",
                 )}
               >
-                <span className="text-xs font-semibold uppercase tracking-[0.18em] opacity-80">{p.name.replace(" Package", "")}</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.12em] opacity-80 sm:tracking-[0.18em]">{p.name.replace(" Package", "")}</span>
                 <span className="mt-2 font-display text-2xl font-semibold leading-none">{p.price}</span>
                 <span className="mt-1 text-[11px] uppercase tracking-wider opacity-75">/ sqft · Incl. GST</span>
                 {isActive && (
@@ -250,7 +250,7 @@ export function PackagesSection() {
               </div>
 
               {/* Content */}
-              <div className="p-7 md:p-10">
+              <div className="p-5 sm:p-7 md:p-10">
                 <p className="eyebrow">{current.name}</p>
                 <h3 className="mt-2 font-display text-3xl font-semibold">{activeCat.label}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{current.tagline}</p>

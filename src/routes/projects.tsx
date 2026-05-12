@@ -31,9 +31,9 @@ function ProjectsPage() {
 
   return (
     <section className="pt-36 pb-24">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <p className="eyebrow">Portfolio</p>
-        <h1 className="mt-4 max-w-3xl font-display text-5xl font-medium leading-[1.05] md:text-7xl">
+        <h1 className="mt-4 max-w-3xl break-words font-display text-[2.75rem] font-medium leading-[1.05] sm:text-5xl md:text-7xl">
           Selected <span className="text-gradient-gold italic">work.</span>
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
@@ -46,7 +46,7 @@ function ProjectsPage() {
               key={f.key}
               onClick={() => setFilter(f.key)}
               className={cn(
-                "rounded-full px-5 py-2 text-sm font-medium transition-all",
+                "rounded-full px-4 py-2 text-sm font-medium transition-all sm:px-5",
                 filter === f.key ? "bg-gradient-gold text-ink shadow-gold" : "bg-secondary text-foreground/70 hover:bg-accent",
               )}
             >

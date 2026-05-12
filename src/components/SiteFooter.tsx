@@ -11,7 +11,7 @@ const socialLinks = [
 export function SiteFooter() {
   return (
     <footer className="relative mt-32 border-t border-border bg-ink text-ivory">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 md:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 sm:py-20 md:grid-cols-4">
         <div className="md:col-span-2">
           <Logo light />
           <p className="mt-6 max-w-md text-sm text-ivory/70">
@@ -40,14 +40,14 @@ export function SiteFooter() {
         <div>
           <h4 className="eyebrow !text-primary-glow">Reach Us</h4>
           <ul className="mt-4 space-y-3 text-sm text-ivory/70">
-            <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 text-primary" /> Shop No. 2, Tathastu, Lohegaon, Pune 411047</li>
-            <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 text-primary" /> +91 78208 64384</li>
-            <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 text-primary" /> tathastu.infra.info@gmail.com</li>
+            <li className="flex min-w-0 gap-2"><MapPin className="mt-0.5 h-4 w-4 flex-none text-primary" /> <span className="break-words">Shop No. 2, Tathastu, Lohegaon, Pune 411047</span></li>
+            <li className="flex min-w-0 gap-2"><Phone className="mt-0.5 h-4 w-4 flex-none text-primary" /> <span>+91 78208 64384</span></li>
+            <li className="flex min-w-0 gap-2"><Mail className="mt-0.5 h-4 w-4 flex-none text-primary" /> <span className="break-words">tathastu.infra.info@gmail.com</span></li>
           </ul>
         </div>
       </div>
       <div className="border-t border-ivory/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-6 text-xs text-ivory/50 md:flex-row">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-6 text-center text-xs text-ivory/50 sm:px-6 md:flex-row md:text-left">
           <p>© {new Date().getFullYear()} Tathastu. Building dreams. Creating reality.</p>
           <p>Design & build · Tathastu Studio</p>
         </div>

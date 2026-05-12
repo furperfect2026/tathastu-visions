@@ -23,16 +23,16 @@ function AboutPage() {
   return (
     <>
       <section className="pt-36 pb-16">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <p className="eyebrow">About Tathastu</p>
-          <h1 className="mt-4 max-w-3xl font-display text-5xl font-medium leading-[1.05] md:text-7xl">
+          <h1 className="mt-4 max-w-3xl break-words font-display text-[2.75rem] font-medium leading-[1.05] sm:text-5xl md:text-7xl">
             A name synonymous with <span className="text-gradient-gold italic">trust, luxury</span> and unparalleled craftsmanship.
           </h1>
         </div>
       </section>
 
       <section className="py-16">
-        <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 md:grid-cols-2">
           <Reveal>
             <motion.div
               whileHover={{ rotate: -1, scale: 1.02 }}
@@ -61,10 +61,10 @@ function AboutPage() {
 
       {/* Values */}
       <section className="bg-gradient-ivory py-24">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">What we stand for</p>
-            <h2 className="mt-3 font-display text-4xl font-medium md:text-5xl">Three values, one promise.</h2>
+            <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">Three values, one promise.</h2>
           </Reveal>
           <div className="mt-14 grid gap-8 md:grid-cols-3">
             {[
@@ -88,21 +88,21 @@ function AboutPage() {
 
       {/* Leadership */}
       <section className="py-24">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal>
             <p className="eyebrow">Leadership</p>
-            <h2 className="mt-3 font-display text-4xl font-medium md:text-5xl">The people behind Tathastu.</h2>
+            <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">The people behind Tathastu.</h2>
           </Reveal>
           <div className="mt-14">
             <Reveal>
-              <div className="relative overflow-hidden rounded-3xl bg-card p-8 shadow-luxe ring-1 ring-border md:p-12 lg:p-14">
+              <div className="relative overflow-hidden rounded-3xl bg-card p-6 shadow-luxe ring-1 ring-border sm:p-8 md:p-12 lg:p-14">
                 <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-gradient-to-l from-primary/15 to-transparent lg:block" />
                 <div className="relative max-w-4xl">
                 <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
                   <Users className="h-7 w-7" />
                 </div>
                 <p className="eyebrow mt-8">Our Team</p>
-                <h3 className="mt-3 font-display text-4xl font-medium md:text-5xl">One studio. Many specialists.</h3>
+                <h3 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">One studio. Many specialists.</h3>
                 <p className="mt-5 max-w-2xl text-muted-foreground">
                   Behind every Tathastu project in Pune is a coordinated team of sales, construction, design, engineering and execution professionals working together to deliver spaces with clarity and care.
                 </p>
@@ -114,10 +114,10 @@ function AboutPage() {
       </section>
       {/* Stats */}
       <section className="bg-ink py-20 text-ivory">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-4">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label}>
-              <div className="font-display text-5xl font-semibold text-gradient-gold">
+              <div className="font-display text-4xl font-semibold text-gradient-gold sm:text-5xl">
                 <CountUp value={s.value} suffix={s.suffix} />
               </div>
               <div className="mt-2 text-xs uppercase tracking-[0.2em] text-ivory/60">{s.label}</div>

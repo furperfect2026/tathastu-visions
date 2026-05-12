@@ -83,15 +83,15 @@ function ContactPage() {
 
   return (
     <section className="pt-36 pb-24">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <p className="eyebrow">Contact</p>
-        <h1 className="mt-4 max-w-3xl font-display text-5xl font-medium leading-[1.05] md:text-7xl">
+        <h1 className="mt-4 max-w-3xl break-words font-display text-[2.75rem] font-medium leading-[1.05] sm:text-5xl md:text-7xl">
           Let's design your <span className="text-gradient-gold italic">next space in Pune.</span>
         </h1>
 
         <div className="mt-16 grid gap-12 md:grid-cols-5">
           <Reveal className="md:col-span-3">
-            <form onSubmit={onSubmit} className="rounded-3xl bg-card p-8 shadow-luxe ring-1 ring-border md:p-10">
+            <form onSubmit={onSubmit} className="rounded-3xl bg-card p-5 shadow-luxe ring-1 ring-border sm:p-8 md:p-10">
               <div className="grid gap-5 md:grid-cols-2">
                 <div className="md:col-span-2">
                   <Label htmlFor="name">Name</Label>
@@ -126,21 +126,21 @@ function ContactPage() {
                   {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
                 </div>
               </div>
-              <Button type="submit" size="lg" disabled={busy} className="mt-8 rounded-full bg-gradient-gold px-8 text-ink shadow-gold hover:opacity-90">
+              <Button type="submit" size="lg" disabled={busy} className="mt-8 w-full rounded-full bg-gradient-gold px-5 text-ink shadow-gold hover:opacity-90 sm:w-auto sm:px-8">
                 {busy ? "Sending…" : (<>Send message <Send className="ml-2 h-4 w-4" /></>)}
               </Button>
             </form>
           </Reveal>
 
           <Reveal className="md:col-span-2" delay={0.1}>
-            <div className="rounded-3xl bg-ink p-8 text-ivory shadow-luxe md:p-10">
+            <div className="rounded-3xl bg-ink p-6 text-ivory shadow-luxe sm:p-8 md:p-10">
               <h3 className="font-display text-2xl font-semibold">Visit our studio</h3>
               <p className="mt-2 text-sm text-ivory/70">We work by appointment. Coffee is on us.</p>
 
               <ul className="mt-8 space-y-5 text-sm">
-                <li className="flex gap-3"><MapPin className="h-5 w-5 text-primary-glow" /> Shop No. 2, Tathastu,<br /> DY Patil University Road,<br /> Lohegaon, Pune</li>
-                <li className="flex gap-3"><Phone className="h-5 w-5 text-primary-glow" /> +91 78208 64384</li>
-                <li className="flex gap-3"><Mail className="h-5 w-5 text-primary-glow" /> tathastu.infra.info@gmail.com</li>
+                <li className="flex min-w-0 gap-3"><MapPin className="h-5 w-5 flex-none text-primary-glow" /> <span>Shop No. 2, Tathastu,<br /> DY Patil University Road,<br /> Lohegaon, Pune</span></li>
+                <li className="flex min-w-0 gap-3"><Phone className="h-5 w-5 flex-none text-primary-glow" /> <span>+91 78208 64384</span></li>
+                <li className="flex min-w-0 gap-3"><Mail className="h-5 w-5 flex-none text-primary-glow" /> <span className="break-words">tathastu.infra.info@gmail.com</span></li>
               </ul>
 
               <div className="mt-10 rounded-2xl bg-gradient-gold p-5 text-ink">
