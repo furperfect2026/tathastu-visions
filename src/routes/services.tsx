@@ -7,11 +7,12 @@ import { Check } from "lucide-react";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — Realty, Construction & Interior Design | Tathastu" },
-      { name: "description", content: "Three pillars of expertise: Tathastu Realty, Tathastu Construction and Tathastu Interior Design. End-to-end delivery from one trusted team." },
+      { title: "Services in Pune | Realty, Construction & Interior Design | Tathastu" },
+      { name: "description", content: "Tathastu offers real estate, property consulting, construction and interior design services in Lohegaon, Pune with end-to-end delivery from one trusted team." },
       { property: "og:title", content: "Tathastu Services" },
-      { property: "og:description", content: "Realty, construction and interior design — under one roof." },
+      { property: "og:description", content: "Real estate, properties, construction and interior design in Pune under one roof." },
     ],
+    links: [{ rel: "canonical", href: "https://www.tathastu.in/services" }],
   }),
   component: ServicesPage,
 });
@@ -25,6 +26,9 @@ function ServicesPage() {
           <h1 className="mt-4 max-w-3xl font-display text-5xl font-medium leading-[1.05] md:text-7xl">
             One team. <span className="text-gradient-gold italic">Three pillars.</span> Every step of the journey.
           </h1>
+          <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
+            Premium real estate guidance, property consulting, civil construction and interiors for homes and commercial spaces in Lohegaon, Pune and nearby growth corridors.
+          </p>
         </div>
       </section>
 

@@ -30,11 +30,12 @@ const heroImages = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Tathastu — Realty, Construction & Interior Design" },
-      { name: "description", content: "From concept to creation, Tathastu builds spaces that inspire and stand the test of time. Realty, construction and interior design from Lohegaon, Maharashtra." },
+      { title: "Tathastu Pune | Realty, Construction & Interior Design in Lohegaon" },
+      { name: "description", content: "Tathastu offers real estate, properties, construction and interior design in Lohegaon, Pune, including flats, homes, residential projects and luxury interiors." },
       { property: "og:title", content: "Tathastu — Building Spaces. Creating Futures." },
-      { property: "og:description", content: "Premium realty, construction and interior design." },
+      { property: "og:description", content: "Premium real estate, properties, construction and interior design in Lohegaon, Pune." },
     ],
+    links: [{ rel: "canonical", href: "https://www.tathastu.in/" }],
   }),
   component: HomePage,
 });
@@ -107,7 +108,7 @@ function HomePage() {
           >
             <p className="eyebrow !text-primary-glow">Tathastu</p>
             <p className="max-w-4xl font-display text-2xl font-medium leading-tight text-ivory drop-shadow-[0_3px_18px_rgba(0,0,0,0.4)] md:text-3xl lg:text-[2.1rem]">
-              Turning Dreams Into <span className="italic text-gradient-gold">Timeless Reality</span>
+              Building Dreams <span className="italic text-gradient-gold">Since 2014</span>
             </p>
           </motion.div>
           <h1 className="mt-4 max-w-4xl font-display text-5xl font-medium leading-[1.02] text-ivory md:text-7xl lg:text-[5.75rem]">
@@ -142,7 +143,7 @@ function HomePage() {
             className="mt-5 max-w-xl text-base leading-relaxed text-ivory/80 md:text-lg"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.95, duration: 0.9 }}
           >
-            Crafting timeless homes, spaces and experiences across realty, construction and interior design.
+            Crafting timeless homes, properties and spaces across Pune through real estate, construction and interior design from our Lohegaon studio.
           </motion.p>
           <motion.div
             className="mt-7 flex flex-wrap gap-3 md:gap-4"
@@ -175,7 +176,7 @@ function HomePage() {
           <Reveal className="max-w-2xl">
             <p className="eyebrow">Three Pillars</p>
             <h2 className="mt-3 font-display text-4xl font-medium md:text-5xl">A complete craft, end to end.</h2>
-            <p className="mt-4 text-muted-foreground">From the land you stand on to the light that fills your living room — Tathastu is one team for every step.</p>
+            <p className="mt-4 text-muted-foreground">From Lohegaon property search and land advisory to Pune homes, construction and interiors, Tathastu is one team for every step.</p>
           </Reveal>
 
           <div className="mt-14 grid gap-8 md:grid-cols-3">
@@ -219,7 +220,7 @@ function HomePage() {
             <div className="mx-auto flex max-w-3xl flex-col items-center justify-between gap-5 rounded-3xl border border-primary/20 bg-card px-7 py-6 text-center shadow-luxe md:flex-row md:px-9 md:text-left">
               <div>
                 <p className="eyebrow">Planning Something?</p>
-                <h3 className="mt-2 font-display text-3xl font-medium">Get a free quote from Tathastu.</h3>
+                <h3 className="mt-2 font-display text-3xl font-medium">Get a free quote from Tathastu Pune.</h3>
               </div>
               <Button asChild size="lg" className="group rounded-full bg-gradient-gold px-7 text-ink shadow-gold">
                 <a href="#contact">Get Free Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></a>
@@ -291,7 +292,7 @@ function HomePage() {
           <Reveal>
             <p className="eyebrow !text-primary-glow">The Vision</p>
             <p className="mt-6 font-display text-3xl font-medium leading-tight md:text-5xl">
-              We don't just pour concrete. We design the <span className="text-gradient-gold italic">backdrops for people's lives</span> — every project an intersection of luxury, utility and timeless architecture.
+              We don't just pour concrete. We design the <span className="text-gradient-gold italic">backdrops for people's lives</span> across Pune, with every project shaped by luxury, utility and timeless architecture.
             </p>
             <p className="mt-8 text-sm uppercase tracking-[0.28em] text-ivory/60">— Rohit, Founder & CEO</p>
           </Reveal>
@@ -313,7 +314,7 @@ function HomePage() {
                     Get a tailored quote for your <span className="italic text-gradient-gold">dream space.</span>
                   </h2>
                   <p className="mt-4 max-w-xl text-sm leading-relaxed text-ivory/70 md:text-base">
-                    Share your site, scope and expectations. Our team will help you understand the right package, timeline and next step.
+                    Share your site, scope and expectations in Pune or around Lohegaon. Our team will help you understand the right package, timeline and next step.
                   </p>
                 </div>
                 <Button asChild size="lg" className="group rounded-full bg-gradient-gold px-8 text-base text-ink shadow-gold">

@@ -7,7 +7,7 @@ const schema = z.object({
   name: z.string().trim().min(1).max(120),
   email: z.string().trim().email().max(255),
   phone: z.string().trim().max(30).optional().or(z.literal("")),
-  interest: z.enum(["realty", "construction", "interior", "general"]).optional(),
+  interest: z.enum(["realty", "construction", "interior", "general", "infra"]).optional(),
   message: z.string().trim().min(5).max(4000),
 });
 
@@ -39,6 +39,7 @@ function createContactSupabaseClient() {
 
 function titleCaseInterest(interest: Inquiry["interest"]) {
   if (!interest || interest === "general") return "General enquiry";
+  if (interest === "infra") return "Infra";
   return interest.charAt(0).toUpperCase() + interest.slice(1);
 }
 

@@ -15,7 +15,7 @@ export function SiteFooter() {
         <div className="md:col-span-2">
           <Logo light />
           <p className="mt-6 max-w-md text-sm text-ivory/70">
-            Tathastu is a multi-disciplinary firm shaping the future of modern living through
+            Tathastu is a Lohegaon, Pune based multi-disciplinary firm shaping modern living through
             visionary real estate, robust construction and masterful interior design.
           </p>
           <div className="mt-6 flex gap-3">
@@ -40,7 +40,7 @@ export function SiteFooter() {
         <div>
           <h4 className="eyebrow !text-primary-glow">Reach Us</h4>
           <ul className="mt-4 space-y-3 text-sm text-ivory/70">
-            <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 text-primary" /> Shop No. 2, Tathastu, Lohegaon, Pune</li>
+            <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 text-primary" /> Shop No. 2, Tathastu, Lohegaon, Pune 411047</li>
             <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 text-primary" /> +91 78208 64384</li>
             <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 text-primary" /> tathastu.infra.info@gmail.com</li>
           </ul>

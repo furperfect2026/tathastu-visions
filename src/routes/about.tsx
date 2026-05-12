@@ -1,19 +1,20 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import founder from "@/assets/founder.jpg";
 import { CountUp } from "@/components/CountUp";
 import { stats } from "@/lib/site-data";
-import { Sparkles, Shield, Gem } from "lucide-react";
+import { Sparkles, Shield, Gem, Users } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Tathastu — Our Story, Vision & Leadership" },
-      { name: "description", content: "Founded by Rohit, Tathastu is a multi-disciplinary firm based in Lohegaon. Discover our story, values and the team building tomorrow's homes." },
+      { title: "About Tathastu â€” Our Story, Vision & Leadership" },
+      { name: "description", content: "Founded by Rohit, Tathastu is a multi-disciplinary realty, construction and interior design firm based in Lohegaon, Pune." },
       { property: "og:title", content: "About Tathastu" },
-      { property: "og:description", content: "Trust, luxury and craftsmanship — the Tathastu story." },
+      { property: "og:description", content: "Trust, luxury and craftsmanship â€” the Tathastu story." },
     ],
+    links: [{ rel: "canonical", href: "https://www.tathastu.in/about" }],
   }),
   component: AboutPage,
 });
@@ -49,7 +50,7 @@ function AboutPage() {
               What began as a singular vision to redefine architectural elegance has evolved into a multi-disciplinary firm dedicated to shaping the future of modern living.
             </p>
             <p className="mt-4 text-muted-foreground">
-              Headquartered in Lohegaon, Maharashtra, Tathastu transforms raw structures into elegant, functional homes and commercial spaces — where luxury, utility and timeless design intersect.
+              Headquartered in Lohegaon, Pune, Tathastu transforms raw structures into elegant, functional homes and commercial spaces across Maharashtra where luxury, utility and timeless design intersect.
             </p>
             <blockquote className="mt-8 border-l-2 border-primary pl-5 font-display text-xl italic text-foreground">
               "Building spaces that inspire future generations."
@@ -68,7 +69,7 @@ function AboutPage() {
           <div className="mt-14 grid gap-8 md:grid-cols-3">
             {[
               { icon: Shield, title: "Trust", body: "Every relationship begins and ends with the trust our clients place in us." },
-              { icon: Gem, title: "Luxury", body: "Materials, finishes and details chosen with conviction — never by default." },
+              { icon: Gem, title: "Luxury", body: "Materials, finishes and details chosen with conviction â€” never by default." },
               { icon: Sparkles, title: "Craftsmanship", body: "Engineering precision and design care that endures decades, not seasons." },
             ].map((v, i) => (
               <Reveal key={v.title} delay={i * 0.08}>
@@ -92,36 +93,25 @@ function AboutPage() {
             <p className="eyebrow">Leadership</p>
             <h2 className="mt-3 font-display text-4xl font-medium md:text-5xl">The people behind Tathastu.</h2>
           </Reveal>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {[
-              { name: "Rohit", role: "Founder & CEO", photo: founder },
-              { name: "Maan Singh", role: "Sales Management — Interior", photo: null as string | null },
-              { name: "Tathastu Studio", role: "Design & Engineering Team", photo: null as string | null },
-            ].map((m, i) => (
-              <Reveal key={m.name} delay={i * 0.08}>
-                <div className="overflow-hidden rounded-3xl bg-card ring-1 ring-border">
-                  {m.photo ? (
-                    <div className="aspect-[4/5] overflow-hidden bg-muted">
-                      <img src={m.photo} alt={`${m.name}, ${m.role}`} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
-                    </div>
-                  ) : (
-                    <div className="flex aspect-[4/5] items-center justify-center bg-gradient-ivory">
-                      <div className="grid h-24 w-24 place-items-center rounded-full bg-gradient-gold font-display text-4xl font-semibold text-primary-foreground shadow-gold">
-                        {m.name[0]}
-                      </div>
-                    </div>
-                  )}
-                  <div className="p-6">
-                    <h3 className="font-display text-xl font-semibold">{m.name}</h3>
-                    <p className="text-sm text-muted-foreground">{m.role}</p>
-                  </div>
+          <div className="mt-14">
+            <Reveal>
+              <div className="relative overflow-hidden rounded-3xl bg-card p-8 shadow-luxe ring-1 ring-border md:p-12 lg:p-14">
+                <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-gradient-to-l from-primary/15 to-transparent lg:block" />
+                <div className="relative max-w-4xl">
+                <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
+                  <Users className="h-7 w-7" />
                 </div>
-              </Reveal>
-            ))}
+                <p className="eyebrow mt-8">Our Team</p>
+                <h3 className="mt-3 font-display text-4xl font-medium md:text-5xl">One studio. Many specialists.</h3>
+                <p className="mt-5 max-w-2xl text-muted-foreground">
+                  Behind every Tathastu project in Pune is a coordinated team of sales, construction, design, engineering and execution professionals working together to deliver spaces with clarity and care.
+                </p>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
-
       {/* Stats */}
       <section className="bg-ink py-20 text-ivory">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-4">
@@ -138,3 +128,4 @@ function AboutPage() {
     </>
   );
 }
+

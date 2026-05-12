@@ -14,6 +14,67 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Toaster } from "@/components/ui/sonner";
 
+const siteUrl = "https://www.tathastu.in";
+
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "RealEstateAgent", "HomeAndConstructionBusiness"],
+  "@id": `${siteUrl}/#localbusiness`,
+  name: "Tathastu",
+  alternateName: "Tathastu Infra",
+  description:
+    "Tathastu is a Lohegaon, Pune based real estate, property consulting, construction and interior design firm for premium homes, commercial spaces and luxury interiors.",
+  url: siteUrl,
+  telephone: "+917820864384",
+  email: "tathastu.infra.info@gmail.com",
+  priceRange: "$$",
+  image: `${siteUrl}/assets/tathastu-logo.png`,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Shop No. 2, Tathastu, DY Patil University Road, opposite Golden Winds Society, Lohegaon",
+    addressLocality: "Pune",
+    addressRegion: "Maharashtra",
+    postalCode: "411047",
+    addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 18.6159241,
+    longitude: 73.9093115,
+  },
+  areaServed: [
+    { "@type": "City", name: "Pune" },
+    { "@type": "Place", name: "Lohegaon" },
+    { "@type": "Place", name: "Kharadi" },
+    { "@type": "Place", name: "Wagholi" },
+    { "@type": "Place", name: "Viman Nagar" },
+  ],
+  sameAs: [
+    "https://www.instagram.com/tathastu_infra/",
+    "https://www.youtube.com/@Tathastu_Infra",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Tathastu Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Real estate and property consulting in Pune" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Flats, resale properties and rentals in Lohegaon" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Construction services in Pune" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Interior design services in Pune" } },
+    ],
+  },
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  name: "Tathastu",
+  url: siteUrl,
+  publisher: { "@id": `${siteUrl}/#localbusiness` },
+  inLanguage: "en-IN",
+};
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -55,15 +116,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Tathastu — Realty, Construction & Interior Design" },
-      { name: "description", content: "Tathastu builds visionary real estate, robust construction and masterful interiors. Turning dreams into reality from Lohegaon, Maharashtra." },
+      { title: "Tathastu Pune | Realty, Construction & Interior Design in Lohegaon" },
+      { name: "description", content: "Tathastu is a Lohegaon, Pune based real estate, property consulting, construction and interior design firm building premium homes, commercial spaces and luxury interiors across Pune." },
       { name: "theme-color", content: "#FBF8F1" },
       { property: "og:type", content: "website" },
       { property: "og:title", content: "Tathastu — Building Spaces. Creating Futures." },
-      { property: "og:description", content: "Premium realty, construction and interior design from Tathastu." },
+      { property: "og:description", content: "Premium real estate, properties, construction and interior design from Tathastu in Lohegaon, Pune." },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "canonical", href: siteUrl },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
@@ -82,7 +144,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head><HeadContent /></head>
+      <head>
+        <HeadContent />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
+      </head>
       <body>{children}<Scripts /></body>
     </html>
   );

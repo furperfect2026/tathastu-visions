@@ -7,9 +7,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import {
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+} from "@/components/ui/select";
 import { Reveal } from "@/components/Reveal";
 import { toast } from "sonner";
 import { submitInquiry } from "@/lib/contact.functions";
+
+type Interest = "general" | "realty" | "construction" | "interior" | "infra";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(80),
@@ -20,6 +25,7 @@ const schema = z.object({
     .max(20)
     .regex(/^[+\d\s-()]+$/, "Digits only"),
   email: z.string().trim().email("Enter a valid email").max(160),
+  interest: z.enum(["general", "realty", "construction", "interior", "infra"]),
   message: z.string().trim().min(10, "Tell us a little more").max(1000),
 });
 
@@ -34,6 +40,7 @@ const MAPS_EMBED =
 export function ContactSection() {
   const submit = useServerFn(submitInquiry);
   const [loading, setLoading] = useState(false);
+  const [interest, setInterest] = useState<Interest>("general");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -42,6 +49,7 @@ export function ContactSection() {
       name: form.get("name"),
       phone: form.get("phone"),
       email: form.get("email"),
+      interest,
       message: form.get("message"),
     });
     if (!parsed.success) {
@@ -52,10 +60,7 @@ export function ContactSection() {
     try {
       // Lightweight client-side handoff — opens user's mail client with prefilled content.
       const res = await submit({
-        data: {
-          ...parsed.data,
-          interest: "general",
-        },
+        data: parsed.data,
       });
       if (!res.ok) {
         toast.error(res.error ?? "Could not submit. Please try again.");
@@ -67,6 +72,7 @@ export function ContactSection() {
         toast.success("Thanks! Your inquiry was saved. We'll get back to you within 24 hours.");
       }
       (e.target as HTMLFormElement).reset();
+      setInterest("general");
     } catch (err) {
       console.error(err);
       toast.error("Something went wrong. Please try again.");
@@ -84,7 +90,7 @@ export function ContactSection() {
           <h2 className="mt-3 font-display text-4xl font-medium md:text-5xl">
             Let's design <span className="text-gradient-gold italic">your space</span>.
           </h2>
-          <p className="mt-4 text-ivory/70">Tell us about your project — site, scope or just an idea — and our team will respond within 24 hours.</p>
+          <p className="mt-4 text-ivory/70">Tell us about your project in Pune, Lohegaon or nearby areas — site, scope or just an idea — and our team will respond within 24 hours.</p>
         </Reveal>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[1.1fr_1fr]">
@@ -106,6 +112,21 @@ export function ContactSection() {
                 <div className="sm:col-span-2">
                   <Label htmlFor="email" className="text-ivory/80">Email</Label>
                   <Input id="email" name="email" type="email" required className="mt-2 border-ivory/20 bg-ivory/5 text-ivory placeholder:text-ivory/40 focus-visible:ring-primary" placeholder="you@email.com" />
+                </div>
+                <div className="sm:col-span-2">
+                  <Label htmlFor="interest" className="text-ivory/80">Enquiry Type</Label>
+                  <Select value={interest} onValueChange={(value) => setInterest(value as Interest)}>
+                    <SelectTrigger id="interest" className="mt-2 border-ivory/20 bg-ivory/5 text-ivory focus:ring-primary">
+                      <SelectValue placeholder="Select enquiry type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="general">General Enquiry</SelectItem>
+                      <SelectItem value="realty">Realty</SelectItem>
+                      <SelectItem value="construction">Construction</SelectItem>
+                      <SelectItem value="interior">Interior Design</SelectItem>
+                      <SelectItem value="infra">Infra</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div className="sm:col-span-2">
                   <Label htmlFor="message" className="text-ivory/80">Message</Label>

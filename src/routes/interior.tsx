@@ -7,11 +7,11 @@ const content: ServicePageContent = {
   eyebrow: "Tathastu Interior Design",
   title: "Interiors",
   accent: "With Soul",
-  subtitle: "Elegant, functional interiors shaped around how you live, work, host and feel inside a space.",
-  heroImage: { src: interior3, alt: "Luxury kitchen and interior design by Tathastu" },
+  subtitle: "Elegant, functional interiors in Pune shaped around how you live, work, host and feel inside a space.",
+  heroImage: { src: interior3, alt: "Luxury kitchen and interior design by Tathastu in Pune" },
   overviewTitle: "Beautiful interiors should also work beautifully.",
   overview:
-    "Tathastu Interior Design brings together space planning, materials, lighting, furniture and decor into one cohesive experience. Every room is designed to feel personal, refined and practical for everyday life.",
+    "Tathastu Interior Design brings together space planning, materials, lighting, furniture and decor for homes and offices in Lohegaon, Pune. Every room is designed to feel personal, refined and practical for everyday life.",
   projectCategory: "interior",
   offers: [
     { title: "Modular Kitchen", description: "Elegant kitchens planned for workflow, storage and durability.", icon: CookingPot },
@@ -26,9 +26,10 @@ const content: ServicePageContent = {
 export const Route = createFileRoute("/interior")({
   head: () => ({
     meta: [
-      { title: "Tathastu Interior Design — Kitchens, Homes & Offices" },
-      { name: "description", content: "Premium interiors for modular kitchens, living rooms, bedrooms, office interiors, space planning, furniture and decor." },
+      { title: "Interior Designer in Pune | Tathastu Interiors Lohegaon" },
+      { name: "description", content: "Premium interior design in Lohegaon, Pune for modular kitchens, living rooms, bedrooms, office interiors, space planning, furniture and decor." },
     ],
+    links: [{ rel: "canonical", href: "https://www.tathastu.in/interior" }],
   }),
   component: () => <ServicePage content={content} />,
 });

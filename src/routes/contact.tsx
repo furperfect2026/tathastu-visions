@@ -18,10 +18,11 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact Tathastu — Lohegaon, Maharashtra" },
-      { name: "description", content: "Reach out to Tathastu about your next realty, construction or interior design project. We typically respond within one business day." },
+      { name: "description", content: "Contact Tathastu in Lohegaon, Pune for realty, construction or interior design projects. We typically respond within one business day." },
       { property: "og:title", content: "Contact Tathastu" },
       { property: "og:description", content: "Let's design your next space." },
     ],
+    links: [{ rel: "canonical", href: "https://www.tathastu.in/contact" }],
   }),
   component: ContactPage,
 });
@@ -30,7 +31,7 @@ const schema = z.object({
   name: z.string().trim().min(1, "Name is required").max(120),
   email: z.string().trim().email("Invalid email").max(255),
   phone: z.string().trim().max(30).optional(),
-  interest: z.enum(["realty", "construction", "interior", "general"]),
+  interest: z.enum(["realty", "construction", "interior", "general", "infra"]),
   message: z.string().trim().min(5, "Tell us a little more").max(4000),
 });
 
@@ -38,7 +39,7 @@ function ContactPage() {
   const submit = useServerFn(submitInquiry);
   const [busy, setBusy] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [interest, setInterest] = useState<"realty" | "construction" | "interior" | "general">("general");
+  const [interest, setInterest] = useState<"realty" | "construction" | "interior" | "general" | "infra">("general");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -85,7 +86,7 @@ function ContactPage() {
       <div className="mx-auto max-w-7xl px-6">
         <p className="eyebrow">Contact</p>
         <h1 className="mt-4 max-w-3xl font-display text-5xl font-medium leading-[1.05] md:text-7xl">
-          Let's design your <span className="text-gradient-gold italic">next space.</span>
+          Let's design your <span className="text-gradient-gold italic">next space in Pune.</span>
         </h1>
 
         <div className="mt-16 grid gap-12 md:grid-cols-5">
@@ -107,14 +108,15 @@ function ContactPage() {
                   <Input id="phone" name="phone" maxLength={30} placeholder="+91 ..." className="mt-2" />
                 </div>
                 <div className="md:col-span-2">
-                  <Label htmlFor="interest">Interest</Label>
+                  <Label htmlFor="interest">Enquiry Type</Label>
                   <Select value={interest} onValueChange={(v) => setInterest(v as typeof interest)}>
-                    <SelectTrigger className="mt-2"><SelectValue /></SelectTrigger>
+                    <SelectTrigger id="interest" className="mt-2"><SelectValue /></SelectTrigger>
                     <SelectContent>
+                      <SelectItem value="general">General Enquiry</SelectItem>
                       <SelectItem value="realty">Realty</SelectItem>
                       <SelectItem value="construction">Construction</SelectItem>
                       <SelectItem value="interior">Interior Design</SelectItem>
-                      <SelectItem value="general">General enquiry</SelectItem>
+                      <SelectItem value="infra">Infra</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

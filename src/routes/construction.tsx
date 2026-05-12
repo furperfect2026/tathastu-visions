@@ -7,11 +7,11 @@ const content: ServicePageContent = {
   eyebrow: "Tathastu Construction",
   title: "Construction",
   accent: "With Integrity",
-  subtitle: "Residential and commercial execution shaped by structure, safety, material discipline and reliable supervision.",
-  heroImage: { src: construction3, alt: "Tathastu structural construction site" },
+  subtitle: "Residential and commercial construction in Pune shaped by structure, safety, material discipline and reliable supervision.",
+  heroImage: { src: construction3, alt: "Tathastu construction site in Pune" },
   overviewTitle: "Strong spaces begin with strong systems.",
   overview:
-    "Tathastu Construction handles execution with engineering focus and site accountability. We coordinate structural work, material planning, supervision and turnkey delivery so every project moves forward with quality, clarity and control.",
+    "Tathastu Construction handles homes and commercial projects in Lohegaon, Pune with engineering focus and site accountability. We coordinate structural work, material planning, supervision and turnkey delivery so every project moves forward with quality, clarity and control.",
   projectCategory: "construction",
   offers: [
     { title: "Residential Construction", description: "Homes planned and built around durability, comfort and refined living.", icon: Building },
@@ -26,9 +26,10 @@ const content: ServicePageContent = {
 export const Route = createFileRoute("/construction")({
   head: () => ({
     meta: [
-      { title: "Tathastu Construction — Residential & Commercial Execution" },
-      { name: "description", content: "Residential construction, commercial construction, structural work, material planning, supervision and turnkey execution." },
+      { title: "Tathastu Construction Pune | Residential & Commercial Construction" },
+      { name: "description", content: "Residential construction, commercial construction, structural work, material planning, supervision and turnkey execution in Lohegaon, Pune." },
     ],
+    links: [{ rel: "canonical", href: "https://www.tathastu.in/construction" }],
   }),
   component: () => <ServicePage content={content} />,
 });
