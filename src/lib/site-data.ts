@@ -84,10 +84,10 @@ export const stats = [
 ];
 
 export const projects = [
-  { id: "p1", category: "realty", title: "Aurelia Heights", location: "Lohegaon, Pune", year: 2024, image: project1, blurb: "An aerial-view masterplan blending greenery and modern apartments." },
-  { id: "p2", category: "interior", title: "Villa Solène", location: "Pune Outskirts", year: 2024, image: project2, blurb: "Pool-side villa with infinity edge and palm-lined dusk lighting." },
-  { id: "p3", category: "construction", title: "The Pavilion", location: "Kharadi, Pune", year: 2023, image: project3, blurb: "Boutique commercial corner with classic stone facade." },
-  { id: "p4", category: "interior", title: "Skyline Penthouse", location: "Magarpatta, Pune", year: 2024, image: project4, blurb: "Floor-to-ceiling glass and editorial furniture." },
-  { id: "p5", category: "interior", title: "Marble Sanctuary", location: "Koregaon Park, Pune", year: 2023, image: project5, blurb: "Spa-grade bath retreat with copper fixtures." },
-  { id: "p6", category: "realty", title: "Coral Residences", location: "Wagholi, Pune", year: 2025, image: project6, blurb: "Palm-lined contemporary apartments." },
+  { id: "p1", category: "realty", title: "Pride World City", location: "Lohegaon, Pune", year: 2024, image: project1, blurb: "An aerial-view masterplan blending greenery and modern apartments." },
+  { id: "p2", category: "interior", title: "Interior 1", location: "Pune Outskirts", year: 2024, image: project2, blurb: "Pool-side villa with infinity edge and palm-lined dusk lighting." },
+  { id: "p3", category: "construction", title: "Construction 1", location: "Kharadi, Pune", year: 2023, image: project3, blurb: "Boutique commercial corner with classic stone facade." },
+  { id: "p4", category: "interior", title: "Interior 2", location: "Magarpatta, Pune", year: 2024, image: project4, blurb: "Floor-to-ceiling glass and editorial furniture." },
+  { id: "p5", category: "interior", title: "Interior 3", location: "Koregaon Park, Pune", year: 2023, image: project5, blurb: "Spa-grade bath retreat with copper fixtures." },
+  { id: "p6", category: "realty", title: "Utsava Regency", location: "Wagholi, Pune", year: 2025, image: project6, blurb: "Palm-lined contemporary apartments." },
 ] as const;

@@ -108,14 +108,14 @@ const packages: Pkg[] = [
   {
     key: "basic",
     name: "Basic Package",
-    price: "₹1,549",
+    price: "₹1,550",
     tagline: "Smart essentials for the value-conscious home.",
     categories: baseCats(),
   },
   {
     key: "standard",
     name: "Standard Package",
-    price: "₹1,699",
+    price: "₹1,750",
     tagline: "Refined finishes for everyday luxury.",
     categories: baseCats({
       flooring: ["Premium vitrified 2'x4'", "Designer dado tiles up to 7 ft", "Granite kitchen platform"],
@@ -125,7 +125,7 @@ const packages: Pkg[] = [
   {
     key: "premium",
     name: "Premium Package",
-    price: "₹1,949",
+    price: "₹2,250",
     tagline: "Designer-grade material across every room.",
     categories: baseCats({
       flooring: ["Imported double-charge vitrified", "Wooden flooring in master bedroom", "Italian marble entry foyer"],
