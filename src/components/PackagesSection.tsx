@@ -19,6 +19,8 @@ type Pkg = {
   categories: Category[];
 };
 
+type PackageMode = "construction" | "interior";
+
 const baseCats = (extras: Partial<Record<string, string[]>> = {}): Category[] => [
   {
     key: "earth",
@@ -92,7 +94,7 @@ const baseCats = (extras: Partial<Record<string, string[]>> = {}): Category[] =>
   },
 ];
 
-const packages: Pkg[] = [
+const constructionPackages: Pkg[] = [
   {
     key: "structure",
     name: "Structure Package",
@@ -162,8 +164,125 @@ const packages: Pkg[] = [
   },
 ];
 
-export function PackagesSection() {
-  const [active, setActive] = useState(packages[2].key);
+const interiorCats = (extras: Partial<Record<string, string[]>> = {}): Category[] => [
+  {
+    key: "planning",
+    label: "Space Planning",
+    icon: Layers,
+    items: extras.planning ?? [
+      "Furniture layout and circulation planning",
+      "Moodboard and material direction",
+      "Basic lighting and false ceiling layout",
+    ],
+  },
+  {
+    key: "carpentry",
+    label: "Carpentry",
+    icon: Hammer,
+    items: extras.carpentry ?? [
+      "Modular storage in standard laminate finish",
+      "Kitchen, wardrobe and TV unit planning",
+      "Hardware and shutter selections",
+    ],
+  },
+  {
+    key: "finishes",
+    label: "Finishes",
+    icon: Paintbrush,
+    items: extras.finishes ?? [
+      "Wall paint and accent wall selection",
+      "Standard laminate and veneer options",
+      "Curtain, upholstery and soft furnishing guidance",
+    ],
+  },
+  {
+    key: "lighting",
+    label: "Lighting",
+    icon: Plug,
+    items: extras.lighting ?? [
+      "Warm ambient lighting plan",
+      "Task lighting for kitchen and work areas",
+      "Decorative lighting points",
+    ],
+  },
+  {
+    key: "decor",
+    label: "Decor",
+    icon: Sparkles,
+    items: extras.decor ?? [
+      "Furniture styling and decor curation",
+      "Artwork, mirror and accessory guidance",
+      "Final styling checklist",
+    ],
+  },
+];
+
+const interiorPackages: Pkg[] = [
+  {
+    key: "essential",
+    name: "Essential Package",
+    price: "₹1,250",
+    tagline: "Smart interior essentials for clean, functional homes.",
+    categories: interiorCats(),
+  },
+  {
+    key: "comfort",
+    name: "Comfort Package",
+    price: "₹1,650",
+    tagline: "Refined finishes and practical storage for everyday luxury.",
+    categories: interiorCats({
+      carpentry: ["Premium laminate modular kitchen", "Wardrobes with soft-close hardware", "TV unit and study/storage unit"],
+      lighting: ["Layered warm lighting plan", "Cove lighting provisions", "Decorative pendant and profile lighting"],
+    }),
+  },
+  {
+    key: "premium",
+    name: "Premium Package",
+    price: "₹2,250",
+    tagline: "Designer-grade interiors with richer materials and details.",
+    categories: interiorCats({
+      planning: ["Detailed room-wise concept design", "Material palette and 3D view support", "Furniture and lighting placement"],
+      carpentry: ["Veneer / acrylic finish options", "Premium modular kitchen accessories", "Custom wardrobes and display units"],
+      finishes: ["Texture walls and wallpaper selection", "Premium paint finish", "Designer soft furnishings"],
+      decor: ["Curated furniture and decor styling", "Artwork and accessory sourcing support", "Final styling supervision"],
+    }),
+  },
+  {
+    key: "signature",
+    name: "Signature Package",
+    price: "₹2,850",
+    tagline: "Bespoke luxury interiors with a complete studio-led finish.",
+    categories: interiorCats({
+      planning: ["Complete design concept with 3D walkthrough", "Room-wise material library", "Personalized luxury theme"],
+      carpentry: ["Custom veneer, PU and fluted details", "Premium kitchen and wardrobe systems", "Feature walls and designer partitions"],
+      lighting: ["Scene-based lighting plan", "Premium decorative fixtures", "Smart lighting readiness"],
+      finishes: ["Imported wallpapers and textures", "Stone, veneer and metallic accents", "Luxury upholstery selection"],
+      decor: ["Turnkey furniture and decor curation", "Artwork, mirrors and styling objects", "Final photo-ready styling"],
+    }),
+  },
+];
+
+const packageCopy = {
+  construction: {
+    eyebrow: "Construction Packages",
+    title: <>Customised home construction <span className="text-gradient-gold italic">packages</span></>,
+    description: "Transparent inclusions, premium materials and zero-surprise pricing — pick the tier that fits your dream.",
+    packages: constructionPackages,
+    defaultKey: "standard",
+  },
+  interior: {
+    eyebrow: "Interior Packages",
+    title: <>Tailored interior design <span className="text-gradient-gold italic">packages</span></>,
+    description: "Flexible interior packages for kitchens, bedrooms, living spaces and offices — planned around finish, function and feel.",
+    packages: interiorPackages,
+    defaultKey: "comfort",
+  },
+} satisfies Record<PackageMode, { eyebrow: string; title: React.ReactNode; description: string; packages: Pkg[]; defaultKey: string }>;
+
+export function PackagesSection({ mode = "construction" }: { mode?: PackageMode }) {
+  const copy = packageCopy[mode];
+  const packages = copy.packages;
+  const [active, setActive] = useState(copy.defaultKey);
   const current = packages.find((p) => p.key === active)!;
   const [tab, setTab] = useState(current.categories[0].key);
   const activeCat = current.categories.find((c) => c.key === tab) ?? current.categories[0];
@@ -172,15 +291,15 @@ export function PackagesSection() {
     <section id="packages" className="relative py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow">Our Packages</p>
+          <p className="eyebrow">{copy.eyebrow}</p>
           <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
-            Customised home construction <span className="text-gradient-gold italic">packages</span>
+            {copy.title}
           </h2>
-          <p className="mt-4 text-muted-foreground">Transparent inclusions, premium materials and zero-surprise pricing — pick the tier that fits your dream.</p>
+          <p className="mt-4 text-muted-foreground">{copy.description}</p>
         </Reveal>
 
         {/* Package cards */}
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
           {packages.map((p) => {
             const isActive = p.key === active;
             return (

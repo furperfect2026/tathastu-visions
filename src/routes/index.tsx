@@ -5,7 +5,6 @@ import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
 import { Button } from "@/components/ui/button";
-import { PackagesSection } from "@/components/PackagesSection";
 import { ContactSection } from "@/components/ContactSection";
 import { pillars, projects, stats } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
@@ -295,9 +294,6 @@ function HomePage() {
           </Reveal>
         </div>
       </section>
-
-      {/* PACKAGES */}
-      <PackagesSection />
 
       <section className="bg-gradient-ivory py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
