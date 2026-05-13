@@ -13,6 +13,7 @@ import {
 import { Reveal } from "@/components/Reveal";
 import { toast } from "sonner";
 import { submitInquiry } from "@/lib/contact.functions";
+import { cn } from "@/lib/utils";
 
 type Interest = "general" | "realty" | "construction" | "interior" | "infra";
 
@@ -36,6 +37,12 @@ const EMAIL = "tathastu.infra.info@gmail.com";
 const ADDRESS = "Shop No. 2, Tathastu, DY Patil University Road, opposite Golden Winds Society, Lohegaon, Pune, Maharashtra 411047";
 const MAPS_EMBED =
   "https://www.google.com/maps?q=TATHASTU%20Real%20Estate%20Builders%20%26%20Construction%20Company%2C%20Shop%20No.2%2C%20DY%20Patil%20University%20Road%2C%20Lohegaon%2C%20Pune&ll=18.6159241,73.9093115&z=18&output=embed";
+
+const socialLinks = [
+  { label: "Instagram", Icon: Instagram, href: "https://www.instagram.com/tathastu_infra/", className: "border-[#f58529]/70 bg-[linear-gradient(135deg,#f58529,#dd2a7b_45%,#8134af_72%,#515bd4)] text-white shadow-[0_0_28px_-10px_#dd2a7b]" },
+  { label: "YouTube", Icon: Youtube, href: "https://www.youtube.com/@Tathastu_Infra", className: "border-[#ff0033]/70 bg-[#ff0033] text-white shadow-[0_0_28px_-10px_#ff0033]" },
+  { label: "LinkedIn", Icon: Linkedin, href: "https://linkedin.com", className: "border-[#0a66c2]/70 bg-[#0a66c2] text-white shadow-[0_0_28px_-10px_#0a66c2]" },
+] as const;
 
 export function ContactSection() {
   const submit = useServerFn(submitInquiry);
@@ -182,11 +189,7 @@ export function ContactSection() {
                   <MessageCircle className="h-4 w-4" /> WhatsApp
                 </a>
                 <div className="flex items-center gap-2">
-                  {[
-                    { label: "Instagram", Icon: Instagram, href: "https://www.instagram.com/tathastu_infra/" },
-                    { label: "YouTube", Icon: Youtube, href: "https://www.youtube.com/@Tathastu_Infra" },
-                    { label: "LinkedIn", Icon: Linkedin, href: "https://linkedin.com" },
-                  ].map(({ label, Icon, href }) => (
+                  {socialLinks.map(({ label, Icon, href, className }) => (
                     <motion.a
                       key={label}
                       href={href}
@@ -194,9 +197,12 @@ export function ContactSection() {
                       rel="noreferrer"
                       aria-label={label}
                       whileHover={{ y: -3 }}
-                      className="grid h-10 w-10 place-items-center rounded-full border border-ivory/15 bg-ivory/5 text-ivory transition hover:border-primary/50 hover:text-primary"
+                      className={cn(
+                        "grid h-10 w-10 place-items-center rounded-full border transition-all duration-300 hover:scale-[1.04]",
+                        className,
+                      )}
                     >
-                      <Icon className="h-4 w-4" />
+                      <Icon className="h-4.5 w-4.5 fill-current stroke-[1.8]" />
                     </motion.a>
                   ))}
                 </div>

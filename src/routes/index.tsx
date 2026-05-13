@@ -37,9 +37,9 @@ export const Route = createFileRoute("/")({
 const headlineLine1 = "Where Vision";
 const headlineLine2 = "Becomes Reality";
 const socialLinks = [
-  { label: "YouTube", href: "https://www.youtube.com/@Tathastu_Infra", Icon: Youtube },
-  { label: "Instagram", href: "https://www.instagram.com/tathastu_infra/", Icon: Instagram },
-  { label: "LinkedIn", href: "https://linkedin.com", Icon: Linkedin },
+  { label: "YouTube", href: "https://www.youtube.com/@Tathastu_Infra", Icon: Youtube, className: "border-[#ff0033]/70 bg-[#ff0033] text-white shadow-[0_0_28px_-10px_#ff0033] hover:border-[#ff0033] hover:bg-[#ff0033] hover:text-white" },
+  { label: "Instagram", href: "https://www.instagram.com/tathastu_infra/", Icon: Instagram, className: "border-[#f58529]/70 bg-[linear-gradient(135deg,#f58529,#dd2a7b_45%,#8134af_72%,#515bd4)] text-white shadow-[0_0_28px_-10px_#dd2a7b] hover:border-[#f58529] hover:text-white" },
+  { label: "LinkedIn", href: "https://linkedin.com", Icon: Linkedin, className: "border-[#0a66c2]/70 bg-[#0a66c2] text-white shadow-[0_0_28px_-10px_#0a66c2] hover:border-[#0a66c2] hover:bg-[#0a66c2] hover:text-white" },
 ] as const;
 
 function HeroSocialLinks({ mobile = false }: { mobile?: boolean }) {
@@ -55,7 +55,7 @@ function HeroSocialLinks({ mobile = false }: { mobile?: boolean }) {
     >
       {!mobile && <span className="h-16 w-px bg-gradient-to-b from-transparent via-ivory/45 to-transparent" />}
       <div className={cn(mobile ? "flex items-center gap-4" : "flex flex-col items-center gap-4")}>
-        {socialLinks.map(({ label, href, Icon }) => (
+        {socialLinks.map(({ label, href, Icon, className }) => (
           <motion.a
             key={label}
             href={href}
@@ -63,9 +63,12 @@ function HeroSocialLinks({ mobile = false }: { mobile?: boolean }) {
             rel="noreferrer"
             aria-label={label}
             whileHover={{ y: -3 }}
-            className="grid h-10 w-10 place-items-center rounded-full border border-ivory/20 bg-ivory/[0.04] text-ivory/85 backdrop-blur-sm transition-colors duration-300 hover:border-primary/60 hover:text-primary-glow hover:shadow-[0_0_28px_-10px_var(--color-primary)] md:h-9 md:w-9 lg:h-10 lg:w-10"
+            className={cn(
+              "grid h-10 w-10 place-items-center rounded-full border backdrop-blur-sm transition-all duration-300 md:h-9 md:w-9 lg:h-10 lg:w-10",
+              className,
+            )}
           >
-            <Icon className="h-4 w-4 stroke-[1.5]" />
+            <Icon className="h-4.5 w-4.5 fill-current stroke-[1.8]" />
           </motion.a>
         ))}
       </div>
