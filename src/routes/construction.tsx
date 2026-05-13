@@ -1,14 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Building, ClipboardList, Factory, HardHat, Layers3, Ruler } from "lucide-react";
 import { ServicePage, type ServicePageContent } from "@/components/ServicePage";
+import construction1 from "@/assets/construction-1.jpg";
+import construction2 from "@/assets/construction-2.jpg";
 import construction3 from "@/assets/construction-3.jpg";
+import construction4 from "@/assets/construction-4.jpg";
+import heroInfra1 from "@/assets/hero-infra-1.jpg";
 
 const content: ServicePageContent = {
   eyebrow: "Tathastu Construction",
   title: "Construction",
   accent: "With Integrity",
   subtitle: "Residential and commercial construction in Pune shaped by structure, safety, material discipline and reliable supervision.",
-  heroImage: { src: construction3, alt: "Tathastu construction site in Pune" },
+  heroImages: [
+    { src: heroInfra1, alt: "Tathastu infrastructure construction site in Pune" },
+    { src: construction3, alt: "Tathastu construction site in Pune" },
+    { src: construction1, alt: "Civil construction and scaffolding by Tathastu" },
+    { src: construction2, alt: "Residential construction work in progress" },
+    { src: construction4, alt: "Structural construction execution and supervision" },
+  ],
   overviewTitle: "Strong spaces begin with strong systems.",
   overview:
     "Tathastu Construction handles homes and commercial projects in Lohegaon, Pune with engineering focus and site accountability. We coordinate structural work, material planning, supervision and turnkey delivery so every project moves forward with quality, clarity and control.",

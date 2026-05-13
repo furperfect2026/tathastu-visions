@@ -1,14 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Armchair, BedDouble, BriefcaseBusiness, CookingPot, Lamp, Sofa } from "lucide-react";
 import { ServicePage, type ServicePageContent } from "@/components/ServicePage";
+import interior1 from "@/assets/interior-1.jpg";
+import interior2 from "@/assets/interior-2.jpg";
 import interior3 from "@/assets/interior-3.jpg";
+import interior4 from "@/assets/interior-4.jpg";
+import project5 from "@/assets/project-5.jpg";
 
 const content: ServicePageContent = {
   eyebrow: "Tathastu Interior Design",
   title: "Interiors",
   accent: "With Soul",
   subtitle: "Elegant, functional interiors in Pune shaped around how you live, work, host and feel inside a space.",
-  heroImage: { src: interior3, alt: "Luxury kitchen and interior design by Tathastu in Pune" },
+  heroImages: [
+    { src: interior3, alt: "Luxury kitchen and interior design by Tathastu in Pune" },
+    { src: interior1, alt: "Premium living room interior by Tathastu" },
+    { src: interior2, alt: "Elegant bedroom interior design in Pune" },
+    { src: interior4, alt: "Modern office interior planning by Tathastu" },
+    { src: project5, alt: "Featured Tathastu interior design project" },
+  ],
   overviewTitle: "Beautiful interiors should also work beautifully.",
   overview:
     "Tathastu Interior Design brings together space planning, materials, lighting, furniture and decor for homes and offices in Lohegaon, Pune. Every room is designed to feel personal, refined and practical for everyday life.",

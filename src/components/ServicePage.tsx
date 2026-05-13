@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { Reveal } from "@/components/Reveal";
 import { projects } from "@/lib/site-data";
 
@@ -16,7 +17,7 @@ export type ServicePageContent = {
   title: string;
   accent: string;
   subtitle: string;
-  heroImage: ServiceImage;
+  heroImages: ServiceImage[];
   overviewTitle: string;
   overview: string;
   offers: {
@@ -42,9 +43,15 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
   return (
     <>
       <section className="relative flex min-h-[680px] items-end overflow-hidden bg-ink pt-28 text-ivory sm:min-h-[76svh] md:items-center md:pt-32">
-        <img src={content.heroImage.src} alt={content.heroImage.alt} className="absolute inset-0 h-full w-full object-cover" />
+        <AutoSlideshow
+          images={content.heroImages}
+          interval={4400}
+          rounded="rounded-none"
+          className="absolute inset-0"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/25" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/45 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 sm:pb-20 md:pb-0">
           <motion.div
