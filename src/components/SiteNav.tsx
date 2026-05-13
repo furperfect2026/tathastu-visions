@@ -64,7 +64,7 @@ export function SiteNav() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
         <Link to="/" className="min-w-0"><Logo light={transparent} /></Link>
-        <nav className="hidden items-center gap-9 md:flex">
+        <nav className="hidden items-center gap-7 lg:flex xl:gap-9">
           {links.map((l) => (
             <Link
               key={l.label}
@@ -102,7 +102,7 @@ export function SiteNav() {
             </Link>
           ))}
         </nav>
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Button asChild className="rounded-full bg-gradient-gold px-6 text-ink shadow-gold hover:opacity-90">
             <Link to="/" hash="contact">Get In Touch →</Link>
           </Button>
@@ -110,7 +110,7 @@ export function SiteNav() {
         <button
           aria-label="Toggle menu"
           className={cn(
-            "rounded-full border p-2 transition-colors duration-300 ease-out md:hidden",
+            "rounded-full border p-2 transition-colors duration-300 ease-out lg:hidden",
             transparent
               ? "border-ivory/45 bg-ivory/10 text-ivory backdrop-blur"
               : "border-border text-foreground",
@@ -121,7 +121,7 @@ export function SiteNav() {
         </button>
       </div>
       {open && (
-        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
+        <div className="border-t border-border bg-background/95 backdrop-blur-xl lg:hidden">
           <nav className="flex flex-col gap-1 px-4 py-4 sm:px-6">
             {links.map((l) => (
               <Link
