@@ -24,12 +24,12 @@ const content: ServicePageContent = {
     "Tathastu Construction handles homes and commercial projects in Lohegaon, Pune with engineering focus and site accountability. We coordinate structural work, material planning, supervision and turnkey delivery so every project moves forward with quality, clarity and control.",
   projectCategory: "construction",
   offers: [
-    { title: "Residential Construction", description: "Homes planned and built around durability, comfort and refined living.", icon: Building },
-    { title: "Commercial Construction", description: "Functional commercial spaces built for performance and presence.", icon: Factory },
-    { title: "Structural Work", description: "Core civil and structural execution with technical discipline.", icon: Layers3 },
-    { title: "Material Planning", description: "Material choices balanced around strength, finish, cost and availability.", icon: ClipboardList },
-    { title: "Site Supervision", description: "Progress tracking, vendor coordination and regular quality checks.", icon: HardHat },
-    { title: "Turnkey Execution", description: "One accountable team from planning through final completion.", icon: Ruler },
+    { title: "Residential Construction", description: "Homes planned and built around durability, comfort and refined living.", icon: Building, image: { src: construction2, alt: "Residential home construction planning by Tathastu" } },
+    { title: "Commercial Construction", description: "Functional commercial spaces built for performance and presence.", icon: Factory, image: { src: construction3, alt: "Commercial construction structure by Tathastu" } },
+    { title: "Structural Work", description: "Core civil and structural execution with technical discipline.", icon: Layers3, image: { src: construction1, alt: "Structural work and scaffolding construction site" } },
+    { title: "Material Planning", description: "Material choices balanced around strength, finish, cost and availability.", icon: ClipboardList, image: { src: construction4, alt: "Construction material planning and site coordination" } },
+    { title: "Site Supervision", description: "Progress tracking, vendor coordination and regular quality checks.", icon: HardHat, image: { src: heroInfra1, alt: "Construction site supervision in Pune" } },
+    { title: "Turnkey Execution", description: "One accountable team from planning through final completion.", icon: Ruler, image: { src: construction2, alt: "Turnkey construction execution by Tathastu" } },
   ],
 };
 

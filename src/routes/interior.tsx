@@ -24,12 +24,12 @@ const content: ServicePageContent = {
     "Tathastu Interior Design brings together space planning, materials, lighting, furniture and decor for homes and offices in Lohegaon, Pune. Every room is designed to feel personal, refined and practical for everyday life.",
   projectCategory: "interior",
   offers: [
-    { title: "Modular Kitchen", description: "Elegant kitchens planned for workflow, storage and durability.", icon: CookingPot },
-    { title: "Living Room Design", description: "Inviting living areas with balanced furniture, lighting and textures.", icon: Sofa },
-    { title: "Bedroom Design", description: "Calm private spaces shaped around comfort and storage.", icon: BedDouble },
-    { title: "Office Interiors", description: "Focused workspaces with professionalism, comfort and brand character.", icon: BriefcaseBusiness },
-    { title: "Space Planning", description: "Layouts that improve movement, proportion and openness.", icon: Armchair },
-    { title: "Furniture & Decor", description: "Curated pieces, lighting and accents that complete the design story.", icon: Lamp },
+    { title: "Modular Kitchen", description: "Elegant kitchens planned for workflow, storage and durability.", icon: CookingPot, image: { src: interior3, alt: "Premium modular kitchen interior by Tathastu" } },
+    { title: "Living Room Design", description: "Inviting living areas with balanced furniture, lighting and textures.", icon: Sofa, image: { src: interior1, alt: "Luxury living room design by Tathastu" } },
+    { title: "Bedroom Design", description: "Calm private spaces shaped around comfort and storage.", icon: BedDouble, image: { src: interior2, alt: "Elegant bedroom interior design in Pune" } },
+    { title: "Office Interiors", description: "Focused workspaces with professionalism, comfort and brand character.", icon: BriefcaseBusiness, image: { src: interior4, alt: "Modern office interior design by Tathastu" } },
+    { title: "Space Planning", description: "Layouts that improve movement, proportion and openness.", icon: Armchair, image: { src: project5, alt: "Interior space planning for refined homes" } },
+    { title: "Furniture & Decor", description: "Curated pieces, lighting and accents that complete the design story.", icon: Lamp, image: { src: interior1, alt: "Furniture and decor selection for premium interiors" } },
   ],
 };
 

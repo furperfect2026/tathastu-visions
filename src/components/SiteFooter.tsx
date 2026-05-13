@@ -1,13 +1,13 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { BrandSocialLink, type SocialBrand } from "./BrandSocialLink";
 import { Logo } from "./Logo";
-import { cn } from "@/lib/utils";
 
 const socialLinks = [
-  { label: "YouTube", href: "https://www.youtube.com/@Tathastu_Infra", Icon: Youtube, className: "border-[#ff0033]/70 bg-[#ff0033] text-white shadow-[0_0_28px_-10px_#ff0033]" },
-  { label: "Instagram", href: "https://www.instagram.com/tathastu_infra/", Icon: Instagram, className: "border-[#f58529]/70 bg-[linear-gradient(135deg,#f58529,#dd2a7b_45%,#8134af_72%,#515bd4)] text-white shadow-[0_0_28px_-10px_#dd2a7b]" },
-  { label: "LinkedIn", href: "https://linkedin.com", Icon: Linkedin, className: "border-[#0a66c2]/70 bg-[#0a66c2] text-white shadow-[0_0_28px_-10px_#0a66c2]" },
-] as const;
+  { label: "YouTube", href: "https://www.youtube.com/@Tathastu_Infra", brand: "youtube" },
+  { label: "Instagram", href: "https://www.instagram.com/tathastu_infra/", brand: "instagram" },
+  { label: "LinkedIn", href: "https://linkedin.com", brand: "linkedin" },
+] satisfies { label: string; href: string; brand: SocialBrand }[];
 
 export function SiteFooter() {
   return (
@@ -20,20 +20,13 @@ export function SiteFooter() {
             visionary real estate, robust construction and masterful interior design.
           </p>
           <div className="mt-6 flex gap-3">
-            {socialLinks.map(({ label, href, Icon, className }) => (
-              <a
+            {socialLinks.map(({ label, href, brand }) => (
+              <BrandSocialLink
                 key={label}
+                brand={brand}
                 href={href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={label}
-                className={cn(
-                  "grid h-10 w-10 place-items-center rounded-full border transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.04]",
-                  className,
-                )}
-              >
-                <Icon className="h-4.5 w-4.5 fill-current stroke-[1.8]" />
-              </a>
+                label={label}
+              />
             ))}
           </div>
         </div>

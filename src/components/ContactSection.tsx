@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, MessageCircle, Instagram, Linkedin, Send, Loader2, Youtube } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, Send, Loader2 } from "lucide-react";
 import { z } from "zod";
+import { BrandSocialLink, type SocialBrand } from "@/components/BrandSocialLink";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,7 +13,6 @@ import {
 import { Reveal } from "@/components/Reveal";
 import { toast } from "sonner";
 import { submitInquiry } from "@/lib/contact.functions";
-import { cn } from "@/lib/utils";
 
 type Interest = "general" | "realty" | "construction" | "interior" | "infra";
 
@@ -39,10 +38,10 @@ const MAPS_EMBED =
   "https://www.google.com/maps?q=TATHASTU%20Real%20Estate%20Builders%20%26%20Construction%20Company%2C%20Shop%20No.2%2C%20DY%20Patil%20University%20Road%2C%20Lohegaon%2C%20Pune&ll=18.6159241,73.9093115&z=18&output=embed";
 
 const socialLinks = [
-  { label: "Instagram", Icon: Instagram, href: "https://www.instagram.com/tathastu_infra/", className: "border-[#f58529]/70 bg-[linear-gradient(135deg,#f58529,#dd2a7b_45%,#8134af_72%,#515bd4)] text-white shadow-[0_0_28px_-10px_#dd2a7b]" },
-  { label: "YouTube", Icon: Youtube, href: "https://www.youtube.com/@Tathastu_Infra", className: "border-[#ff0033]/70 bg-[#ff0033] text-white shadow-[0_0_28px_-10px_#ff0033]" },
-  { label: "LinkedIn", Icon: Linkedin, href: "https://linkedin.com", className: "border-[#0a66c2]/70 bg-[#0a66c2] text-white shadow-[0_0_28px_-10px_#0a66c2]" },
-] as const;
+  { label: "Instagram", brand: "instagram", href: "https://www.instagram.com/tathastu_infra/" },
+  { label: "YouTube", brand: "youtube", href: "https://www.youtube.com/@Tathastu_Infra" },
+  { label: "LinkedIn", brand: "linkedin", href: "https://linkedin.com" },
+] satisfies { label: string; href: string; brand: SocialBrand }[];
 
 export function ContactSection() {
   const submit = useServerFn(submitInquiry);
@@ -89,15 +88,15 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-gradient-ink py-24 text-ivory">
-      <div className="pointer-events-none absolute -left-32 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-primary/10 blur-3xl" />
+    <section id="contact" className="relative overflow-hidden bg-gradient-ivory py-24 text-foreground">
+      <div className="pointer-events-none absolute -left-32 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-primary/20 blur-3xl" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal className="max-w-2xl">
-          <p className="eyebrow !text-primary-glow">Get In Touch</p>
+          <p className="eyebrow">Get In Touch</p>
           <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
             Take the first step toward <span className="text-gradient-gold italic">your dream project</span>.
           </h2>
-          <p className="mt-4 text-ivory/70">Tell us about your project in Pune, Lohegaon or nearby areas — site, scope or just an idea — and our team will respond within 24 hours.</p>
+          <p className="mt-4 text-muted-foreground">Tell us about your project in Pune, Lohegaon or nearby areas - site, scope or just an idea - and our team will respond within 24 hours.</p>
         </Reveal>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[1.1fr_1fr]">
@@ -105,25 +104,25 @@ export function ContactSection() {
           <Reveal>
             <form
               onSubmit={onSubmit}
-              className="rounded-3xl border border-ivory/10 bg-ivory/[0.04] p-5 backdrop-blur sm:p-7 md:p-10"
+              className="rounded-3xl border border-primary/20 bg-card p-5 shadow-luxe backdrop-blur sm:p-7 md:p-10"
             >
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
-                  <Label htmlFor="name" className="text-ivory/80">Name</Label>
-                  <Input id="name" name="name" required className="mt-2 border-ivory/20 bg-ivory/5 text-ivory placeholder:text-ivory/40 focus-visible:ring-primary" placeholder="Your full name" />
+                  <Label htmlFor="name" className="font-medium text-foreground">Name</Label>
+                  <Input id="name" name="name" required className="mt-2 border-primary/20 bg-background text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:ring-primary" placeholder="Your full name" />
                 </div>
                 <div>
-                  <Label htmlFor="phone" className="text-ivory/80">Phone</Label>
-                  <Input id="phone" name="phone" type="tel" required className="mt-2 border-ivory/20 bg-ivory/5 text-ivory placeholder:text-ivory/40 focus-visible:ring-primary" placeholder="+91 ..." />
+                  <Label htmlFor="phone" className="font-medium text-foreground">Phone</Label>
+                  <Input id="phone" name="phone" type="tel" required className="mt-2 border-primary/20 bg-background text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:ring-primary" placeholder="+91 ..." />
                 </div>
                 <div className="sm:col-span-2">
-                  <Label htmlFor="email" className="text-ivory/80">Email</Label>
-                  <Input id="email" name="email" type="email" required className="mt-2 border-ivory/20 bg-ivory/5 text-ivory placeholder:text-ivory/40 focus-visible:ring-primary" placeholder="you@email.com" />
+                  <Label htmlFor="email" className="font-medium text-foreground">Email</Label>
+                  <Input id="email" name="email" type="email" required className="mt-2 border-primary/20 bg-background text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:ring-primary" placeholder="you@email.com" />
                 </div>
                 <div className="sm:col-span-2">
-                  <Label htmlFor="interest" className="text-ivory/80">Enquiry Type</Label>
+                  <Label htmlFor="interest" className="font-medium text-foreground">Enquiry Type</Label>
                   <Select value={interest} onValueChange={(value) => setInterest(value as Interest)}>
-                    <SelectTrigger id="interest" className="mt-2 border-ivory/20 bg-ivory/5 text-ivory focus:ring-primary">
+                    <SelectTrigger id="interest" className="mt-2 border-primary/20 bg-background text-foreground shadow-sm focus:ring-primary">
                       <SelectValue placeholder="Select enquiry type" />
                     </SelectTrigger>
                     <SelectContent>
@@ -136,8 +135,8 @@ export function ContactSection() {
                   </Select>
                 </div>
                 <div className="sm:col-span-2">
-                  <Label htmlFor="message" className="text-ivory/80">Message</Label>
-                  <Textarea id="message" name="message" required rows={5} className="mt-2 border-ivory/20 bg-ivory/5 text-ivory placeholder:text-ivory/40 focus-visible:ring-primary" placeholder="Tell us about your project..." />
+                  <Label htmlFor="message" className="font-medium text-foreground">Message</Label>
+                  <Textarea id="message" name="message" required rows={5} className="mt-2 border-primary/20 bg-background text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:ring-primary" placeholder="Tell us about your project..." />
                 </div>
               </div>
               <Button
@@ -156,25 +155,25 @@ export function ContactSection() {
           <Reveal delay={0.1}>
             <div className="flex h-full flex-col gap-5">
               <div className="grid gap-3">
-                <a href={`tel:${PHONE_TEL}`} className="group flex min-w-0 items-center gap-4 rounded-2xl border border-ivory/10 bg-ivory/[0.04] p-4 transition hover:border-primary/40">
+                <a href={`tel:${PHONE_TEL}`} className="group flex min-w-0 items-center gap-4 rounded-2xl border border-primary/20 bg-card p-4 shadow-luxe transition hover:border-primary/50">
                   <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-gold text-primary-foreground"><Phone className="h-4 w-4" /></span>
                   <div className="min-w-0">
-                    <p className="text-[10px] uppercase tracking-[0.22em] text-ivory/50">Phone</p>
-                    <p className="font-medium text-ivory">{PHONE}</p>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-foreground/60">Phone</p>
+                    <p className="font-medium text-foreground">{PHONE}</p>
                   </div>
                 </a>
-                <a href={`mailto:${EMAIL}`} className="group flex min-w-0 items-center gap-4 rounded-2xl border border-ivory/10 bg-ivory/[0.04] p-4 transition hover:border-primary/40">
+                <a href={`mailto:${EMAIL}`} className="group flex min-w-0 items-center gap-4 rounded-2xl border border-primary/20 bg-card p-4 shadow-luxe transition hover:border-primary/50">
                   <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-gold text-primary-foreground"><Mail className="h-4 w-4" /></span>
                   <div className="min-w-0">
-                    <p className="text-[10px] uppercase tracking-[0.22em] text-ivory/50">Email</p>
-                    <p className="break-words font-medium text-ivory">{EMAIL}</p>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-foreground/60">Email</p>
+                    <p className="break-words font-medium text-foreground">{EMAIL}</p>
                   </div>
                 </a>
-                <div className="flex min-w-0 items-start gap-4 rounded-2xl border border-ivory/10 bg-ivory/[0.04] p-4">
+                <div className="flex min-w-0 items-start gap-4 rounded-2xl border border-primary/20 bg-card p-4 shadow-luxe">
                   <span className="grid h-11 w-11 flex-none place-items-center rounded-full bg-gradient-gold text-primary-foreground"><MapPin className="h-4 w-4" /></span>
                   <div className="min-w-0">
-                    <p className="text-[10px] uppercase tracking-[0.22em] text-ivory/50">Office</p>
-                    <p className="break-words font-medium text-ivory">{ADDRESS}</p>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-foreground/60">Office</p>
+                    <p className="break-words font-medium text-foreground">{ADDRESS}</p>
                   </div>
                 </div>
               </div>
@@ -189,26 +188,19 @@ export function ContactSection() {
                   <MessageCircle className="h-4 w-4" /> WhatsApp
                 </a>
                 <div className="flex items-center gap-2">
-                  {socialLinks.map(({ label, Icon, href, className }) => (
-                    <motion.a
+                  {socialLinks.map(({ label, brand, href }) => (
+                    <BrandSocialLink
                       key={label}
+                      brand={brand}
                       href={href}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={label}
-                      whileHover={{ y: -3 }}
-                      className={cn(
-                        "grid h-10 w-10 place-items-center rounded-full border transition-all duration-300 hover:scale-[1.04]",
-                        className,
-                      )}
-                    >
-                      <Icon className="h-4.5 w-4.5 fill-current stroke-[1.8]" />
-                    </motion.a>
+                      label={label}
+                      className="border-border bg-card shadow-luxe hover:border-primary/60 hover:bg-card"
+                    />
                   ))}
                 </div>
               </div>
 
-              <div className="overflow-hidden rounded-2xl border border-ivory/10 shadow-luxe">
+              <div className="overflow-hidden rounded-2xl border border-border shadow-luxe">
                 <iframe
                   title="Tathastu office location"
                   src={MAPS_EMBED}

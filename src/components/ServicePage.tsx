@@ -25,6 +25,7 @@ export type ServicePageContent = {
     title: string;
     description: string;
     icon: LucideIcon;
+    image: ServiceImage;
   }[];
   projectCategory: "realty" | "construction" | "interior";
 };
@@ -111,17 +112,15 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
           </Reveal>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {content.offers.map(({ title, description, icon: Icon }, index) => (
+            {content.offers.map(({ title, description, icon: Icon, image }, index) => (
               <Reveal key={title} delay={(index % 3) * 0.06}>
                 <motion.article whileHover={{ y: -6 }} className="group h-full overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border">
                   <div className="relative aspect-[16/10] overflow-hidden bg-ink">
-                    <AutoSlideshow
-                      images={content.heroImages}
-                      startIndex={index % content.heroImages.length}
-                      interval={3600 + index * 250}
-                      rounded="rounded-none"
-                      showDots={false}
-                      className="absolute inset-0"
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/65 via-ink/10 to-transparent" />
                     <div className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
