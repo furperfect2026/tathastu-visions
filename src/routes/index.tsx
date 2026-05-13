@@ -9,22 +9,18 @@ import { PackagesSection } from "@/components/PackagesSection";
 import { ContactSection } from "@/components/ContactSection";
 import { pillars, projects, stats } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
+import heroInfra1 from "@/assets/hero-infra-1.jpg";
+import heroInfra2 from "@/assets/hero-infra-2.jpg";
+import heroInfra3 from "@/assets/hero-infra-3.jpg";
+import heroInfra4 from "@/assets/hero-infra-4.jpg";
 import heroImg from "@/assets/hero-building.jpg";
-import realty1 from "@/assets/realty-1.jpg";
-import realty2 from "@/assets/realty-2.jpg";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project4 from "@/assets/project-4.jpg";
-import project6 from "@/assets/project-6.jpg";
 
 const heroImages = [
+  { src: heroInfra1, alt: "Tathastu infrastructure construction site in Pune" },
+  { src: heroInfra2, alt: "Tathastu structural framework and engineering progress" },
+  { src: heroInfra3, alt: "Tathastu concrete and civil infrastructure craftsmanship" },
+  { src: heroInfra4, alt: "Tathastu commercial infrastructure project perspective" },
   { src: heroImg, alt: "Tathastu signature architectural elevation" },
-  { src: project1, alt: "Aurelia Heights aerial masterplan" },
-  { src: realty1, alt: "Modern apartment facade at golden hour" },
-  { src: project2, alt: "Pool-side villa at dusk" },
-  { src: realty2, alt: "High-rise residential tower" },
-  { src: project4, alt: "Skyline penthouse with floor-to-ceiling glass" },
-  { src: project6, alt: "Palm-lined contemporary apartments" },
 ];
 
 export const Route = createFileRoute("/")({
