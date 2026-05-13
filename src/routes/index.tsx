@@ -9,17 +9,15 @@ import { PackagesSection } from "@/components/PackagesSection";
 import { ContactSection } from "@/components/ContactSection";
 import { pillars, projects, stats } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
+import heroRealty from "@/assets/hero-realty.jpg";
 import heroInfra1 from "@/assets/hero-infra-1.jpg";
-import heroInfra2 from "@/assets/hero-infra-2.jpg";
-import heroInfra3 from "@/assets/hero-infra-3.jpg";
-import heroInfra4 from "@/assets/hero-infra-4.jpg";
+import heroInterior from "@/assets/hero-interior.jpg";
 import heroImg from "@/assets/hero-building.jpg";
 
 const heroImages = [
+  { src: heroRealty, alt: "Tathastu premium real estate and property spaces in Pune" },
   { src: heroInfra1, alt: "Tathastu infrastructure construction site in Pune" },
-  { src: heroInfra2, alt: "Tathastu structural framework and engineering progress" },
-  { src: heroInfra3, alt: "Tathastu concrete and civil infrastructure craftsmanship" },
-  { src: heroInfra4, alt: "Tathastu commercial infrastructure project perspective" },
+  { src: heroInterior, alt: "Tathastu premium interior design and luxury living spaces" },
   { src: heroImg, alt: "Tathastu signature architectural elevation" },
 ];
 
