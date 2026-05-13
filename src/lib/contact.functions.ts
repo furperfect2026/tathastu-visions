@@ -25,7 +25,8 @@ function createContactSupabaseClient() {
       ...(!SUPABASE_URL ? ["SUPABASE_URL"] : []),
       ...(!SUPABASE_KEY ? ["SUPABASE_SERVICE_ROLE_KEY or SUPABASE_PUBLISHABLE_KEY"] : []),
     ];
-    throw new Error(`Missing Supabase environment variable(s): ${missing.join(", ")}`);
+    console.warn(`[contact] Missing Supabase environment variable(s): ${missing.join(", ")}. Inquiry will not be stored.`);
+    return null;
   }
 
   return createClient<Database>(SUPABASE_URL, SUPABASE_KEY, {
@@ -121,18 +122,23 @@ export const submitInquiry = createServerFn({ method: "POST" })
   .inputValidator((input) => schema.parse(input))
   .handler(async ({ data }) => {
     const supabase = createContactSupabaseClient();
-    const { error } = await supabase.from("contact_inquiries").insert({
-      name: data.name,
-      email: data.email,
-      phone: data.phone || null,
-      interest: data.interest ?? null,
-      message: data.message,
-    });
-    if (error) {
-      console.error("[contact] insert failed", error);
-      return { ok: false as const, error: "Could not submit. Please try again." };
+    if (supabase) {
+      const { error } = await supabase.from("contact_inquiries").insert({
+        name: data.name,
+        email: data.email,
+        phone: data.phone || null,
+        interest: data.interest ?? null,
+        message: data.message,
+      });
+      if (error) {
+        console.error("[contact] insert failed", error);
+      }
     }
 
     const email = await sendInquiryEmail(data);
+    if (!email.sent) {
+      return { ok: false as const, error: email.reason ?? "Contact notifications are not configured yet." };
+    }
+
     return { ok: true as const, emailSent: email.sent, emailReason: email.sent ? undefined : email.reason };
   });
