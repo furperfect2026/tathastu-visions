@@ -113,12 +113,25 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {content.offers.map(({ title, description, icon: Icon }, index) => (
               <Reveal key={title} delay={(index % 3) * 0.06}>
-                <motion.article whileHover={{ y: -6 }} className="h-full rounded-3xl bg-card p-7 shadow-luxe ring-1 ring-border">
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
-                    <Icon className="h-5 w-5" />
+                <motion.article whileHover={{ y: -6 }} className="group h-full overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-ink">
+                    <AutoSlideshow
+                      images={content.heroImages}
+                      startIndex={index % content.heroImages.length}
+                      interval={3600 + index * 250}
+                      rounded="rounded-none"
+                      showDots={false}
+                      className="absolute inset-0"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/65 via-ink/10 to-transparent" />
+                    <div className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
+                      <Icon className="h-5 w-5" />
+                    </div>
                   </div>
-                  <h3 className="mt-6 font-display text-2xl font-semibold">{title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
+                  <div className="p-6 sm:p-7">
+                    <h3 className="font-display text-2xl font-semibold">{title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
+                  </div>
                 </motion.article>
               </Reveal>
             ))}
