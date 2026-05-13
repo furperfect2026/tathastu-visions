@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Hammer, Building, Layers, Paintbrush, Plug, Droplets, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Hammer, Building, Layers, Paintbrush, Plug, Droplets, Sparkles } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 type Category = {
@@ -267,6 +269,8 @@ const packageCopy = {
     eyebrow: "Construction Packages",
     title: <>Customised home construction <span className="text-gradient-gold italic">packages</span></>,
     description: "Transparent inclusions, premium materials and zero-surprise pricing — pick the tier that fits your dream.",
+    quoteTitle: <>Get a tailored quote for your <span className="italic text-gradient-gold">construction plan.</span></>,
+    quoteDescription: "Share your site, built-up area and expectations in Pune or around Lohegaon. Our team will help you choose the right package, timeline and next step.",
     packages: constructionPackages,
     defaultKey: "standard",
   },
@@ -274,10 +278,12 @@ const packageCopy = {
     eyebrow: "Interior Packages",
     title: <>Tailored interior design <span className="text-gradient-gold italic">packages</span></>,
     description: "Flexible interior packages for kitchens, bedrooms, living spaces and offices — planned around finish, function and feel.",
+    quoteTitle: <>Get a tailored quote for your <span className="italic text-gradient-gold">interior scope.</span></>,
+    quoteDescription: "Share your rooms, style, budget and expected timeline. Our team will guide you toward the right interior package and next step.",
     packages: interiorPackages,
     defaultKey: "comfort",
   },
-} satisfies Record<PackageMode, { eyebrow: string; title: React.ReactNode; description: string; packages: Pkg[]; defaultKey: string }>;
+} satisfies Record<PackageMode, { eyebrow: string; title: React.ReactNode; description: string; quoteTitle: React.ReactNode; quoteDescription: string; packages: Pkg[]; defaultKey: string }>;
 
 export function PackagesSection({ mode = "construction" }: { mode?: PackageMode }) {
   const copy = packageCopy[mode];
@@ -396,6 +402,26 @@ export function PackagesSection({ mode = "construction" }: { mode?: PackageMode 
             </div>
           </motion.div>
         </AnimatePresence>
+
+        <Reveal className="mt-10">
+          <div className="relative overflow-hidden rounded-3xl bg-ink p-6 text-ivory shadow-luxe sm:p-8 md:p-10">
+            <div className="pointer-events-none absolute -right-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" />
+            <div className="relative grid items-center gap-7 md:grid-cols-[1fr_auto]">
+              <div>
+                <p className="eyebrow !text-primary-glow">Need a clearer estimate?</p>
+                <h3 className="mt-3 max-w-2xl font-display text-3xl font-medium leading-tight sm:text-4xl">
+                  {copy.quoteTitle}
+                </h3>
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-ivory/70 md:text-base">
+                  {copy.quoteDescription}
+                </p>
+              </div>
+              <Button asChild size="lg" className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8">
+                <Link to="/" hash="contact">Get Free Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
+              </Button>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

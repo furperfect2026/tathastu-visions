@@ -295,30 +295,6 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="bg-gradient-ivory py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <Reveal>
-            <div className="relative overflow-hidden rounded-3xl bg-ink p-6 text-ivory shadow-luxe sm:p-8 md:p-12">
-              <div className="pointer-events-none absolute -right-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" />
-              <div className="relative grid items-center gap-8 md:grid-cols-[1fr_auto]">
-                <div>
-                  <p className="eyebrow !text-primary-glow">Need a clearer estimate?</p>
-                  <h2 className="mt-3 max-w-2xl font-display text-3xl font-medium leading-tight sm:text-4xl md:text-5xl">
-                    Get a tailored quote for your <span className="italic text-gradient-gold">dream space.</span>
-                  </h2>
-                  <p className="mt-4 max-w-xl text-sm leading-relaxed text-ivory/70 md:text-base">
-                    Share your site, scope and expectations in Pune or around Lohegaon. Our team will help you understand the right package, timeline and next step.
-                  </p>
-                </div>
-                <Button asChild size="lg" className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8">
-                  <a href="#contact">Get Free Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></a>
-                </Button>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* CONTACT */}
       <ContactSection />
     </>
