@@ -95,7 +95,7 @@ export function ContactSection() {
         <Reveal className="max-w-2xl">
           <p className="eyebrow !text-primary-glow">Get In Touch</p>
           <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
-            Let's design <span className="text-gradient-gold italic">your space</span>.
+            Take the first step toward <span className="text-gradient-gold italic">your dream project</span>.
           </h2>
           <p className="mt-4 text-ivory/70">Tell us about your project in Pune, Lohegaon or nearby areas — site, scope or just an idea — and our team will respond within 24 hours.</p>
         </Reveal>
