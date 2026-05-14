@@ -31,7 +31,7 @@ const localBusinessJsonLd = {
   image: `${siteUrl}/assets/tathastu-logo.png`,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Shop No. 2, Tathastu, DY Patil University Road, opposite Golden Winds Society, Lohegaon",
+    streetAddress: "Tathastu, Lohegaon",
     addressLocality: "Pune",
     addressRegion: "Maharashtra",
     postalCode: "411047",

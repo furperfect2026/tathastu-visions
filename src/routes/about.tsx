@@ -2,6 +2,9 @@
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import founder from "@/assets/founder.jpg";
+import trustImage from "@/assets/realty-1.jpg";
+import luxuryImage from "@/assets/interior-1.jpg";
+import craftsmanshipImage from "@/assets/construction-1.jpg";
 import { CountUp } from "@/components/CountUp";
 import { stats } from "@/lib/site-data";
 import { Sparkles, Shield, Gem, Users } from "lucide-react";
@@ -68,17 +71,28 @@ function AboutPage() {
           </Reveal>
           <div className="mt-14 grid gap-8 md:grid-cols-3">
             {[
-              { icon: Shield, title: "Trust", body: "Every relationship begins and ends with the trust our clients place in us." },
-              { icon: Gem, title: "Luxury", body: "Materials, finishes and details chosen with conviction â€” never by default." },
-              { icon: Sparkles, title: "Craftsmanship", body: "Engineering precision and design care that endures decades, not seasons." },
+              { icon: Shield, title: "Trust", body: "Every relationship begins and ends with the trust our clients place in us.", image: trustImage, alt: "Premium Tathastu real estate project representing client trust" },
+              { icon: Gem, title: "Luxury", body: "Materials, finishes and details chosen with conviction — never by default.", image: luxuryImage, alt: "Luxury Tathastu interior finishes and elegant living space" },
+              { icon: Sparkles, title: "Craftsmanship", body: "Engineering precision and design care that endures decades, not seasons.", image: craftsmanshipImage, alt: "Tathastu construction craftsmanship and site execution" },
             ].map((v, i) => (
               <Reveal key={v.title} delay={i * 0.08}>
-                <div className="rounded-3xl bg-card p-8 shadow-luxe ring-1 ring-border">
-                  <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
-                    <v.icon className="h-6 w-6" />
+                <div className="group h-full overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border transition-transform duration-300 hover:-translate-y-1">
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={v.image}
+                      alt={v.alt}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/15 to-transparent" />
+                    <div className="absolute left-6 top-6 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
+                      <v.icon className="h-6 w-6" />
+                    </div>
                   </div>
-                  <h3 className="mt-6 font-display text-2xl font-semibold">{v.title}</h3>
-                  <p className="mt-2 text-muted-foreground">{v.body}</p>
+                  <div className="p-8">
+                    <h3 className="font-display text-2xl font-semibold">{v.title}</h3>
+                    <p className="mt-2 text-muted-foreground">{v.body}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}

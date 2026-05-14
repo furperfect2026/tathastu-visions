@@ -44,7 +44,7 @@ export function SiteFooter() {
         <div>
           <h4 className="eyebrow !text-primary-glow">Reach Us</h4>
           <ul className="mt-4 space-y-3 text-sm text-ivory/70">
-            <li className="flex min-w-0 gap-2"><MapPin className="mt-0.5 h-4 w-4 flex-none text-primary" /> <span className="break-words">Shop No. 2, Tathastu, Lohegaon, Pune 411047</span></li>
+            <li className="flex min-w-0 gap-2"><MapPin className="mt-0.5 h-4 w-4 flex-none text-primary" /> <span className="break-words">Tathastu, Lohegaon, Pune 411047</span></li>
             <li className="flex min-w-0 gap-2"><Phone className="mt-0.5 h-4 w-4 flex-none text-primary" /> <span>+91 78208 64384</span></li>
             <li className="flex min-w-0 gap-2"><Mail className="mt-0.5 h-4 w-4 flex-none text-primary" /> <span className="break-words">tathastu.infra.info@gmail.com</span></li>
           </ul>

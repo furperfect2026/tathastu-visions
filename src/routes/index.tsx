@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Award, Building2, Users, Calendar } from "lucide-react";
+import { useState } from "react";
 import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { BrandSocialLink, type SocialBrand } from "@/components/BrandSocialLink";
 import { Reveal } from "@/components/Reveal";
@@ -9,16 +10,18 @@ import { Button } from "@/components/ui/button";
 import { ContactSection } from "@/components/ContactSection";
 import { pillars, projects, stats } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
-import heroRealty from "@/assets/hero-realty.jpg";
-import heroInfra1 from "@/assets/hero-infra-1.jpg";
-import heroInterior from "@/assets/hero-interior.jpg";
-import heroImg from "@/assets/hero-building.jpg";
+import realtyVilla from "@/assets/realty-1.jpg";
+import realtyTower from "@/assets/realty-2.jpg";
+import constructionSite from "@/assets/construction-1.jpg";
+import livingInterior from "@/assets/interior-1.jpg";
+import bedroomInterior from "@/assets/interior-2.jpg";
 
 const heroImages = [
-  { src: heroRealty, alt: "Tathastu premium real estate and property spaces in Pune" },
-  { src: heroInfra1, alt: "Tathastu infrastructure construction site in Pune" },
-  { src: heroInterior, alt: "Tathastu premium interior design and luxury living spaces" },
-  { src: heroImg, alt: "Tathastu signature architectural elevation" },
+  { src: realtyVilla, alt: "Tathastu premium villa-style real estate in Pune" },
+  { src: realtyTower, alt: "Tathastu modern residential tower in Lohegaon Pune" },
+  { src: constructionSite, alt: "Tathastu construction and infrastructure site in Pune" },
+  { src: livingInterior, alt: "Tathastu premium living room interior design" },
+  { src: bedroomInterior, alt: "Tathastu calm luxury bedroom interior design" },
 ];
 
 export const Route = createFileRoute("/")({
@@ -70,6 +73,8 @@ function HeroSocialLinks({ mobile = false }: { mobile?: boolean }) {
 }
 
 function HomePage() {
+  const [heroVideoDone, setHeroVideoDone] = useState(false);
+
   return (
     <>
       {/* HERO — cinematic full-bleed video with image fallback */}
@@ -82,15 +87,19 @@ function HomePage() {
           className="absolute inset-0 h-full w-full"
         />
         <video
-          className="absolute inset-0 z-[1] h-full w-full object-cover"
+          className={cn(
+            "absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-1000 ease-out",
+            heroVideoDone ? "opacity-0" : "opacity-100",
+          )}
           src="/media/hero-section.mp4"
-          poster={heroRealty}
+          poster={realtyVilla}
           autoPlay
           muted
-          loop
           playsInline
           preload="metadata"
           aria-hidden="true"
+          onEnded={() => setHeroVideoDone(true)}
+          onError={() => setHeroVideoDone(true)}
         />
         {/* Cinematic dark gradient — bottom-up + side vignette */}
         <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-ink via-ink/55 to-ink/25" />
