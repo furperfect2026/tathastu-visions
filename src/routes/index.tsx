@@ -72,7 +72,7 @@ function HeroSocialLinks({ mobile = false }: { mobile?: boolean }) {
 function HomePage() {
   return (
     <>
-      {/* HERO — cinematic full-bleed slideshow with luxury overlay */}
+      {/* HERO — cinematic full-bleed video with image fallback */}
       <section id="home" className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-ink sm:min-h-[640px]">
         <AutoSlideshow
           images={heroImages}
@@ -81,11 +81,22 @@ function HomePage() {
           rounded="rounded-none"
           className="absolute inset-0 h-full w-full"
         />
+        <video
+          className="absolute inset-0 z-[1] h-full w-full object-cover"
+          src="/media/hero-section.mp4"
+          poster={heroRealty}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        />
         {/* Cinematic dark gradient — bottom-up + side vignette */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/25" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/30 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-ink via-ink/55 to-ink/25" />
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-ink/80 via-ink/30 to-transparent" />
         {/* Warm gold tint */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_22%,transparent),transparent_55%)]" />
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_22%,transparent),transparent_55%)]" />
         <HeroSocialLinks />
 
         <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-20 pt-28 sm:px-6 sm:pb-24 md:justify-center md:pb-0 md:pl-20 lg:pl-20">
