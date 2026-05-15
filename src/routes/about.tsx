@@ -28,7 +28,7 @@ function AboutPage() {
       <section className="pt-36 pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <p className="eyebrow">About Tathastu</p>
-          <h1 className="mt-4 max-w-3xl break-words font-display text-[2.75rem] font-medium leading-[1.05] sm:text-5xl md:text-7xl">
+          <h1 className="mt-4 max-w-6xl break-words font-display text-[2.75rem] font-medium leading-[1.05] sm:text-5xl md:text-7xl xl:text-[5.4rem]">
             A name synonymous with <span className="text-gradient-gold italic">trust, luxury</span> and unparalleled craftsmanship.
           </h1>
         </div>
