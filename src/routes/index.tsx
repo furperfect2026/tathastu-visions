@@ -117,7 +117,7 @@ function HomePage() {
           >
             <p className="eyebrow !text-primary-glow">Tathastu</p>
             <p className="max-w-4xl font-display text-xl font-medium leading-tight text-ivory drop-shadow-[0_3px_18px_rgba(0,0,0,0.4)] sm:text-2xl md:text-3xl lg:text-[2.1rem]">
-              Building Dreams <span className="italic text-gradient-gold">Since 2014</span>
+              Building Dreams <span className="italic text-gradient-gold">Since 2018</span>
             </p>
           </motion.div>
           <h1 className="mt-4 max-w-4xl break-words font-display text-[2.85rem] font-medium leading-[1.02] text-ivory sm:text-5xl md:text-7xl lg:text-[5.75rem]">
