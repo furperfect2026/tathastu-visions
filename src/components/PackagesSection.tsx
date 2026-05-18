@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, Hammer, Building, Layers, Paintbrush, Plug, Droplets, Sparkles } from "lucide-react";
 import { Link } from "@tanstack/react-router";
@@ -285,6 +285,84 @@ const packageCopy = {
   },
 } satisfies Record<PackageMode, { eyebrow: string; title: React.ReactNode; description: string; quoteTitle: React.ReactNode; quoteDescription: string; packages: Pkg[]; defaultKey: string }>;
 
+function PackageDetails({
+  current,
+  tab,
+  setTab,
+  className,
+}: {
+  current: Pkg;
+  tab: string;
+  setTab: (tab: string) => void;
+  className?: string;
+}) {
+  const activeCat = current.categories.find((c) => c.key === tab) ?? current.categories[0];
+
+  return (
+    <motion.div
+      key={current.key}
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.4 }}
+      className={cn("mt-8 overflow-hidden rounded-3xl border border-border bg-card shadow-luxe", className)}
+    >
+      <div className="grid gap-0 md:grid-cols-[260px_1fr]">
+        <div className="border-b border-border bg-secondary/40 p-4 md:border-b-0 md:border-r">
+          <p className="px-3 pb-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">{current.name}</p>
+          <div className="flex flex-wrap gap-2 md:flex-col">
+            {current.categories.map((c) => {
+              const Icon = c.icon;
+              const on = c.key === tab;
+              return (
+                <button
+                  key={c.key}
+                  type="button"
+                  onClick={() => setTab(c.key)}
+                  className={cn(
+                    "flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition-all",
+                    on
+                      ? "bg-gradient-gold text-primary-foreground shadow-gold"
+                      : "text-foreground/80 hover:bg-background hover:text-foreground",
+                  )}
+                >
+                  <Icon className="h-4 w-4" />
+                  {c.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="p-5 sm:p-7 md:p-10">
+          <p className="eyebrow">{current.name}</p>
+          <h3 className="mt-2 font-display text-3xl font-semibold">{activeCat.label}</h3>
+          <p className="mt-2 text-sm text-muted-foreground">{current.tagline}</p>
+          <AnimatePresence mode="wait">
+            <motion.ul
+              key={activeCat.key}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="mt-6 grid gap-3 sm:grid-cols-2"
+            >
+              {activeCat.items.map((it, i) => (
+                <li key={i} className="flex items-start gap-3 rounded-xl bg-secondary/40 p-3 text-sm">
+                  <span className="mt-0.5 grid h-6 w-6 flex-none place-items-center rounded-full bg-gradient-gold text-primary-foreground">
+                    <Check className="h-3.5 w-3.5" />
+                  </span>
+                  <span className="text-foreground/90">{it}</span>
+                </li>
+              ))}
+            </motion.ul>
+          </AnimatePresence>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export function PackagesSection({ mode = "construction" }: { mode?: PackageMode }) {
   const copy = packageCopy[mode];
   const packages = copy.packages;
@@ -309,8 +387,8 @@ export function PackagesSection({ mode = "construction" }: { mode?: PackageMode 
           {packages.map((p) => {
             const isActive = p.key === active;
             return (
-              <motion.button
-                key={p.key}
+              <Fragment key={p.key}>
+                <motion.button
                 type="button"
                 onClick={() => {
                   setActive(p.key);
@@ -331,7 +409,15 @@ export function PackagesSection({ mode = "construction" }: { mode?: PackageMode 
                 {isActive && (
                   <span className="absolute -bottom-2 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 bg-gradient-gold" aria-hidden />
                 )}
-              </motion.button>
+                </motion.button>
+                {isActive && (
+                  <div className="sm:col-span-2 lg:hidden">
+                    <AnimatePresence mode="wait">
+                      <PackageDetails current={current} tab={tab} setTab={setTab} className="mt-4" />
+                    </AnimatePresence>
+                  </div>
+                )}
+              </Fragment>
             );
           })}
         </div>
@@ -344,7 +430,7 @@ export function PackagesSection({ mode = "construction" }: { mode?: PackageMode 
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.4 }}
-            className="mt-8 overflow-hidden rounded-3xl border border-border bg-card shadow-luxe"
+            className="mt-8 hidden overflow-hidden rounded-3xl border border-border bg-card shadow-luxe lg:block"
           >
             <div className="grid gap-0 md:grid-cols-[260px_1fr]">
               {/* Sidebar tabs */}

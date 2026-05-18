@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Award, Building2, Users, Calendar } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { BrandSocialLink, type SocialBrand } from "@/components/BrandSocialLink";
 import { Reveal } from "@/components/Reveal";
@@ -72,8 +72,24 @@ function HeroSocialLinks({ mobile = false }: { mobile?: boolean }) {
   );
 }
 
+function useDesktopHeroVideo() {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px) and (prefers-reduced-motion: no-preference)");
+    const sync = () => setEnabled(mediaQuery.matches);
+
+    sync();
+    mediaQuery.addEventListener("change", sync);
+    return () => mediaQuery.removeEventListener("change", sync);
+  }, []);
+
+  return enabled;
+}
+
 function HomePage() {
   const [heroVideoDone, setHeroVideoDone] = useState(false);
+  const showHeroVideo = useDesktopHeroVideo();
 
   return (
     <>
@@ -86,21 +102,23 @@ function HomePage() {
           rounded="rounded-none"
           className="absolute inset-0 h-full w-full"
         />
-        <video
-          className={cn(
-            "absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-1000 ease-out",
-            heroVideoDone ? "opacity-0" : "opacity-100",
-          )}
-          src="/media/hero-section.mp4"
-          poster={realtyVilla}
-          autoPlay
-          muted
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-          onEnded={() => setHeroVideoDone(true)}
-          onError={() => setHeroVideoDone(true)}
-        />
+        {showHeroVideo && (
+          <video
+            className={cn(
+              "absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-1000 ease-out",
+              heroVideoDone ? "opacity-0" : "opacity-100",
+            )}
+            src="/media/hero-section.mp4"
+            poster={realtyVilla}
+            autoPlay
+            muted
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+            onEnded={() => setHeroVideoDone(true)}
+            onError={() => setHeroVideoDone(true)}
+          />
+        )}
         {/* Cinematic dark gradient — bottom-up + side vignette */}
         <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-ink via-ink/55 to-ink/25" />
         <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-ink/80 via-ink/30 to-transparent" />
