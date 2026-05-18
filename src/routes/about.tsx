@@ -1,4 +1,4 @@
-﻿import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import founder from "@/assets/founder.jpg";
@@ -12,12 +12,12 @@ import { Sparkles, Shield, Gem, Users } from "lucide-react";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Tathastu â€” Our Story, Vision & Leadership" },
+      { title: "About Tathastu — Our Story, Vision & Leadership" },
       { name: "description", content: "Founded by Rohit, Tathastu is a multi-disciplinary realty, construction and interior design firm based in Lohegaon, Pune." },
       { property: "og:title", content: "About Tathastu" },
-      { property: "og:description", content: "Trust, luxury and craftsmanship â€” the Tathastu story." },
+      { property: "og:description", content: "Trust, luxury and craftsmanship — the Tathastu story." },
     ],
-    links: [{ rel: "canonical", href: "https://www.tathastu.in/about" }],
+    links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/about" }],
   }),
   component: AboutPage,
 });
@@ -72,7 +72,7 @@ function AboutPage() {
           <div className="mt-14 grid gap-8 md:grid-cols-3">
             {[
               { icon: Shield, title: "Trust", body: "Every relationship begins and ends with the trust our clients place in us.", image: trustImage, alt: "Premium Tathastu real estate project representing client trust" },
-              { icon: Gem, title: "Luxury", body: "Materials, finishes and details chosen with conviction — never by default.", image: luxuryImage, alt: "Luxury Tathastu interior finishes and elegant living space" },
+              { icon: Gem, title: "Luxury", body: "Materials, finishes and details chosen with conviction � never by default.", image: luxuryImage, alt: "Luxury Tathastu interior finishes and elegant living space" },
               { icon: Sparkles, title: "Craftsmanship", body: "Engineering precision and design care that endures decades, not seasons.", image: craftsmanshipImage, alt: "Tathastu construction craftsmanship and site execution" },
             ].map((v, i) => (
               <Reveal key={v.title} delay={i * 0.08}>

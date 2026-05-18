@@ -39,7 +39,7 @@ export const Route = createFileRoute("/construction")({
       { title: "Tathastu Construction Pune | Residential & Commercial Construction" },
       { name: "description", content: "Residential construction, commercial construction, structural work, material planning, supervision and turnkey execution in Lohegaon, Pune." },
     ],
-    links: [{ rel: "canonical", href: "https://www.tathastu.in/construction" }],
+    links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/construction" }],
   }),
   component: () => <ServicePage content={content} />,
 });

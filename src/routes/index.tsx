@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Tathastu — Building Spaces. Creating Futures." },
       { property: "og:description", content: "Premium real estate, properties, construction and interior design in Lohegaon, Pune." },
     ],
-    links: [{ rel: "canonical", href: "https://www.tathastu.in/" }],
+    links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/" }],
   }),
   component: HomePage,
 });

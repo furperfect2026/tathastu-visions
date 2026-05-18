@@ -39,7 +39,7 @@ export const Route = createFileRoute("/realty")({
       { title: "Real Estate & Properties in Lohegaon, Pune | Tathastu Realty" },
       { name: "description", content: "Tathastu Realty offers real estate consulting, property buying, flats, resale properties, rentals, site visits and documentation support in Lohegaon, Pune." },
     ],
-    links: [{ rel: "canonical", href: "https://www.tathastu.in/realty" }],
+    links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/realty" }],
   }),
   component: () => <ServicePage content={content} />,
 });

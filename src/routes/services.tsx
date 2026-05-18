@@ -12,7 +12,7 @@ export const Route = createFileRoute("/services")({
       { property: "og:title", content: "Tathastu Services" },
       { property: "og:description", content: "Real estate, properties, construction and interior design in Pune under one roof." },
     ],
-    links: [{ rel: "canonical", href: "https://www.tathastu.in/services" }],
+    links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/services" }],
   }),
   component: ServicesPage,
 });

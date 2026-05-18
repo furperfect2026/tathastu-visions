@@ -39,7 +39,7 @@ export const Route = createFileRoute("/interior")({
       { title: "Interior Designer in Pune | Tathastu Interiors Lohegaon" },
       { name: "description", content: "Premium interior design in Lohegaon, Pune for modular kitchens, living rooms, bedrooms, office interiors, space planning, furniture and decor." },
     ],
-    links: [{ rel: "canonical", href: "https://www.tathastu.in/interior" }],
+    links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/interior" }],
   }),
   component: () => <ServicePage content={content} />,
 });

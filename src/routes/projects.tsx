@@ -13,7 +13,7 @@ export const Route = createFileRoute("/projects")({
       { property: "og:title", content: "Tathastu Projects" },
       { property: "og:description", content: "A curated portfolio of recent work in Pune and Maharashtra." },
     ],
-    links: [{ rel: "canonical", href: "https://www.tathastu.in/projects" }],
+    links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/projects" }],
   }),
   component: ProjectsPage,
 });

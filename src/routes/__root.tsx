@@ -14,7 +14,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Toaster } from "@/components/ui/sonner";
 
-const siteUrl = "https://www.tathastu.in";
+const siteUrl = "https://www.tathastuinfra.in";
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",

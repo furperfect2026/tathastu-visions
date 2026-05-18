@@ -22,7 +22,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact Tathastu" },
       { property: "og:description", content: "Let's design your next space." },
     ],
-    links: [{ rel: "canonical", href: "https://www.tathastu.in/contact" }],
+    links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/contact" }],
   }),
   component: ContactPage,
 });
