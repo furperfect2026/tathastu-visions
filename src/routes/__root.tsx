@@ -59,6 +59,8 @@ const localBusinessJsonLd = {
     itemListElement: [
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Real estate and property consulting in Pune" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Flats, resale properties and rentals in Lohegaon" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "2 BHK flat search guidance in Lohegaon Pune" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Plots and land search guidance in Lohegaon Pune" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Construction services in Pune" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Interior design services in Pune" } },
     ],

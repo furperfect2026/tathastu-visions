@@ -12,10 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RealtyRouteImport } from './routes/realty'
 import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as PlotsForSaleInLohegaonPuneRouteImport } from './routes/plots-for-sale-in-lohegaon-pune'
 import { Route as InteriorRouteImport } from './routes/interior'
+import { Route as FlatsInLohegaonPuneRouteImport } from './routes/flats-in-lohegaon-pune'
+import { Route as FlatsForRentInLohegaonPuneRouteImport } from './routes/flats-for-rent-in-lohegaon-pune'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConstructionRouteImport } from './routes/construction'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as R2BhkFlatsInLohegaonPuneRouteImport } from './routes/2-bhk-flats-in-lohegaon-pune'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ServicesRoute = ServicesRouteImport.update({
@@ -33,11 +37,28 @@ const ProjectsRoute = ProjectsRouteImport.update({
   path: '/projects',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlotsForSaleInLohegaonPuneRoute =
+  PlotsForSaleInLohegaonPuneRouteImport.update({
+    id: '/plots-for-sale-in-lohegaon-pune',
+    path: '/plots-for-sale-in-lohegaon-pune',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const InteriorRoute = InteriorRouteImport.update({
   id: '/interior',
   path: '/interior',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FlatsInLohegaonPuneRoute = FlatsInLohegaonPuneRouteImport.update({
+  id: '/flats-in-lohegaon-pune',
+  path: '/flats-in-lohegaon-pune',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FlatsForRentInLohegaonPuneRoute =
+  FlatsForRentInLohegaonPuneRouteImport.update({
+    id: '/flats-for-rent-in-lohegaon-pune',
+    path: '/flats-for-rent-in-lohegaon-pune',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -53,6 +74,12 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const R2BhkFlatsInLohegaonPuneRoute =
+  R2BhkFlatsInLohegaonPuneRouteImport.update({
+    id: '/2-bhk-flats-in-lohegaon-pune',
+    path: '/2-bhk-flats-in-lohegaon-pune',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -61,20 +88,28 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/2-bhk-flats-in-lohegaon-pune': typeof R2BhkFlatsInLohegaonPuneRoute
   '/about': typeof AboutRoute
   '/construction': typeof ConstructionRoute
   '/contact': typeof ContactRoute
+  '/flats-for-rent-in-lohegaon-pune': typeof FlatsForRentInLohegaonPuneRoute
+  '/flats-in-lohegaon-pune': typeof FlatsInLohegaonPuneRoute
   '/interior': typeof InteriorRoute
+  '/plots-for-sale-in-lohegaon-pune': typeof PlotsForSaleInLohegaonPuneRoute
   '/projects': typeof ProjectsRoute
   '/realty': typeof RealtyRoute
   '/services': typeof ServicesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/2-bhk-flats-in-lohegaon-pune': typeof R2BhkFlatsInLohegaonPuneRoute
   '/about': typeof AboutRoute
   '/construction': typeof ConstructionRoute
   '/contact': typeof ContactRoute
+  '/flats-for-rent-in-lohegaon-pune': typeof FlatsForRentInLohegaonPuneRoute
+  '/flats-in-lohegaon-pune': typeof FlatsInLohegaonPuneRoute
   '/interior': typeof InteriorRoute
+  '/plots-for-sale-in-lohegaon-pune': typeof PlotsForSaleInLohegaonPuneRoute
   '/projects': typeof ProjectsRoute
   '/realty': typeof RealtyRoute
   '/services': typeof ServicesRoute
@@ -82,10 +117,14 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/2-bhk-flats-in-lohegaon-pune': typeof R2BhkFlatsInLohegaonPuneRoute
   '/about': typeof AboutRoute
   '/construction': typeof ConstructionRoute
   '/contact': typeof ContactRoute
+  '/flats-for-rent-in-lohegaon-pune': typeof FlatsForRentInLohegaonPuneRoute
+  '/flats-in-lohegaon-pune': typeof FlatsInLohegaonPuneRoute
   '/interior': typeof InteriorRoute
+  '/plots-for-sale-in-lohegaon-pune': typeof PlotsForSaleInLohegaonPuneRoute
   '/projects': typeof ProjectsRoute
   '/realty': typeof RealtyRoute
   '/services': typeof ServicesRoute
@@ -94,30 +133,42 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/2-bhk-flats-in-lohegaon-pune'
     | '/about'
     | '/construction'
     | '/contact'
+    | '/flats-for-rent-in-lohegaon-pune'
+    | '/flats-in-lohegaon-pune'
     | '/interior'
+    | '/plots-for-sale-in-lohegaon-pune'
     | '/projects'
     | '/realty'
     | '/services'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/2-bhk-flats-in-lohegaon-pune'
     | '/about'
     | '/construction'
     | '/contact'
+    | '/flats-for-rent-in-lohegaon-pune'
+    | '/flats-in-lohegaon-pune'
     | '/interior'
+    | '/plots-for-sale-in-lohegaon-pune'
     | '/projects'
     | '/realty'
     | '/services'
   id:
     | '__root__'
     | '/'
+    | '/2-bhk-flats-in-lohegaon-pune'
     | '/about'
     | '/construction'
     | '/contact'
+    | '/flats-for-rent-in-lohegaon-pune'
+    | '/flats-in-lohegaon-pune'
     | '/interior'
+    | '/plots-for-sale-in-lohegaon-pune'
     | '/projects'
     | '/realty'
     | '/services'
@@ -125,10 +176,14 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R2BhkFlatsInLohegaonPuneRoute: typeof R2BhkFlatsInLohegaonPuneRoute
   AboutRoute: typeof AboutRoute
   ConstructionRoute: typeof ConstructionRoute
   ContactRoute: typeof ContactRoute
+  FlatsForRentInLohegaonPuneRoute: typeof FlatsForRentInLohegaonPuneRoute
+  FlatsInLohegaonPuneRoute: typeof FlatsInLohegaonPuneRoute
   InteriorRoute: typeof InteriorRoute
+  PlotsForSaleInLohegaonPuneRoute: typeof PlotsForSaleInLohegaonPuneRoute
   ProjectsRoute: typeof ProjectsRoute
   RealtyRoute: typeof RealtyRoute
   ServicesRoute: typeof ServicesRoute
@@ -157,11 +212,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/plots-for-sale-in-lohegaon-pune': {
+      id: '/plots-for-sale-in-lohegaon-pune'
+      path: '/plots-for-sale-in-lohegaon-pune'
+      fullPath: '/plots-for-sale-in-lohegaon-pune'
+      preLoaderRoute: typeof PlotsForSaleInLohegaonPuneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/interior': {
       id: '/interior'
       path: '/interior'
       fullPath: '/interior'
       preLoaderRoute: typeof InteriorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/flats-in-lohegaon-pune': {
+      id: '/flats-in-lohegaon-pune'
+      path: '/flats-in-lohegaon-pune'
+      fullPath: '/flats-in-lohegaon-pune'
+      preLoaderRoute: typeof FlatsInLohegaonPuneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/flats-for-rent-in-lohegaon-pune': {
+      id: '/flats-for-rent-in-lohegaon-pune'
+      path: '/flats-for-rent-in-lohegaon-pune'
+      fullPath: '/flats-for-rent-in-lohegaon-pune'
+      preLoaderRoute: typeof FlatsForRentInLohegaonPuneRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -185,6 +261,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/2-bhk-flats-in-lohegaon-pune': {
+      id: '/2-bhk-flats-in-lohegaon-pune'
+      path: '/2-bhk-flats-in-lohegaon-pune'
+      fullPath: '/2-bhk-flats-in-lohegaon-pune'
+      preLoaderRoute: typeof R2BhkFlatsInLohegaonPuneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -197,10 +280,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R2BhkFlatsInLohegaonPuneRoute: R2BhkFlatsInLohegaonPuneRoute,
   AboutRoute: AboutRoute,
   ConstructionRoute: ConstructionRoute,
   ContactRoute: ContactRoute,
+  FlatsForRentInLohegaonPuneRoute: FlatsForRentInLohegaonPuneRoute,
+  FlatsInLohegaonPuneRoute: FlatsInLohegaonPuneRoute,
   InteriorRoute: InteriorRoute,
+  PlotsForSaleInLohegaonPuneRoute: PlotsForSaleInLohegaonPuneRoute,
   ProjectsRoute: ProjectsRoute,
   RealtyRoute: RealtyRoute,
   ServicesRoute: ServicesRoute,

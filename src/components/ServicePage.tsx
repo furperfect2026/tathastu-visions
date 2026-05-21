@@ -5,6 +5,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { PackagesSection } from "@/components/PackagesSection";
+import { RealtySearchLinks } from "@/components/RealtySearchLinks";
 import { Reveal } from "@/components/Reveal";
 import { projects } from "@/lib/site-data";
 
@@ -138,6 +139,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         </div>
       </section>
 
+      {content.projectCategory === "realty" && <RealtySearchLinks compact />}
       {content.projectCategory === "construction" && <PackagesSection mode="construction" />}
       {content.projectCategory === "interior" && <PackagesSection mode="interior" />}
 

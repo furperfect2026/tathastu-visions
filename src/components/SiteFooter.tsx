@@ -12,7 +12,7 @@ const socialLinks = [
 export function SiteFooter() {
   return (
     <footer className="relative mt-32 border-t border-border bg-ink text-ivory">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 sm:py-20 md:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 sm:py-20 md:grid-cols-5">
         <div className="md:col-span-2">
           <Logo light />
           <p className="mt-6 max-w-md text-sm text-ivory/70">
@@ -36,6 +36,19 @@ export function SiteFooter() {
             {[
               ["/", "Home"], ["/about", "About"], ["/services", "Services"],
               ["/projects", "Projects"], ["/#contact", "Contact"],
+            ].map(([to, label]) => (
+              <li key={to}><Link to={to} className="text-ivory/70 transition-colors hover:text-primary-glow">{label}</Link></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 className="eyebrow !text-primary-glow">Property Search</h4>
+          <ul className="mt-4 space-y-2 text-sm">
+            {[
+              ["/flats-in-lohegaon-pune", "Flats in Lohegaon"],
+              ["/2-bhk-flats-in-lohegaon-pune", "2 BHK Flats"],
+              ["/flats-for-rent-in-lohegaon-pune", "Flats for Rent"],
+              ["/plots-for-sale-in-lohegaon-pune", "Plots for Sale"],
             ].map(([to, label]) => (
               <li key={to}><Link to={to} className="text-ivory/70 transition-colors hover:text-primary-glow">{label}</Link></li>
             ))}

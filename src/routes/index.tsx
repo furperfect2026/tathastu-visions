@@ -8,6 +8,7 @@ import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
 import { Button } from "@/components/ui/button";
 import { ContactSection } from "@/components/ContactSection";
+import { RealtySearchLinks } from "@/components/RealtySearchLinks";
 import { pillars, projects, stats } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import realtyVilla from "@/assets/realty-1.jpg";
@@ -256,6 +257,8 @@ function HomePage() {
           </Reveal>
         </div>
       </section>
+
+      <RealtySearchLinks className="bg-gradient-ivory" />
 
       {/* STATS — dark band */}
       <section className="relative bg-gradient-ink py-24 text-ivory">
