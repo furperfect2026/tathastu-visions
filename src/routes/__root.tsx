@@ -49,20 +49,73 @@ const localBusinessJsonLd = {
     { "@type": "Place", name: "Wagholi" },
     { "@type": "Place", name: "Viman Nagar" },
   ],
-  sameAs: [
-    "https://www.instagram.com/tathastu_infra/",
-    "https://www.youtube.com/@Tathastu_Infra",
-  ],
+  sameAs: ["https://www.instagram.com/tathastu_infra/", "https://www.youtube.com/@Tathastu_Infra"],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Tathastu Services",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Real estate and property consulting in Pune" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Flats, resale properties and rentals in Lohegaon" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "2 BHK flat search guidance in Lohegaon Pune" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Plots and land search guidance in Lohegaon Pune" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Construction services in Pune" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Interior design services in Pune" } },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Real estate and property consulting in Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Flats, resale properties and rentals in Lohegaon",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "2 BHK flat search guidance in Lohegaon Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Plots and land search guidance in Lohegaon Pune",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Construction services in Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Construction company in Lohegaon Pune for residential and commercial projects",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "House construction and home construction cost guidance in Pune",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Turnkey construction execution in Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Interior design services in Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Interior designer in Lohegaon Pune for homes and offices",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Home interiors, modular kitchen and office interior design in Pune",
+        },
+      },
     ],
   },
 };
@@ -87,7 +140,10 @@ function NotFoundComponent() {
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
-          <Link to="/" className="inline-flex items-center justify-center rounded-full bg-gradient-gold px-6 py-3 text-sm font-medium text-ink shadow-gold transition-opacity hover:opacity-90">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-gold px-6 py-3 text-sm font-medium text-ink shadow-gold transition-opacity hover:opacity-90"
+          >
             Back to home
           </Link>
         </div>
@@ -103,10 +159,25 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="font-display text-2xl font-semibold">This page didn't load</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Something went wrong. You can try again or head home.</p>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Something went wrong. You can try again or head home.
+        </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button onClick={() => { router.invalidate(); reset(); }} className="rounded-full bg-gradient-gold px-5 py-2 text-sm font-medium text-ink shadow-gold">Try again</button>
-          <a href="/" className="rounded-full border border-input px-5 py-2 text-sm font-medium hover:bg-accent">Go home</a>
+          <button
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
+            className="rounded-full bg-gradient-gold px-5 py-2 text-sm font-medium text-ink shadow-gold"
+          >
+            Try again
+          </button>
+          <a
+            href="/"
+            className="rounded-full border border-input px-5 py-2 text-sm font-medium hover:bg-accent"
+          >
+            Go home
+          </a>
         </div>
       </div>
     </div>
@@ -119,11 +190,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Tathastu Pune | Realty, Construction & Interior Design in Lohegaon" },
-      { name: "description", content: "Tathastu is a Lohegaon, Pune based real estate, property consulting, construction and interior design firm building premium homes, commercial spaces and luxury interiors across Pune." },
+      {
+        name: "description",
+        content:
+          "Tathastu is a Lohegaon, Pune based real estate, property consulting, construction and interior design firm building premium homes, commercial spaces and luxury interiors across Pune.",
+      },
       { name: "theme-color", content: "#FBF8F1" },
       { property: "og:type", content: "website" },
       { property: "og:title", content: "Tathastu — Building Spaces. Creating Futures." },
-      { property: "og:description", content: "Premium real estate, properties, construction and interior design from Tathastu in Lohegaon, Pune." },
+      {
+        property: "og:description",
+        content:
+          "Premium real estate, properties, construction and interior design from Tathastu in Lohegaon, Pune.",
+      },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -148,10 +227,19 @@ function RootShell({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
       </head>
-      <body>{children}<Scripts /></body>
+      <body>
+        {children}
+        <Scripts />
+      </body>
     </html>
   );
 }

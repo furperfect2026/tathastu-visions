@@ -7,6 +7,7 @@ import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { PackagesSection } from "@/components/PackagesSection";
 import { RealtySearchLinks } from "@/components/RealtySearchLinks";
 import { Reveal } from "@/components/Reveal";
+import { ServiceSearchLinks } from "@/components/ServiceSearchLinks";
 import { projects } from "@/lib/site-data";
 
 type ServiceImage = {
@@ -31,12 +32,7 @@ export type ServicePageContent = {
   projectCategory: "realty" | "construction" | "interior";
 };
 
-const process = [
-  "Consultation",
-  "Planning & Design",
-  "Execution",
-  "Final Handover",
-] as const;
+const process = ["Consultation", "Planning & Design", "Execution", "Final Handover"] as const;
 
 export function ServicePage({ content }: { content: ServicePageContent }) {
   const relatedProjects = projects
@@ -71,18 +67,35 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
               {content.subtitle}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Button asChild size="lg" className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8">
+              <Button
+                asChild
+                size="lg"
+                className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8"
+              >
                 <Link to="/" hash="contact">
-                  Start Your Project <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  Start Your Project{" "}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button asChild size="lg" className="group w-full rounded-full bg-ivory px-5 text-base text-ink shadow-luxe hover:bg-primary hover:text-ink sm:w-auto sm:px-8">
+              <Button
+                asChild
+                size="lg"
+                className="group w-full rounded-full bg-ivory px-5 text-base text-ink shadow-luxe hover:bg-primary hover:text-ink sm:w-auto sm:px-8"
+              >
                 <Link to="/" hash="contact">
-                  Get Free Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  Get Free Quote{" "}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="w-full rounded-full border-ivory/30 bg-ivory/5 px-5 text-base text-ivory backdrop-blur hover:border-primary/60 hover:bg-ivory/10 sm:w-auto sm:px-8">
-                <Link to="/" hash="contact">Contact Us</Link>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="w-full rounded-full border-ivory/30 bg-ivory/5 px-5 text-base text-ivory backdrop-blur hover:border-primary/60 hover:bg-ivory/10 sm:w-auto sm:px-8"
+              >
+                <Link to="/" hash="contact">
+                  Contact Us
+                </Link>
               </Button>
             </div>
           </motion.div>
@@ -115,7 +128,10 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {content.offers.map(({ title, description, icon: Icon, image }, index) => (
               <Reveal key={title} delay={(index % 3) * 0.06}>
-                <motion.article whileHover={{ y: -6 }} className="group h-full overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border">
+                <motion.article
+                  whileHover={{ y: -6 }}
+                  className="group h-full overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border"
+                >
                   <div className="relative aspect-[16/10] overflow-hidden bg-ink">
                     <img
                       src={image.src}
@@ -130,7 +146,9 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                   </div>
                   <div className="p-6 sm:p-7">
                     <h3 className="font-display text-2xl font-semibold">{title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {description}
+                    </p>
                   </div>
                 </motion.article>
               </Reveal>
@@ -140,6 +158,10 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
       </section>
 
       {content.projectCategory === "realty" && <RealtySearchLinks compact />}
+      {content.projectCategory === "construction" && (
+        <ServiceSearchLinks compact mode="construction" />
+      )}
+      {content.projectCategory === "interior" && <ServiceSearchLinks compact mode="interior" />}
       {content.projectCategory === "construction" && <PackagesSection mode="construction" />}
       {content.projectCategory === "interior" && <PackagesSection mode="interior" />}
 
@@ -161,10 +183,14 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                   </div>
                   <h3 className="mt-8 font-display text-2xl font-semibold">{step}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-ivory/65">
-                    {index === 0 && "We understand your goals, site, budget and expectations before anything begins."}
-                    {index === 1 && "We shape a practical design and execution plan with clear decisions upfront."}
-                    {index === 2 && "Our team coordinates people, materials and details with disciplined site progress."}
-                    {index === 3 && "Everything is reviewed, refined and handed over with confidence."}
+                    {index === 0 &&
+                      "We understand your goals, site, budget and expectations before anything begins."}
+                    {index === 1 &&
+                      "We shape a practical design and execution plan with clear decisions upfront."}
+                    {index === 2 &&
+                      "Our team coordinates people, materials and details with disciplined site progress."}
+                    {index === 3 &&
+                      "Everything is reviewed, refined and handed over with confidence."}
                   </p>
                 </div>
               </Reveal>
@@ -177,19 +203,33 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal>
             <p className="eyebrow">Featured Projects</p>
-            <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">Selected related work.</h2>
+            <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
+              Selected related work.
+            </h2>
           </Reveal>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {relatedProjects.map((project, index) => (
               <Reveal key={project.id} delay={index * 0.08}>
-                <motion.article whileHover={{ y: -6 }} className="group overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border">
+                <motion.article
+                  whileHover={{ y: -6 }}
+                  className="group overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border"
+                >
                   <div className="aspect-[4/5] overflow-hidden">
-                    <img src={project.image} alt={project.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
                   </div>
                   <div className="p-6">
-                    <p className="text-[10px] uppercase tracking-[0.22em] text-primary">{project.category}</p>
+                    <p className="text-[10px] uppercase tracking-[0.22em] text-primary">
+                      {project.category}
+                    </p>
                     <h3 className="mt-1 font-display text-xl font-semibold">{project.title}</h3>
-                    <p className="text-xs text-muted-foreground">{project.location} · {project.year}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {project.location} · {project.year}
+                    </p>
                     <p className="mt-3 text-sm text-muted-foreground">{project.blurb}</p>
                   </div>
                 </motion.article>
@@ -206,14 +246,28 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
               <p className="eyebrow !text-primary-glow">Begin With Tathastu</p>
               <div className="mt-3 grid items-end gap-8 md:grid-cols-[1fr_auto]">
                 <h2 className="max-w-2xl font-display text-3xl font-medium leading-tight sm:text-4xl md:text-5xl">
-                  Ready to bring your <span className="italic text-gradient-gold">vision to life?</span>
+                  Ready to bring your{" "}
+                  <span className="italic text-gradient-gold">vision to life?</span>
                 </h2>
                 <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap md:justify-end">
-                  <Button asChild size="lg" className="w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8">
-                    <Link to="/" hash="contact">Get Free Quote <ArrowRight className="h-4 w-4" /></Link>
+                  <Button
+                    asChild
+                    size="lg"
+                    className="w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8"
+                  >
+                    <Link to="/" hash="contact">
+                      Get Free Quote <ArrowRight className="h-4 w-4" />
+                    </Link>
                   </Button>
-                  <Button asChild size="lg" variant="outline" className="w-full rounded-full border-ivory/25 bg-ivory/5 px-5 text-base text-ivory hover:bg-ivory/10 sm:w-auto sm:px-8">
-                    <Link to="/" hash="contact">Book a Consultation</Link>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="w-full rounded-full border-ivory/25 bg-ivory/5 px-5 text-base text-ivory hover:bg-ivory/10 sm:w-auto sm:px-8"
+                  >
+                    <Link to="/" hash="contact">
+                      Book a Consultation
+                    </Link>
                   </Button>
                 </div>
               </div>
