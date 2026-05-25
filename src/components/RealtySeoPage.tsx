@@ -1,5 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, BadgeCheck, Building2, ClipboardCheck, MapPinned, PhoneCall } from "lucide-react";
+import {
+  ArrowRight,
+  BadgeCheck,
+  Building2,
+  ClipboardCheck,
+  MapPinned,
+  PhoneCall,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { RealtySearchLinks } from "@/components/RealtySearchLinks";
@@ -67,10 +74,18 @@ export function RealtySeoPage({ content }: { content: RealtySeoPageContent }) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
 
       <section className="relative flex min-h-[650px] items-end overflow-hidden bg-ink pt-28 text-ivory sm:min-h-[74svh] md:items-center">
-        <AutoSlideshow images={heroImages} interval={4600} rounded="rounded-none" className="absolute inset-0" />
+        <AutoSlideshow
+          images={heroImages}
+          interval={4600}
+          rounded="rounded-none"
+          className="absolute inset-0"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/25" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/45 to-transparent" />
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 sm:pb-20 md:pb-0">
@@ -88,13 +103,23 @@ export function RealtySeoPage({ content }: { content: RealtySeoPageContent }) {
               {content.subtitle}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Button asChild size="lg" className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8">
+              <Button
+                asChild
+                size="lg"
+                className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8"
+              >
                 <Link to="/" hash="contact">
-                  Talk to Tathastu <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  Get Free Quote{" "}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="w-full rounded-full border-ivory/30 bg-ivory/5 px-5 text-base text-ivory backdrop-blur hover:bg-ivory/10 sm:w-auto sm:px-8">
-                <Link to="/realty">Explore Realty</Link>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="w-full rounded-full border-ivory/30 bg-ivory/5 px-5 text-base text-ivory backdrop-blur hover:bg-ivory/10 sm:w-auto sm:px-8"
+              >
+                <Link to="/projects">Explore Projects</Link>
               </Button>
             </div>
           </motion.div>
@@ -113,7 +138,10 @@ export function RealtySeoPage({ content }: { content: RealtySeoPageContent }) {
             <p className="text-lg leading-relaxed text-muted-foreground">{content.intro}</p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {content.highlights.map((item) => (
-                <div key={item} className="flex gap-3 rounded-2xl border border-border bg-card p-4 text-sm shadow-luxe">
+                <div
+                  key={item}
+                  className="flex gap-3 rounded-2xl border border-border bg-card p-4 text-sm shadow-luxe"
+                >
                   <BadgeCheck className="mt-0.5 h-5 w-5 flex-none text-primary" />
                   <span className="leading-relaxed text-foreground/85">{item}</span>
                 </div>
@@ -196,7 +224,9 @@ export function RealtySeoPage({ content }: { content: RealtySeoPageContent }) {
                     <p className="text-[10px] uppercase tracking-[0.22em] text-primary">Realty</p>
                     <h3 className="mt-1 font-display text-xl font-semibold">{project.title}</h3>
                     <p className="mt-1 text-xs text-muted-foreground">{project.location}</p>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.blurb}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {project.blurb}
+                    </p>
                   </div>
                 </article>
               </Reveal>
@@ -235,13 +265,29 @@ export function RealtySeoPage({ content }: { content: RealtySeoPageContent }) {
               <p className="eyebrow !text-primary-glow">Tathastu Realty</p>
               <div className="mt-3 grid items-end gap-8 md:grid-cols-[1fr_auto]">
                 <h2 className="max-w-3xl font-display text-3xl font-medium leading-tight sm:text-4xl md:text-5xl">
-                  Ready to shortlist the right <span className="italic text-gradient-gold">property path?</span>
+                  Ready to shortlist the right{" "}
+                  <span className="italic text-gradient-gold">property path?</span>
                 </h2>
-                <Button asChild size="lg" className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8">
-                  <Link to="/" hash="contact">
-                    Book a Consultation <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
+                <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8"
+                  >
+                    <Link to="/" hash="contact">
+                      Get Free Quote{" "}
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="w-full rounded-full border-ivory/25 bg-ivory/5 px-5 text-base text-ivory hover:bg-ivory/10 sm:w-auto sm:px-8"
+                  >
+                    <Link to="/projects">Explore Projects</Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </Reveal>

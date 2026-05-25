@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Building, ClipboardList, Factory, HardHat, Layers3, Ruler } from "lucide-react";
+import { Building, Factory, Landmark, Layers3 } from "lucide-react";
 import { ServicePage, type ServicePageContent } from "@/components/ServicePage";
 import construction1 from "@/assets/construction-1.jpg";
 import construction2 from "@/assets/construction-2.jpg";
@@ -11,7 +11,8 @@ const content: ServicePageContent = {
   eyebrow: "Tathastu Construction",
   title: "Construction",
   accent: "With Integrity",
-  subtitle: "Residential and commercial construction in Pune shaped by structure, safety, material discipline and reliable supervision.",
+  subtitle:
+    "Residential and commercial construction in Pune shaped by structure, safety, material discipline and reliable supervision.",
   heroImages: [
     { src: heroInfra1, alt: "Tathastu infrastructure construction site in Pune" },
     { src: construction3, alt: "Tathastu construction site in Pune" },
@@ -24,12 +25,34 @@ const content: ServicePageContent = {
     "Tathastu Construction handles homes and commercial projects in Lohegaon, Pune with engineering focus and site accountability. We coordinate structural work, material planning, supervision and turnkey delivery so every project moves forward with quality, clarity and control.",
   projectCategory: "construction",
   offers: [
-    { title: "Residential Construction", description: "Homes planned and built around durability, comfort and refined living.", icon: Building, image: { src: construction2, alt: "Residential home construction planning by Tathastu" } },
-    { title: "Commercial Construction", description: "Functional commercial spaces built for performance and presence.", icon: Factory, image: { src: construction3, alt: "Commercial construction structure by Tathastu" } },
-    { title: "Structural Work", description: "Core civil and structural execution with technical discipline.", icon: Layers3, image: { src: construction1, alt: "Structural work and scaffolding construction site" } },
-    { title: "Material Planning", description: "Material choices balanced around strength, finish, cost and availability.", icon: ClipboardList, image: { src: construction4, alt: "Construction material planning and site coordination" } },
-    { title: "Site Supervision", description: "Progress tracking, vendor coordination and regular quality checks.", icon: HardHat, image: { src: heroInfra1, alt: "Construction site supervision in Pune" } },
-    { title: "Turnkey Execution", description: "One accountable team from planning through final completion.", icon: Ruler, image: { src: construction2, alt: "Turnkey construction execution by Tathastu" } },
+    {
+      title: "Commercial Construction",
+      description:
+        "Offices, shops and commercial structures planned around quality, transparency and on-time delivery.",
+      icon: Factory,
+      image: { src: construction3, alt: "Commercial construction structure by Tathastu" },
+    },
+    {
+      title: "Residential Construction",
+      description:
+        "Homes, villas and bungalows built with money safety, material clarity and reliable supervision.",
+      icon: Building,
+      image: { src: construction2, alt: "Residential home construction planning by Tathastu" },
+    },
+    {
+      title: "Structural Work & RCC",
+      description:
+        "Core RCC and civil structure work with disciplined engineering, safety checks and assurance.",
+      icon: Layers3,
+      image: { src: construction1, alt: "Structural work and RCC construction site" },
+    },
+    {
+      title: "WTG & Government Contracts",
+      description:
+        "Government, institutional and infrastructure-focused contracts handled with documentation and execution control.",
+      icon: Landmark,
+      image: { src: construction4, alt: "Infrastructure and government construction planning" },
+    },
   ],
 };
 
@@ -37,7 +60,11 @@ export const Route = createFileRoute("/construction")({
   head: () => ({
     meta: [
       { title: "Tathastu Construction Pune | Residential & Commercial Construction" },
-      { name: "description", content: "Residential construction, commercial construction, structural work, material planning, supervision and turnkey execution in Lohegaon, Pune." },
+      {
+        name: "description",
+        content:
+          "Residential construction, commercial construction, structural work, material planning, supervision and turnkey execution in Lohegaon, Pune.",
+      },
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/construction" }],
   }),

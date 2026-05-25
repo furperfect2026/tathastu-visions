@@ -154,7 +154,7 @@ export function ServiceSeoPage({ content }: { content: ServiceSeoPageContent }) 
                 className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8"
               >
                 <Link to="/" hash="contact">
-                  Talk to Tathastu{" "}
+                  Get Free Quote{" "}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
@@ -164,9 +164,7 @@ export function ServiceSeoPage({ content }: { content: ServiceSeoPageContent }) 
                 variant="outline"
                 className="w-full rounded-full border-ivory/30 bg-ivory/5 px-5 text-base text-ivory backdrop-blur hover:bg-ivory/10 sm:w-auto sm:px-8"
               >
-                <Link to={`/${content.mode}`}>
-                  Explore {content.mode === "construction" ? "Construction" : "Interiors"}
-                </Link>
+                <Link to="/projects">Explore Projects</Link>
               </Button>
             </div>
           </motion.div>
@@ -321,16 +319,26 @@ export function ServiceSeoPage({ content }: { content: ServiceSeoPageContent }) 
                   Ready to take the next{" "}
                   <span className="italic text-gradient-gold">project step?</span>
                 </h2>
-                <Button
-                  asChild
-                  size="lg"
-                  className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8"
-                >
-                  <Link to="/" hash="contact">
-                    Book a Consultation{" "}
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
+                <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8"
+                  >
+                    <Link to="/" hash="contact">
+                      Get Free Quote{" "}
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="w-full rounded-full border-ivory/25 bg-ivory/5 px-5 text-base text-ivory hover:bg-ivory/10 sm:w-auto sm:px-8"
+                  >
+                    <Link to="/projects">Explore Projects</Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </Reveal>

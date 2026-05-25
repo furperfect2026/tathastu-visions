@@ -1,6 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, Award, Building2, Users, Calendar } from "lucide-react";
+import {
+  ArrowRight,
+  Award,
+  Building2,
+  Calendar,
+  Clock3,
+  Eye,
+  ShieldCheck,
+  Users,
+  WalletCards,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { BrandSocialLink, type SocialBrand } from "@/components/BrandSocialLink";
@@ -8,7 +18,6 @@ import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
 import { Button } from "@/components/ui/button";
 import { ContactSection } from "@/components/ContactSection";
-import { RealtySearchLinks } from "@/components/RealtySearchLinks";
 import { pillars, projects, stats } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import realtyVilla from "@/assets/realty-1.jpg";
@@ -29,9 +38,17 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Tathastu Pune | Realty, Construction & Interior Design in Lohegaon" },
-      { name: "description", content: "Tathastu offers real estate, properties, construction and interior design in Lohegaon, Pune, including flats, homes, residential projects and luxury interiors." },
+      {
+        name: "description",
+        content:
+          "Tathastu offers real estate, properties, construction and interior design in Lohegaon, Pune, including flats, homes, residential projects and luxury interiors.",
+      },
       { property: "og:title", content: "Tathastu — Building Spaces. Creating Futures." },
-      { property: "og:description", content: "Premium real estate, properties, construction and interior design in Lohegaon, Pune." },
+      {
+        property: "og:description",
+        content:
+          "Premium real estate, properties, construction and interior design in Lohegaon, Pune.",
+      },
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/" }],
   }),
@@ -46,29 +63,59 @@ const socialLinks = [
   { label: "LinkedIn", href: "https://linkedin.com", brand: "linkedin" },
 ] satisfies { label: string; href: string; brand: SocialBrand }[];
 
+const trustPolicies = [
+  {
+    icon: WalletCards,
+    title: "Money Safety",
+    body: "Clear scope, transparent package guidance and practical budget conversations before work begins.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Quality Assurance",
+    body: "Material choices, site checks and finish reviews handled with one accountable Tathastu team.",
+  },
+  {
+    icon: Clock3,
+    title: "On-Time Delivery",
+    body: "Planning, vendor coordination and execution tracking designed around predictable timelines.",
+  },
+  {
+    icon: Eye,
+    title: "Transparency",
+    body: "Simple communication from first visit to handover, so clients know what is happening and why.",
+  },
+] as const;
+
+const serviceQuickLinks = [
+  { to: "/realty", label: "Realty" },
+  { to: "/construction", label: "Construction" },
+  { to: "/interior", label: "Interior" },
+] as const;
+
 function HeroSocialLinks({ mobile = false }: { mobile?: boolean }) {
   return (
     <motion.div
       className={cn(
-        mobile ? "mt-6 flex items-center gap-4 md:hidden" : "absolute left-6 top-1/2 z-10 hidden -translate-y-1/2 flex-col items-center gap-5 md:flex lg:left-8",
+        mobile
+          ? "mt-6 flex items-center gap-4 md:hidden"
+          : "absolute left-6 top-1/2 z-10 hidden -translate-y-1/2 flex-col items-center gap-5 md:flex lg:left-8",
       )}
       initial={{ opacity: 0, y: mobile ? 12 : 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.35, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       aria-label="Tathastu social links"
     >
-      {!mobile && <span className="h-16 w-px bg-gradient-to-b from-transparent via-ivory/45 to-transparent" />}
+      {!mobile && (
+        <span className="h-16 w-px bg-gradient-to-b from-transparent via-ivory/45 to-transparent" />
+      )}
       <div className={cn(mobile ? "flex items-center gap-4" : "flex flex-col items-center gap-4")}>
         {socialLinks.map(({ label, href, brand }) => (
-          <BrandSocialLink
-            key={label}
-            brand={brand}
-            href={href}
-            label={label}
-          />
+          <BrandSocialLink key={label} brand={brand} href={href} label={label} />
         ))}
       </div>
-      {!mobile && <span className="h-16 w-px bg-gradient-to-b from-transparent via-ivory/45 to-transparent" />}
+      {!mobile && (
+        <span className="h-16 w-px bg-gradient-to-b from-transparent via-ivory/45 to-transparent" />
+      )}
     </motion.div>
   );
 }
@@ -77,7 +124,9 @@ function useDesktopHeroVideo() {
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 768px) and (prefers-reduced-motion: no-preference)");
+    const mediaQuery = window.matchMedia(
+      "(min-width: 768px) and (prefers-reduced-motion: no-preference)",
+    );
     const sync = () => setEnabled(mediaQuery.matches);
 
     sync();
@@ -95,7 +144,10 @@ function HomePage() {
   return (
     <>
       {/* HERO — cinematic full-bleed video with image fallback */}
-      <section id="home" className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-ink sm:min-h-[640px]">
+      <section
+        id="home"
+        className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-ink sm:min-h-[640px]"
+      >
         <AutoSlideshow
           images={heroImages}
           interval={5500}
@@ -169,21 +221,35 @@ function HomePage() {
           </h1>
           <motion.p
             className="mt-5 max-w-xl text-base leading-relaxed text-ivory/80 md:text-lg"
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.95, duration: 0.9 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.95, duration: 0.9 }}
           >
-            Crafting timeless homes, properties and spaces across Pune through real estate, construction and interior design from our Lohegaon studio.
+            Crafting timeless homes, properties and spaces across Pune through real estate,
+            construction and interior design from our Lohegaon studio.
           </motion.p>
           <motion.div
             className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap md:gap-4"
-            initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.15, duration: 0.7 }}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.15, duration: 0.7 }}
           >
-            <Button asChild size="lg" className="group w-full rounded-full bg-gradient-gold px-5 text-base text-primary-foreground shadow-gold transition-all hover:scale-[1.03] hover:shadow-[0_25px_60px_-15px_color-mix(in_oklab,var(--color-primary)_55%,transparent)] sm:w-auto sm:px-8">
-              <a href="#contact">Begin Your Project <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" /></a>
+            <Button
+              asChild
+              size="lg"
+              className="group w-full rounded-full bg-gradient-gold px-5 text-base text-primary-foreground shadow-gold transition-all hover:scale-[1.03] hover:shadow-[0_25px_60px_-15px_color-mix(in_oklab,var(--color-primary)_55%,transparent)] sm:w-auto sm:px-8"
+            >
+              <a href="#contact">
+                Get Free Quote{" "}
+                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="w-full rounded-full border-primary/50 bg-ink/25 px-5 text-base text-primary-glow backdrop-blur transition-all hover:border-primary hover:bg-primary/10 sm:w-auto sm:px-8">
-              <a href="#contact">Get Free Quote</a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="w-full rounded-full border-ivory/30 bg-ivory/5 px-5 text-base text-ivory backdrop-blur transition-all hover:border-primary/60 hover:bg-ivory/10 sm:w-auto sm:px-8">
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="w-full rounded-full border-ivory/30 bg-ivory/5 px-5 text-base text-ivory backdrop-blur transition-all hover:border-primary/60 hover:bg-ivory/10 sm:w-auto sm:px-8"
+            >
               <Link to="/projects">Explore Projects</Link>
             </Button>
           </motion.div>
@@ -192,7 +258,9 @@ function HomePage() {
 
         <motion.div
           className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-[10px] uppercase tracking-[0.35em] text-ivory/60"
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6, duration: 0.8 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.6, duration: 0.8 }}
         >
           scroll ↓
         </motion.div>
@@ -202,9 +270,29 @@ function HomePage() {
       <section id="services" className="relative py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal className="max-w-2xl">
-            <p className="eyebrow">Three Pillars</p>
-            <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">A complete craft, end to end.</h2>
-            <p className="mt-4 text-muted-foreground">From Lohegaon property search and land advisory to Pune homes, construction and interiors, Tathastu is one team for every step.</p>
+            <p className="eyebrow">Our Services</p>
+            <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
+              Three pillars of Tathastu.
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              From Lohegaon property search and land advisory to Pune homes, construction and
+              interiors, Tathastu is one team for every step.
+            </p>
+          </Reveal>
+
+          <Reveal className="mt-8">
+            <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-luxe sm:flex-row">
+              {serviceQuickLinks.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="group flex flex-1 items-center justify-between border-b border-border px-5 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-secondary sm:border-b-0 sm:border-r sm:last:border-r-0"
+                >
+                  {item.label}
+                  <ArrowRight className="h-4 w-4 text-primary transition-transform group-hover:translate-x-1" />
+                </Link>
+              ))}
+            </div>
           </Reveal>
 
           <div className="mt-14 grid gap-8 md:grid-cols-3">
@@ -222,21 +310,26 @@ function HomePage() {
                       aria-label={`Explore ${p.title}`}
                       className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border transition-shadow duration-300 hover:shadow-[0_28px_80px_-35px_color-mix(in_oklab,var(--color-primary)_45%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
                     >
-                    <div className="relative h-60">
-                      <AutoSlideshow images={[...p.images]} startIndex={i} interval={3500 + i * 400} rounded="rounded-none" />
-                      <div className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-full bg-gradient-gold text-ink shadow-gold">
-                        <Icon className="h-5 w-5" />
+                      <div className="relative h-60">
+                        <AutoSlideshow
+                          images={[...p.images]}
+                          startIndex={i}
+                          interval={3500 + i * 400}
+                          rounded="rounded-none"
+                        />
+                        <div className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-full bg-gradient-gold text-ink shadow-gold">
+                          <Icon className="h-5 w-5" />
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex flex-1 flex-col p-7">
-                      <h3 className="font-display text-2xl font-semibold">{p.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
-                      <span
-                        className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-foreground transition-all duration-300 group-hover:bg-gradient-gold group-hover:shadow-gold"
-                      >
-                        Explore <ArrowRight className="h-3.5 w-3.5" />
-                      </span>
-                    </div>
+                      <div className="flex flex-1 flex-col p-7">
+                        <h3 className="font-display text-2xl font-semibold">{p.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                          {p.blurb}
+                        </p>
+                        <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-foreground transition-all duration-300 group-hover:bg-gradient-gold group-hover:shadow-gold">
+                          Explore <ArrowRight className="h-3.5 w-3.5" />
+                        </span>
+                      </div>
                     </Link>
                   </motion.div>
                 </Reveal>
@@ -248,21 +341,58 @@ function HomePage() {
             <div className="mx-auto flex max-w-3xl flex-col items-center justify-between gap-5 rounded-3xl border border-primary/20 bg-card px-5 py-6 text-center shadow-luxe sm:px-7 md:flex-row md:px-9 md:text-left">
               <div>
                 <p className="eyebrow">Planning Something?</p>
-                <h3 className="mt-2 font-display text-2xl font-medium sm:text-3xl">Get a free quote from Tathastu Pune.</h3>
+                <h3 className="mt-2 font-display text-2xl font-medium sm:text-3xl">
+                  Get a free quote from Tathastu Pune.
+                </h3>
               </div>
-              <Button asChild size="lg" className="group w-full rounded-full bg-gradient-gold px-5 text-ink shadow-gold sm:w-auto sm:px-7">
-                <a href="#contact">Get Free Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></a>
+              <Button
+                asChild
+                size="lg"
+                className="group w-full rounded-full bg-gradient-gold px-5 text-ink shadow-gold sm:w-auto sm:px-7"
+              >
+                <a href="#contact">
+                  Get Free Quote{" "}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
               </Button>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <RealtySearchLinks className="bg-gradient-ivory" />
+      <section className="bg-gradient-ivory py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow">Our Promise</p>
+            <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
+              Built around trust, clarity and control.
+            </h2>
+          </Reveal>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {trustPolicies.map(({ icon: Icon, title, body }, index) => (
+              <Reveal key={title} delay={index * 0.05}>
+                <div className="h-full rounded-3xl border border-border bg-card p-5 shadow-luxe sm:p-6">
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-6 font-display text-2xl font-semibold text-ink">{title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* STATS — dark band */}
       <section className="relative bg-gradient-ink py-24 text-ivory">
-        <div className="pointer-events-none absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 20% 0%, var(--color-primary), transparent 40%)" }} />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 20% 0%, var(--color-primary), transparent 40%)",
+          }}
+        />
         <div className="relative mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-4">
           {stats.map((s, i) => {
             const Icon = [Calendar, Building2, Users, Award][i];
@@ -288,10 +418,17 @@ function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex items-end justify-between gap-6">
             <Reveal>
-              <p className="eyebrow">Featured</p>
-              <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">Recent work</h2>
+              <p className="eyebrow">Our Projects</p>
+              <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
+                Recent work across Pune
+              </h2>
             </Reveal>
-            <Link to="/projects" className="hidden text-sm font-semibold text-primary hover:underline md:block">View all →</Link>
+            <Link
+              to="/projects"
+              className="hidden text-sm font-semibold text-primary hover:underline md:block"
+            >
+              View all →
+            </Link>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {projects.slice(0, 6).map((p, i) => (
@@ -301,12 +438,21 @@ function HomePage() {
                   className={`group relative overflow-hidden rounded-3xl shadow-luxe ${i % 3 === 1 ? "md:translate-y-10" : ""}`}
                 >
                   <div className="aspect-[4/5] overflow-hidden">
-                    <img src={p.image} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
                   </div>
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent p-6 text-ivory">
-                    <p className="text-[10px] uppercase tracking-[0.22em] text-primary-glow">{p.category}</p>
+                    <p className="text-[10px] uppercase tracking-[0.22em] text-primary-glow">
+                      {p.category}
+                    </p>
                     <h3 className="mt-1 font-display text-xl font-semibold">{p.title}</h3>
-                    <p className="text-xs text-ivory/70">{p.location} · {p.year}</p>
+                    <p className="text-xs text-ivory/70">
+                      {p.location} · {p.year}
+                    </p>
                   </div>
                 </motion.div>
               </Reveal>
@@ -322,9 +468,13 @@ function HomePage() {
           <Reveal>
             <p className="eyebrow !text-primary-glow">The Vision</p>
             <p className="mt-6 font-display text-2xl font-medium leading-tight sm:text-3xl md:text-5xl">
-              We don't just pour concrete. We design the <span className="text-gradient-gold italic">backdrops for people's lives</span> across Pune, with every project shaped by luxury, utility and timeless architecture.
+              We don't just pour concrete. We design the{" "}
+              <span className="text-gradient-gold italic">backdrops for people's lives</span> across
+              Pune, with every project shaped by luxury, utility and timeless architecture.
             </p>
-            <p className="mt-8 text-sm uppercase tracking-[0.28em] text-ivory/60">— Rohit, Founder & CEO</p>
+            <p className="mt-8 text-sm uppercase tracking-[0.28em] text-ivory/60">
+              — Rohit, Founder & CEO
+            </p>
           </Reveal>
         </div>
       </section>

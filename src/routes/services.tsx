@@ -4,13 +4,27 @@ import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { pillars } from "@/lib/site-data";
 import { ArrowRight, Check } from "lucide-react";
 
+const serviceQuickLinks = [
+  { to: "/realty", label: "Realty" },
+  { to: "/construction", label: "Construction" },
+  { to: "/interior", label: "Interior" },
+] as const;
+
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
       { title: "Services in Pune | Realty, Construction & Interior Design | Tathastu" },
-      { name: "description", content: "Tathastu offers real estate, property consulting, construction and interior design services in Lohegaon, Pune with end-to-end delivery from one trusted team." },
+      {
+        name: "description",
+        content:
+          "Tathastu offers real estate, property consulting, construction and interior design services in Lohegaon, Pune with end-to-end delivery from one trusted team.",
+      },
       { property: "og:title", content: "Tathastu Services" },
-      { property: "og:description", content: "Real estate, properties, construction and interior design in Pune under one roof." },
+      {
+        property: "og:description",
+        content:
+          "Real estate, properties, construction and interior design in Pune under one roof.",
+      },
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/services" }],
   }),
@@ -26,6 +40,22 @@ function ServicesPage() {
           <h1 className="mt-4 max-w-4xl break-words font-display text-[2.75rem] font-medium leading-[1.05] sm:text-5xl md:text-7xl">
             Three pillars of <span className="text-gradient-gold italic">Tathastu</span>
           </h1>
+
+          <Reveal className="mt-8">
+            <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-luxe sm:flex-row">
+              {serviceQuickLinks.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="group flex flex-1 items-center justify-between border-b border-border px-5 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-secondary sm:border-b-0 sm:border-r sm:last:border-r-0"
+                >
+                  {item.label}
+                  <ArrowRight className="h-4 w-4 text-primary transition-transform group-hover:translate-x-1" />
+                </Link>
+              ))}
+            </div>
+          </Reveal>
+
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {pillars.map((p, i) => {
               const Icon = p.icon;
@@ -51,9 +81,12 @@ function ServicesPage() {
                     <div className="p-6">
                       <p className="eyebrow">Tathastu {p.title}</p>
                       <h2 className="mt-2 font-display text-2xl font-semibold">{p.title}</h2>
-                      <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
+                      <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+                        {p.blurb}
+                      </p>
                       <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-primary transition-colors group-hover:text-ink">
-                        Explore <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        Explore{" "}
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </span>
                     </div>
                   </Link>
@@ -64,12 +97,16 @@ function ServicesPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="mx-auto hidden max-w-7xl px-4 sm:px-6 md:block">
         {pillars.map((p, i) => {
           const Icon = p.icon;
           const reverse = i % 2 === 1;
           return (
-            <section key={p.key} id={p.key} className="border-t border-border py-20 first:border-t-0">
+            <section
+              key={p.key}
+              id={p.key}
+              className="border-t border-border py-20 first:border-t-0"
+            >
               <Link
                 to={`/${p.key}`}
                 aria-label={`Explore ${p.title}`}
@@ -77,7 +114,12 @@ function ServicesPage() {
               >
                 <Reveal>
                   <div className="relative h-72 overflow-hidden rounded-3xl shadow-luxe transition-transform duration-500 group-hover:scale-[1.015] sm:h-96 md:h-[460px]">
-                    <AutoSlideshow images={[...p.images]} startIndex={i} interval={3800 + i * 300} rounded="rounded-none" />
+                    <AutoSlideshow
+                      images={[...p.images]}
+                      startIndex={i}
+                      interval={3800 + i * 300}
+                      rounded="rounded-none"
+                    />
                   </div>
                 </Reveal>
                 <Reveal delay={0.1}>
@@ -85,7 +127,9 @@ function ServicesPage() {
                     <Icon className="h-5 w-5" />
                   </div>
                   <p className="eyebrow mt-6">Tathastu {p.title}</p>
-                  <h2 className="mt-3 font-display text-3xl font-medium transition-colors duration-300 group-hover:text-primary sm:text-4xl md:text-5xl">{p.title}</h2>
+                  <h2 className="mt-3 font-display text-3xl font-medium transition-colors duration-300 group-hover:text-primary sm:text-4xl md:text-5xl">
+                    {p.title}
+                  </h2>
                   <p className="mt-5 text-lg text-muted-foreground">{p.blurb}</p>
                   <ul className="mt-8 space-y-3">
                     {p.capabilities.map((c) => (
@@ -97,9 +141,7 @@ function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                  <span
-                    className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-5 py-3 text-sm font-semibold text-ink shadow-gold transition-all duration-300 group-hover:scale-[1.03] group-hover:opacity-95 sm:w-fit"
-                  >
+                  <span className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-5 py-3 text-sm font-semibold text-ink shadow-gold transition-all duration-300 group-hover:scale-[1.03] group-hover:opacity-95 sm:w-fit">
                     Explore {p.title} <Check className="h-4 w-4" />
                   </span>
                 </Reveal>

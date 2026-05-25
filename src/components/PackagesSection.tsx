@@ -1,6 +1,16 @@
 import { Fragment, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Check, Hammer, Building, Layers, Paintbrush, Plug, Droplets, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  Hammer,
+  Building,
+  Layers,
+  Paintbrush,
+  Plug,
+  Droplets,
+  Sparkles,
+} from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
@@ -40,7 +50,7 @@ const baseCats = (extras: Partial<Record<string, string[]>> = {}): Category[] =>
     icon: Building,
     items: extras.structure ?? [
       "RCC framed structure with M25 / Fe500",
-      "External walls 6\" / Internal walls 4\"",
+      'External walls 6" / Internal walls 4"',
       "Earthquake resistant design",
     ],
   },
@@ -99,7 +109,7 @@ const baseCats = (extras: Partial<Record<string, string[]>> = {}): Category[] =>
 const constructionPackages: Pkg[] = [
   {
     key: "structure",
-    name: "Structure Package",
+    name: "Structural Package",
     price: "₹1,199",
     tagline: "Foundation to slab — built to last.",
     categories: baseCats({
@@ -122,7 +132,11 @@ const constructionPackages: Pkg[] = [
     price: "₹1,750",
     tagline: "Refined finishes for everyday luxury.",
     categories: baseCats({
-      flooring: ["Premium vitrified 2'x4'", "Designer dado tiles up to 7 ft", "Granite kitchen platform"],
+      flooring: [
+        "Premium vitrified 2'x4'",
+        "Designer dado tiles up to 7 ft",
+        "Granite kitchen platform",
+      ],
       painting: ["Royale luxury emulsion interiors", "Apex weather-shield exterior"],
     }),
   },
@@ -132,36 +146,17 @@ const constructionPackages: Pkg[] = [
     price: "₹2,250",
     tagline: "Designer-grade material across every room.",
     categories: baseCats({
-      flooring: ["Imported double-charge vitrified", "Wooden flooring in master bedroom", "Italian marble entry foyer"],
-      electrical: ["Smart modular switches", "CCTV & video door-phone wiring", "Designer LED lighting"],
+      flooring: [
+        "Imported double-charge vitrified",
+        "Wooden flooring in master bedroom",
+        "Italian marble entry foyer",
+      ],
+      electrical: [
+        "Smart modular switches",
+        "CCTV & video door-phone wiring",
+        "Designer LED lighting",
+      ],
       painting: ["Texture finish accent walls", "Royale Aspira / Asian Ultima"],
-    }),
-  },
-  {
-    key: "royal",
-    name: "Royal Package",
-    price: "₹2,099",
-    tagline: "Statement craftsmanship for distinguished homes.",
-    categories: baseCats({
-      flooring: ["Italian marble in living areas", "Solid wood flooring in bedrooms", "Designer granite & quartz"],
-      electrical: ["Full home automation ready", "Smart lighting scenes", "Premium chandeliers allowance"],
-      plumbing: ["Kohler / Jaquar Royale CP fittings", "Hot & cold mixers everywhere"],
-      painting: ["Designer textures & wallpapers", "Premium veneer accent walls"],
-    }),
-  },
-  {
-    key: "luxury",
-    name: "Luxury Package",
-    price: "₹2,499",
-    tagline: "Bespoke, signature-level living.",
-    categories: baseCats({
-      earth: ["Geotech survey & engineered foundation", "Complete waterproofing system"],
-      structure: ["Custom architectural facade", "Double-height feature walls", "Designer staircase"],
-      flooring: ["Imported Italian marble throughout", "Engineered hardwood in bedrooms", "Onyx / quartz feature floors"],
-      electrical: ["Full smart home automation", "Designer Italian lighting", "Home theatre wiring"],
-      plumbing: ["Kohler / Grohe luxury suite", "Rain showers & body jets", "Hot water recirculation"],
-      painting: ["Hand-applied lime plaster", "Imported wallcoverings", "Designer veneer & metallic finishes"],
-      misc: ["Dedicated project architect", "3D walkthrough & material library", "Landscape & lighting design"],
     }),
   },
 ];
@@ -233,8 +228,16 @@ const interiorPackages: Pkg[] = [
     price: "₹1,650",
     tagline: "Refined finishes and practical storage for everyday luxury.",
     categories: interiorCats({
-      carpentry: ["Premium laminate modular kitchen", "Wardrobes with soft-close hardware", "TV unit and study/storage unit"],
-      lighting: ["Layered warm lighting plan", "Cove lighting provisions", "Decorative pendant and profile lighting"],
+      carpentry: [
+        "Premium laminate modular kitchen",
+        "Wardrobes with soft-close hardware",
+        "TV unit and study/storage unit",
+      ],
+      lighting: [
+        "Layered warm lighting plan",
+        "Cove lighting provisions",
+        "Decorative pendant and profile lighting",
+      ],
     }),
   },
   {
@@ -243,10 +246,26 @@ const interiorPackages: Pkg[] = [
     price: "₹2,250",
     tagline: "Designer-grade interiors with richer materials and details.",
     categories: interiorCats({
-      planning: ["Detailed room-wise concept design", "Material palette and 3D view support", "Furniture and lighting placement"],
-      carpentry: ["Veneer / acrylic finish options", "Premium modular kitchen accessories", "Custom wardrobes and display units"],
-      finishes: ["Texture walls and wallpaper selection", "Premium paint finish", "Designer soft furnishings"],
-      decor: ["Curated furniture and decor styling", "Artwork and accessory sourcing support", "Final styling supervision"],
+      planning: [
+        "Detailed room-wise concept design",
+        "Material palette and 3D view support",
+        "Furniture and lighting placement",
+      ],
+      carpentry: [
+        "Veneer / acrylic finish options",
+        "Premium modular kitchen accessories",
+        "Custom wardrobes and display units",
+      ],
+      finishes: [
+        "Texture walls and wallpaper selection",
+        "Premium paint finish",
+        "Designer soft furnishings",
+      ],
+      decor: [
+        "Curated furniture and decor styling",
+        "Artwork and accessory sourcing support",
+        "Final styling supervision",
+      ],
     }),
   },
   {
@@ -255,11 +274,31 @@ const interiorPackages: Pkg[] = [
     price: "₹2,850",
     tagline: "Bespoke luxury interiors with a complete studio-led finish.",
     categories: interiorCats({
-      planning: ["Complete design concept with 3D walkthrough", "Room-wise material library", "Personalized luxury theme"],
-      carpentry: ["Custom veneer, PU and fluted details", "Premium kitchen and wardrobe systems", "Feature walls and designer partitions"],
-      lighting: ["Scene-based lighting plan", "Premium decorative fixtures", "Smart lighting readiness"],
-      finishes: ["Imported wallpapers and textures", "Stone, veneer and metallic accents", "Luxury upholstery selection"],
-      decor: ["Turnkey furniture and decor curation", "Artwork, mirrors and styling objects", "Final photo-ready styling"],
+      planning: [
+        "Complete design concept with 3D walkthrough",
+        "Room-wise material library",
+        "Personalized luxury theme",
+      ],
+      carpentry: [
+        "Custom veneer, PU and fluted details",
+        "Premium kitchen and wardrobe systems",
+        "Feature walls and designer partitions",
+      ],
+      lighting: [
+        "Scene-based lighting plan",
+        "Premium decorative fixtures",
+        "Smart lighting readiness",
+      ],
+      finishes: [
+        "Imported wallpapers and textures",
+        "Stone, veneer and metallic accents",
+        "Luxury upholstery selection",
+      ],
+      decor: [
+        "Turnkey furniture and decor curation",
+        "Artwork, mirrors and styling objects",
+        "Final photo-ready styling",
+      ],
     }),
   },
 ];
@@ -267,23 +306,56 @@ const interiorPackages: Pkg[] = [
 const packageCopy = {
   construction: {
     eyebrow: "Construction Packages",
-    title: <>Customised home construction <span className="text-gradient-gold italic">packages</span></>,
-    description: "Transparent inclusions, premium materials and zero-surprise pricing — pick the tier that fits your dream.",
-    quoteTitle: <>Get a tailored quote for your <span className="italic text-gradient-gold">construction plan.</span></>,
-    quoteDescription: "Share your site, built-up area and expectations in Pune or around Lohegaon. Our team will help you choose the right package, timeline and next step.",
+    title: (
+      <>
+        Customised home construction <span className="text-gradient-gold italic">packages</span>
+      </>
+    ),
+    description:
+      "Transparent inclusions, premium materials and zero-surprise pricing — pick the tier that fits your dream.",
+    quoteTitle: (
+      <>
+        Get a tailored quote for your{" "}
+        <span className="italic text-gradient-gold">construction plan.</span>
+      </>
+    ),
+    quoteDescription:
+      "Share your site, built-up area and expectations in Pune or around Lohegaon. Our team will help you choose the right package, timeline and next step.",
     packages: constructionPackages,
     defaultKey: "standard",
   },
   interior: {
     eyebrow: "Interior Packages",
-    title: <>Tailored interior design <span className="text-gradient-gold italic">packages</span></>,
-    description: "Flexible interior packages for kitchens, bedrooms, living spaces and offices — planned around finish, function and feel.",
-    quoteTitle: <>Get a tailored quote for your <span className="italic text-gradient-gold">interior scope.</span></>,
-    quoteDescription: "Share your rooms, style, budget and expected timeline. Our team will guide you toward the right interior package and next step.",
+    title: (
+      <>
+        Tailored interior design <span className="text-gradient-gold italic">packages</span>
+      </>
+    ),
+    description:
+      "Flexible interior packages for kitchens, bedrooms, living spaces and offices — planned around finish, function and feel.",
+    quoteTitle: (
+      <>
+        Get a tailored quote for your{" "}
+        <span className="italic text-gradient-gold">interior scope.</span>
+      </>
+    ),
+    quoteDescription:
+      "Share your rooms, style, budget and expected timeline. Our team will guide you toward the right interior package and next step.",
     packages: interiorPackages,
     defaultKey: "comfort",
   },
-} satisfies Record<PackageMode, { eyebrow: string; title: React.ReactNode; description: string; quoteTitle: React.ReactNode; quoteDescription: string; packages: Pkg[]; defaultKey: string }>;
+} satisfies Record<
+  PackageMode,
+  {
+    eyebrow: string;
+    title: React.ReactNode;
+    description: string;
+    quoteTitle: React.ReactNode;
+    quoteDescription: string;
+    packages: Pkg[];
+    defaultKey: string;
+  }
+>;
 
 function PackageDetails({
   current,
@@ -305,11 +377,16 @@ function PackageDetails({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.4 }}
-      className={cn("mt-8 overflow-hidden rounded-3xl border border-border bg-card shadow-luxe", className)}
+      className={cn(
+        "mt-8 overflow-hidden rounded-3xl border border-border bg-card shadow-luxe",
+        className,
+      )}
     >
       <div className="grid gap-0 md:grid-cols-[260px_1fr]">
         <div className="border-b border-border bg-secondary/40 p-4 md:border-b-0 md:border-r">
-          <p className="px-3 pb-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">{current.name}</p>
+          <p className="px-3 pb-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">
+            {current.name}
+          </p>
           <div className="flex flex-wrap gap-2 md:flex-col">
             {current.categories.map((c) => {
               const Icon = c.icon;
@@ -348,7 +425,10 @@ function PackageDetails({
               className="mt-6 grid gap-3 sm:grid-cols-2"
             >
               {activeCat.items.map((it, i) => (
-                <li key={i} className="flex items-start gap-3 rounded-xl bg-secondary/40 p-3 text-sm">
+                <li
+                  key={i}
+                  className="flex items-start gap-3 rounded-xl bg-secondary/40 p-3 text-sm"
+                >
                   <span className="mt-0.5 grid h-6 w-6 flex-none place-items-center rounded-full bg-gradient-gold text-primary-foreground">
                     <Check className="h-3.5 w-3.5" />
                   </span>
@@ -383,37 +463,51 @@ export function PackagesSection({ mode = "construction" }: { mode?: PackageMode 
         </Reveal>
 
         {/* Package cards */}
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {packages.map((p) => {
             const isActive = p.key === active;
             return (
               <Fragment key={p.key}>
                 <motion.button
-                type="button"
-                onClick={() => {
-                  setActive(p.key);
-                  setTab(p.categories[0].key);
-                }}
-                whileHover={{ y: -6 }}
-                transition={{ type: "spring", stiffness: 220, damping: 18 }}
-                className={cn(
-                  "group relative flex min-w-0 flex-col items-center justify-center rounded-2xl border px-3 py-6 text-center transition-all sm:px-4",
-                  isActive
-                    ? "border-transparent bg-gradient-gold text-primary-foreground shadow-gold"
-                    : "border-border bg-card text-foreground hover:border-primary/40 hover:shadow-luxe",
-                )}
-              >
-                <span className="text-xs font-semibold uppercase tracking-[0.12em] opacity-80 sm:tracking-[0.18em]">{p.name.replace(" Package", "")}</span>
-                <span className="mt-2 font-display text-2xl font-semibold leading-none">{p.price}</span>
-                <span className="mt-1 text-[11px] uppercase tracking-wider opacity-75">/ sqft · Incl. GST</span>
-                {isActive && (
-                  <span className="absolute -bottom-2 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 bg-gradient-gold" aria-hidden />
-                )}
+                  type="button"
+                  onClick={() => {
+                    setActive(p.key);
+                    setTab(p.categories[0].key);
+                  }}
+                  whileHover={{ y: -6 }}
+                  transition={{ type: "spring", stiffness: 220, damping: 18 }}
+                  className={cn(
+                    "group relative flex min-w-0 flex-col items-center justify-center rounded-2xl border px-3 py-6 text-center transition-all sm:px-4",
+                    isActive
+                      ? "border-transparent bg-gradient-gold text-primary-foreground shadow-gold"
+                      : "border-border bg-card text-foreground hover:border-primary/40 hover:shadow-luxe",
+                  )}
+                >
+                  <span className="text-xs font-semibold uppercase tracking-[0.12em] opacity-80 sm:tracking-[0.18em]">
+                    {p.name.replace(" Package", "")}
+                  </span>
+                  <span className="mt-2 font-display text-2xl font-semibold leading-none">
+                    {p.price}
+                  </span>
+                  <span className="mt-1 text-[11px] uppercase tracking-wider opacity-75">
+                    / sqft · Incl. GST
+                  </span>
+                  {isActive && (
+                    <span
+                      className="absolute -bottom-2 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 bg-gradient-gold"
+                      aria-hidden
+                    />
+                  )}
                 </motion.button>
                 {isActive && (
                   <div className="sm:col-span-2 lg:hidden">
                     <AnimatePresence mode="wait">
-                      <PackageDetails current={current} tab={tab} setTab={setTab} className="mt-4" />
+                      <PackageDetails
+                        current={current}
+                        tab={tab}
+                        setTab={setTab}
+                        className="mt-4"
+                      />
                     </AnimatePresence>
                   </div>
                 )}
@@ -435,7 +529,9 @@ export function PackagesSection({ mode = "construction" }: { mode?: PackageMode 
             <div className="grid gap-0 md:grid-cols-[260px_1fr]">
               {/* Sidebar tabs */}
               <div className="border-b border-border bg-secondary/40 p-4 md:border-b-0 md:border-r">
-                <p className="px-3 pb-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">{current.name}</p>
+                <p className="px-3 pb-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">
+                  {current.name}
+                </p>
                 <div className="flex flex-wrap gap-2 md:flex-col">
                   {current.categories.map((c) => {
                     const Icon = c.icon;
@@ -475,7 +571,10 @@ export function PackagesSection({ mode = "construction" }: { mode?: PackageMode 
                     className="mt-6 grid gap-3 sm:grid-cols-2"
                   >
                     {activeCat.items.map((it, i) => (
-                      <li key={i} className="flex items-start gap-3 rounded-xl bg-secondary/40 p-3 text-sm">
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 rounded-xl bg-secondary/40 p-3 text-sm"
+                      >
                         <span className="mt-0.5 grid h-6 w-6 flex-none place-items-center rounded-full bg-gradient-gold text-primary-foreground">
                           <Check className="h-3.5 w-3.5" />
                         </span>
@@ -502,8 +601,15 @@ export function PackagesSection({ mode = "construction" }: { mode?: PackageMode 
                   {copy.quoteDescription}
                 </p>
               </div>
-              <Button asChild size="lg" className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8">
-                <Link to="/" hash="contact">Get Free Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
+              <Button
+                asChild
+                size="lg"
+                className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8"
+              >
+                <Link to="/" hash="contact">
+                  Get Free Quote{" "}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
               </Button>
             </div>
           </div>

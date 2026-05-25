@@ -73,16 +73,6 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                 className="group w-full rounded-full bg-gradient-gold px-5 text-base text-ink shadow-gold sm:w-auto sm:px-8"
               >
                 <Link to="/" hash="contact">
-                  Start Your Project{" "}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                className="group w-full rounded-full bg-ivory px-5 text-base text-ink shadow-luxe hover:bg-primary hover:text-ink sm:w-auto sm:px-8"
-              >
-                <Link to="/" hash="contact">
                   Get Free Quote{" "}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
@@ -93,9 +83,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                 variant="outline"
                 className="w-full rounded-full border-ivory/30 bg-ivory/5 px-5 text-base text-ivory backdrop-blur hover:border-primary/60 hover:bg-ivory/10 sm:w-auto sm:px-8"
               >
-                <Link to="/" hash="contact">
-                  Contact Us
-                </Link>
+                <Link to="/projects">Explore Projects</Link>
               </Button>
             </div>
           </motion.div>
@@ -154,6 +142,25 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
               </Reveal>
             ))}
           </div>
+
+          {content.projectCategory === "construction" && (
+            <Reveal className="mt-8 rounded-3xl border border-border bg-card p-5 shadow-luxe sm:p-6">
+              <p className="eyebrow">Every Construction Category Includes</p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                {["Money Safety", "Quality", "On-Time Delivery", "Transparency", "Assurance"].map(
+                  (item) => (
+                    <div
+                      key={item}
+                      className="flex items-center gap-2 rounded-2xl bg-secondary/50 px-4 py-3 text-sm font-semibold text-foreground"
+                    >
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                      {item}
+                    </div>
+                  ),
+                )}
+              </div>
+            </Reveal>
+          )}
         </div>
       </section>
 
@@ -265,9 +272,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                     variant="outline"
                     className="w-full rounded-full border-ivory/25 bg-ivory/5 px-5 text-base text-ivory hover:bg-ivory/10 sm:w-auto sm:px-8"
                   >
-                    <Link to="/" hash="contact">
-                      Book a Consultation
-                    </Link>
+                    <Link to="/projects">Explore Projects</Link>
                   </Button>
                 </div>
               </div>
