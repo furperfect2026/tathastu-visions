@@ -1,4 +1,3 @@
-import realty1 from "@/assets/realty-1.jpg";
 import realty2 from "@/assets/realty-2.jpg";
 import realty3 from "@/assets/realty-3.jpg";
 import realty4 from "@/assets/realty-4.jpg";
@@ -32,7 +31,6 @@ export const pillars = [
       "Long-term client trust",
     ],
     images: [
-      { src: realty1, alt: "Tathastu apartment facade in Pune at golden hour" },
       { src: realty2, alt: "Tathastu high-rise residential tower in Lohegaon" },
       { src: realty3, alt: "Landscaped Tathastu residential courtyard in Pune" },
       { src: realty4, alt: "Elegant Tathastu residence in Pune at dusk" },
@@ -84,10 +82,58 @@ export const stats = [
 ];
 
 export const projects = [
-  { id: "p1", category: "realty", title: "Pride World City", location: "Lohegaon, Pune", year: 2024, image: project1, blurb: "An aerial-view masterplan blending greenery and modern apartments." },
-  { id: "p2", category: "interior", title: "Interior 1", location: "Pune Outskirts", year: 2024, image: project2, blurb: "Pool-side villa with infinity edge and palm-lined dusk lighting." },
-  { id: "p3", category: "construction", title: "Construction 1", location: "Kharadi, Pune", year: 2023, image: project3, blurb: "Boutique commercial corner with classic stone facade." },
-  { id: "p4", category: "interior", title: "Interior 2", location: "Magarpatta, Pune", year: 2024, image: project4, blurb: "Floor-to-ceiling glass and editorial furniture." },
-  { id: "p5", category: "interior", title: "Interior 3", location: "Koregaon Park, Pune", year: 2023, image: project5, blurb: "Spa-grade bath retreat with copper fixtures." },
-  { id: "p6", category: "realty", title: "Utsava Regency", location: "Wagholi, Pune", year: 2025, image: project6, blurb: "Palm-lined contemporary apartments." },
+  {
+    id: "p1",
+    category: "realty",
+    title: "Pride World City",
+    location: "Lohegaon, Pune",
+    year: 2024,
+    image: project1,
+    blurb: "An aerial-view masterplan blending greenery and modern apartments.",
+  },
+  {
+    id: "p2",
+    category: "interior",
+    title: "Interior 1",
+    location: "Pune Outskirts",
+    year: 2024,
+    image: project2,
+    blurb: "Pool-side villa with infinity edge and palm-lined dusk lighting.",
+  },
+  {
+    id: "p3",
+    category: "construction",
+    title: "Construction 1",
+    location: "Kharadi, Pune",
+    year: 2023,
+    image: project3,
+    blurb: "Boutique commercial corner with classic stone facade.",
+  },
+  {
+    id: "p4",
+    category: "interior",
+    title: "Interior 2",
+    location: "Magarpatta, Pune",
+    year: 2024,
+    image: project4,
+    blurb: "Floor-to-ceiling glass and editorial furniture.",
+  },
+  {
+    id: "p5",
+    category: "interior",
+    title: "Interior 3",
+    location: "Koregaon Park, Pune",
+    year: 2023,
+    image: project5,
+    blurb: "Spa-grade bath retreat with copper fixtures.",
+  },
+  {
+    id: "p6",
+    category: "realty",
+    title: "Utsava Regency",
+    location: "Wagholi, Pune",
+    year: 2025,
+    image: project6,
+    blurb: "Palm-lined contemporary apartments.",
+  },
 ] as const;

@@ -1,16 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Award,
-  Building2,
-  Calendar,
-  Clock3,
-  Eye,
-  ShieldCheck,
-  Users,
-  WalletCards,
-} from "lucide-react";
+import { ArrowRight, Award, Building2, Calendar, Eye, ShieldCheck, Users } from "lucide-react";
 import { useEffect, useState } from "react";
 import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { BrandSocialLink, type SocialBrand } from "@/components/BrandSocialLink";
@@ -20,14 +10,12 @@ import { Button } from "@/components/ui/button";
 import { ContactSection } from "@/components/ContactSection";
 import { pillars, projects, stats } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
-import realtyVilla from "@/assets/realty-1.jpg";
 import realtyTower from "@/assets/realty-2.jpg";
 import constructionSite from "@/assets/construction-1.jpg";
 import livingInterior from "@/assets/interior-1.jpg";
 import bedroomInterior from "@/assets/interior-2.jpg";
 
 const heroImages = [
-  { src: realtyVilla, alt: "Tathastu premium villa-style real estate in Pune" },
   { src: realtyTower, alt: "Tathastu modern residential tower in Lohegaon Pune" },
   { src: constructionSite, alt: "Tathastu construction and infrastructure site in Pune" },
   { src: livingInterior, alt: "Tathastu premium living room interior design" },
@@ -65,24 +53,24 @@ const socialLinks = [
 
 const trustPolicies = [
   {
-    icon: WalletCards,
-    title: "Money Safety",
-    body: "Clear scope, transparent package guidance and practical budget conversations before work begins.",
-  },
-  {
     icon: ShieldCheck,
-    title: "Quality Assurance",
-    body: "Material choices, site checks and finish reviews handled with one accountable Tathastu team.",
+    title: "Trust",
+    body: "Every conversation is handled with honesty, privacy and care from the first enquiry.",
   },
   {
-    icon: Clock3,
-    title: "On-Time Delivery",
-    body: "Planning, vendor coordination and execution tracking designed around predictable timelines.",
+    icon: Users,
+    title: "Client Relationship",
+    body: "We stay close to clients through decisions, visits, planning and final handover.",
   },
   {
     icon: Eye,
-    title: "Transparency",
-    body: "Simple communication from first visit to handover, so clients know what is happening and why.",
+    title: "Clear Guidance",
+    body: "Simple explanations, practical options and transparent next steps across every service.",
+  },
+  {
+    icon: Award,
+    title: "Long-Term Value",
+    body: "Spaces and property decisions shaped for comfort, durability and future confidence.",
   },
 ] as const;
 
@@ -162,7 +150,7 @@ function HomePage() {
               heroVideoDone ? "opacity-0" : "opacity-100",
             )}
             src="/media/hero-section.mp4"
-            poster={realtyVilla}
+            poster={realtyTower}
             autoPlay
             muted
             playsInline
@@ -365,7 +353,7 @@ function HomePage() {
           <Reveal className="max-w-2xl">
             <p className="eyebrow">Our Promise</p>
             <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
-              Built around trust, clarity and control.
+              Built around trust and lasting client relationships.
             </h2>
           </Reveal>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
