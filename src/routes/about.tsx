@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import founder from "@/assets/founder.jpg";
+import teamStudio from "@/assets/team-studio.jpg";
 import trustImage from "@/assets/realty-2.jpg";
 import luxuryImage from "@/assets/interior-1.jpg";
 import craftsmanshipImage from "@/assets/construction-1.jpg";
@@ -109,17 +110,27 @@ function AboutPage() {
           </Reveal>
           <div className="mt-14">
             <Reveal>
-              <div className="relative overflow-hidden rounded-3xl bg-card p-6 shadow-luxe ring-1 ring-border sm:p-8 md:p-12 lg:p-14">
-                <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-gradient-to-l from-primary/15 to-transparent lg:block" />
-                <div className="relative max-w-4xl">
-                <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
-                  <Users className="h-7 w-7" />
-                </div>
-                <p className="eyebrow mt-8">Our Team</p>
-                <h3 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">One studio. Many specialists.</h3>
-                <p className="mt-5 max-w-2xl text-muted-foreground">
-                  Behind every Tathastu project in Pune is a coordinated team of sales, construction, design, engineering and execution professionals working together to deliver spaces with clarity and care.
-                </p>
+              <div className="overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border">
+                <div className="relative aspect-[16/9] overflow-hidden">
+                  <img
+                    src={teamStudio}
+                    alt="Tathastu studio team reviewing plans in a premium design office"
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 text-ivory sm:p-8 md:p-12">
+                    <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold sm:h-16 sm:w-16">
+                      <Users className="h-6 w-6 sm:h-7 sm:w-7" />
+                    </div>
+                    <p className="eyebrow mt-6 !text-primary-glow">Our Team</p>
+                    <h3 className="mt-3 max-w-4xl font-display text-3xl font-medium sm:text-4xl md:text-5xl">
+                      One studio. Many specialists.
+                    </h3>
+                    <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ivory/82 sm:text-base">
+                      Behind every Tathastu project in Pune is a coordinated team of sales, construction, design, engineering and execution professionals working together to deliver spaces with clarity and care.
+                    </p>
+                  </div>
                 </div>
               </div>
             </Reveal>
