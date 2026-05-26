@@ -1,4 +1,3 @@
-import realty2 from "@/assets/realty-2.jpg";
 import realty3 from "@/assets/realty-3.jpg";
 import realty4 from "@/assets/realty-4.jpg";
 import construction1 from "@/assets/construction-1.jpg";
@@ -31,7 +30,6 @@ export const pillars = [
       "Long-term client trust",
     ],
     images: [
-      { src: realty2, alt: "Tathastu high-rise residential tower in Lohegaon" },
       { src: realty3, alt: "Landscaped Tathastu residential courtyard in Pune" },
       { src: realty4, alt: "Elegant Tathastu residence in Pune at dusk" },
     ],

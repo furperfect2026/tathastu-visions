@@ -10,13 +10,13 @@ import { Button } from "@/components/ui/button";
 import { ContactSection } from "@/components/ContactSection";
 import { pillars, projects, stats } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
-import realtyTower from "@/assets/realty-2.jpg";
+import realtyCourtyard from "@/assets/realty-3.jpg";
 import constructionSite from "@/assets/construction-1.jpg";
 import livingInterior from "@/assets/interior-1.jpg";
 import bedroomInterior from "@/assets/interior-2.jpg";
 
 const heroImages = [
-  { src: realtyTower, alt: "Tathastu modern residential tower in Lohegaon Pune" },
+  { src: realtyCourtyard, alt: "Tathastu residential project and realty guidance in Pune" },
   { src: constructionSite, alt: "Tathastu construction and infrastructure site in Pune" },
   { src: livingInterior, alt: "Tathastu premium living room interior design" },
   { src: bedroomInterior, alt: "Tathastu calm luxury bedroom interior design" },
@@ -150,7 +150,7 @@ function HomePage() {
               heroVideoDone ? "opacity-0" : "opacity-100",
             )}
             src="/media/hero-section.mp4"
-            poster={realtyTower}
+            poster={realtyCourtyard}
             autoPlay
             muted
             playsInline

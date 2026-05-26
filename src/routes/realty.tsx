@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Building2, CalendarCheck, Handshake } from "lucide-react";
 import { ServicePage, type ServicePageContent } from "@/components/ServicePage";
-import realty2 from "@/assets/realty-2.jpg";
 import realty3 from "@/assets/realty-3.jpg";
 import realty4 from "@/assets/realty-4.jpg";
 
@@ -12,7 +11,6 @@ const content: ServicePageContent = {
   subtitle:
     "Premium real estate and property guidance in Lohegaon, Pune for clients exploring homes, flats, resale properties and rentals with a clean process.",
   heroImages: [
-    { src: realty2, alt: "Luxury real estate elevation in Lohegaon Pune" },
     { src: realty3, alt: "Modern apartment project for Tathastu Realty clients" },
     { src: realty4, alt: "Residential property guidance and site visits in Pune" },
   ],
@@ -40,7 +38,7 @@ const content: ServicePageContent = {
       description:
         "New residential projects, site visits and flat shortlisting support for buyers and investors.",
       icon: Building2,
-      image: { src: realty2, alt: "New residential project sales in Lohegaon Pune" },
+      image: { src: realty3, alt: "New residential project sales in Lohegaon Pune" },
     },
   ],
 };

@@ -13,7 +13,6 @@ import { RealtySearchLinks } from "@/components/RealtySearchLinks";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/site-data";
-import realty2 from "@/assets/realty-2.jpg";
 import realty3 from "@/assets/realty-3.jpg";
 import realty4 from "@/assets/realty-4.jpg";
 
@@ -30,7 +29,6 @@ type RealtySeoPageContent = {
 };
 
 const heroImages = [
-  { src: realty2, alt: "Apartment building options for Tathastu Realty clients in Pune" },
   { src: realty3, alt: "Residential real estate project near Lohegaon" },
   { src: realty4, alt: "Premium home and flat search support in Pune" },
 ];

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import founder from "@/assets/founder.jpg";
 import teamStudio from "@/assets/team-studio.jpg";
-import trustImage from "@/assets/realty-2.jpg";
+import trustImage from "@/assets/realty-3.jpg";
 import luxuryImage from "@/assets/interior-1.jpg";
 import craftsmanshipImage from "@/assets/construction-1.jpg";
 import { CountUp } from "@/components/CountUp";
