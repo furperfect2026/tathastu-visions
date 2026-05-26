@@ -7,11 +7,11 @@ const content = {
   title: "Design in Lohegaon",
   accent: "with refined function.",
   subtitle:
-    "Tathastu Interiors helps Lohegaon and Pune clients shape homes and workspaces with space planning, material care, furniture and decor.",
+    "Tathastu Infra Interiors helps Lohegaon and Pune clients shape homes and workspaces with space planning, material care, furniture and decor.",
   introEyebrow: "Local Interior Design",
   introTitle: "Luxury feels better when the room works beautifully.",
   intro:
-    "An interior designer in Lohegaon should understand how Pune homes and workspaces are actually used. Tathastu brings visual direction together with storage, circulation, finishes, lighting and comfort so interiors feel composed and livable.",
+    "An interior designer in Lohegaon should understand how Pune homes and workspaces are actually used. Tathastu Infra brings visual direction together with storage, circulation, finishes, lighting and comfort so interiors feel composed and livable.",
   highlights: [
     "Home and office interior design in Pune",
     "Living room, bedroom and kitchen planning",
@@ -45,9 +45,9 @@ const content = {
   processTitle: "From room brief to a more finished life inside it.",
   faqs: [
     {
-      question: "Does Tathastu provide interior design in Lohegaon Pune?",
+      question: "Does Tathastu Infra provide interior design in Lohegaon Pune?",
       answer:
-        "Yes. Tathastu supports interior design requirements for homes and offices in Lohegaon and nearby Pune areas.",
+        "Yes. Tathastu Infra supports interior design requirements for homes and offices in Lohegaon and nearby Pune areas.",
     },
     {
       question: "Can you help with both layout and decor?",
@@ -65,13 +65,13 @@ const content = {
 export const Route = createFileRoute("/interior-designer-in-lohegaon-pune")({
   head: () => ({
     meta: [
-      { title: "Interior Designer in Lohegaon Pune | Tathastu Interiors" },
+      { title: "Interior Designer in Lohegaon Pune | Tathastu Infra Interiors" },
       {
         name: "description",
         content:
-          "Choose Tathastu for interior design in Lohegaon Pune with home interiors, office interiors, space planning, furniture and decor support.",
+          "Choose Tathastu Infra for interior design in Lohegaon Pune with home interiors, office interiors, space planning, furniture and decor support.",
       },
-      { property: "og:title", content: "Interior Designer in Lohegaon Pune | Tathastu" },
+      { property: "og:title", content: "Interior Designer in Lohegaon Pune | Tathastu Infra" },
       {
         property: "og:description",
         content: "Refined home and office interior design for Lohegaon and Pune clients.",

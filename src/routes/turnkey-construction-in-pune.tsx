@@ -7,11 +7,11 @@ const content = {
   title: "One build path",
   accent: "from plan to handover.",
   subtitle:
-    "Tathastu Turnkey Construction helps Pune owners coordinate planning, materials, supervision, site work and final handover with one accountable team.",
+    "Tathastu Infra Turnkey Construction helps Pune owners coordinate planning, materials, supervision, site work and final handover with one accountable team.",
   introEyebrow: "Turnkey Delivery",
   introTitle: "Turnkey should mean fewer gaps, not less attention.",
   intro:
-    "A turnkey construction route helps owners avoid fragmented responsibility across major phases of a build. Tathastu keeps the site brief, structural work, material planning, coordination and handover connected so decisions stay easier to track.",
+    "A turnkey construction route helps owners avoid fragmented responsibility across major phases of a build. Tathastu Infra keeps the site brief, structural work, material planning, coordination and handover connected so decisions stay easier to track.",
   highlights: [
     "Single construction route for multi-phase builds",
     "Clear handoff from planning into execution",
@@ -45,7 +45,7 @@ const content = {
   processTitle: "A more connected construction journey.",
   faqs: [
     {
-      question: "What does turnkey construction with Tathastu include?",
+      question: "What does turnkey construction with Tathastu Infra include?",
       answer:
         "It starts with understanding your project scope and can connect planning, materials, supervision, execution coordination and handover.",
     },
@@ -65,13 +65,13 @@ const content = {
 export const Route = createFileRoute("/turnkey-construction-in-pune")({
   head: () => ({
     meta: [
-      { title: "Turnkey Construction in Pune | Tathastu Construction" },
+      { title: "Turnkey Construction in Pune | Tathastu Infra Construction" },
       {
         name: "description",
         content:
-          "Explore turnkey construction in Pune with Tathastu support for planning, material coordination, site supervision and final handover.",
+          "Explore turnkey construction in Pune with Tathastu Infra support for planning, material coordination, site supervision and final handover.",
       },
-      { property: "og:title", content: "Turnkey Construction in Pune | Tathastu" },
+      { property: "og:title", content: "Turnkey Construction in Pune | Tathastu Infra" },
       {
         property: "og:description",
         content: "One accountable construction path for Pune projects from scope to handover.",

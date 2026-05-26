@@ -31,7 +31,7 @@ const serviceSearchContent: Record<
     eyebrow: "Construction in Pune",
     title: "Planning a build, budget or turnkey handover?",
     description:
-      "Start with the construction question closest to your project. Tathastu helps owners in Pune and Lohegaon move from scope to supervised execution.",
+      "Start with the construction question closest to your project. Tathastu Infra helps owners in Pune and Lohegaon move from scope to supervised execution.",
     icons: [HardHat, Home, WalletCards, Building2],
     links: constructionSearchLinks,
   },
@@ -39,7 +39,7 @@ const serviceSearchContent: Record<
     eyebrow: "Interiors in Pune",
     title: "Designing a home, kitchen or office interior?",
     description:
-      "Choose the interior path that fits your space. Tathastu balances layout, finishes, comfort and everyday function across Pune.",
+      "Choose the interior path that fits your space. Tathastu Infra balances layout, finishes, comfort and everyday function across Pune.",
     icons: [Lamp, Sofa, CookingPot, Ruler],
     links: interiorSearchLinks,
   },

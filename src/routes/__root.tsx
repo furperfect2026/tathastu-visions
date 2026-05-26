@@ -20,10 +20,10 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "RealEstateAgent", "HomeAndConstructionBusiness"],
   "@id": `${siteUrl}/#localbusiness`,
-  name: "Tathastu",
+  name: "Tathastu Infra",
   alternateName: "Tathastu Infra",
   description:
-    "Tathastu is a Lohegaon, Pune based real estate, property consulting, construction and interior design firm for premium homes, commercial spaces and luxury interiors.",
+    "Tathastu Infra is a Lohegaon, Pune based real estate, property consulting, construction and interior design firm for premium homes, commercial spaces and luxury interiors.",
   url: siteUrl,
   telephone: "+917820864384",
   email: "tathastu.infra.info@gmail.com",
@@ -31,7 +31,7 @@ const localBusinessJsonLd = {
   image: `${siteUrl}/assets/tathastu-logo.png`,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Tathastu, Lohegaon",
+    streetAddress: "Tathastu Infra, Lohegaon",
     addressLocality: "Pune",
     addressRegion: "Maharashtra",
     postalCode: "411047",
@@ -52,7 +52,7 @@ const localBusinessJsonLd = {
   sameAs: ["https://www.instagram.com/tathastu_infra/", "https://www.youtube.com/@Tathastu_Infra"],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Tathastu Services",
+    name: "Tathastu Infra Services",
     itemListElement: [
       {
         "@type": "Offer",
@@ -124,7 +124,7 @@ const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": `${siteUrl}/#website`,
-  name: "Tathastu",
+  name: "Tathastu Infra",
   url: siteUrl,
   publisher: { "@id": `${siteUrl}/#localbusiness` },
   inLanguage: "en-IN",
@@ -189,19 +189,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Tathastu Pune | Realty, Construction & Interior Design in Lohegaon" },
+      { title: "Tathastu Infra Pune | Realty, Construction & Interior Design in Lohegaon" },
       {
         name: "description",
         content:
-          "Tathastu is a Lohegaon, Pune based real estate, property consulting, construction and interior design firm building premium homes, commercial spaces and luxury interiors across Pune.",
+          "Tathastu Infra is a Lohegaon, Pune based real estate, property consulting, construction and interior design firm building premium homes, commercial spaces and luxury interiors across Pune.",
       },
       { name: "theme-color", content: "#FBF8F1" },
       { property: "og:type", content: "website" },
-      { property: "og:title", content: "Tathastu — Building Spaces. Creating Futures." },
+      { property: "og:title", content: "Tathastu Infra — Building Spaces. Creating Futures." },
       {
         property: "og:description",
         content:
-          "Premium real estate, properties, construction and interior design from Tathastu in Lohegaon, Pune.",
+          "Premium real estate, properties, construction and interior design from Tathastu Infra in Lohegaon, Pune.",
       },
       { name: "twitter:card", content: "summary_large_image" },
     ],

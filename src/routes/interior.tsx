@@ -8,21 +8,21 @@ import interior4 from "@/assets/interior-4.jpg";
 import project5 from "@/assets/project-5.jpg";
 
 const content: ServicePageContent = {
-  eyebrow: "Tathastu Interior Design",
+  eyebrow: "Tathastu Infra Interior Design",
   title: "Interiors",
   accent: "With Soul",
   subtitle:
     "Elegant, functional interiors in Pune shaped around how you live, work, host and feel inside a space.",
   heroImages: [
-    { src: interior3, alt: "Luxury kitchen and interior design by Tathastu in Pune" },
-    { src: interior1, alt: "Premium living room interior by Tathastu" },
+    { src: interior3, alt: "Luxury kitchen and interior design by Tathastu Infra in Pune" },
+    { src: interior1, alt: "Premium living room interior by Tathastu Infra" },
     { src: interior2, alt: "Elegant bedroom interior design in Pune" },
-    { src: interior4, alt: "Modern office interior planning by Tathastu" },
-    { src: project5, alt: "Featured Tathastu interior design project" },
+    { src: interior4, alt: "Modern office interior planning by Tathastu Infra" },
+    { src: project5, alt: "Featured Tathastu Infra interior design project" },
   ],
   overviewTitle: "Beautiful interiors should also work beautifully.",
   overview:
-    "Tathastu Interior Design brings together space planning, materials, lighting, furniture and decor for homes and offices in Lohegaon, Pune. Every room is designed to feel personal, refined and practical for everyday life.",
+    "Tathastu Infra Interior Design brings together space planning, materials, lighting, furniture and decor for homes and offices in Lohegaon, Pune. Every room is designed to feel personal, refined and practical for everyday life.",
   projectCategory: "interior",
   offers: [
     {
@@ -30,20 +30,20 @@ const content: ServicePageContent = {
       description:
         "Complete home interiors for living rooms, bedrooms, storage, finishes and decor.",
       icon: Home,
-      image: { src: interior1, alt: "Luxury home interior design by Tathastu" },
+      image: { src: interior1, alt: "Luxury home interior design by Tathastu Infra" },
     },
     {
       title: "Office Interior",
       description:
         "Professional office interiors shaped around workflow, comfort and brand presence.",
       icon: BriefcaseBusiness,
-      image: { src: interior4, alt: "Modern office interior design by Tathastu" },
+      image: { src: interior4, alt: "Modern office interior design by Tathastu Infra" },
     },
     {
       title: "Modular Kitchen",
       description: "Elegant kitchens planned for workflow, storage, finish quality and durability.",
       icon: CookingPot,
-      image: { src: interior3, alt: "Premium modular kitchen interior by Tathastu" },
+      image: { src: interior3, alt: "Premium modular kitchen interior by Tathastu Infra" },
     },
     {
       title: "Living & Bedroom",
@@ -57,7 +57,7 @@ const content: ServicePageContent = {
 export const Route = createFileRoute("/interior")({
   head: () => ({
     meta: [
-      { title: "Interior Designer in Pune | Tathastu Interiors Lohegaon" },
+      { title: "Interior Designer in Pune | Tathastu Infra Interiors Lohegaon" },
       {
         name: "description",
         content:

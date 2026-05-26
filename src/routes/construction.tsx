@@ -8,21 +8,21 @@ import construction4 from "@/assets/construction-4.jpg";
 import heroInfra1 from "@/assets/hero-infra-1.jpg";
 
 const content: ServicePageContent = {
-  eyebrow: "Tathastu Construction",
+  eyebrow: "Tathastu Infra Construction",
   title: "Construction",
   accent: "With Integrity",
   subtitle:
     "Residential and commercial construction in Pune shaped by structure, safety, material discipline and reliable supervision.",
   heroImages: [
     { src: heroInfra1, alt: "Tathastu infrastructure construction site in Pune" },
-    { src: construction3, alt: "Tathastu construction site in Pune" },
-    { src: construction1, alt: "Civil construction and scaffolding by Tathastu" },
+    { src: construction3, alt: "Tathastu Infra construction site in Pune" },
+    { src: construction1, alt: "Civil construction and scaffolding by Tathastu Infra" },
     { src: construction2, alt: "Residential construction work in progress" },
     { src: construction4, alt: "Structural construction execution and supervision" },
   ],
   overviewTitle: "Strong spaces begin with strong systems.",
   overview:
-    "Tathastu Construction handles homes and commercial projects in Lohegaon, Pune with engineering focus and site accountability. We coordinate structural work, material planning, supervision and turnkey delivery so every project moves forward with quality, clarity and control.",
+    "Tathastu Infra Construction handles homes and commercial projects in Lohegaon, Pune with engineering focus and site accountability. We coordinate structural work, material planning, supervision and turnkey delivery so every project moves forward with quality, clarity and control.",
   projectCategory: "construction",
   offers: [
     {
@@ -30,14 +30,14 @@ const content: ServicePageContent = {
       description:
         "Offices, shops and commercial structures planned around quality, transparency and on-time delivery.",
       icon: Factory,
-      image: { src: construction3, alt: "Commercial construction structure by Tathastu" },
+      image: { src: construction3, alt: "Commercial construction structure by Tathastu Infra" },
     },
     {
       title: "Residential Construction",
       description:
         "Homes, villas and bungalows built with money safety, material clarity and reliable supervision.",
       icon: Building,
-      image: { src: construction2, alt: "Residential home construction planning by Tathastu" },
+      image: { src: construction2, alt: "Residential home construction planning by Tathastu Infra" },
     },
     {
       title: "Structural Work & RCC",
@@ -59,7 +59,7 @@ const content: ServicePageContent = {
 export const Route = createFileRoute("/construction")({
   head: () => ({
     meta: [
-      { title: "Tathastu Construction Pune | Residential & Commercial Construction" },
+      { title: "Tathastu Infra Construction Pune | Residential & Commercial Construction" },
       {
         name: "description",
         content:

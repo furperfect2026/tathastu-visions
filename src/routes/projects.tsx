@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Projects in Pune | Tathastu Realty, Construction & Interior" },
-      { name: "description", content: "Selected works by Tathastu in Pune and Maharashtra, including apartments, villas, commercial spaces and bespoke interiors." },
-      { property: "og:title", content: "Tathastu Projects" },
+      { title: "Projects in Pune | Tathastu Infra Realty, Construction & Interior" },
+      { name: "description", content: "Selected works by Tathastu Infra in Pune and Maharashtra, including apartments, villas, commercial spaces and bespoke interiors." },
+      { property: "og:title", content: "Tathastu Infra Projects" },
       { property: "og:description", content: "A curated portfolio of recent work in Pune and Maharashtra." },
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/projects" }],
@@ -37,7 +37,7 @@ function ProjectsPage() {
           Selected <span className="text-gradient-gold italic">work.</span>
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
-          A curated look at Tathastu projects across Lohegaon, Pune and nearby Maharashtra locations.
+          A curated look at Tathastu Infra projects across Lohegaon, Pune and nearby Maharashtra locations.
         </p>
 
         <div className="mt-10 flex flex-wrap gap-2">

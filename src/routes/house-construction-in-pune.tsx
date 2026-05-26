@@ -7,11 +7,11 @@ const content = {
   title: "Build your home",
   accent: "with a stronger plan.",
   subtitle:
-    "For house construction in Pune, Tathastu brings planning, structural execution, material discipline and site coordination into one clear build journey.",
+    "For house construction in Pune, Tathastu Infra brings planning, structural execution, material discipline and site coordination into one clear build journey.",
   introEyebrow: "Home Construction",
   introTitle: "A dream home needs engineering calm behind the beauty.",
   intro:
-    "House construction carries emotional decisions and technical ones at the same time. Tathastu helps owners align layout intent, structure, materials, workmanship and site progress so a Pune home build feels considered from foundation to finish.",
+    "House construction carries emotional decisions and technical ones at the same time. Tathastu Infra helps owners align layout intent, structure, materials, workmanship and site progress so a Pune home build feels considered from foundation to finish.",
   highlights: [
     "Residential construction for homes and villas",
     "Scope clarity before site execution",
@@ -44,9 +44,9 @@ const content = {
   processTitle: "A home construction path with fewer loose ends.",
   faqs: [
     {
-      question: "Does Tathastu take house construction projects in Pune?",
+      question: "Does Tathastu Infra take house construction projects in Pune?",
       answer:
-        "Yes. Tathastu supports residential construction requirements in Pune including planning, execution and supervision conversations.",
+        "Yes. Tathastu Infra supports residential construction requirements in Pune including planning, execution and supervision conversations.",
     },
     {
       question: "Can you help if I already have drawings?",
@@ -64,13 +64,13 @@ const content = {
 export const Route = createFileRoute("/house-construction-in-pune")({
   head: () => ({
     meta: [
-      { title: "House Construction in Pune | Home Building | Tathastu" },
+      { title: "House Construction in Pune | Home Building | Tathastu Infra" },
       {
         name: "description",
         content:
-          "Plan house construction in Pune with Tathastu support for structural work, material planning, site supervision and turnkey execution.",
+          "Plan house construction in Pune with Tathastu Infra support for structural work, material planning, site supervision and turnkey execution.",
       },
-      { property: "og:title", content: "House Construction in Pune | Tathastu Construction" },
+      { property: "og:title", content: "House Construction in Pune | Tathastu Infra Construction" },
       {
         property: "og:description",
         content:

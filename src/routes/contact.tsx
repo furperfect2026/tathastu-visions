@@ -17,9 +17,9 @@ import { submitInquiry } from "@/lib/contact.functions";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Tathastu — Lohegaon, Maharashtra" },
-      { name: "description", content: "Contact Tathastu in Lohegaon, Pune for realty, construction or interior design projects. We typically respond within one business day." },
-      { property: "og:title", content: "Contact Tathastu" },
+      { title: "Contact Tathastu Infra — Lohegaon, Maharashtra" },
+      { name: "description", content: "Contact Tathastu Infra in Lohegaon, Pune for realty, construction or interior design projects. We typically respond within one business day." },
+      { property: "og:title", content: "Contact Tathastu Infra" },
       { property: "og:description", content: "Let's design your next space." },
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/contact" }],
@@ -138,13 +138,13 @@ function ContactPage() {
               <p className="mt-2 text-sm text-ivory/70">We work by appointment. Coffee is on us.</p>
 
               <ul className="mt-8 space-y-5 text-sm">
-                <li className="flex min-w-0 gap-3"><MapPin className="h-5 w-5 flex-none text-primary-glow" /> <span>Tathastu,<br /> Lohegaon, Pune 411047</span></li>
+                <li className="flex min-w-0 gap-3"><MapPin className="h-5 w-5 flex-none text-primary-glow" /> <span>Tathastu Infra,<br /> Lohegaon, Pune 411047</span></li>
                 <li className="flex min-w-0 gap-3"><Phone className="h-5 w-5 flex-none text-primary-glow" /> <span>+91 78208 64384</span></li>
                 <li className="flex min-w-0 gap-3"><Mail className="h-5 w-5 flex-none text-primary-glow" /> <span className="break-words">tathastu.infra.info@gmail.com</span></li>
               </ul>
 
               <div className="mt-10 rounded-2xl bg-gradient-gold p-5 text-ink">
-                <p className="font-display text-lg font-semibold">"Tathastu — so be it."</p>
+                <p className="font-display text-lg font-semibold">"Tathastu Infra — so be it."</p>
                 <p className="mt-1 text-xs text-ink/70">Building dreams, creating reality.</p>
               </div>
             </div>

@@ -7,11 +7,11 @@ const content = {
   title: "Design an office",
   accent: "with presence and flow.",
   subtitle:
-    "Tathastu Office Interiors helps Pune workspaces balance layout, function, materials, furniture and a polished client-facing feel.",
+    "Tathastu Infra Office Interiors helps Pune workspaces balance layout, function, materials, furniture and a polished client-facing feel.",
   introEyebrow: "Office Interiors",
   introTitle: "A workspace should support work before it tries to impress.",
   intro:
-    "Office interior design needs a clear view of movement, teams, storage, client moments and brand tone. Tathastu helps Pune businesses shape workspaces that feel organized, refined and appropriate for how the office operates.",
+    "Office interior design needs a clear view of movement, teams, storage, client moments and brand tone. Tathastu Infra helps Pune businesses shape workspaces that feel organized, refined and appropriate for how the office operates.",
   highlights: [
     "Office space planning and furniture direction",
     "Material palettes suited to business use",
@@ -44,9 +44,9 @@ const content = {
   processTitle: "A workspace design path with function at the center.",
   faqs: [
     {
-      question: "Does Tathastu provide office interior design in Pune?",
+      question: "Does Tathastu Infra provide office interior design in Pune?",
       answer:
-        "Yes. Tathastu can discuss office interior needs including layout, furniture direction, materials and functional design priorities.",
+        "Yes. Tathastu Infra can discuss office interior needs including layout, furniture direction, materials and functional design priorities.",
     },
     {
       question: "Can office interiors still look premium?",
@@ -64,13 +64,13 @@ const content = {
 export const Route = createFileRoute("/office-interior-design-in-pune")({
   head: () => ({
     meta: [
-      { title: "Office Interior Design in Pune | Tathastu Interiors" },
+      { title: "Office Interior Design in Pune | Tathastu Infra Interiors" },
       {
         name: "description",
         content:
-          "Explore office interior design in Pune with Tathastu support for workspace layout, furniture, materials and polished functional interiors.",
+          "Explore office interior design in Pune with Tathastu Infra support for workspace layout, furniture, materials and polished functional interiors.",
       },
-      { property: "og:title", content: "Office Interior Design in Pune | Tathastu" },
+      { property: "og:title", content: "Office Interior Design in Pune | Tathastu Infra" },
       {
         property: "og:description",
         content: "Refined office interior guidance for functional Pune workspaces.",

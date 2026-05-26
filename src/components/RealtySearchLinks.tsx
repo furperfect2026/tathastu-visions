@@ -22,7 +22,7 @@ export function RealtySearchLinks({
             Looking for flats, rent or plots in Pune?
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-            Start with the property path that matches your need. Tathastu Realty helps buyers,
+            Start with the property path that matches your need. Tathastu Infra Realty helps buyers,
             tenants and investors move from search to site visit with local guidance in Lohegaon.
           </p>
         </Reveal>

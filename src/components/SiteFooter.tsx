@@ -16,7 +16,7 @@ export function SiteFooter() {
         <div className="md:col-span-3 lg:col-span-2">
           <Logo light />
           <p className="mt-6 max-w-md text-sm text-ivory/70">
-            Tathastu is a Lohegaon, Pune based multi-disciplinary firm shaping modern living through
+            Tathastu Infra is a Lohegaon, Pune based multi-disciplinary firm shaping modern living through
             visionary real estate, robust construction and masterful interior design.
           </p>
           <div className="mt-6 flex gap-3">
@@ -99,7 +99,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm text-ivory/70">
             <li className="flex min-w-0 gap-2">
               <MapPin className="mt-0.5 h-4 w-4 flex-none text-primary" />{" "}
-              <span className="break-words">Tathastu, Lohegaon, Pune 411047</span>
+              <span className="break-words">Tathastu Infra, Lohegaon, Pune 411047</span>
             </li>
             <li className="flex min-w-0 gap-2">
               <Phone className="mt-0.5 h-4 w-4 flex-none text-primary" />{" "}
@@ -114,8 +114,8 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-ivory/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-6 text-center text-xs text-ivory/50 sm:px-6 md:flex-row md:text-left">
-          <p>© {new Date().getFullYear()} Tathastu. Building dreams. Creating reality.</p>
-          <p>Design & build · Tathastu Studio</p>
+          <p>© {new Date().getFullYear()} Tathastu Infra. Building dreams. Creating reality.</p>
+          <p>Design & build · Tathastu Infra Studio</p>
         </div>
       </div>
     </footer>

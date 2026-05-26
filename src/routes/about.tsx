@@ -13,10 +13,10 @@ import { Sparkles, Shield, Gem, Users } from "lucide-react";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Tathastu — Our Story, Vision & Leadership" },
-      { name: "description", content: "Founded by Rohit, Tathastu is a multi-disciplinary realty, construction and interior design firm based in Lohegaon, Pune." },
-      { property: "og:title", content: "About Tathastu" },
-      { property: "og:description", content: "Trust, luxury and craftsmanship — the Tathastu story." },
+      { title: "About Tathastu Infra — Our Story, Vision & Leadership" },
+      { name: "description", content: "Founded by Rohit, Tathastu Infra is a multi-disciplinary realty, construction and interior design firm based in Lohegaon, Pune." },
+      { property: "og:title", content: "About Tathastu Infra" },
+      { property: "og:description", content: "Trust, luxury and craftsmanship — the Tathastu Infra story." },
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/about" }],
   }),
@@ -28,7 +28,7 @@ function AboutPage() {
     <>
       <section className="pt-36 pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <p className="eyebrow">About Tathastu</p>
+          <p className="eyebrow">About Tathastu Infra</p>
           <h1 className="mt-4 max-w-6xl break-words font-display text-[2.75rem] font-medium leading-[1.05] sm:text-5xl md:text-7xl xl:text-[5.4rem]">
             A name synonymous with <span className="text-gradient-gold italic">trust, luxury</span> and unparalleled craftsmanship.
           </h1>
@@ -43,7 +43,7 @@ function AboutPage() {
               transition={{ type: "spring", stiffness: 120 }}
               className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-luxe"
             >
-              <img src={founder} alt="Rohit, Founder & CEO of Tathastu" loading="lazy" className="h-full w-full object-cover" />
+              <img src={founder} alt="Rohit, Founder & CEO of Tathastu Infra" loading="lazy" className="h-full w-full object-cover" />
               <div className="absolute -left-3 -top-3 h-full w-full rounded-3xl border border-primary/40" />
             </motion.div>
           </Reveal>
@@ -54,7 +54,7 @@ function AboutPage() {
               What began as a singular vision to redefine architectural elegance has evolved into a multi-disciplinary firm dedicated to shaping the future of modern living.
             </p>
             <p className="mt-4 text-muted-foreground">
-              Headquartered in Lohegaon, Pune, Tathastu transforms raw structures into elegant, functional homes and commercial spaces across Maharashtra where luxury, utility and timeless design intersect.
+              Headquartered in Lohegaon, Pune, Tathastu Infra transforms raw structures into elegant, functional homes and commercial spaces across Maharashtra where luxury, utility and timeless design intersect.
             </p>
             <blockquote className="mt-8 border-l-2 border-primary pl-5 font-display text-xl italic text-foreground">
               "Building spaces that inspire future generations."
@@ -72,9 +72,9 @@ function AboutPage() {
           </Reveal>
           <div className="mt-14 grid gap-8 md:grid-cols-3">
             {[
-              { icon: Shield, title: "Trust", body: "Every relationship begins and ends with the trust our clients place in us.", image: trustImage, alt: "Premium Tathastu real estate project representing client trust" },
-              { icon: Gem, title: "Luxury", body: "Materials, finishes and details chosen with conviction � never by default.", image: luxuryImage, alt: "Luxury Tathastu interior finishes and elegant living space" },
-              { icon: Sparkles, title: "Craftsmanship", body: "Engineering precision and design care that endures decades, not seasons.", image: craftsmanshipImage, alt: "Tathastu construction craftsmanship and site execution" },
+              { icon: Shield, title: "Trust", body: "Every relationship begins and ends with the trust our clients place in us.", image: trustImage, alt: "Premium Tathastu Infra real estate project representing client trust" },
+              { icon: Gem, title: "Luxury", body: "Materials, finishes and details chosen with conviction � never by default.", image: luxuryImage, alt: "Luxury Tathastu Infra interior finishes and elegant living space" },
+              { icon: Sparkles, title: "Craftsmanship", body: "Engineering precision and design care that endures decades, not seasons.", image: craftsmanshipImage, alt: "Tathastu Infra construction craftsmanship and site execution" },
             ].map((v, i) => (
               <Reveal key={v.title} delay={i * 0.08}>
                 <div className="group h-full overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border transition-transform duration-300 hover:-translate-y-1">
@@ -106,7 +106,7 @@ function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal>
             <p className="eyebrow">Leadership</p>
-            <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">The people behind Tathastu.</h2>
+            <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">The people behind Tathastu Infra.</h2>
           </Reveal>
           <div className="mt-14">
             <Reveal>
@@ -114,7 +114,7 @@ function AboutPage() {
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <img
                     src={teamStudio}
-                    alt="Tathastu studio team reviewing plans in a premium design office"
+                    alt="Tathastu Infra studio team reviewing plans in a premium design office"
                     loading="lazy"
                     className="h-full w-full object-cover"
                   />
@@ -128,7 +128,7 @@ function AboutPage() {
                       One studio. Many specialists.
                     </h3>
                     <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ivory/82 sm:text-base">
-                      Behind every Tathastu project in Pune is a coordinated team of sales, construction, design, engineering and execution professionals working together to deliver spaces with clarity and care.
+                      Behind every Tathastu Infra project in Pune is a coordinated team of sales, construction, design, engineering and execution professionals working together to deliver spaces with clarity and care.
                     </p>
                   </div>
                 </div>

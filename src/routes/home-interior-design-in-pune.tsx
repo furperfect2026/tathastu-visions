@@ -7,11 +7,11 @@ const content = {
   title: "Shape a home",
   accent: "that feels truly yours.",
   subtitle:
-    "Tathastu Home Interiors blends living rooms, bedrooms, kitchens, storage, finishes and decor into elegant Pune spaces.",
+    "Tathastu Infra Home Interiors blends living rooms, bedrooms, kitchens, storage, finishes and decor into elegant Pune spaces.",
   introEyebrow: "Home Interiors",
   introTitle: "A home interior should carry beauty into everyday routines.",
   intro:
-    "Home interior design is strongest when room-by-room decisions still feel part of one story. Tathastu helps Pune homeowners connect layouts, palettes, furniture, lighting and functional details across spaces with a refined residential point of view.",
+    "Home interior design is strongest when room-by-room decisions still feel part of one story. Tathastu Infra helps Pune homeowners connect layouts, palettes, furniture, lighting and functional details across spaces with a refined residential point of view.",
   highlights: [
     "Living room and bedroom design direction",
     "Kitchen, storage and space planning conversations",
@@ -44,9 +44,9 @@ const content = {
   processTitle: "Design decisions that make the whole home feel settled.",
   faqs: [
     {
-      question: "Does Tathastu design full home interiors in Pune?",
+      question: "Does Tathastu Infra design full home interiors in Pune?",
       answer:
-        "Yes. Tathastu can discuss interior requirements across living rooms, bedrooms, kitchens and related residential spaces.",
+        "Yes. Tathastu Infra can discuss interior requirements across living rooms, bedrooms, kitchens and related residential spaces.",
     },
     {
       question: "Can the design be premium but practical?",
@@ -64,13 +64,13 @@ const content = {
 export const Route = createFileRoute("/home-interior-design-in-pune")({
   head: () => ({
     meta: [
-      { title: "Home Interior Design in Pune | Tathastu Interiors" },
+      { title: "Home Interior Design in Pune | Tathastu Infra Interiors" },
       {
         name: "description",
         content:
-          "Explore home interior design in Pune with Tathastu support for living rooms, bedrooms, kitchens, materials, furniture and decor.",
+          "Explore home interior design in Pune with Tathastu Infra support for living rooms, bedrooms, kitchens, materials, furniture and decor.",
       },
-      { property: "og:title", content: "Home Interior Design in Pune | Tathastu" },
+      { property: "og:title", content: "Home Interior Design in Pune | Tathastu Infra" },
       {
         property: "og:description",
         content: "Premium home interior design guidance for elegant, functional Pune spaces.",

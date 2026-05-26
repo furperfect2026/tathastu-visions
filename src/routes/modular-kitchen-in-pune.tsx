@@ -7,11 +7,11 @@ const content = {
   title: "Plan the kitchen",
   accent: "around daily rhythm.",
   subtitle:
-    "Tathastu helps Pune homeowners design modular kitchens around workflow, storage, material finish, lighting and durability.",
+    "Tathastu Infra helps Pune homeowners design modular kitchens around workflow, storage, material finish, lighting and durability.",
   introEyebrow: "Kitchen Interiors",
   introTitle: "The best kitchen feels effortless long after the reveal.",
   intro:
-    "A modular kitchen is a high-use interior, so the design must work as hard as it looks. Tathastu helps frame storage zones, circulation, finishes, appliance considerations and visual warmth for kitchens that feel refined and useful every day.",
+    "A modular kitchen is a high-use interior, so the design must work as hard as it looks. Tathastu Infra helps frame storage zones, circulation, finishes, appliance considerations and visual warmth for kitchens that feel refined and useful every day.",
   highlights: [
     "Workflow and storage planning for kitchens",
     "Finish direction tied to durability and care",
@@ -45,7 +45,7 @@ const content = {
   processTitle: "A refined modular kitchen starts with the right brief.",
   faqs: [
     {
-      question: "Can Tathastu help with modular kitchen design in Pune?",
+      question: "Can Tathastu Infra help with modular kitchen design in Pune?",
       answer:
         "Yes. The interiors team can discuss kitchen layouts, storage needs, finishes and related execution planning.",
     },
@@ -65,13 +65,13 @@ const content = {
 export const Route = createFileRoute("/modular-kitchen-in-pune")({
   head: () => ({
     meta: [
-      { title: "Modular Kitchen in Pune | Kitchen Interior Design | Tathastu" },
+      { title: "Modular Kitchen in Pune | Kitchen Interior Design | Tathastu Infra" },
       {
         name: "description",
         content:
-          "Plan a modular kitchen in Pune with Tathastu guidance for storage, workflow, durable finishes, lighting and refined home interiors.",
+          "Plan a modular kitchen in Pune with Tathastu Infra guidance for storage, workflow, durable finishes, lighting and refined home interiors.",
       },
-      { property: "og:title", content: "Modular Kitchen in Pune | Tathastu Interiors" },
+      { property: "og:title", content: "Modular Kitchen in Pune | Tathastu Infra Interiors" },
       {
         property: "og:description",
         content: "Kitchen interior design guidance for workflow, storage and premium finishes.",

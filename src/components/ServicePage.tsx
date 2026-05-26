@@ -250,7 +250,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal>
             <div className="overflow-hidden rounded-3xl bg-ink p-6 text-ivory shadow-luxe sm:p-8 md:p-12">
-              <p className="eyebrow !text-primary-glow">Begin With Tathastu</p>
+              <p className="eyebrow !text-primary-glow">Begin With Tathastu Infra</p>
               <div className="mt-3 grid items-end gap-8 md:grid-cols-[1fr_auto]">
                 <h2 className="max-w-2xl font-display text-3xl font-medium leading-tight sm:text-4xl md:text-5xl">
                   Ready to bring your{" "}

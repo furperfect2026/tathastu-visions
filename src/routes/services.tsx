@@ -13,13 +13,13 @@ const serviceQuickLinks = [
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services in Pune | Realty, Construction & Interior Design | Tathastu" },
+      { title: "Services in Pune | Realty, Construction & Interior Design | Tathastu Infra" },
       {
         name: "description",
         content:
-          "Tathastu offers real estate, property consulting, construction and interior design services in Lohegaon, Pune with end-to-end delivery from one trusted team.",
+          "Tathastu Infra offers real estate, property consulting, construction and interior design services in Lohegaon, Pune with end-to-end delivery from one trusted team.",
       },
-      { property: "og:title", content: "Tathastu Services" },
+      { property: "og:title", content: "Tathastu Infra Services" },
       {
         property: "og:description",
         content:
@@ -38,7 +38,7 @@ function ServicesPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <p className="eyebrow">Services</p>
           <h1 className="mt-4 max-w-4xl break-words font-display text-[2.75rem] font-medium leading-[1.05] sm:text-5xl md:text-7xl">
-            Three pillars of <span className="text-gradient-gold italic">Tathastu</span>
+            Three pillars of <span className="text-gradient-gold italic">Tathastu Infra</span>
           </h1>
 
           <Reveal className="mt-8">
@@ -79,7 +79,7 @@ function ServicesPage() {
                       </div>
                     </div>
                     <div className="p-6">
-                      <p className="eyebrow">Tathastu {p.title}</p>
+                      <p className="eyebrow">Tathastu Infra {p.title}</p>
                       <h2 className="mt-2 font-display text-2xl font-semibold">{p.title}</h2>
                       <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
                         {p.blurb}
@@ -126,7 +126,7 @@ function ServicesPage() {
                   <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold transition-transform duration-300 group-hover:-translate-y-1">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <p className="eyebrow mt-6">Tathastu {p.title}</p>
+                  <p className="eyebrow mt-6">Tathastu Infra {p.title}</p>
                   <h2 className="mt-3 font-display text-3xl font-medium transition-colors duration-300 group-hover:text-primary sm:text-4xl md:text-5xl">
                     {p.title}
                   </h2>

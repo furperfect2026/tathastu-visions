@@ -6,10 +6,10 @@ const content = {
   title: "Find flats in",
   accent: "Lohegaon with clarity.",
   subtitle:
-    "Tathastu Realty helps buyers explore residential flats, new projects and resale options in Lohegaon, Pune with local site visit and documentation guidance.",
+    "Tathastu Infra Realty helps buyers explore residential flats, new projects and resale options in Lohegaon, Pune with local site visit and documentation guidance.",
   introTitle: "A flat search should match life after the booking.",
   intro:
-    "Lohegaon attracts property seekers who want access to Pune growth corridors while keeping an eye on budget, connectivity, project quality and day-to-day comfort. Tathastu helps clients compare flat options with context, not just photographs, so the shortlist is easier to trust before the next visit.",
+    "Lohegaon attracts property seekers who want access to Pune growth corridors while keeping an eye on budget, connectivity, project quality and day-to-day comfort. Tathastu Infra helps clients compare flat options with context, not just photographs, so the shortlist is easier to trust before the next visit.",
   highlights: [
     "Support for new project and resale flat searches",
     "1 BHK, 2 BHK and larger home requirements",
@@ -40,9 +40,9 @@ const content = {
   ],
   faqs: [
     {
-      question: "Can Tathastu help me search for flats in Lohegaon Pune?",
+      question: "Can Tathastu Infra help me search for flats in Lohegaon Pune?",
       answer:
-        "Yes. Tathastu Realty supports buyers looking for flats, residential projects and resale property options in Lohegaon and nearby Pune areas.",
+        "Yes. Tathastu Infra Realty supports buyers looking for flats, residential projects and resale property options in Lohegaon and nearby Pune areas.",
     },
     {
       question: "Do you help with flat site visits?",
@@ -60,13 +60,13 @@ const content = {
 export const Route = createFileRoute("/flats-in-lohegaon-pune")({
   head: () => ({
     meta: [
-      { title: "Flats in Lohegaon Pune | Property Guidance | Tathastu Realty" },
+      { title: "Flats in Lohegaon Pune | Property Guidance | Tathastu Infra Realty" },
       {
         name: "description",
         content:
-          "Explore flats in Lohegaon Pune with Tathastu Realty support for new projects, resale properties, site visits and documentation guidance.",
+          "Explore flats in Lohegaon Pune with Tathastu Infra Realty support for new projects, resale properties, site visits and documentation guidance.",
       },
-      { property: "og:title", content: "Flats in Lohegaon Pune | Tathastu Realty" },
+      { property: "og:title", content: "Flats in Lohegaon Pune | Tathastu Infra Realty" },
       {
         property: "og:description",
         content: "Local property guidance for flat buyers exploring Lohegaon and nearby Pune areas.",

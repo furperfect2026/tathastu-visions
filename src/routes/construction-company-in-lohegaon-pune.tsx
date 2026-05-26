@@ -7,7 +7,7 @@ const content = {
   title: "Build in Lohegaon",
   accent: "with disciplined execution.",
   subtitle:
-    "Tathastu Construction supports residential and commercial construction in Lohegaon, Pune with structure, supervision, material planning and clear handover.",
+    "Tathastu Infra Construction supports residential and commercial construction in Lohegaon, Pune with structure, supervision, material planning and clear handover.",
   introEyebrow: "Local Construction Partner",
   introTitle: "A construction team should understand the site and the stakes.",
   intro:
@@ -45,9 +45,9 @@ const content = {
   processTitle: "From Lohegaon site brief to stronger handover.",
   faqs: [
     {
-      question: "Does Tathastu handle construction projects in Lohegaon Pune?",
+      question: "Does Tathastu Infra handle construction projects in Lohegaon Pune?",
       answer:
-        "Yes. Tathastu Construction works with residential and commercial project requirements in Lohegaon and nearby Pune areas.",
+        "Yes. Tathastu Infra Construction works with residential and commercial project requirements in Lohegaon and nearby Pune areas.",
     },
     {
       question: "Can you help with both materials and supervision?",
@@ -65,13 +65,13 @@ const content = {
 export const Route = createFileRoute("/construction-company-in-lohegaon-pune")({
   head: () => ({
     meta: [
-      { title: "Construction Company in Lohegaon Pune | Tathastu Construction" },
+      { title: "Construction Company in Lohegaon Pune | Tathastu Infra Construction" },
       {
         name: "description",
         content:
-          "Choose Tathastu for construction in Lohegaon Pune with residential, commercial, structural, material planning and site supervision support.",
+          "Choose Tathastu Infra for construction in Lohegaon Pune with residential, commercial, structural, material planning and site supervision support.",
       },
-      { property: "og:title", content: "Construction Company in Lohegaon Pune | Tathastu" },
+      { property: "og:title", content: "Construction Company in Lohegaon Pune | Tathastu Infra" },
       {
         property: "og:description",
         content: "Construction guidance and supervised execution for Lohegaon and Pune projects.",

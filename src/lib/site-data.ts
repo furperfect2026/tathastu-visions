@@ -30,8 +30,8 @@ export const pillars = [
       "Long-term client trust",
     ],
     images: [
-      { src: realty3, alt: "Landscaped Tathastu residential courtyard in Pune" },
-      { src: realty4, alt: "Elegant Tathastu residence in Pune at dusk" },
+      { src: realty3, alt: "Landscaped Tathastu Infra residential courtyard in Pune" },
+      { src: realty4, alt: "Elegant Tathastu Infra residence in Pune at dusk" },
     ],
   },
   {
@@ -46,10 +46,10 @@ export const pillars = [
       "Timely project delivery across Pune",
     ],
     images: [
-      { src: construction1, alt: "Tathastu modern construction site in Pune" },
-      { src: construction2, alt: "Tathastu engineer with blueprints" },
-      { src: construction3, alt: "Tathastu structural framework in Lohegaon at sunset" },
-      { src: construction4, alt: "Tathastu concrete craftsmanship" },
+      { src: construction1, alt: "Tathastu Infra modern construction site in Pune" },
+      { src: construction2, alt: "Tathastu Infra engineer with blueprints" },
+      { src: construction3, alt: "Tathastu Infra structural framework in Lohegaon at sunset" },
+      { src: construction4, alt: "Tathastu Infra concrete craftsmanship" },
     ],
   },
   {

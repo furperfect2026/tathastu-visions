@@ -258,7 +258,7 @@ export function RealtySeoPage({ content }: { content: RealtySeoPageContent }) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal>
             <div className="rounded-3xl bg-ink p-6 text-ivory shadow-luxe sm:p-8 md:p-12">
-              <p className="eyebrow !text-primary-glow">Tathastu Realty</p>
+              <p className="eyebrow !text-primary-glow">Tathastu Infra Realty</p>
               <div className="mt-3 grid items-end gap-8 md:grid-cols-[1fr_auto]">
                 <h2 className="max-w-3xl font-display text-3xl font-medium leading-tight sm:text-4xl md:text-5xl">
                   Ready to shortlist the right{" "}

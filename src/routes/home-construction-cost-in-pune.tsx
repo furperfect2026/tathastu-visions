@@ -7,11 +7,11 @@ const content = {
   title: "Estimate the build",
   accent: "before it drifts.",
   subtitle:
-    "Tathastu helps Pune homeowners understand the scope, materials, package choices and execution decisions that shape home construction cost.",
+    "Tathastu Infra helps Pune homeowners understand the scope, materials, package choices and execution decisions that shape home construction cost.",
   introEyebrow: "Cost Planning",
   introTitle: "A useful estimate begins with the right project questions.",
   intro:
-    "Construction cost is shaped by more than square footage. Site conditions, structural scope, material grade, finish expectations, supervision and delivery model all matter. Tathastu helps owners frame those decisions early before discussing the next construction step.",
+    "Construction cost is shaped by more than square footage. Site conditions, structural scope, material grade, finish expectations, supervision and delivery model all matter. Tathastu Infra helps owners frame those decisions early before discussing the next construction step.",
   highlights: [
     "Package conversations tied to project scope",
     "Material and finish expectations made visible",
@@ -45,7 +45,7 @@ const content = {
   processTitle: "A clearer cost conversation before construction begins.",
   faqs: [
     {
-      question: "Can Tathastu help estimate home construction cost in Pune?",
+      question: "Can Tathastu Infra help estimate home construction cost in Pune?",
       answer:
         "Yes. The team can discuss your site, scope, material expectations and package fit before guiding a project-specific quote path.",
     },
@@ -65,13 +65,13 @@ const content = {
 export const Route = createFileRoute("/home-construction-cost-in-pune")({
   head: () => ({
     meta: [
-      { title: "Home Construction Cost in Pune | Quote Guidance | Tathastu" },
+      { title: "Home Construction Cost in Pune | Quote Guidance | Tathastu Infra" },
       {
         name: "description",
         content:
-          "Understand home construction cost in Pune with Tathastu guidance on scope, material choices, packages and project-specific quote planning.",
+          "Understand home construction cost in Pune with Tathastu Infra guidance on scope, material choices, packages and project-specific quote planning.",
       },
-      { property: "og:title", content: "Home Construction Cost in Pune | Tathastu" },
+      { property: "og:title", content: "Home Construction Cost in Pune | Tathastu Infra" },
       {
         property: "og:description",
         content: "Construction estimate guidance shaped by scope, materials and execution choices.",

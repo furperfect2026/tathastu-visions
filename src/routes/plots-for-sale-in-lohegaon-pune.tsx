@@ -6,10 +6,10 @@ const content = {
   title: "Explore plots with",
   accent: "grounded checks.",
   subtitle:
-    "Tathastu Realty supports plot and land seekers in Lohegaon Pune with local guidance, site visits, comparisons and documentation conversations.",
+    "Tathastu Infra Realty supports plot and land seekers in Lohegaon Pune with local guidance, site visits, comparisons and documentation conversations.",
   introTitle: "Plot choices need site context, not only a pin drop.",
   intro:
-    "People searching for plots in Lohegaon often need help understanding suitability, access, surrounding development, future use and the paperwork questions to raise early. Tathastu brings property guidance and construction awareness together so plot discussions stay practical from the first visit.",
+    "People searching for plots in Lohegaon often need help understanding suitability, access, surrounding development, future use and the paperwork questions to raise early. Tathastu Infra brings property guidance and construction awareness together so plot discussions stay practical from the first visit.",
   highlights: [
     "Plot and land search guidance around Lohegaon",
     "Site context and intended-use conversations",
@@ -40,14 +40,14 @@ const content = {
   ],
   faqs: [
     {
-      question: "Does Tathastu help with plots for sale in Lohegaon Pune?",
+      question: "Does Tathastu Infra help with plots for sale in Lohegaon Pune?",
       answer:
-        "Yes. Tathastu Realty supports plot and land seekers with local guidance, site visits, comparison questions and next-step coordination.",
+        "Yes. Tathastu Infra Realty supports plot and land seekers with local guidance, site visits, comparison questions and next-step coordination.",
     },
     {
       question: "Can I discuss a plot for future home construction?",
       answer:
-        "Yes. Tathastu can help connect the property conversation with practical construction planning questions for your intended use.",
+        "Yes. Tathastu Infra can help connect the property conversation with practical construction planning questions for your intended use.",
     },
     {
       question: "Why is a site visit important for a plot?",
@@ -60,16 +60,16 @@ const content = {
 export const Route = createFileRoute("/plots-for-sale-in-lohegaon-pune")({
   head: () => ({
     meta: [
-      { title: "Plots for Sale in Lohegaon Pune | Land Guidance | Tathastu Realty" },
+      { title: "Plots for Sale in Lohegaon Pune | Land Guidance | Tathastu Infra Realty" },
       {
         name: "description",
         content:
-          "Explore plots for sale in Lohegaon Pune with Tathastu Realty guidance for land searches, site visits, comparisons and documentation questions.",
+          "Explore plots for sale in Lohegaon Pune with Tathastu Infra Realty guidance for land searches, site visits, comparisons and documentation questions.",
       },
-      { property: "og:title", content: "Plots for Sale in Lohegaon Pune | Tathastu Realty" },
+      { property: "og:title", content: "Plots for Sale in Lohegaon Pune | Tathastu Infra Realty" },
       {
         property: "og:description",
-        content: "Land and plot guidance for Lohegaon property seekers from Tathastu Realty.",
+        content: "Land and plot guidance for Lohegaon property seekers from Tathastu Infra Realty.",
       },
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/plots-for-sale-in-lohegaon-pune" }],

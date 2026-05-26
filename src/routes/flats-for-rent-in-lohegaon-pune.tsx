@@ -6,10 +6,10 @@ const content = {
   title: "Rent a flat with",
   accent: "better local guidance.",
   subtitle:
-    "Tathastu Realty helps tenants and owners with rental flat searches, expectations, site visits and property coordination in Lohegaon Pune.",
+    "Tathastu Infra Realty helps tenants and owners with rental flat searches, expectations, site visits and property coordination in Lohegaon Pune.",
   introTitle: "Rental decisions still deserve a careful shortlist.",
   intro:
-    "A rental search in Lohegaon can move quickly, but the right choice still depends on commute, society comfort, usable space, move-in timing and clear expectations between owner and tenant. Tathastu helps make rental property conversations more organized before you spend time visiting unsuitable options.",
+    "A rental search in Lohegaon can move quickly, but the right choice still depends on commute, society comfort, usable space, move-in timing and clear expectations between owner and tenant. Tathastu Infra helps make rental property conversations more organized before you spend time visiting unsuitable options.",
   highlights: [
     "Rental assistance for flats and homes in Lohegaon",
     "Support for owner and tenant requirements",
@@ -40,9 +40,9 @@ const content = {
   ],
   faqs: [
     {
-      question: "Can Tathastu help me find flats for rent in Lohegaon Pune?",
+      question: "Can Tathastu Infra help me find flats for rent in Lohegaon Pune?",
       answer:
-        "Yes. Tathastu Realty offers rental assistance for tenants exploring flats and homes in Lohegaon and nearby Pune areas.",
+        "Yes. Tathastu Infra Realty offers rental assistance for tenants exploring flats and homes in Lohegaon and nearby Pune areas.",
     },
     {
       question: "Do you work with property owners too?",
@@ -60,16 +60,16 @@ const content = {
 export const Route = createFileRoute("/flats-for-rent-in-lohegaon-pune")({
   head: () => ({
     meta: [
-      { title: "Flats for Rent in Lohegaon Pune | Rental Assistance | Tathastu" },
+      { title: "Flats for Rent in Lohegaon Pune | Rental Assistance | Tathastu Infra" },
       {
         name: "description",
         content:
-          "Find flats for rent in Lohegaon Pune with Tathastu Realty rental assistance for tenant searches, owner coordination and site visit guidance.",
+          "Find flats for rent in Lohegaon Pune with Tathastu Infra Realty rental assistance for tenant searches, owner coordination and site visit guidance.",
       },
-      { property: "og:title", content: "Flats for Rent in Lohegaon Pune | Tathastu Realty" },
+      { property: "og:title", content: "Flats for Rent in Lohegaon Pune | Tathastu Infra Realty" },
       {
         property: "og:description",
-        content: "Rental property guidance for Lohegaon tenants and owners from Tathastu Realty.",
+        content: "Rental property guidance for Lohegaon tenants and owners from Tathastu Infra Realty.",
       },
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/flats-for-rent-in-lohegaon-pune" }],

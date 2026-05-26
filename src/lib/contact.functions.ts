@@ -55,7 +55,7 @@ function escapeHtml(value: string) {
 
 async function sendInquiryEmail(data: Inquiry) {
   const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || "tathastu.infra.info@gmail.com";
-  const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || "Tathastu Website <onboarding@resend.dev>";
+  const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || "Tathastu Infra Website <onboarding@resend.dev>";
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
   if (!RESEND_API_KEY) {
@@ -67,7 +67,7 @@ async function sendInquiryEmail(data: Inquiry) {
   const subject = `New ${interest} inquiry from ${data.name}`;
   const phone = data.phone || "Not provided";
   const plainText = [
-    `New inquiry from Tathastu website`,
+    `New inquiry from Tathastu Infra website`,
     ``,
     `Name: ${data.name}`,
     `Email: ${data.email}`,
@@ -80,7 +80,7 @@ async function sendInquiryEmail(data: Inquiry) {
 
   const html = `
     <div style="font-family: Arial, sans-serif; color: #111827; line-height: 1.6;">
-      <h2 style="margin: 0 0 16px; color: #0b1736;">New Tathastu Website Inquiry</h2>
+      <h2 style="margin: 0 0 16px; color: #0b1736;">New Tathastu Infra Website Inquiry</h2>
       <table style="border-collapse: collapse; width: 100%; max-width: 640px;">
         <tr><td style="padding: 8px 0; font-weight: 700;">Name</td><td>${escapeHtml(data.name)}</td></tr>
         <tr><td style="padding: 8px 0; font-weight: 700;">Email</td><td>${escapeHtml(data.email)}</td></tr>

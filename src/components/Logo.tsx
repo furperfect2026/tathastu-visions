@@ -5,7 +5,7 @@ export function Logo({ className, light = false }: { className?: string; light?:
     <div className={`flex min-w-0 items-center gap-2 ${className ?? ""}`}>
       <img
         src={logoUrl}
-        alt="Tathastu premium gold emblem"
+        alt="Tathastu Infra premium gold emblem"
         className="h-14 w-auto flex-none object-contain drop-shadow-[0_10px_18px_rgba(0,0,0,0.24)] transition-all duration-300 ease-out sm:h-16 lg:h-[4.5rem]"
       />
       <div className="min-w-0 leading-tight">

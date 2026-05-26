@@ -43,16 +43,16 @@ export type ServiceSeoPageContent = {
 
 const heroImages = {
   construction: [
-    { src: heroInfra1, alt: "Construction site planning by Tathastu in Pune" },
+    { src: heroInfra1, alt: "Construction site planning by Tathastu Infra in Pune" },
     { src: construction3, alt: "Structural construction work in Pune" },
     { src: construction1, alt: "Residential construction execution in Lohegaon" },
     { src: construction4, alt: "Construction supervision and material discipline" },
   ],
   interior: [
-    { src: interior1, alt: "Luxury living room interior design by Tathastu" },
+    { src: interior1, alt: "Luxury living room interior design by Tathastu Infra" },
     { src: interior2, alt: "Bedroom interior design in Pune" },
     { src: interior3, alt: "Modular kitchen and finish planning in Pune" },
-    { src: project5, alt: "Refined material palette for Tathastu interiors" },
+    { src: project5, alt: "Refined material palette for Tathastu Infra interiors" },
   ],
 } satisfies Record<ServiceSeoMode, { src: string; alt: string }[]>;
 
@@ -252,7 +252,7 @@ export function ServiceSeoPage({ content }: { content: ServiceSeoPageContent }) 
               {content.mode === "construction" ? "Construction Work" : "Interior Work"}
             </p>
             <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
-              Related Tathastu projects.
+              Related Tathastu Infra projects.
             </h2>
           </Reveal>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -312,7 +312,7 @@ export function ServiceSeoPage({ content }: { content: ServiceSeoPageContent }) 
           <Reveal>
             <div className="rounded-3xl bg-ink p-6 text-ivory shadow-luxe sm:p-8 md:p-12">
               <p className="eyebrow !text-primary-glow">
-                Tathastu {content.mode === "construction" ? "Construction" : "Interiors"}
+                Tathastu Infra {content.mode === "construction" ? "Construction" : "Interiors"}
               </p>
               <div className="mt-3 grid items-end gap-8 md:grid-cols-[1fr_auto]">
                 <h2 className="max-w-3xl font-display text-3xl font-medium leading-tight sm:text-4xl md:text-5xl">

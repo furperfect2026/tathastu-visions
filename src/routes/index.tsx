@@ -16,22 +16,22 @@ import livingInterior from "@/assets/interior-1.jpg";
 import bedroomInterior from "@/assets/interior-2.jpg";
 
 const heroImages = [
-  { src: realtyCourtyard, alt: "Tathastu residential project and realty guidance in Pune" },
-  { src: constructionSite, alt: "Tathastu construction and infrastructure site in Pune" },
-  { src: livingInterior, alt: "Tathastu premium living room interior design" },
-  { src: bedroomInterior, alt: "Tathastu calm luxury bedroom interior design" },
+  { src: realtyCourtyard, alt: "Tathastu Infra residential project and realty guidance in Pune" },
+  { src: constructionSite, alt: "Tathastu Infra construction and infrastructure site in Pune" },
+  { src: livingInterior, alt: "Tathastu Infra premium living room interior design" },
+  { src: bedroomInterior, alt: "Tathastu Infra calm luxury bedroom interior design" },
 ];
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Tathastu Pune | Realty, Construction & Interior Design in Lohegaon" },
+      { title: "Tathastu Infra Pune | Realty, Construction & Interior Design in Lohegaon" },
       {
         name: "description",
         content:
-          "Tathastu offers real estate, properties, construction and interior design in Lohegaon, Pune, including flats, homes, residential projects and luxury interiors.",
+          "Tathastu Infra offers real estate, properties, construction and interior design in Lohegaon, Pune, including flats, homes, residential projects and luxury interiors.",
       },
-      { property: "og:title", content: "Tathastu — Building Spaces. Creating Futures." },
+      { property: "og:title", content: "Tathastu Infra — Building Spaces. Creating Futures." },
       {
         property: "og:description",
         content:
@@ -91,7 +91,7 @@ function HeroSocialLinks({ mobile = false }: { mobile?: boolean }) {
       initial={{ opacity: 0, y: mobile ? 12 : 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.35, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      aria-label="Tathastu social links"
+      aria-label="Tathastu Infra social links"
     >
       {!mobile && (
         <span className="h-16 w-px bg-gradient-to-b from-transparent via-ivory/45 to-transparent" />
@@ -174,7 +174,7 @@ function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="eyebrow !text-primary-glow">Tathastu</p>
+            <p className="eyebrow !text-primary-glow">Tathastu Infra</p>
             <p className="max-w-4xl font-display text-xl font-medium leading-tight text-ivory drop-shadow-[0_3px_18px_rgba(0,0,0,0.4)] sm:text-2xl md:text-3xl lg:text-[2.1rem]">
               Building Dreams <span className="italic text-gradient-gold">Since 2018</span>
             </p>
@@ -260,11 +260,11 @@ function HomePage() {
           <Reveal className="max-w-2xl">
             <p className="eyebrow">Our Services</p>
             <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
-              Three pillars of Tathastu.
+              Three pillars of Tathastu Infra.
             </h2>
             <p className="mt-4 text-muted-foreground">
               From Lohegaon property search and land advisory to Pune homes, construction and
-              interiors, Tathastu is one team for every step.
+              interiors, Tathastu Infra is one team for every step.
             </p>
           </Reveal>
 
@@ -330,7 +330,7 @@ function HomePage() {
               <div>
                 <p className="eyebrow">Planning Something?</p>
                 <h3 className="mt-2 font-display text-2xl font-medium sm:text-3xl">
-                  Get a free quote from Tathastu Pune.
+                  Get a free quote from Tathastu Infra Pune.
                 </h3>
               </div>
               <Button
