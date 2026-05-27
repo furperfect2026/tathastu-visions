@@ -14,6 +14,10 @@ import realtyCourtyard from "@/assets/realty-3.jpg";
 import constructionSite from "@/assets/construction-1.jpg";
 import livingInterior from "@/assets/interior-1.jpg";
 import bedroomInterior from "@/assets/interior-2.jpg";
+import trustHandshake from "@/assets/trust-handshake.jpg";
+import clientRelationship from "@/assets/client-relationship.jpg";
+import clearGuidance from "@/assets/clear-guidance.jpg";
+import longTermValue from "@/assets/long-term-value.jpg";
 
 const heroImages = [
   { src: realtyCourtyard, alt: "Tathastu Infra residential project and realty guidance in Pune" },
@@ -56,21 +60,29 @@ const trustPolicies = [
     icon: ShieldCheck,
     title: "Trust",
     body: "Every conversation is handled with honesty, privacy and care from the first enquiry.",
+    image: trustHandshake,
+    alt: "Trust-led Tathastu Infra client handshake over architectural plans",
   },
   {
     icon: Users,
     title: "Client Relationship",
     body: "We stay close to clients through decisions, visits, planning and final handover.",
+    image: clientRelationship,
+    alt: "Tathastu Infra team guiding clients through property and design planning",
   },
   {
     icon: Eye,
     title: "Clear Guidance",
     body: "Simple explanations, practical options and transparent next steps across every service.",
+    image: clearGuidance,
+    alt: "Clear Tathastu Infra planning guidance with a digital home layout",
   },
   {
     icon: Award,
     title: "Long-Term Value",
     body: "Spaces and property decisions shaped for comfort, durability and future confidence.",
+    image: longTermValue,
+    alt: "Family viewing a premium residential building for long-term property value",
   },
 ] as const;
 
@@ -357,13 +369,22 @@ function HomePage() {
             </h2>
           </Reveal>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {trustPolicies.map(({ icon: Icon, title, body }, index) => (
+            {trustPolicies.map(({ icon: Icon, title, body, image, alt }, index) => (
               <Reveal key={title} delay={index * 0.05}>
-                <div className="h-full rounded-3xl border border-border bg-card p-5 shadow-luxe sm:p-6">
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
-                    <Icon className="h-5 w-5" />
+                <div className="h-full overflow-hidden rounded-3xl border border-border bg-card p-5 shadow-luxe sm:p-6">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                    <img
+                      src={image}
+                      alt={alt}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/25 via-transparent to-transparent" />
+                    <div className="absolute left-4 top-4 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
+                      <Icon className="h-5 w-5" />
+                    </div>
                   </div>
-                  <h3 className="mt-6 font-display text-2xl font-semibold text-ink">{title}</h3>
+                  <h3 className="mt-7 font-display text-2xl font-semibold text-ink">{title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
                 </div>
               </Reveal>
