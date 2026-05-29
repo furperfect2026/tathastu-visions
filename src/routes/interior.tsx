@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BriefcaseBusiness, CookingPot, Home, Sofa } from "lucide-react";
+import { BriefcaseBusiness, CookingPot, Home } from "lucide-react";
 import { ServicePage, type ServicePageContent } from "@/components/ServicePage";
 import interior1 from "@/assets/interior-1.jpg";
 import interior2 from "@/assets/interior-2.jpg";
@@ -44,12 +44,6 @@ const content: ServicePageContent = {
       description: "Elegant kitchens planned for workflow, storage, finish quality and durability.",
       icon: CookingPot,
       image: { src: interior3, alt: "Premium modular kitchen interior by Tathastu Infra" },
-    },
-    {
-      title: "Living & Bedroom",
-      description: "Calm, useful rooms with balanced furniture, lighting, textures and storage.",
-      icon: Sofa,
-      image: { src: interior2, alt: "Elegant bedroom and living interior design in Pune" },
     },
   ],
 };

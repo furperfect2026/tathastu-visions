@@ -1,7 +1,15 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  BadgeCheck,
+  CheckCircle2,
+  Clock3,
+  Eye,
+  IndianRupee,
+  ShieldCheck,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { PackagesSection } from "@/components/PackagesSection";
@@ -34,6 +42,39 @@ export type ServicePageContent = {
 
 const process = ["Consultation", "Planning & Design", "Execution", "Final Handover"] as const;
 
+const constructionGuarantees = [
+  {
+    title: "Money Safety",
+    body: "Clear scope, transparent package guidance and budget conversations before work begins.",
+    icon: IndianRupee,
+    tone: "from-ink to-[#18304a]",
+  },
+  {
+    title: "Quality Assurance",
+    body: "Material choices, site checks and finish reviews handled with one accountable team.",
+    icon: ShieldCheck,
+    tone: "from-[#102033] to-[#2b4154]",
+  },
+  {
+    title: "On-Time Delivery",
+    body: "Planning, vendor coordination and execution tracking designed around predictable timelines.",
+    icon: Clock3,
+    tone: "from-[#193656] to-[#2f5276]",
+  },
+  {
+    title: "Transparency",
+    body: "Simple communication from first visit to handover, so clients know what is happening and why.",
+    icon: Eye,
+    tone: "from-ink to-[#24313d]",
+  },
+  {
+    title: "Assurance",
+    body: "A structured process that keeps safety, accountability and final checks visible at every stage.",
+    icon: BadgeCheck,
+    tone: "from-[#12263d] to-[#31485d]",
+  },
+] as const;
+
 export function ServicePage({ content }: { content: ServicePageContent }) {
   const relatedProjects = projects
     .filter((project) => project.category === content.projectCategory)
@@ -48,9 +89,9 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
           rounded="rounded-none"
           className="absolute inset-0"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/25" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/45 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/82 via-ink/48 to-ink/12" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/74 via-ink/28 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink/86 to-transparent" />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 sm:pb-20 md:pb-0">
           <motion.div
@@ -90,21 +131,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         </div>
       </section>
 
-      <section className="bg-gradient-ivory py-24">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <Reveal>
-            <p className="eyebrow">Overview</p>
-            <h2 className="mt-3 font-display text-3xl font-medium leading-tight sm:text-4xl md:text-5xl">
-              {content.overviewTitle}
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="text-lg leading-relaxed text-muted-foreground">{content.overview}</p>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="py-24">
+      <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">What We Offer</p>
@@ -144,33 +171,64 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
           </div>
 
           {content.projectCategory === "construction" && (
-            <Reveal className="mt-8 rounded-3xl border border-border bg-card p-5 shadow-luxe sm:p-6">
-              <p className="eyebrow">Every Construction Category Includes</p>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                {["Money Safety", "Quality", "On-Time Delivery", "Transparency", "Assurance"].map(
-                  (item) => (
-                    <div
-                      key={item}
-                      className="flex items-center gap-2 rounded-2xl bg-secondary/50 px-4 py-3 text-sm font-semibold text-foreground"
-                    >
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      {item}
+            <Reveal className="mt-12">
+              <div className="flex items-end justify-between gap-4">
+                <div>
+                  <p className="eyebrow">Every Construction Category Includes</p>
+                  <h3 className="mt-2 font-display text-3xl font-medium text-ink sm:text-4xl">
+                    Guarantees every homeowner deserves.
+                  </h3>
+                </div>
+                <div className="hidden gap-3 sm:flex" aria-hidden="true">
+                  <span className="grid h-12 w-12 place-items-center rounded-full bg-primary/15 text-primary">
+                    <ArrowRight className="h-5 w-5 rotate-180" />
+                  </span>
+                  <span className="grid h-12 w-12 place-items-center rounded-full bg-primary/15 text-primary">
+                    <ArrowRight className="h-5 w-5" />
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-8 -mx-4 flex snap-x gap-5 overflow-x-auto px-4 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 md:grid-cols-3 xl:grid-cols-5">
+                {constructionGuarantees.map(({ title, body, icon: Icon, tone }) => (
+                  <motion.article
+                    key={title}
+                    whileHover={{ y: -6 }}
+                    className={`relative flex min-h-[360px] w-[82vw] shrink-0 snap-start flex-col overflow-hidden rounded-3xl bg-gradient-to-b ${tone} p-7 text-ivory shadow-luxe ring-1 ring-ivory/10 sm:w-auto`}
+                  >
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ivory/12 to-transparent" />
+                    <div className="relative z-10">
+                      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-primary/20 text-primary-glow ring-1 ring-primary/25">
+                        <Icon className="h-6 w-6" />
+                      </div>
+                      <h4 className="mt-7 font-display text-3xl font-semibold leading-tight text-ivory">
+                        {title}
+                      </h4>
+                      <p className="mt-5 text-sm leading-relaxed text-ivory/75">{body}</p>
                     </div>
-                  ),
-                )}
+                    <div className="relative z-10 mt-auto flex items-end justify-between pt-10">
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-primary-glow/80">
+                        Tathastu Infra
+                      </span>
+                      <span className="grid h-12 w-12 place-items-center rounded-full bg-primary-glow text-primary-foreground shadow-gold">
+                        <ArrowRight className="h-5 w-5" />
+                      </span>
+                    </div>
+                  </motion.article>
+                ))}
               </div>
             </Reveal>
           )}
         </div>
       </section>
 
+      {content.projectCategory === "construction" && <PackagesSection mode="construction" />}
+      {content.projectCategory === "interior" && <PackagesSection mode="interior" />}
       {content.projectCategory === "realty" && <RealtySearchLinks compact />}
       {content.projectCategory === "construction" && (
         <ServiceSearchLinks compact mode="construction" />
       )}
       {content.projectCategory === "interior" && <ServiceSearchLinks compact mode="interior" />}
-      {content.projectCategory === "construction" && <PackagesSection mode="construction" />}
-      {content.projectCategory === "interior" && <PackagesSection mode="interior" />}
 
       <section className="bg-gradient-ink py-24 text-ivory">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
