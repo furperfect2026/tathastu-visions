@@ -31,6 +31,7 @@ const content: ServicePageContent = {
         "Offices, shops and commercial structures planned around quality, transparency and on-time delivery.",
       icon: Factory,
       image: { src: construction3, alt: "Commercial construction structure by Tathastu Infra" },
+      href: "/construction/commercial-construction",
     },
     {
       title: "Residential Construction",
@@ -38,6 +39,7 @@ const content: ServicePageContent = {
         "Homes, villas and bungalows built with money safety, material clarity and reliable supervision.",
       icon: Building,
       image: { src: construction2, alt: "Residential home construction planning by Tathastu Infra" },
+      href: "/construction/residential-construction",
     },
     {
       title: "Structural Work & RCC",
@@ -45,6 +47,7 @@ const content: ServicePageContent = {
         "Core RCC and civil structure work with disciplined engineering, safety checks and assurance.",
       icon: Layers3,
       image: { src: construction1, alt: "Structural work and RCC construction site" },
+      href: "/construction/structural-work-rcc",
     },
     {
       title: "WTG & Government Contracts",
@@ -52,6 +55,7 @@ const content: ServicePageContent = {
         "Government, institutional and infrastructure-focused contracts handled with documentation and execution control.",
       icon: Landmark,
       image: { src: construction4, alt: "Infrastructure and government construction planning" },
+      href: "/construction/wtg-government-contracts",
     },
   ],
 };

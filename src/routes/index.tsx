@@ -191,32 +191,26 @@ function HomePage() {
               Building Dreams <span className="italic text-gradient-gold">Since 2018</span>
             </p>
           </motion.div>
-          <h1 className="mt-4 max-w-4xl break-words font-display text-[2.85rem] font-medium leading-[1.02] text-ivory sm:text-5xl md:text-7xl lg:text-[5.75rem]">
-            <span className="block">
-              {headlineLine1.split(" ").map((w, i) => (
-                <motion.span
-                  key={`l1-${i}`}
-                  initial={{ opacity: 0, y: 28 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 + i * 0.08, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className="inline-block pr-3"
-                >
-                  {w}
-                </motion.span>
-              ))}
+          <h1 className="mt-4 max-w-4xl font-display text-[clamp(2rem,8.5vw,2.85rem)] font-medium leading-[1.02] text-ivory sm:text-5xl md:text-7xl lg:text-[5.75rem]">
+            <span className="block whitespace-nowrap">
+              <motion.span
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="inline-block"
+              >
+                {headlineLine1}
+              </motion.span>
             </span>
-            <span className="mt-2 block italic text-gradient-gold">
-              {headlineLine2.split(" ").map((w, i) => (
-                <motion.span
-                  key={`l2-${i}`}
-                  initial={{ opacity: 0, y: 28 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.08, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className="inline-block pr-3"
-                >
-                  {w}
-                </motion.span>
-              ))}
+            <span className="mt-2 block whitespace-nowrap italic text-gradient-gold">
+              <motion.span
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.42, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="inline-block"
+              >
+                {headlineLine2}
+              </motion.span>
             </span>
           </h1>
           <motion.p

@@ -9,6 +9,12 @@ const socialLinks = [
   { label: "LinkedIn", href: "https://linkedin.com", brand: "linkedin" },
 ] satisfies { label: string; href: string; brand: SocialBrand }[];
 
+const sisterBrands = [
+  { name: "Tathastu Construction", href: "https://tathastuconstruction.in" },
+  { name: "Tathastu Interior", href: "https://tathastuinterior.in" },
+  { name: "Tathastu Homes", href: "https://tathastuhomes.com" },
+] as const;
+
 export function SiteFooter() {
   return (
     <footer className="relative mt-32 border-t border-border bg-ink text-ivory">
@@ -47,10 +53,11 @@ export function SiteFooter() {
           <h4 className="eyebrow !text-primary-glow">Property Search</h4>
           <ul className="mt-4 space-y-2 text-sm">
             {[
-              ["/flats-in-lohegaon-pune", "Flats in Lohegaon"],
-              ["/2-bhk-flats-in-lohegaon-pune", "2 BHK Flats"],
-              ["/flats-for-rent-in-lohegaon-pune", "Flats for Rent"],
-              ["/plots-for-sale-in-lohegaon-pune", "Plots for Sale"],
+              ["/realty", "Flats in Lohegaon"],
+              ["/realty", "2 BHK Flats in Lohegaon"],
+              ["/realty", "Flats for Rent in Lohegaon"],
+              ["/realty", "Plots for Sale in Lohegaon"],
+              ["/realty", "Resale Properties in Pune"],
             ].map(([to, label]) => (
               <li key={to}>
                 <Link to={to} className="text-ivory/70 transition-colors hover:text-primary-glow">
@@ -64,10 +71,11 @@ export function SiteFooter() {
           <h4 className="eyebrow !text-primary-glow">Construction</h4>
           <ul className="mt-4 space-y-2 text-sm">
             {[
-              ["/construction-company-in-lohegaon-pune", "Lohegaon Construction"],
-              ["/house-construction-in-pune", "House Construction"],
-              ["/home-construction-cost-in-pune", "Construction Cost"],
-              ["/turnkey-construction-in-pune", "Turnkey Build"],
+              ["/construction", "Construction Company in Lohegaon"],
+              ["/construction", "House Construction in Pune"],
+              ["/construction/cost-estimator", "Home Construction Cost"],
+              ["/construction", "Turnkey Construction"],
+              ["/construction", "Commercial Construction"],
             ].map(([to, label]) => (
               <li key={to}>
                 <Link to={to} className="text-ivory/70 transition-colors hover:text-primary-glow">
@@ -81,10 +89,11 @@ export function SiteFooter() {
           <h4 className="eyebrow !text-primary-glow">Interiors</h4>
           <ul className="mt-4 space-y-2 text-sm">
             {[
-              ["/interior-designer-in-lohegaon-pune", "Lohegaon Designer"],
-              ["/home-interior-design-in-pune", "Home Interiors"],
-              ["/modular-kitchen-in-pune", "Modular Kitchen"],
-              ["/office-interior-design-in-pune", "Office Interiors"],
+              ["/interior", "Interior Designer in Lohegaon"],
+              ["/interior", "Home Interior Design"],
+              ["/interior", "Modular Kitchen in Pune"],
+              ["/interior", "Office Interior Design"],
+              ["/interior", "Bedroom & Living Room Design"],
             ].map(([to, label]) => (
               <li key={to}>
                 <Link to={to} className="text-ivory/70 transition-colors hover:text-primary-glow">
@@ -98,20 +107,40 @@ export function SiteFooter() {
           <h4 className="eyebrow !text-primary-glow">Reach Us</h4>
           <ul className="mt-4 space-y-3 text-sm text-ivory/70">
             <li className="flex min-w-0 gap-2">
-              <MapPin className="mt-0.5 h-4 w-4 flex-none text-primary" />{" "}
+              <MapPin className="mt-0.5 h-4 w-4 flex-none text-primary" />
               <span className="break-words">Tathastu Infra, Lohegaon, Pune 411047</span>
             </li>
             <li className="flex min-w-0 gap-2">
-              <Phone className="mt-0.5 h-4 w-4 flex-none text-primary" />{" "}
+              <Phone className="mt-0.5 h-4 w-4 flex-none text-primary" />
               <span>+91 78208 64384</span>
             </li>
             <li className="flex min-w-0 gap-2">
-              <Mail className="mt-0.5 h-4 w-4 flex-none text-primary" />{" "}
+              <Mail className="mt-0.5 h-4 w-4 flex-none text-primary" />
               <span className="break-words">tathastu.infra.info@gmail.com</span>
             </li>
           </ul>
         </div>
       </div>
+
+      <div className="border-t border-ivory/10">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+          <p className="eyebrow !text-primary-glow">Sister Brands</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {sisterBrands.map((brand) => (
+              <a
+                key={brand.name}
+                href={brand.href}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-ivory/20 px-3 py-1.5 text-xs text-ivory/75 transition-colors hover:border-primary hover:text-primary-glow"
+              >
+                {brand.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="border-t border-ivory/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-6 text-center text-xs text-ivory/50 sm:px-6 md:flex-row md:text-left">
           <p>© {new Date().getFullYear()} Tathastu Infra. Building dreams. Creating reality.</p>
@@ -121,3 +150,4 @@ export function SiteFooter() {
     </footer>
   );
 }
+

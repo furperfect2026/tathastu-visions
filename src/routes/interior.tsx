@@ -31,6 +31,7 @@ const content: ServicePageContent = {
         "Complete home interiors for living rooms, bedrooms, storage, finishes and decor.",
       icon: Home,
       image: { src: interior1, alt: "Luxury home interior design by Tathastu Infra" },
+      href: "/interior/home-interior",
     },
     {
       title: "Office Interior",
@@ -38,12 +39,14 @@ const content: ServicePageContent = {
         "Professional office interiors shaped around workflow, comfort and brand presence.",
       icon: BriefcaseBusiness,
       image: { src: interior4, alt: "Modern office interior design by Tathastu Infra" },
+      href: "/interior/office-interior",
     },
     {
       title: "Modular Kitchen",
       description: "Elegant kitchens planned for workflow, storage, finish quality and durability.",
       icon: CookingPot,
       image: { src: interior3, alt: "Premium modular kitchen interior by Tathastu Infra" },
+      href: "/interior/modular-kitchen",
     },
   ],
 };

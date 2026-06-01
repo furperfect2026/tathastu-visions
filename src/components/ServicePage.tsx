@@ -1,10 +1,11 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
   BadgeCheck,
+  Calculator,
   CheckCircle2,
   Clock3,
   Eye,
@@ -18,6 +19,15 @@ import { PackagesSection } from "@/components/PackagesSection";
 import { RealtySearchLinks } from "@/components/RealtySearchLinks";
 import { Reveal } from "@/components/Reveal";
 import { ServiceSearchLinks } from "@/components/ServiceSearchLinks";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import clearGuidanceImage from "@/assets/clear-guidance.jpg";
 import clientRelationshipImage from "@/assets/client-relationship.jpg";
 import constructionQualityImage from "@/assets/construction-2.jpg";
@@ -43,11 +53,27 @@ export type ServicePageContent = {
     description: string;
     icon: LucideIcon;
     image: ServiceImage;
+    href: string;
   }[];
   projectCategory: "realty" | "construction" | "interior";
 };
 
 const process = ["Consultation", "Planning & Design", "Execution", "Final Handover"] as const;
+
+type PackageTier = "basic" | "standard" | "premium";
+
+const estimateRates: Record<PackageTier, number> = {
+  basic: 1550,
+  standard: 1750,
+  premium: 2250,
+};
+
+const floorFactors: Record<string, number> = {
+  ground: 1,
+  "g+1": 1.12,
+  "g+2": 1.21,
+  "g+3": 1.31,
+};
 
 const socialLinks = [
   { label: "YouTube", href: "https://www.youtube.com/@Tathastu_Infra", brand: "youtube" },
@@ -128,8 +154,39 @@ const constructionGuarantees = [
   },
 ] as const;
 
+const constructionPartners = [
+  {
+    title: "Civil & RCC Teams",
+    body: "Execution crews aligned with structural discipline and practical site accountability.",
+  },
+  {
+    title: "Architecture Collaborators",
+    body: "Partner architects supporting build-ready planning and site-aware detailing.",
+  },
+  {
+    title: "MEP & Finishing Specialists",
+    body: "Electrical, plumbing, and finish teams coordinated for cleaner handover quality.",
+  },
+  {
+    title: "Material Supply Network",
+    body: "Trusted vendors for cement, steel, blocks and finishing materials across Pune.",
+  },
+] as const;
+
 export function ServicePage({ content }: { content: ServicePageContent }) {
+  const navigate = useNavigate();
   const guaranteeTrackRef = useRef<HTMLDivElement>(null);
+  const [estimateArea, setEstimateArea] = useState("1000");
+  const [estimateTier, setEstimateTier] = useState<PackageTier>("standard");
+  const [estimateFloors, setEstimateFloors] = useState("ground");
+
+  const quickEstimate = useMemo(() => {
+    const area = Number(estimateArea);
+    if (!Number.isFinite(area) || area <= 0) return null;
+    const base = area * estimateRates[estimateTier];
+    return Math.round(base * floorFactors[estimateFloors]);
+  }, [estimateArea, estimateFloors, estimateTier]);
+
   const relatedProjects = projects
     .filter((project) => project.category === content.projectCategory)
     .slice(0, 3);
@@ -170,7 +227,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
             className="max-w-4xl"
           >
             <p className="eyebrow !text-primary-glow">{content.eyebrow}</p>
-            <h1 className="mt-5 break-words font-display text-[2.75rem] font-medium leading-[1.02] sm:text-5xl md:text-7xl lg:text-[5.6rem]">
+            <h1 className="mt-5 break-words font-display text-[clamp(2rem,8.5vw,2.75rem)] font-medium leading-[1.04] sm:text-5xl md:text-7xl md:leading-[1.02] lg:text-[5.6rem]">
               {content.title} <span className="italic text-gradient-gold">{content.accent}</span>
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-ivory/78 md:text-lg">
@@ -193,8 +250,22 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                 variant="outline"
                 className="w-full rounded-full border-ivory/30 bg-ivory/5 px-5 text-base text-ivory backdrop-blur hover:border-primary/60 hover:bg-ivory/10 sm:w-auto sm:px-8"
               >
-                <Link to="/projects">Explore Projects</Link>
+                <Link to={content.projectCategory === "construction" ? "/projects/construction" : "/projects"}>
+                  Explore Projects
+                </Link>
               </Button>
+              {content.projectCategory === "construction" && (
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="w-full rounded-full border-ivory/30 bg-ivory/5 px-5 text-base text-ivory backdrop-blur hover:border-primary/60 hover:bg-ivory/10 sm:w-auto sm:px-8"
+                >
+                  <Link to="/construction/cost-estimator">
+                    Cost Estimator <IndianRupee className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              )}
             </div>
             <ServiceSocialLinks mobile />
           </motion.div>
@@ -220,11 +291,20 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
           </Reveal>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {content.offers.map(({ title, description, icon: Icon, image }, index) => (
+            {content.offers.map(({ title, description, icon: Icon, image, href }, index) => (
               <Reveal key={title} delay={(index % 3) * 0.06}>
                 <motion.article
                   whileHover={{ y: -6 }}
-                  className="group h-full overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border"
+                  className="group h-full cursor-pointer overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  role="link"
+                  tabIndex={0}
+                  onClick={() => navigate({ to: href })}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      navigate({ to: href });
+                    }
+                  }}
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-ink">
                     <img
@@ -240,9 +320,11 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                   </div>
                   <div className="p-6 sm:p-7">
                     <h3 className="font-display text-2xl font-semibold">{title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      {description}
-                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
+                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                      Learn more{" "}
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
                   </div>
                 </motion.article>
               </Reveal>
@@ -318,8 +400,139 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         </div>
       </section>
 
+      {content.projectCategory === "construction" && (
+        <section className="pb-20 sm:pb-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <Reveal>
+              <div className="rounded-3xl bg-card p-7 shadow-luxe ring-1 ring-border sm:p-8">
+                <p className="eyebrow">Our Partners</p>
+                <h2 className="mt-3 font-display text-3xl font-medium text-ink sm:text-4xl">
+                  Built with trusted execution partners.
+                </h2>
+                <p className="mt-4 max-w-3xl text-muted-foreground">
+                  Tathastu Infra coordinates with specialist partner teams so every construction
+                  project moves with better quality control, clearer timelines and disciplined delivery.
+                </p>
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  {constructionPartners.map((partner) => (
+                    <div key={partner.title} className="rounded-2xl bg-secondary/70 p-5">
+                      <h3 className="font-display text-2xl font-semibold text-ink">{partner.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{partner.body}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       {content.projectCategory === "construction" && <PackagesSection mode="construction" />}
       {content.projectCategory === "interior" && <PackagesSection mode="interior" />}
+
+      {content.projectCategory === "construction" && (
+        <section className="bg-gradient-ivory pb-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <Reveal>
+              <div className="rounded-3xl bg-card p-7 shadow-luxe ring-1 ring-border sm:p-8">
+                <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+                  <div>
+                    <p className="eyebrow">Cost Estimator</p>
+                    <h2 className="mt-3 font-display text-3xl font-semibold text-ink sm:text-4xl">
+                      Plan your construction budget before you commit.
+                    </h2>
+                    <p className="mt-4 max-w-2xl text-muted-foreground">
+                      Use this quick calculator card to estimate budget by area, package and floors.
+                      Then open the full estimator for detailed costing.
+                    </p>
+                    <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                      <div>
+                        <Label htmlFor="quick-estimate-area">Built-up area (sq ft)</Label>
+                        <Input
+                          id="quick-estimate-area"
+                          type="number"
+                          min={100}
+                          value={estimateArea}
+                          onChange={(event) => setEstimateArea(event.target.value)}
+                          className="mt-2 h-12 rounded-xl"
+                        />
+                      </div>
+
+                      <div>
+                        <Label htmlFor="quick-estimate-tier">Package</Label>
+                        <Select
+                          value={estimateTier}
+                          onValueChange={(value: PackageTier) => setEstimateTier(value)}
+                        >
+                          <SelectTrigger id="quick-estimate-tier" className="mt-2 h-12 rounded-xl">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="basic">Basic - ₹1550 / sq ft</SelectItem>
+                            <SelectItem value="standard">Standard - ₹1750 / sq ft</SelectItem>
+                            <SelectItem value="premium">Premium - ₹2250 / sq ft</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      <div className="sm:col-span-2">
+                        <Label htmlFor="quick-estimate-floors">Floors</Label>
+                        <Select value={estimateFloors} onValueChange={setEstimateFloors}>
+                          <SelectTrigger id="quick-estimate-floors" className="mt-2 h-12 rounded-xl">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="ground">Ground floor</SelectItem>
+                            <SelectItem value="g+1">G+1</SelectItem>
+                            <SelectItem value="g+2">G+2</SelectItem>
+                            <SelectItem value="g+3">G+3</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl bg-gradient-ink p-6 text-ivory shadow-luxe">
+                    <span className="grid h-12 w-12 place-items-center rounded-2xl bg-primary/20 text-primary-glow ring-1 ring-primary/25">
+                      <Calculator className="h-6 w-6" />
+                    </span>
+                    <p className="mt-5 text-sm uppercase tracking-[0.18em] text-primary-glow/80">
+                      Estimated Budget
+                    </p>
+                    <p className="mt-3 font-display text-5xl font-semibold">
+                      {quickEstimate ? `₹${quickEstimate.toLocaleString("en-IN")}` : "—"}
+                    </p>
+                    <p className="mt-4 text-sm leading-relaxed text-ivory/70">
+                      This is a quick estimate. Final cost depends on site conditions, structure
+                      complexity and finish scope.
+                    </p>
+                    <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                      <Button
+                        asChild
+                        className="rounded-full bg-gradient-gold px-6 text-ink shadow-gold"
+                      >
+                        <Link to="/construction/cost-estimator">
+                          Open Full Calculator <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      </Button>
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="rounded-full border-ivory/25 bg-ivory/5 px-6 text-ivory hover:bg-ivory/10"
+                      >
+                        <Link to="/" hash="contact">
+                          Get Exact Quote
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       {content.projectCategory === "realty" && <RealtySearchLinks compact />}
       {content.projectCategory === "construction" && (
         <ServiceSearchLinks compact mode="construction" />
@@ -426,7 +639,9 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                     variant="outline"
                     className="w-full rounded-full border-ivory/25 bg-ivory/5 px-5 text-base text-ivory hover:bg-ivory/10 sm:w-auto sm:px-8"
                   >
-                    <Link to="/projects">Explore Projects</Link>
+                    <Link to={content.projectCategory === "construction" ? "/projects/construction" : "/projects"}>
+                      Explore Projects
+                    </Link>
                   </Button>
                 </div>
               </div>

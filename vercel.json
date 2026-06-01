@@ -1,4 +1,18 @@
 {
   "installCommand": "npm install",
-  "buildCommand": "npm run build"
+  "buildCommand": "npm run build",
+  "redirects": [
+    { "source": "/flats-in-lohegaon-pune", "destination": "/realty", "permanent": true },
+    { "source": "/2-bhk-flats-in-lohegaon-pune", "destination": "/realty", "permanent": true },
+    { "source": "/flats-for-rent-in-lohegaon-pune", "destination": "/realty", "permanent": true },
+    { "source": "/plots-for-sale-in-lohegaon-pune", "destination": "/realty", "permanent": true },
+    { "source": "/construction-company-in-lohegaon-pune", "destination": "/construction", "permanent": true },
+    { "source": "/house-construction-in-pune", "destination": "/construction", "permanent": true },
+    { "source": "/home-construction-cost-in-pune", "destination": "/construction", "permanent": true },
+    { "source": "/turnkey-construction-in-pune", "destination": "/construction", "permanent": true },
+    { "source": "/interior-designer-in-lohegaon-pune", "destination": "/interior", "permanent": true },
+    { "source": "/home-interior-design-in-pune", "destination": "/interior", "permanent": true },
+    { "source": "/modular-kitchen-in-pune", "destination": "/interior", "permanent": true },
+    { "source": "/office-interior-design-in-pune", "destination": "/interior", "permanent": true }
+  ]
 }

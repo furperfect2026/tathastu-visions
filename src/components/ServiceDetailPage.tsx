@@ -1,0 +1,249 @@
+import { Link } from "@tanstack/react-router";
+import { ArrowRight, CheckCircle2, IndianRupee } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/Reveal";
+import type { ServiceDetail } from "@/lib/service-detail-data";
+import { projects } from "@/lib/site-data";
+
+const constructionPartners = [
+  {
+    title: "Civil & RCC Teams",
+    body: "Experienced partner teams for structural execution, RCC sequencing and on-site discipline.",
+  },
+  {
+    title: "Architecture Collaborators",
+    body: "Partner architects helping align design intent with practical build delivery.",
+  },
+  {
+    title: "MEP & Finishing Specialists",
+    body: "Electrical, plumbing and finishing partners coordinated for cleaner handover quality.",
+  },
+  {
+    title: "Material Supply Network",
+    body: "Trusted vendor network for cement, steel, blocks and finishing materials across Pune.",
+  },
+] as const;
+
+export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
+  const Icon = detail.icon;
+  const isConstruction = detail.category === "construction";
+  const relatedConstructionProjects = projects.filter((project) => project.category === "construction");
+
+  return (
+    <>
+      <section className="relative overflow-hidden bg-ink pt-28 text-ivory sm:pt-32">
+        <div className="absolute inset-0">
+          <img src={detail.image} alt={detail.imageAlt} className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/62 to-ink/24" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+        </div>
+        <div className="relative mx-auto grid min-h-[72svh] max-w-7xl items-end gap-10 px-4 pb-16 sm:px-6 md:grid-cols-[1.05fr_0.95fr] md:items-center md:pb-0">
+          <Reveal className="max-w-3xl">
+            <p className="eyebrow !text-primary-glow">{detail.eyebrow}</p>
+            <h1 className="mt-5 font-display text-[clamp(2.4rem,9vw,5.8rem)] font-medium leading-[1.02]">
+              {detail.title}
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ivory/78 md:text-lg">
+              {detail.subtitle}
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Button asChild size="lg" className="rounded-full bg-gradient-gold px-8 text-ink shadow-gold">
+                <Link to={isConstruction ? "/projects/construction" : "/projects"}>
+                  View Projects <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="rounded-full border-ivory/30 bg-ivory/5 px-8 text-ivory hover:bg-ivory/10"
+              >
+                <Link to="/" hash="contact">
+                  Get Free Quote
+                </Link>
+              </Button>
+              {isConstruction && (
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full border-ivory/30 bg-ivory/5 px-8 text-ivory hover:bg-ivory/10"
+                >
+                  <Link to="/construction/cost-estimator">
+                    Cost Estimator <IndianRupee className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              )}
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.08} className="hidden md:block">
+            <div className="overflow-hidden rounded-3xl bg-ivory/8 p-3 shadow-luxe ring-1 ring-ivory/15 backdrop-blur">
+              <img
+                src={detail.image}
+                alt={detail.imageAlt}
+                className="aspect-[4/5] w-full rounded-2xl object-cover"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-gradient-ivory py-20 sm:py-24">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <Reveal>
+            <div className="sticky top-28 rounded-3xl bg-card p-7 shadow-luxe ring-1 ring-border">
+              <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
+                <Icon className="h-6 w-6" />
+              </div>
+              <h2 className="mt-8 font-display text-3xl font-semibold text-ink sm:text-4xl">
+                Built for clarity before commitment.
+              </h2>
+              <p className="mt-5 leading-relaxed text-muted-foreground">{detail.intro}</p>
+            </div>
+          </Reveal>
+
+          <div className="space-y-6">
+            <Reveal>
+              <div className="rounded-3xl bg-card p-7 shadow-luxe ring-1 ring-border">
+                <p className="eyebrow">What this includes</p>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {detail.highlights.map((item) => (
+                    <div key={item} className="flex gap-3 rounded-2xl bg-secondary/70 p-4">
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                      <span className="text-sm font-medium text-ink">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.06}>
+              <div className="rounded-3xl bg-ink p-7 text-ivory shadow-luxe">
+                <p className="eyebrow !text-primary-glow">Best suited for</p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {detail.suitedFor.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-ivory/15 bg-ivory/8 px-4 py-2 text-sm text-ivory/82"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div className="rounded-3xl bg-card p-7 shadow-luxe ring-1 ring-border">
+                <h3 className="font-display text-3xl font-semibold text-ink">
+                  Want to see related work?
+                </h3>
+                <p className="mt-3 max-w-2xl text-muted-foreground">
+                  Explore Tathastu Infra projects, then share your requirement with us so we can guide
+                  the right next step for your site, flat, home or workspace.
+                </p>
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                  <Button asChild className="rounded-full bg-gradient-gold px-7 text-ink shadow-gold">
+                    <Link to={isConstruction ? "/projects/construction" : "/projects"}>
+                      Explore Projects <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline" className="rounded-full px-7">
+                    <Link to={detail.parentPath}>Back to Service</Link>
+                  </Button>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {isConstruction && (
+        <section className="bg-gradient-ivory pb-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <Reveal>
+              <div className="rounded-3xl bg-card p-7 shadow-luxe ring-1 ring-border sm:p-8">
+                <p className="eyebrow">Our Partners</p>
+                <h2 className="mt-3 font-display text-3xl font-semibold text-ink sm:text-4xl">
+                  Partner network that strengthens delivery.
+                </h2>
+                <p className="mt-4 max-w-3xl text-muted-foreground">
+                  For construction projects, Tathastu Infra works with trusted technical teams,
+                  specialist vendors and execution partners to keep quality, timelines and site control
+                  reliable from start to handover.
+                </p>
+
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  {constructionPartners.map((partner) => (
+                    <div key={partner.title} className="rounded-2xl bg-secondary/70 p-5">
+                      <h3 className="font-display text-2xl font-semibold text-ink">{partner.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{partner.body}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                  <Button asChild className="rounded-full bg-gradient-gold px-7 text-ink shadow-gold">
+                    <Link to="/construction/cost-estimator">
+                      Try Cost Estimator <IndianRupee className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline" className="rounded-full px-7">
+                    <Link to="/projects/construction">See Construction Projects</Link>
+                  </Button>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.08} className="mt-8">
+              <div className="rounded-3xl bg-card p-7 shadow-luxe ring-1 ring-border sm:p-8">
+                <p className="eyebrow">Construction Projects</p>
+                <h2 className="mt-3 font-display text-3xl font-semibold text-ink sm:text-4xl">
+                  Recent construction work by Tathastu Infra.
+                </h2>
+                <p className="mt-4 max-w-3xl text-muted-foreground">
+                  Explore live examples of residential and commercial execution. Every construction
+                  service page now includes this project showcase for quick reference.
+                </p>
+
+                <div className="mt-8 grid gap-5 md:grid-cols-3">
+                  {relatedConstructionProjects.map((project) => (
+                    <article
+                      key={project.id}
+                      className="group overflow-hidden rounded-2xl bg-secondary/60 ring-1 ring-border"
+                    >
+                      <div className="aspect-[4/5] overflow-hidden">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <h3 className="font-display text-xl font-semibold text-ink">{project.title}</h3>
+                        <p className="text-xs text-muted-foreground">
+                          {project.location} - {project.year}
+                        </p>
+                        <p className="mt-2 text-sm text-muted-foreground">{project.blurb}</p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+
+                <div className="mt-7">
+                  <Button asChild className="rounded-full bg-gradient-gold px-7 text-ink shadow-gold">
+                    <Link to="/projects/construction">
+                      View All Projects <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
+    </>
+  );
+}

@@ -17,64 +17,64 @@
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.tathastuinfra.in/flats-in-lohegaon-pune</loc>
-    <priority>0.85</priority>
+    <loc>https://www.tathastuinfra.in/realty/rental</loc>
+    <priority>0.78</priority>
   </url>
   <url>
-    <loc>https://www.tathastuinfra.in/2-bhk-flats-in-lohegaon-pune</loc>
-    <priority>0.85</priority>
+    <loc>https://www.tathastuinfra.in/realty/resale</loc>
+    <priority>0.78</priority>
   </url>
   <url>
-    <loc>https://www.tathastuinfra.in/flats-for-rent-in-lohegaon-pune</loc>
-    <priority>0.82</priority>
-  </url>
-  <url>
-    <loc>https://www.tathastuinfra.in/plots-for-sale-in-lohegaon-pune</loc>
-    <priority>0.82</priority>
+    <loc>https://www.tathastuinfra.in/realty/projects</loc>
+    <priority>0.78</priority>
   </url>
   <url>
     <loc>https://www.tathastuinfra.in/construction</loc>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.tathastuinfra.in/construction-company-in-lohegaon-pune</loc>
-    <priority>0.84</priority>
+    <loc>https://www.tathastuinfra.in/construction/commercial-construction</loc>
+    <priority>0.78</priority>
   </url>
   <url>
-    <loc>https://www.tathastuinfra.in/house-construction-in-pune</loc>
-    <priority>0.84</priority>
+    <loc>https://www.tathastuinfra.in/construction/residential-construction</loc>
+    <priority>0.78</priority>
   </url>
   <url>
-    <loc>https://www.tathastuinfra.in/home-construction-cost-in-pune</loc>
-    <priority>0.82</priority>
+    <loc>https://www.tathastuinfra.in/construction/structural-work-rcc</loc>
+    <priority>0.78</priority>
   </url>
   <url>
-    <loc>https://www.tathastuinfra.in/turnkey-construction-in-pune</loc>
-    <priority>0.82</priority>
+    <loc>https://www.tathastuinfra.in/construction/wtg-government-contracts</loc>
+    <priority>0.76</priority>
+  </url>
+  <url>
+    <loc>https://www.tathastuinfra.in/construction/cost-estimator</loc>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.tathastuinfra.in/interior</loc>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.tathastuinfra.in/interior-designer-in-lohegaon-pune</loc>
-    <priority>0.84</priority>
+    <loc>https://www.tathastuinfra.in/interior/home-interior</loc>
+    <priority>0.78</priority>
   </url>
   <url>
-    <loc>https://www.tathastuinfra.in/home-interior-design-in-pune</loc>
-    <priority>0.84</priority>
+    <loc>https://www.tathastuinfra.in/interior/office-interior</loc>
+    <priority>0.78</priority>
   </url>
   <url>
-    <loc>https://www.tathastuinfra.in/modular-kitchen-in-pune</loc>
-    <priority>0.82</priority>
-  </url>
-  <url>
-    <loc>https://www.tathastuinfra.in/office-interior-design-in-pune</loc>
-    <priority>0.82</priority>
+    <loc>https://www.tathastuinfra.in/interior/modular-kitchen</loc>
+    <priority>0.78</priority>
   </url>
   <url>
     <loc>https://www.tathastuinfra.in/projects</loc>
     <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.tathastuinfra.in/projects/construction</loc>
+    <priority>0.74</priority>
   </url>
   <url>
     <loc>https://www.tathastuinfra.in/contact</loc>

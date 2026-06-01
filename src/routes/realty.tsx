@@ -25,6 +25,7 @@ const content: ServicePageContent = {
         "Rental flats and homes in Lohegaon and nearby Pune areas with clear owner and tenant coordination.",
       icon: CalendarCheck,
       image: { src: realty4, alt: "Rental assistance for homes and flats in Pune" },
+      href: "/realty/rental",
     },
     {
       title: "Resale",
@@ -32,6 +33,7 @@ const content: ServicePageContent = {
         "Resale flats and properties reviewed around location, condition, price comfort and documentation readiness.",
       icon: Handshake,
       image: { src: realty3, alt: "Resale property guidance by Tathastu Infra Realty" },
+      href: "/realty/resale",
     },
     {
       title: "Projects",
@@ -39,6 +41,7 @@ const content: ServicePageContent = {
         "New residential projects, site visits and flat shortlisting support for buyers and investors.",
       icon: Building2,
       image: { src: realty3, alt: "New residential project sales in Lohegaon Pune" },
+      href: "/realty/projects",
     },
   ],
 };

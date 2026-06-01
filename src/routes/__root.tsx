@@ -13,6 +13,8 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ConsultationPopup } from "@/components/ConsultationPopup";
+import { ChatbotWidget } from "@/components/ChatbotWidget";
+import { SeoFaqSection } from "@/components/SeoFaqSection";
 import { Toaster } from "@/components/ui/sonner";
 
 const siteUrl = "https://www.tathastuinfra.in";
@@ -254,7 +256,9 @@ function RootComponent() {
       <main className="min-h-screen">
         <Outlet />
       </main>
+      <SeoFaqSection />
       <SiteFooter />
+      <ChatbotWidget />
       <ConsultationPopup />
       <Toaster richColors position="top-center" />
     </QueryClientProvider>

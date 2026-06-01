@@ -9,33 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TurnkeyConstructionInPuneRouteImport } from './routes/turnkey-construction-in-pune'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RealtyRouteImport } from './routes/realty'
 import { Route as ProjectsRouteImport } from './routes/projects'
-import { Route as PlotsForSaleInLohegaonPuneRouteImport } from './routes/plots-for-sale-in-lohegaon-pune'
-import { Route as OfficeInteriorDesignInPuneRouteImport } from './routes/office-interior-design-in-pune'
-import { Route as ModularKitchenInPuneRouteImport } from './routes/modular-kitchen-in-pune'
-import { Route as InteriorDesignerInLohegaonPuneRouteImport } from './routes/interior-designer-in-lohegaon-pune'
 import { Route as InteriorRouteImport } from './routes/interior'
-import { Route as HouseConstructionInPuneRouteImport } from './routes/house-construction-in-pune'
-import { Route as HomeInteriorDesignInPuneRouteImport } from './routes/home-interior-design-in-pune'
-import { Route as HomeConstructionCostInPuneRouteImport } from './routes/home-construction-cost-in-pune'
-import { Route as FlatsInLohegaonPuneRouteImport } from './routes/flats-in-lohegaon-pune'
-import { Route as FlatsForRentInLohegaonPuneRouteImport } from './routes/flats-for-rent-in-lohegaon-pune'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as ConstructionCompanyInLohegaonPuneRouteImport } from './routes/construction-company-in-lohegaon-pune'
 import { Route as ConstructionRouteImport } from './routes/construction'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as R2BhkFlatsInLohegaonPuneRouteImport } from './routes/2-bhk-flats-in-lohegaon-pune'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RealtySlugRouteImport } from './routes/realty.$slug'
+import { Route as ProjectsConstructionRouteImport } from './routes/projects.construction'
+import { Route as InteriorSlugRouteImport } from './routes/interior.$slug'
+import { Route as ConstructionCostEstimatorRouteImport } from './routes/construction.cost-estimator'
+import { Route as ConstructionSlugRouteImport } from './routes/construction.$slug'
 
-const TurnkeyConstructionInPuneRoute =
-  TurnkeyConstructionInPuneRouteImport.update({
-    id: '/turnkey-construction-in-pune',
-    path: '/turnkey-construction-in-pune',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -51,73 +38,16 @@ const ProjectsRoute = ProjectsRouteImport.update({
   path: '/projects',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PlotsForSaleInLohegaonPuneRoute =
-  PlotsForSaleInLohegaonPuneRouteImport.update({
-    id: '/plots-for-sale-in-lohegaon-pune',
-    path: '/plots-for-sale-in-lohegaon-pune',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const OfficeInteriorDesignInPuneRoute =
-  OfficeInteriorDesignInPuneRouteImport.update({
-    id: '/office-interior-design-in-pune',
-    path: '/office-interior-design-in-pune',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ModularKitchenInPuneRoute = ModularKitchenInPuneRouteImport.update({
-  id: '/modular-kitchen-in-pune',
-  path: '/modular-kitchen-in-pune',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InteriorDesignerInLohegaonPuneRoute =
-  InteriorDesignerInLohegaonPuneRouteImport.update({
-    id: '/interior-designer-in-lohegaon-pune',
-    path: '/interior-designer-in-lohegaon-pune',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const InteriorRoute = InteriorRouteImport.update({
   id: '/interior',
   path: '/interior',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HouseConstructionInPuneRoute = HouseConstructionInPuneRouteImport.update({
-  id: '/house-construction-in-pune',
-  path: '/house-construction-in-pune',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HomeInteriorDesignInPuneRoute =
-  HomeInteriorDesignInPuneRouteImport.update({
-    id: '/home-interior-design-in-pune',
-    path: '/home-interior-design-in-pune',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const HomeConstructionCostInPuneRoute =
-  HomeConstructionCostInPuneRouteImport.update({
-    id: '/home-construction-cost-in-pune',
-    path: '/home-construction-cost-in-pune',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const FlatsInLohegaonPuneRoute = FlatsInLohegaonPuneRouteImport.update({
-  id: '/flats-in-lohegaon-pune',
-  path: '/flats-in-lohegaon-pune',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FlatsForRentInLohegaonPuneRoute =
-  FlatsForRentInLohegaonPuneRouteImport.update({
-    id: '/flats-for-rent-in-lohegaon-pune',
-    path: '/flats-for-rent-in-lohegaon-pune',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ConstructionCompanyInLohegaonPuneRoute =
-  ConstructionCompanyInLohegaonPuneRouteImport.update({
-    id: '/construction-company-in-lohegaon-pune',
-    path: '/construction-company-in-lohegaon-pune',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const ConstructionRoute = ConstructionRouteImport.update({
   id: '/construction',
   path: '/construction',
@@ -128,186 +58,145 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const R2BhkFlatsInLohegaonPuneRoute =
-  R2BhkFlatsInLohegaonPuneRouteImport.update({
-    id: '/2-bhk-flats-in-lohegaon-pune',
-    path: '/2-bhk-flats-in-lohegaon-pune',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RealtySlugRoute = RealtySlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => RealtyRoute,
+} as any)
+const ProjectsConstructionRoute = ProjectsConstructionRouteImport.update({
+  id: '/construction',
+  path: '/construction',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const InteriorSlugRoute = InteriorSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => InteriorRoute,
+} as any)
+const ConstructionCostEstimatorRoute =
+  ConstructionCostEstimatorRouteImport.update({
+    id: '/cost-estimator',
+    path: '/cost-estimator',
+    getParentRoute: () => ConstructionRoute,
+  } as any)
+const ConstructionSlugRoute = ConstructionSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ConstructionRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/2-bhk-flats-in-lohegaon-pune': typeof R2BhkFlatsInLohegaonPuneRoute
   '/about': typeof AboutRoute
-  '/construction': typeof ConstructionRoute
-  '/construction-company-in-lohegaon-pune': typeof ConstructionCompanyInLohegaonPuneRoute
+  '/construction': typeof ConstructionRouteWithChildren
   '/contact': typeof ContactRoute
-  '/flats-for-rent-in-lohegaon-pune': typeof FlatsForRentInLohegaonPuneRoute
-  '/flats-in-lohegaon-pune': typeof FlatsInLohegaonPuneRoute
-  '/home-construction-cost-in-pune': typeof HomeConstructionCostInPuneRoute
-  '/home-interior-design-in-pune': typeof HomeInteriorDesignInPuneRoute
-  '/house-construction-in-pune': typeof HouseConstructionInPuneRoute
-  '/interior': typeof InteriorRoute
-  '/interior-designer-in-lohegaon-pune': typeof InteriorDesignerInLohegaonPuneRoute
-  '/modular-kitchen-in-pune': typeof ModularKitchenInPuneRoute
-  '/office-interior-design-in-pune': typeof OfficeInteriorDesignInPuneRoute
-  '/plots-for-sale-in-lohegaon-pune': typeof PlotsForSaleInLohegaonPuneRoute
-  '/projects': typeof ProjectsRoute
-  '/realty': typeof RealtyRoute
+  '/interior': typeof InteriorRouteWithChildren
+  '/projects': typeof ProjectsRouteWithChildren
+  '/realty': typeof RealtyRouteWithChildren
   '/services': typeof ServicesRoute
-  '/turnkey-construction-in-pune': typeof TurnkeyConstructionInPuneRoute
+  '/construction/$slug': typeof ConstructionSlugRoute
+  '/construction/cost-estimator': typeof ConstructionCostEstimatorRoute
+  '/interior/$slug': typeof InteriorSlugRoute
+  '/projects/construction': typeof ProjectsConstructionRoute
+  '/realty/$slug': typeof RealtySlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/2-bhk-flats-in-lohegaon-pune': typeof R2BhkFlatsInLohegaonPuneRoute
   '/about': typeof AboutRoute
-  '/construction': typeof ConstructionRoute
-  '/construction-company-in-lohegaon-pune': typeof ConstructionCompanyInLohegaonPuneRoute
+  '/construction': typeof ConstructionRouteWithChildren
   '/contact': typeof ContactRoute
-  '/flats-for-rent-in-lohegaon-pune': typeof FlatsForRentInLohegaonPuneRoute
-  '/flats-in-lohegaon-pune': typeof FlatsInLohegaonPuneRoute
-  '/home-construction-cost-in-pune': typeof HomeConstructionCostInPuneRoute
-  '/home-interior-design-in-pune': typeof HomeInteriorDesignInPuneRoute
-  '/house-construction-in-pune': typeof HouseConstructionInPuneRoute
-  '/interior': typeof InteriorRoute
-  '/interior-designer-in-lohegaon-pune': typeof InteriorDesignerInLohegaonPuneRoute
-  '/modular-kitchen-in-pune': typeof ModularKitchenInPuneRoute
-  '/office-interior-design-in-pune': typeof OfficeInteriorDesignInPuneRoute
-  '/plots-for-sale-in-lohegaon-pune': typeof PlotsForSaleInLohegaonPuneRoute
-  '/projects': typeof ProjectsRoute
-  '/realty': typeof RealtyRoute
+  '/interior': typeof InteriorRouteWithChildren
+  '/projects': typeof ProjectsRouteWithChildren
+  '/realty': typeof RealtyRouteWithChildren
   '/services': typeof ServicesRoute
-  '/turnkey-construction-in-pune': typeof TurnkeyConstructionInPuneRoute
+  '/construction/$slug': typeof ConstructionSlugRoute
+  '/construction/cost-estimator': typeof ConstructionCostEstimatorRoute
+  '/interior/$slug': typeof InteriorSlugRoute
+  '/projects/construction': typeof ProjectsConstructionRoute
+  '/realty/$slug': typeof RealtySlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/2-bhk-flats-in-lohegaon-pune': typeof R2BhkFlatsInLohegaonPuneRoute
   '/about': typeof AboutRoute
-  '/construction': typeof ConstructionRoute
-  '/construction-company-in-lohegaon-pune': typeof ConstructionCompanyInLohegaonPuneRoute
+  '/construction': typeof ConstructionRouteWithChildren
   '/contact': typeof ContactRoute
-  '/flats-for-rent-in-lohegaon-pune': typeof FlatsForRentInLohegaonPuneRoute
-  '/flats-in-lohegaon-pune': typeof FlatsInLohegaonPuneRoute
-  '/home-construction-cost-in-pune': typeof HomeConstructionCostInPuneRoute
-  '/home-interior-design-in-pune': typeof HomeInteriorDesignInPuneRoute
-  '/house-construction-in-pune': typeof HouseConstructionInPuneRoute
-  '/interior': typeof InteriorRoute
-  '/interior-designer-in-lohegaon-pune': typeof InteriorDesignerInLohegaonPuneRoute
-  '/modular-kitchen-in-pune': typeof ModularKitchenInPuneRoute
-  '/office-interior-design-in-pune': typeof OfficeInteriorDesignInPuneRoute
-  '/plots-for-sale-in-lohegaon-pune': typeof PlotsForSaleInLohegaonPuneRoute
-  '/projects': typeof ProjectsRoute
-  '/realty': typeof RealtyRoute
+  '/interior': typeof InteriorRouteWithChildren
+  '/projects': typeof ProjectsRouteWithChildren
+  '/realty': typeof RealtyRouteWithChildren
   '/services': typeof ServicesRoute
-  '/turnkey-construction-in-pune': typeof TurnkeyConstructionInPuneRoute
+  '/construction/$slug': typeof ConstructionSlugRoute
+  '/construction/cost-estimator': typeof ConstructionCostEstimatorRoute
+  '/interior/$slug': typeof InteriorSlugRoute
+  '/projects/construction': typeof ProjectsConstructionRoute
+  '/realty/$slug': typeof RealtySlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/2-bhk-flats-in-lohegaon-pune'
     | '/about'
     | '/construction'
-    | '/construction-company-in-lohegaon-pune'
     | '/contact'
-    | '/flats-for-rent-in-lohegaon-pune'
-    | '/flats-in-lohegaon-pune'
-    | '/home-construction-cost-in-pune'
-    | '/home-interior-design-in-pune'
-    | '/house-construction-in-pune'
     | '/interior'
-    | '/interior-designer-in-lohegaon-pune'
-    | '/modular-kitchen-in-pune'
-    | '/office-interior-design-in-pune'
-    | '/plots-for-sale-in-lohegaon-pune'
     | '/projects'
     | '/realty'
     | '/services'
-    | '/turnkey-construction-in-pune'
+    | '/construction/$slug'
+    | '/construction/cost-estimator'
+    | '/interior/$slug'
+    | '/projects/construction'
+    | '/realty/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/2-bhk-flats-in-lohegaon-pune'
     | '/about'
     | '/construction'
-    | '/construction-company-in-lohegaon-pune'
     | '/contact'
-    | '/flats-for-rent-in-lohegaon-pune'
-    | '/flats-in-lohegaon-pune'
-    | '/home-construction-cost-in-pune'
-    | '/home-interior-design-in-pune'
-    | '/house-construction-in-pune'
     | '/interior'
-    | '/interior-designer-in-lohegaon-pune'
-    | '/modular-kitchen-in-pune'
-    | '/office-interior-design-in-pune'
-    | '/plots-for-sale-in-lohegaon-pune'
     | '/projects'
     | '/realty'
     | '/services'
-    | '/turnkey-construction-in-pune'
+    | '/construction/$slug'
+    | '/construction/cost-estimator'
+    | '/interior/$slug'
+    | '/projects/construction'
+    | '/realty/$slug'
   id:
     | '__root__'
     | '/'
-    | '/2-bhk-flats-in-lohegaon-pune'
     | '/about'
     | '/construction'
-    | '/construction-company-in-lohegaon-pune'
     | '/contact'
-    | '/flats-for-rent-in-lohegaon-pune'
-    | '/flats-in-lohegaon-pune'
-    | '/home-construction-cost-in-pune'
-    | '/home-interior-design-in-pune'
-    | '/house-construction-in-pune'
     | '/interior'
-    | '/interior-designer-in-lohegaon-pune'
-    | '/modular-kitchen-in-pune'
-    | '/office-interior-design-in-pune'
-    | '/plots-for-sale-in-lohegaon-pune'
     | '/projects'
     | '/realty'
     | '/services'
-    | '/turnkey-construction-in-pune'
+    | '/construction/$slug'
+    | '/construction/cost-estimator'
+    | '/interior/$slug'
+    | '/projects/construction'
+    | '/realty/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  R2BhkFlatsInLohegaonPuneRoute: typeof R2BhkFlatsInLohegaonPuneRoute
   AboutRoute: typeof AboutRoute
-  ConstructionRoute: typeof ConstructionRoute
-  ConstructionCompanyInLohegaonPuneRoute: typeof ConstructionCompanyInLohegaonPuneRoute
+  ConstructionRoute: typeof ConstructionRouteWithChildren
   ContactRoute: typeof ContactRoute
-  FlatsForRentInLohegaonPuneRoute: typeof FlatsForRentInLohegaonPuneRoute
-  FlatsInLohegaonPuneRoute: typeof FlatsInLohegaonPuneRoute
-  HomeConstructionCostInPuneRoute: typeof HomeConstructionCostInPuneRoute
-  HomeInteriorDesignInPuneRoute: typeof HomeInteriorDesignInPuneRoute
-  HouseConstructionInPuneRoute: typeof HouseConstructionInPuneRoute
-  InteriorRoute: typeof InteriorRoute
-  InteriorDesignerInLohegaonPuneRoute: typeof InteriorDesignerInLohegaonPuneRoute
-  ModularKitchenInPuneRoute: typeof ModularKitchenInPuneRoute
-  OfficeInteriorDesignInPuneRoute: typeof OfficeInteriorDesignInPuneRoute
-  PlotsForSaleInLohegaonPuneRoute: typeof PlotsForSaleInLohegaonPuneRoute
-  ProjectsRoute: typeof ProjectsRoute
-  RealtyRoute: typeof RealtyRoute
+  InteriorRoute: typeof InteriorRouteWithChildren
+  ProjectsRoute: typeof ProjectsRouteWithChildren
+  RealtyRoute: typeof RealtyRouteWithChildren
   ServicesRoute: typeof ServicesRoute
-  TurnkeyConstructionInPuneRoute: typeof TurnkeyConstructionInPuneRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/turnkey-construction-in-pune': {
-      id: '/turnkey-construction-in-pune'
-      path: '/turnkey-construction-in-pune'
-      fullPath: '/turnkey-construction-in-pune'
-      preLoaderRoute: typeof TurnkeyConstructionInPuneRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -329,34 +218,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/plots-for-sale-in-lohegaon-pune': {
-      id: '/plots-for-sale-in-lohegaon-pune'
-      path: '/plots-for-sale-in-lohegaon-pune'
-      fullPath: '/plots-for-sale-in-lohegaon-pune'
-      preLoaderRoute: typeof PlotsForSaleInLohegaonPuneRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/office-interior-design-in-pune': {
-      id: '/office-interior-design-in-pune'
-      path: '/office-interior-design-in-pune'
-      fullPath: '/office-interior-design-in-pune'
-      preLoaderRoute: typeof OfficeInteriorDesignInPuneRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/modular-kitchen-in-pune': {
-      id: '/modular-kitchen-in-pune'
-      path: '/modular-kitchen-in-pune'
-      fullPath: '/modular-kitchen-in-pune'
-      preLoaderRoute: typeof ModularKitchenInPuneRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/interior-designer-in-lohegaon-pune': {
-      id: '/interior-designer-in-lohegaon-pune'
-      path: '/interior-designer-in-lohegaon-pune'
-      fullPath: '/interior-designer-in-lohegaon-pune'
-      preLoaderRoute: typeof InteriorDesignerInLohegaonPuneRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/interior': {
       id: '/interior'
       path: '/interior'
@@ -364,53 +225,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InteriorRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/house-construction-in-pune': {
-      id: '/house-construction-in-pune'
-      path: '/house-construction-in-pune'
-      fullPath: '/house-construction-in-pune'
-      preLoaderRoute: typeof HouseConstructionInPuneRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/home-interior-design-in-pune': {
-      id: '/home-interior-design-in-pune'
-      path: '/home-interior-design-in-pune'
-      fullPath: '/home-interior-design-in-pune'
-      preLoaderRoute: typeof HomeInteriorDesignInPuneRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/home-construction-cost-in-pune': {
-      id: '/home-construction-cost-in-pune'
-      path: '/home-construction-cost-in-pune'
-      fullPath: '/home-construction-cost-in-pune'
-      preLoaderRoute: typeof HomeConstructionCostInPuneRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/flats-in-lohegaon-pune': {
-      id: '/flats-in-lohegaon-pune'
-      path: '/flats-in-lohegaon-pune'
-      fullPath: '/flats-in-lohegaon-pune'
-      preLoaderRoute: typeof FlatsInLohegaonPuneRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/flats-for-rent-in-lohegaon-pune': {
-      id: '/flats-for-rent-in-lohegaon-pune'
-      path: '/flats-for-rent-in-lohegaon-pune'
-      fullPath: '/flats-for-rent-in-lohegaon-pune'
-      preLoaderRoute: typeof FlatsForRentInLohegaonPuneRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/construction-company-in-lohegaon-pune': {
-      id: '/construction-company-in-lohegaon-pune'
-      path: '/construction-company-in-lohegaon-pune'
-      fullPath: '/construction-company-in-lohegaon-pune'
-      preLoaderRoute: typeof ConstructionCompanyInLohegaonPuneRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/construction': {
@@ -427,13 +246,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/2-bhk-flats-in-lohegaon-pune': {
-      id: '/2-bhk-flats-in-lohegaon-pune'
-      path: '/2-bhk-flats-in-lohegaon-pune'
-      fullPath: '/2-bhk-flats-in-lohegaon-pune'
-      preLoaderRoute: typeof R2BhkFlatsInLohegaonPuneRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -441,31 +253,102 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/realty/$slug': {
+      id: '/realty/$slug'
+      path: '/$slug'
+      fullPath: '/realty/$slug'
+      preLoaderRoute: typeof RealtySlugRouteImport
+      parentRoute: typeof RealtyRoute
+    }
+    '/projects/construction': {
+      id: '/projects/construction'
+      path: '/construction'
+      fullPath: '/projects/construction'
+      preLoaderRoute: typeof ProjectsConstructionRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/interior/$slug': {
+      id: '/interior/$slug'
+      path: '/$slug'
+      fullPath: '/interior/$slug'
+      preLoaderRoute: typeof InteriorSlugRouteImport
+      parentRoute: typeof InteriorRoute
+    }
+    '/construction/cost-estimator': {
+      id: '/construction/cost-estimator'
+      path: '/cost-estimator'
+      fullPath: '/construction/cost-estimator'
+      preLoaderRoute: typeof ConstructionCostEstimatorRouteImport
+      parentRoute: typeof ConstructionRoute
+    }
+    '/construction/$slug': {
+      id: '/construction/$slug'
+      path: '/$slug'
+      fullPath: '/construction/$slug'
+      preLoaderRoute: typeof ConstructionSlugRouteImport
+      parentRoute: typeof ConstructionRoute
+    }
   }
 }
 
+interface ConstructionRouteChildren {
+  ConstructionSlugRoute: typeof ConstructionSlugRoute
+  ConstructionCostEstimatorRoute: typeof ConstructionCostEstimatorRoute
+}
+
+const ConstructionRouteChildren: ConstructionRouteChildren = {
+  ConstructionSlugRoute: ConstructionSlugRoute,
+  ConstructionCostEstimatorRoute: ConstructionCostEstimatorRoute,
+}
+
+const ConstructionRouteWithChildren = ConstructionRoute._addFileChildren(
+  ConstructionRouteChildren,
+)
+
+interface InteriorRouteChildren {
+  InteriorSlugRoute: typeof InteriorSlugRoute
+}
+
+const InteriorRouteChildren: InteriorRouteChildren = {
+  InteriorSlugRoute: InteriorSlugRoute,
+}
+
+const InteriorRouteWithChildren = InteriorRoute._addFileChildren(
+  InteriorRouteChildren,
+)
+
+interface ProjectsRouteChildren {
+  ProjectsConstructionRoute: typeof ProjectsConstructionRoute
+}
+
+const ProjectsRouteChildren: ProjectsRouteChildren = {
+  ProjectsConstructionRoute: ProjectsConstructionRoute,
+}
+
+const ProjectsRouteWithChildren = ProjectsRoute._addFileChildren(
+  ProjectsRouteChildren,
+)
+
+interface RealtyRouteChildren {
+  RealtySlugRoute: typeof RealtySlugRoute
+}
+
+const RealtyRouteChildren: RealtyRouteChildren = {
+  RealtySlugRoute: RealtySlugRoute,
+}
+
+const RealtyRouteWithChildren =
+  RealtyRoute._addFileChildren(RealtyRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  R2BhkFlatsInLohegaonPuneRoute: R2BhkFlatsInLohegaonPuneRoute,
   AboutRoute: AboutRoute,
-  ConstructionRoute: ConstructionRoute,
-  ConstructionCompanyInLohegaonPuneRoute:
-    ConstructionCompanyInLohegaonPuneRoute,
+  ConstructionRoute: ConstructionRouteWithChildren,
   ContactRoute: ContactRoute,
-  FlatsForRentInLohegaonPuneRoute: FlatsForRentInLohegaonPuneRoute,
-  FlatsInLohegaonPuneRoute: FlatsInLohegaonPuneRoute,
-  HomeConstructionCostInPuneRoute: HomeConstructionCostInPuneRoute,
-  HomeInteriorDesignInPuneRoute: HomeInteriorDesignInPuneRoute,
-  HouseConstructionInPuneRoute: HouseConstructionInPuneRoute,
-  InteriorRoute: InteriorRoute,
-  InteriorDesignerInLohegaonPuneRoute: InteriorDesignerInLohegaonPuneRoute,
-  ModularKitchenInPuneRoute: ModularKitchenInPuneRoute,
-  OfficeInteriorDesignInPuneRoute: OfficeInteriorDesignInPuneRoute,
-  PlotsForSaleInLohegaonPuneRoute: PlotsForSaleInLohegaonPuneRoute,
-  ProjectsRoute: ProjectsRoute,
-  RealtyRoute: RealtyRoute,
+  InteriorRoute: InteriorRouteWithChildren,
+  ProjectsRoute: ProjectsRouteWithChildren,
+  RealtyRoute: RealtyRouteWithChildren,
   ServicesRoute: ServicesRoute,
-  TurnkeyConstructionInPuneRoute: TurnkeyConstructionInPuneRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
