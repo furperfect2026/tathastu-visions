@@ -106,7 +106,7 @@ export function ConsultationPopup() {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[100] grid place-items-center bg-ink/55 px-4 py-6 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] grid items-start overflow-y-auto bg-ink/55 px-3 py-3 backdrop-blur-sm sm:place-items-center sm:px-4 sm:py-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -116,7 +116,7 @@ export function ConsultationPopup() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="consultation-popup-title"
-            className="relative grid w-full max-w-5xl overflow-hidden rounded-3xl bg-card text-foreground shadow-[0_32px_90px_-32px_rgba(7,14,35,0.7)] ring-1 ring-border md:grid-cols-[1.05fr_0.95fr]"
+            className="relative grid max-h-[calc(100dvh-1.5rem)] w-full max-w-5xl overflow-y-auto rounded-2xl bg-card text-foreground shadow-[0_32px_90px_-32px_rgba(7,14,35,0.7)] ring-1 ring-border sm:rounded-3xl md:grid-cols-[1.05fr_0.95fr] md:overflow-hidden"
             initial={{ opacity: 0, y: 28, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 18, scale: 0.98 }}
@@ -125,13 +125,13 @@ export function ConsultationPopup() {
             <button
               type="button"
               onClick={closeAndReschedule}
-              className="absolute right-4 top-4 z-20 grid h-10 w-10 place-items-center rounded-full bg-background/80 text-foreground shadow-sm transition hover:bg-background md:bg-transparent md:shadow-none"
+              className="fixed right-5 top-5 z-[110] grid h-10 w-10 place-items-center rounded-full bg-background/95 text-foreground shadow-luxe ring-1 ring-border transition hover:bg-background md:absolute md:right-4 md:top-4 md:z-20 md:bg-background/80 md:shadow-sm"
               aria-label="Close consultation popup"
             >
               <X className="h-5 w-5" />
             </button>
 
-            <div className="relative min-h-[230px] overflow-hidden bg-ink md:min-h-[560px]">
+            <div className="relative h-44 overflow-hidden bg-ink sm:h-56 md:h-auto md:min-h-[560px]">
               <img
                 src={constructionImage}
                 alt="Tathastu Infra construction consultation"
@@ -143,20 +143,20 @@ export function ConsultationPopup() {
               </div>
             </div>
 
-            <div className="flex flex-col justify-center p-6 sm:p-8 md:p-10">
+            <div className="flex flex-col justify-center p-5 sm:p-8 md:p-10">
               <p className="eyebrow">Don't leave yet</p>
               <h2
                 id="consultation-popup-title"
-                className="mt-3 max-w-md font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl"
+                className="mt-2 max-w-md font-display text-[2rem] font-semibold leading-[1.05] text-ink sm:mt-3 sm:text-4xl"
               >
                 Resolve your queries with our{" "}
                 <span className="italic text-gradient-gold">experts</span>
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
                 Share your name and number. Tathastu Infra will call you back with clear next steps.
               </p>
 
-              <form ref={formRef} onSubmit={onSubmit} className="mt-7 space-y-4">
+              <form ref={formRef} onSubmit={onSubmit} className="mt-5 space-y-3 sm:mt-7 sm:space-y-4">
                 <div>
                   <Label htmlFor="popup-name" className="sr-only">
                     Name
@@ -167,7 +167,7 @@ export function ConsultationPopup() {
                     autoComplete="name"
                     required
                     placeholder="Name"
-                    className="h-14 rounded-2xl border-primary/20 bg-background px-5 text-base shadow-sm focus-visible:ring-primary"
+                    className="h-12 rounded-2xl border-primary/20 bg-background px-5 text-base shadow-sm focus-visible:ring-primary sm:h-14"
                   />
                 </div>
 
@@ -184,7 +184,7 @@ export function ConsultationPopup() {
                       autoComplete="tel"
                       required
                       placeholder="+91  Phone Number"
-                      className="h-14 rounded-2xl border-primary/20 bg-background pl-12 pr-5 text-base shadow-sm focus-visible:ring-primary"
+                      className="h-12 rounded-2xl border-primary/20 bg-background pl-12 pr-5 text-base shadow-sm focus-visible:ring-primary sm:h-14"
                     />
                   </div>
                 </div>
@@ -196,7 +196,7 @@ export function ConsultationPopup() {
                   <Select value={city} onValueChange={setCity}>
                     <SelectTrigger
                       id="popup-city"
-                      className="h-14 rounded-2xl border-primary/20 bg-background px-5 text-left text-base shadow-sm focus:ring-primary"
+                      className="h-12 rounded-2xl border-primary/20 bg-background px-5 text-left text-base shadow-sm focus:ring-primary sm:h-14"
                     >
                       <SelectValue placeholder="Location of your plot - City" />
                     </SelectTrigger>
@@ -216,7 +216,7 @@ export function ConsultationPopup() {
                 <Button
                   type="submit"
                   disabled={busy}
-                  className="group h-14 w-full rounded-2xl bg-gradient-gold text-base font-semibold text-ink shadow-gold hover:opacity-95"
+                  className="group h-12 w-full rounded-2xl bg-gradient-gold text-base font-semibold text-ink shadow-gold hover:opacity-95 sm:h-14"
                 >
                   {busy ? (
                     <Loader2 className="mr-2 h-5 w-5 animate-spin" />

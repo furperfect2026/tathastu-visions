@@ -89,7 +89,7 @@ export const projects = [
     title: "Pride World City",
     location: "Lohegaon, Pune",
     year: 2024,
-    image: realtyProject1,
+    image: realtyProject2,
     blurb: "Premium residential community guidance for buyers exploring Lohegaon and nearby Pune growth corridors.",
   },
   {
@@ -98,7 +98,7 @@ export const projects = [
     title: "Utsava Regency",
     location: "Wagholi, Pune",
     year: 2025,
-    image: realtyProject2,
+    image: realtyProject1,
     blurb: "Modern apartment options with practical site-visit, documentation and buying support.",
   },
   {
