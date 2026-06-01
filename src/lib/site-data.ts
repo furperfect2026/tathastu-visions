@@ -8,12 +8,15 @@ import interior1 from "@/assets/interior-1.jpg";
 import interior2 from "@/assets/interior-2.jpg";
 import interior3 from "@/assets/interior-3.jpg";
 import interior4 from "@/assets/interior-4.jpg";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
-import project4 from "@/assets/project-4.jpg";
-import project5 from "@/assets/project-5.jpg";
-import project6 from "@/assets/project-6.jpg";
+import constructionProject1 from "@/assets/project-construction-1.jpg";
+import constructionProject2 from "@/assets/project-construction-2.jpg";
+import constructionProject3 from "@/assets/project-construction-3.jpg";
+import interiorProject1 from "@/assets/project-interior-1.jpg";
+import interiorProject2 from "@/assets/project-interior-2.jpg";
+import interiorProject3 from "@/assets/project-interior-3.jpg";
+import interiorProject4 from "@/assets/project-interior-4.jpg";
+import realtyProject1 from "@/assets/project-realty-pride-world-city.jpg";
+import realtyProject2 from "@/assets/project-realty-utsava-regency.jpg";
 import { Building2, HardHat, Sofa } from "lucide-react";
 
 export const pillars = [
@@ -86,52 +89,79 @@ export const projects = [
     title: "Pride World City",
     location: "Lohegaon, Pune",
     year: 2024,
-    image: project1,
-    blurb: "An aerial-view masterplan blending greenery and modern apartments.",
+    image: realtyProject1,
+    blurb: "Premium residential community guidance for buyers exploring Lohegaon and nearby Pune growth corridors.",
   },
   {
     id: "p2",
-    category: "interior",
-    title: "Interior 1",
-    location: "Pune Outskirts",
-    year: 2024,
-    image: project2,
-    blurb: "Pool-side villa with infinity edge and palm-lined dusk lighting.",
+    category: "realty",
+    title: "Utsava Regency",
+    location: "Wagholi, Pune",
+    year: 2025,
+    image: realtyProject2,
+    blurb: "Modern apartment options with practical site-visit, documentation and buying support.",
   },
   {
     id: "p3",
     category: "construction",
     title: "Construction 1",
-    location: "Kharadi, Pune",
-    year: 2023,
-    image: project3,
-    blurb: "Boutique commercial corner with classic stone facade.",
+    location: "Lohegaon, Pune",
+    year: 2025,
+    image: constructionProject1,
+    blurb: "Residential structure planned around durability, supervision and clear project timelines.",
   },
   {
     id: "p4",
-    category: "interior",
-    title: "Interior 2",
-    location: "Magarpatta, Pune",
+    category: "construction",
+    title: "Construction 2",
+    location: "Pune",
     year: 2024,
-    image: project4,
-    blurb: "Floor-to-ceiling glass and editorial furniture.",
+    image: constructionProject2,
+    blurb: "Civil execution with site accountability, material planning and coordinated handover.",
   },
   {
     id: "p5",
-    category: "interior",
-    title: "Interior 3",
-    location: "Koregaon Park, Pune",
+    category: "construction",
+    title: "Construction 3",
+    location: "Pune",
     year: 2023,
-    image: project5,
-    blurb: "Spa-grade bath retreat with copper fixtures.",
+    image: constructionProject3,
+    blurb: "Structural work for multi-storey development with engineering-first execution discipline.",
   },
   {
     id: "p6",
-    category: "realty",
-    title: "Utsava Regency",
-    location: "Wagholi, Pune",
-    year: 2025,
-    image: project6,
-    blurb: "Palm-lined contemporary apartments.",
+    category: "interior",
+    title: "Interior 1",
+    location: "Lohegaon, Pune",
+    year: 2024,
+    image: interiorProject1,
+    blurb: "Warm, premium interiors shaped around comfort, storage and everyday usability.",
+  },
+  {
+    id: "p7",
+    category: "interior",
+    title: "Interior 2",
+    location: "Pune",
+    year: 2024,
+    image: interiorProject2,
+    blurb: "Functional living spaces with calm palettes, lighting and practical furniture flow.",
+  },
+  {
+    id: "p8",
+    category: "interior",
+    title: "Interior 3",
+    location: "Pune",
+    year: 2023,
+    image: interiorProject3,
+    blurb: "Refined interior detailing with elegant finishes and a high-end residential mood.",
+  },
+  {
+    id: "p9",
+    category: "interior",
+    title: "Interior 4",
+    location: "Pune",
+    year: 2023,
+    image: interiorProject4,
+    blurb: "Modern interior planning for polished rooms, decor and long-term liveability.",
   },
 ] as const;

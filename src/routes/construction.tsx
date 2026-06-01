@@ -9,8 +9,8 @@ import heroInfra1 from "@/assets/hero-infra-1.jpg";
 
 const content: ServicePageContent = {
   eyebrow: "Tathastu Infra Construction",
-  title: "Construction",
-  accent: "With Integrity",
+  title: "If You Can Envision It,",
+  accent: "Tathastu Can Build It.",
   subtitle:
     "Residential and commercial construction in Pune shaped by structure, safety, material discipline and reliable supervision.",
   heroImages: [

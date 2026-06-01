@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
@@ -12,6 +13,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AutoSlideshow } from "@/components/AutoSlideshow";
+import { BrandSocialLink, type SocialBrand } from "@/components/BrandSocialLink";
 import { PackagesSection } from "@/components/PackagesSection";
 import { RealtySearchLinks } from "@/components/RealtySearchLinks";
 import { Reveal } from "@/components/Reveal";
@@ -47,63 +49,120 @@ export type ServicePageContent = {
 
 const process = ["Consultation", "Planning & Design", "Execution", "Final Handover"] as const;
 
+const socialLinks = [
+  { label: "YouTube", href: "https://www.youtube.com/@Tathastu_Infra", brand: "youtube" },
+  { label: "Instagram", href: "https://www.instagram.com/tathastu_infra/", brand: "instagram" },
+  { label: "LinkedIn", href: "https://linkedin.com", brand: "linkedin" },
+] satisfies { label: string; href: string; brand: SocialBrand }[];
+
+function ServiceSocialLinks({ mobile = false }: { mobile?: boolean }) {
+  return (
+    <motion.div
+      className={
+        mobile
+          ? "mt-6 flex items-center gap-4 md:hidden"
+          : "absolute left-6 top-1/2 z-10 hidden -translate-y-1/2 flex-col items-center gap-5 md:flex lg:left-8"
+      }
+      initial={{ opacity: 0, y: mobile ? 12 : 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 1.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      aria-label="Tathastu Infra social links"
+    >
+      {!mobile && (
+        <span className="h-16 w-px bg-gradient-to-b from-transparent via-ivory/45 to-transparent" />
+      )}
+      <div className={mobile ? "flex items-center gap-4" : "flex flex-col items-center gap-4"}>
+        {socialLinks.map(({ label, href, brand }) => (
+          <BrandSocialLink key={label} brand={brand} href={href} label={label} />
+        ))}
+      </div>
+      {!mobile && (
+        <span className="h-16 w-px bg-gradient-to-b from-transparent via-ivory/45 to-transparent" />
+      )}
+    </motion.div>
+  );
+}
+
 const constructionGuarantees = [
   {
-    title: "100% Clear Quotes",
+    title: "Money Safety",
     body: "Detailed scope and package conversations before work begins, so budgets stay practical and visible.",
     icon: IndianRupee,
     image: { src: clearGuidanceImage, alt: "Tathastu Infra clear construction quote and project guidance" },
     tone: "from-[#f05a2a] to-[#c94720]",
   },
   {
+    title: "Quality Assurance",
+    body: "Material choices, technical checks and finish reviews are handled with one accountable Tathastu Infra team.",
+    icon: ShieldCheck,
+    image: { src: constructionQualityImage, alt: "Tathastu Infra construction quality and durability" },
+    tone: "from-[#0f3857] to-[#0a2034]",
+  },
+  {
+    title: "On-Time Delivery",
+    body: "Planning, vendor coordination and execution tracking are shaped around predictable delivery.",
+    icon: Clock3,
+    image: { src: constructionSiteImage, alt: "Tathastu Infra construction timeline and site supervision" },
+    tone: "from-[#12699b] to-[#073657]",
+  },
+  {
+    title: "Transparency",
+    body: "Simple communication from first visit to handover, so clients know what is happening and why.",
+    icon: Eye,
+    image: { src: clientRelationshipImage, alt: "Tathastu Infra transparent client relationship and planning" },
+    tone: "from-[#080321] to-[#101d34]",
+  },
+  {
+    title: "Assurance",
+    body: "Every step is backed by clear guidance, practical decisions and a team that stays close after handover.",
+    icon: BadgeCheck,
+    image: { src: trustHandshakeImage, alt: "Tathastu Infra assurance and client trust" },
+    tone: "from-[#1c466d] to-[#0b1f35]",
+  },
+  {
     title: "In-House Experts",
     body: "Architect, site coordination, technical guidance and client relationship support stay close to your project.",
     icon: ShieldCheck,
     image: { src: clientRelationshipImage, alt: "Tathastu Infra in-house experts and client relationship support" },
-    tone: "from-[#0f3857] to-[#0a2034]",
-  },
-  {
-    title: "Professional Contractors",
-    body: "Execution partners are chosen for discipline, quality and site reliability before they touch the work.",
-    icon: Clock3,
-    image: { src: trustHandshakeImage, alt: "Tathastu Infra professional contractor agreement and trust" },
-    tone: "from-[#12699b] to-[#073657]",
-  },
-  {
-    title: "Built to Last",
-    body: "Structural decisions, material choices and site reviews are handled for long-term confidence.",
-    icon: Eye,
-    image: { src: constructionQualityImage, alt: "Tathastu Infra construction quality and durability" },
-    tone: "from-[#080321] to-[#101d34]",
-  },
-  {
-    title: "On-Time Handover",
-    body: "Planning, vendor coordination and execution tracking are shaped around predictable delivery.",
-    icon: BadgeCheck,
-    image: { src: constructionSiteImage, alt: "Tathastu Infra construction timeline and site supervision" },
-    tone: "from-[#1c466d] to-[#0b1f35]",
+    tone: "from-[#102b44] to-[#071c30]",
   },
 ] as const;
 
 export function ServicePage({ content }: { content: ServicePageContent }) {
+  const guaranteeTrackRef = useRef<HTMLDivElement>(null);
   const relatedProjects = projects
     .filter((project) => project.category === content.projectCategory)
     .slice(0, 3);
 
+  const scrollGuarantees = (direction: "left" | "right") => {
+    const track = guaranteeTrackRef.current;
+    if (!track) return;
+
+    const card = track.querySelector<HTMLElement>("[data-guarantee-card]");
+    const distance = card ? card.offsetWidth + 20 : track.clientWidth * 0.65;
+
+    track.scrollBy({
+      left: direction === "right" ? distance : -distance,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
-      <section className="relative flex min-h-[680px] items-end overflow-hidden bg-ink pt-28 text-ivory sm:min-h-[76svh] md:items-center md:pt-32">
+      <section className="relative flex h-[100svh] min-h-[620px] items-end overflow-hidden bg-ink pt-28 text-ivory sm:min-h-[640px] md:items-center md:pt-32">
         <AutoSlideshow
           images={content.heroImages}
           interval={4400}
           rounded="rounded-none"
-          className="absolute inset-0"
+          className="absolute inset-0 h-full w-full"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/82 via-ink/48 to-ink/12" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/74 via-ink/28 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/82 via-ink/48 to-ink/16" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/78 via-ink/28 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_18%,transparent),transparent_55%)]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink/86 to-transparent" />
+        <ServiceSocialLinks />
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 sm:pb-20 md:pb-0">
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col justify-end px-4 pb-20 pt-28 sm:px-6 sm:pb-24 md:justify-center md:pb-0 md:pl-20 lg:pl-20">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -137,8 +196,18 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                 <Link to="/projects">Explore Projects</Link>
               </Button>
             </div>
+            <ServiceSocialLinks mobile />
           </motion.div>
         </div>
+
+        <motion.div
+          className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-[10px] uppercase tracking-[0.35em] text-ivory/60"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.45, duration: 0.8 }}
+        >
+          scroll down
+        </motion.div>
       </section>
 
       <section className="py-20 sm:py-24">
@@ -189,33 +258,47 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                     Guarantees every homeowner deserves.
                   </h3>
                 </div>
-                <div className="hidden gap-3 sm:flex" aria-hidden="true">
-                  <span className="grid h-12 w-12 place-items-center rounded-full bg-primary/15 text-primary">
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    aria-label="Previous guarantee"
+                    onClick={() => scrollGuarantees("left")}
+                    className="grid h-11 w-11 place-items-center rounded-full bg-primary/15 text-primary transition duration-300 hover:-translate-x-0.5 hover:bg-primary/25 sm:h-12 sm:w-12"
+                  >
                     <ArrowRight className="h-5 w-5 rotate-180" />
-                  </span>
-                  <span className="grid h-12 w-12 place-items-center rounded-full bg-primary/15 text-primary">
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Next guarantee"
+                    onClick={() => scrollGuarantees("right")}
+                    className="grid h-11 w-11 place-items-center rounded-full bg-primary/15 text-primary transition duration-300 hover:translate-x-0.5 hover:bg-primary/25 sm:h-12 sm:w-12"
+                  >
                     <ArrowRight className="h-5 w-5" />
-                  </span>
+                  </button>
                 </div>
               </div>
 
-              <div className="mt-8 -mx-4 flex snap-x gap-5 overflow-x-auto px-4 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-3">
+              <div
+                ref={guaranteeTrackRef}
+                className="mt-8 -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-4 scroll-smooth [scrollbar-width:none] sm:mx-0 sm:gap-6 sm:px-0 [&::-webkit-scrollbar]:hidden"
+              >
                 {constructionGuarantees.map(({ title, body, icon: Icon, image, tone }) => (
                   <motion.article
                     key={title}
+                    data-guarantee-card
                     whileHover={{ y: -6 }}
-                    className={`group relative flex min-h-[430px] w-[82vw] shrink-0 snap-start flex-col overflow-hidden rounded-3xl bg-gradient-to-b ${tone} text-ivory shadow-luxe ring-1 ring-ivory/10 sm:w-auto`}
+                    className={`group relative flex min-h-[470px] w-[76vw] shrink-0 snap-start flex-col overflow-hidden rounded-3xl bg-gradient-to-b ${tone} text-ivory shadow-luxe ring-1 ring-ivory/10 sm:w-[300px] lg:w-[340px]`}
                   >
-                    <div className="relative z-10 p-7 pb-4">
-                      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-primary/20 text-primary-glow ring-1 ring-primary/25">
-                        <Icon className="h-6 w-6" />
+                    <div className="relative z-10 p-6 pb-4">
+                      <div className="grid h-12 w-12 place-items-center rounded-2xl bg-primary/20 text-primary-glow ring-1 ring-primary/25">
+                        <Icon className="h-5 w-5" />
                       </div>
-                      <h4 className="mt-7 font-display text-3xl font-semibold leading-tight text-ivory md:text-[2rem]">
+                      <h4 className="mt-6 font-display text-2xl font-semibold leading-tight text-ivory md:text-[1.75rem]">
                         {title}
                       </h4>
                       <p className="mt-5 text-sm leading-relaxed text-ivory/75">{body}</p>
                     </div>
-                    <div className="relative mt-auto min-h-[180px] overflow-hidden">
+                    <div className="relative mt-auto min-h-[210px] overflow-hidden">
                       <img
                         src={image.src}
                         alt={image.alt}

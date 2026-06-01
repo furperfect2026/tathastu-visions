@@ -57,8 +57,9 @@ export function SiteNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [pathname]);
 
-  const isHome = pathname === "/";
-  const transparent = isHome && !scrolled && !open;
+  const transparentHeroPages = ["/", "/realty", "/construction", "/interior"];
+  const isTransparentHeroPage = transparentHeroPages.includes(pathname);
+  const transparent = isTransparentHeroPage && !scrolled && !open;
   const servicesActive = ["/services", "/realty", "/construction", "/interior"].includes(pathname);
 
   return (

@@ -9,8 +9,8 @@ import project5 from "@/assets/project-5.jpg";
 
 const content: ServicePageContent = {
   eyebrow: "Tathastu Infra Interior Design",
-  title: "Interiors",
-  accent: "With Soul",
+  title: "If You Can Dream It,",
+  accent: "Tathastu Can Build It.",
   subtitle:
     "Elegant, functional interiors in Pune shaped around how you live, work, host and feel inside a space.",
   heroImages: [

@@ -6,8 +6,8 @@ import realty4 from "@/assets/realty-4.jpg";
 
 const content: ServicePageContent = {
   eyebrow: "Tathastu Infra Realty",
-  title: "Realty",
-  accent: "With Clarity",
+  title: "If You Can Dream It,",
+  accent: "Tathastu Can Build It.",
   subtitle:
     "Premium real estate and property guidance in Lohegaon, Pune for clients exploring homes, flats, resale properties and rentals with a clean process.",
   heroImages: [

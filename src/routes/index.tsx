@@ -47,8 +47,8 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const headlineLine1 = "Where Dream";
-const headlineLine2 = "Becomes Reality";
+const headlineLine1 = "You Imagine.";
+const headlineLine2 = "We Say Tathastu.";
 const socialLinks = [
   { label: "YouTube", href: "https://www.youtube.com/@Tathastu_Infra", brand: "youtube" },
   { label: "Instagram", href: "https://www.instagram.com/tathastu_infra/", brand: "instagram" },

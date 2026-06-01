@@ -79,7 +79,7 @@ export function ConsultationPopup() {
           name,
           phone,
           interest: "construction",
-          message: `Popup consultation lead. Location of plot/city: ${city}. User requested a free consultation with a construction expert.`,
+          message: `Popup consultation lead. Location of plot/city: ${city}. User requested a free consultation with experts.`,
         },
       });
 
@@ -150,7 +150,7 @@ export function ConsultationPopup() {
                 className="mt-3 max-w-md font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl"
               >
                 Resolve your queries with our{" "}
-                <span className="italic text-gradient-gold">construction expert</span>
+                <span className="italic text-gradient-gold">experts</span>
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Share your name and number. Tathastu Infra will call you back with clear next steps.
