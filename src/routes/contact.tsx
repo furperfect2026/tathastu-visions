@@ -29,10 +29,10 @@ export const Route = createFileRoute("/contact")({
 
 const schema = z.object({
   name: z.string().trim().min(1, "Name is required").max(120),
-  email: z.string().trim().email("Invalid email").max(255),
+  email: z.string().trim().email("Invalid email").max(255).optional().or(z.literal("")),
   phone: z.string().trim().max(30).optional(),
-  interest: z.enum(["realty", "construction", "interior", "general", "infra"]),
-  message: z.string().trim().min(5, "Tell us a little more").max(4000),
+  interest: z.enum(["realty", "construction", "interior", "general", "infra"]).optional(),
+  message: z.string().trim().max(4000).optional().or(z.literal("")),
 });
 
 function ContactPage() {
@@ -100,7 +100,7 @@ function ContactPage() {
                 </div>
                 <div>
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" name="email" type="email" required maxLength={255} placeholder="you@example.com" className="mt-2" />
+                  <Input id="email" name="email" type="email" maxLength={255} placeholder="you@example.com" className="mt-2" />
                   {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
                 </div>
                 <div>
@@ -108,7 +108,7 @@ function ContactPage() {
                   <Input id="phone" name="phone" maxLength={30} placeholder="+91 ..." className="mt-2" />
                 </div>
                 <div className="md:col-span-2">
-                  <Label htmlFor="interest">Enquiry Type</Label>
+                  <Label htmlFor="interest">Enquiry Type <span className="text-muted-foreground">(optional)</span></Label>
                   <Select value={interest} onValueChange={(v) => setInterest(v as typeof interest)}>
                     <SelectTrigger id="interest" className="mt-2"><SelectValue /></SelectTrigger>
                     <SelectContent>
@@ -122,7 +122,7 @@ function ContactPage() {
                 </div>
                 <div className="md:col-span-2">
                   <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" name="message" required minLength={5} maxLength={4000} rows={5} placeholder="Tell us about your dream project…" className="mt-2" />
+                  <Textarea id="message" name="message" maxLength={4000} rows={5} placeholder="Tell us about your dream project…" className="mt-2" />
                   {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
                 </div>
               </div>

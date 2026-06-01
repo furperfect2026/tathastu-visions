@@ -16,6 +16,11 @@ import { PackagesSection } from "@/components/PackagesSection";
 import { RealtySearchLinks } from "@/components/RealtySearchLinks";
 import { Reveal } from "@/components/Reveal";
 import { ServiceSearchLinks } from "@/components/ServiceSearchLinks";
+import clearGuidanceImage from "@/assets/clear-guidance.jpg";
+import clientRelationshipImage from "@/assets/client-relationship.jpg";
+import constructionQualityImage from "@/assets/construction-2.jpg";
+import constructionSiteImage from "@/assets/construction-3.jpg";
+import trustHandshakeImage from "@/assets/trust-handshake.jpg";
 import { projects } from "@/lib/site-data";
 
 type ServiceImage = {
@@ -44,34 +49,39 @@ const process = ["Consultation", "Planning & Design", "Execution", "Final Handov
 
 const constructionGuarantees = [
   {
-    title: "Money Safety",
-    body: "Clear scope, transparent package guidance and budget conversations before work begins.",
+    title: "100% Clear Quotes",
+    body: "Detailed scope and package conversations before work begins, so budgets stay practical and visible.",
     icon: IndianRupee,
-    tone: "from-ink to-[#18304a]",
+    image: { src: clearGuidanceImage, alt: "Tathastu Infra clear construction quote and project guidance" },
+    tone: "from-[#f05a2a] to-[#c94720]",
   },
   {
-    title: "Quality Assurance",
-    body: "Material choices, site checks and finish reviews handled with one accountable team.",
+    title: "In-House Experts",
+    body: "Architect, site coordination, technical guidance and client relationship support stay close to your project.",
     icon: ShieldCheck,
-    tone: "from-[#102033] to-[#2b4154]",
+    image: { src: clientRelationshipImage, alt: "Tathastu Infra in-house experts and client relationship support" },
+    tone: "from-[#0f3857] to-[#0a2034]",
   },
   {
-    title: "On-Time Delivery",
-    body: "Planning, vendor coordination and execution tracking designed around predictable timelines.",
+    title: "Professional Contractors",
+    body: "Execution partners are chosen for discipline, quality and site reliability before they touch the work.",
     icon: Clock3,
-    tone: "from-[#193656] to-[#2f5276]",
+    image: { src: trustHandshakeImage, alt: "Tathastu Infra professional contractor agreement and trust" },
+    tone: "from-[#12699b] to-[#073657]",
   },
   {
-    title: "Transparency",
-    body: "Simple communication from first visit to handover, so clients know what is happening and why.",
+    title: "Built to Last",
+    body: "Structural decisions, material choices and site reviews are handled for long-term confidence.",
     icon: Eye,
-    tone: "from-ink to-[#24313d]",
+    image: { src: constructionQualityImage, alt: "Tathastu Infra construction quality and durability" },
+    tone: "from-[#080321] to-[#101d34]",
   },
   {
-    title: "Assurance",
-    body: "A structured process that keeps safety, accountability and final checks visible at every stage.",
+    title: "On-Time Handover",
+    body: "Planning, vendor coordination and execution tracking are shaped around predictable delivery.",
     icon: BadgeCheck,
-    tone: "from-[#12263d] to-[#31485d]",
+    image: { src: constructionSiteImage, alt: "Tathastu Infra construction timeline and site supervision" },
+    tone: "from-[#1c466d] to-[#0b1f35]",
   },
 ] as const;
 
@@ -189,28 +199,31 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                 </div>
               </div>
 
-              <div className="mt-8 -mx-4 flex snap-x gap-5 overflow-x-auto px-4 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 md:grid-cols-3 xl:grid-cols-5">
-                {constructionGuarantees.map(({ title, body, icon: Icon, tone }) => (
+              <div className="mt-8 -mx-4 flex snap-x gap-5 overflow-x-auto px-4 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-3">
+                {constructionGuarantees.map(({ title, body, icon: Icon, image, tone }) => (
                   <motion.article
                     key={title}
                     whileHover={{ y: -6 }}
-                    className={`relative flex min-h-[360px] w-[82vw] shrink-0 snap-start flex-col overflow-hidden rounded-3xl bg-gradient-to-b ${tone} p-7 text-ivory shadow-luxe ring-1 ring-ivory/10 sm:w-auto`}
+                    className={`group relative flex min-h-[430px] w-[82vw] shrink-0 snap-start flex-col overflow-hidden rounded-3xl bg-gradient-to-b ${tone} text-ivory shadow-luxe ring-1 ring-ivory/10 sm:w-auto`}
                   >
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ivory/12 to-transparent" />
-                    <div className="relative z-10">
+                    <div className="relative z-10 p-7 pb-4">
                       <div className="grid h-14 w-14 place-items-center rounded-2xl bg-primary/20 text-primary-glow ring-1 ring-primary/25">
                         <Icon className="h-6 w-6" />
                       </div>
-                      <h4 className="mt-7 font-display text-3xl font-semibold leading-tight text-ivory">
+                      <h4 className="mt-7 font-display text-3xl font-semibold leading-tight text-ivory md:text-[2rem]">
                         {title}
                       </h4>
                       <p className="mt-5 text-sm leading-relaxed text-ivory/75">{body}</p>
                     </div>
-                    <div className="relative z-10 mt-auto flex items-end justify-between pt-10">
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-primary-glow/80">
-                        Tathastu Infra
-                      </span>
-                      <span className="grid h-12 w-12 place-items-center rounded-full bg-primary-glow text-primary-foreground shadow-gold">
+                    <div className="relative mt-auto min-h-[180px] overflow-hidden">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover opacity-90 transition-transform duration-700 ease-out group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/12 to-transparent" />
+                      <span className="absolute bottom-5 right-5 grid h-12 w-12 place-items-center rounded-full bg-primary-glow text-primary-foreground shadow-gold transition-transform duration-300 group-hover:translate-x-1">
                         <ArrowRight className="h-5 w-5" />
                       </span>
                     </div>

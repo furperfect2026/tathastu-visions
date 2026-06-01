@@ -5,10 +5,10 @@ import type { Database } from "@/integrations/supabase/types";
 
 const schema = z.object({
   name: z.string().trim().min(1).max(120),
-  email: z.string().trim().email().max(255),
+  email: z.string().trim().email().max(255).optional().or(z.literal("")),
   phone: z.string().trim().max(30).optional().or(z.literal("")),
   interest: z.enum(["realty", "construction", "interior", "general", "infra"]).optional(),
-  message: z.string().trim().min(5).max(4000),
+  message: z.string().trim().max(4000).optional().or(z.literal("")),
 });
 
 type Inquiry = z.infer<typeof schema>;
@@ -66,16 +66,18 @@ async function sendInquiryEmail(data: Inquiry) {
   const interest = titleCaseInterest(data.interest);
   const subject = `New ${interest} inquiry from ${data.name}`;
   const phone = data.phone || "Not provided";
+  const email = data.email || "Not provided";
+  const message = data.message || "No message provided.";
   const plainText = [
     `New inquiry from Tathastu Infra website`,
     ``,
     `Name: ${data.name}`,
-    `Email: ${data.email}`,
+    `Email: ${email}`,
     `Phone: ${phone}`,
     `Interest: ${interest}`,
     ``,
     `Message:`,
-    data.message,
+    message,
   ].join("\n");
 
   const html = `
@@ -83,12 +85,12 @@ async function sendInquiryEmail(data: Inquiry) {
       <h2 style="margin: 0 0 16px; color: #0b1736;">New Tathastu Infra Website Inquiry</h2>
       <table style="border-collapse: collapse; width: 100%; max-width: 640px;">
         <tr><td style="padding: 8px 0; font-weight: 700;">Name</td><td>${escapeHtml(data.name)}</td></tr>
-        <tr><td style="padding: 8px 0; font-weight: 700;">Email</td><td>${escapeHtml(data.email)}</td></tr>
+        <tr><td style="padding: 8px 0; font-weight: 700;">Email</td><td>${escapeHtml(email)}</td></tr>
         <tr><td style="padding: 8px 0; font-weight: 700;">Phone</td><td>${escapeHtml(phone)}</td></tr>
         <tr><td style="padding: 8px 0; font-weight: 700;">Interest</td><td>${escapeHtml(interest)}</td></tr>
       </table>
       <div style="margin-top: 20px; padding: 18px; border-left: 4px solid #d6b57c; background: #fbf7ef;">
-        ${escapeHtml(data.message).replace(/\n/g, "<br />")}
+        ${escapeHtml(message).replace(/\n/g, "<br />")}
       </div>
     </div>
   `;
@@ -102,7 +104,7 @@ async function sendInquiryEmail(data: Inquiry) {
     body: JSON.stringify({
       from: CONTACT_FROM_EMAIL,
       to: [CONTACT_TO_EMAIL],
-      reply_to: data.email,
+      ...(data.email ? { reply_to: data.email } : {}),
       subject,
       text: plainText,
       html,
@@ -121,14 +123,15 @@ async function sendInquiryEmail(data: Inquiry) {
 export const submitInquiry = createServerFn({ method: "POST" })
   .inputValidator((input) => schema.parse(input))
   .handler(async ({ data }) => {
+    const storedEmail = data.email || "popup-lead@tathastuinfra.in";
     const supabase = createContactSupabaseClient();
     if (supabase) {
       const { error } = await supabase.from("contact_inquiries").insert({
         name: data.name,
-        email: data.email,
+        email: storedEmail,
         phone: data.phone || null,
         interest: data.interest ?? null,
-        message: data.message,
+        message: data.message || "No message provided.",
       });
       if (error) {
         console.error("[contact] insert failed", error);

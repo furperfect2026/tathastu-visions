@@ -24,9 +24,9 @@ const schema = z.object({
     .min(7, "Enter a valid phone")
     .max(20)
     .regex(/^[+\d\s-()]+$/, "Digits only"),
-  email: z.string().trim().email("Enter a valid email").max(160),
-  interest: z.enum(["general", "realty", "construction", "interior", "infra"]),
-  message: z.string().trim().min(10, "Tell us a little more").max(1000),
+  email: z.string().trim().email("Enter a valid email").max(160).optional().or(z.literal("")),
+  interest: z.enum(["general", "realty", "construction", "interior", "infra"]).optional(),
+  message: z.string().trim().max(1000).optional().or(z.literal("")),
 });
 
 const PHONE = "+91 78208 64384";
@@ -117,10 +117,10 @@ export function ContactSection() {
                 </div>
                 <div className="sm:col-span-2">
                   <Label htmlFor="email" className="font-medium text-foreground">Email</Label>
-                  <Input id="email" name="email" type="email" required className="mt-2 border-primary/20 bg-background text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:ring-primary" placeholder="you@email.com" />
+                  <Input id="email" name="email" type="email" className="mt-2 border-primary/20 bg-background text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:ring-primary" placeholder="you@email.com" />
                 </div>
                 <div className="sm:col-span-2">
-                  <Label htmlFor="interest" className="font-medium text-foreground">Enquiry Type</Label>
+                  <Label htmlFor="interest" className="font-medium text-foreground">Enquiry Type <span className="text-muted-foreground">(optional)</span></Label>
                   <Select value={interest} onValueChange={(value) => setInterest(value as Interest)}>
                     <SelectTrigger id="interest" className="mt-2 border-primary/20 bg-background text-foreground shadow-sm focus:ring-primary">
                       <SelectValue placeholder="Select enquiry type" />
@@ -136,7 +136,7 @@ export function ContactSection() {
                 </div>
                 <div className="sm:col-span-2">
                   <Label htmlFor="message" className="font-medium text-foreground">Message</Label>
-                  <Textarea id="message" name="message" required rows={5} className="mt-2 border-primary/20 bg-background text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:ring-primary" placeholder="Tell us about your project..." />
+                  <Textarea id="message" name="message" rows={5} className="mt-2 border-primary/20 bg-background text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:ring-primary" placeholder="Tell us about your project..." />
                 </div>
               </div>
               <Button

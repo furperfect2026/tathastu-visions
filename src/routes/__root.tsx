@@ -12,6 +12,7 @@ import appCss from "../styles.css?url";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { ConsultationPopup } from "@/components/ConsultationPopup";
 import { Toaster } from "@/components/ui/sonner";
 
 const siteUrl = "https://www.tathastuinfra.in";
@@ -254,6 +255,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <SiteFooter />
+      <ConsultationPopup />
       <Toaster richColors position="top-center" />
     </QueryClientProvider>
   );
