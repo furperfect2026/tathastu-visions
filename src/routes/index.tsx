@@ -34,7 +34,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Tathastu Infra offers real estate, properties, construction and interior design in Lohegaon, Pune, including flats, homes, residential projects and luxury interiors.",
+          "Tathastu Infra offers real estate, flats, rent, plots, construction company services and interior design in Lohegaon, Pune for homes, commercial spaces and luxury interiors.",
+      },
+      {
+        name: "keywords",
+        content:
+          "Tathastu Infra, construction company in Pune, construction company in Lohegaon, flats in Lohegaon Pune, 2 BHK flats in Lohegaon, flats for rent in Lohegaon, interior designer in Pune, interior designer in Lohegaon",
       },
       { property: "og:title", content: "Tathastu Infra — Building Spaces. Creating Futures." },
       {

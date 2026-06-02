@@ -71,10 +71,10 @@ export function ServiceSearchLinks({
 
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           {content.links.map((item, index) => {
-            const Icon = content.icons[index];
+            const Icon = content.icons[index % content.icons.length];
 
             return (
-              <Reveal key={item.to} delay={(index % 2) * 0.06}>
+              <Reveal key={`${item.to}-${item.title}`} delay={(index % 2) * 0.06}>
                 <Link
                   to={item.to}
                   className="group flex h-full min-w-0 gap-4 rounded-3xl border border-border bg-card p-5 shadow-luxe transition duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_28px_70px_-38px_color-mix(in_oklab,var(--color-primary)_55%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:p-6"

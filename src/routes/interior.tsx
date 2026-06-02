@@ -54,11 +54,16 @@ const content: ServicePageContent = {
 export const Route = createFileRoute("/interior")({
   head: () => ({
     meta: [
-      { title: "Interior Designer in Pune | Tathastu Infra Interiors Lohegaon" },
+      { title: "Interior Designer in Pune & Lohegaon | Home, Office & Modular Kitchen" },
       {
         name: "description",
         content:
-          "Premium interior design in Lohegaon, Pune for modular kitchens, living rooms, bedrooms, office interiors, space planning, furniture and decor.",
+          "Tathastu Infra provides interior design in Pune and Lohegaon for home interiors, office interiors, modular kitchens, living rooms, bedrooms, furniture and decor.",
+      },
+      {
+        name: "keywords",
+        content:
+          "interior designer in Pune, interior designer in Lohegaon, home interior design Pune, modular kitchen Pune, office interior design Pune, bedroom interior design, living room interior design",
       },
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/interior" }],

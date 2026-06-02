@@ -134,6 +134,37 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
               </div>
             </Reveal>
 
+            {detail.gallery && (
+              <Reveal delay={0.08}>
+                <div className="rounded-3xl bg-card p-7 shadow-luxe ring-1 ring-border">
+                  <p className="eyebrow">Specialised Scope</p>
+                  <h3 className="mt-3 font-display text-3xl font-semibold text-ink">
+                    WTG foundation and infrastructure execution.
+                  </h3>
+                  <div className="mt-6 grid gap-5 md:grid-cols-2">
+                    {detail.gallery.map((item) => (
+                      <article key={item.title} className="overflow-hidden rounded-2xl bg-secondary/70">
+                        <div className="aspect-[16/10] overflow-hidden bg-ink">
+                          <img
+                            src={item.image}
+                            alt={item.imageAlt}
+                            loading="lazy"
+                            className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                          />
+                        </div>
+                        <div className="p-5">
+                          <h4 className="font-display text-2xl font-semibold text-ink">{item.title}</h4>
+                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                            {item.body}
+                          </p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            )}
+
             <Reveal delay={0.1}>
               <div className="rounded-3xl bg-card p-7 shadow-luxe ring-1 ring-border">
                 <h3 className="font-display text-3xl font-semibold text-ink">

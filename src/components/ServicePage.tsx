@@ -28,11 +28,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import clearGuidanceImage from "@/assets/clear-guidance.jpg";
-import clientRelationshipImage from "@/assets/client-relationship.jpg";
-import constructionQualityImage from "@/assets/construction-2.jpg";
-import constructionSiteImage from "@/assets/construction-3.jpg";
-import trustHandshakeImage from "@/assets/trust-handshake.jpg";
+import guaranteeAssuranceImage from "@/assets/guarantee-assurance.png";
+import guaranteeMoneySafetyImage from "@/assets/guarantee-money-safety.png";
+import guaranteeOnTimeImage from "@/assets/guarantee-on-time-delivery.png";
+import guaranteeQualityImage from "@/assets/guarantee-quality-assurance.png";
+import guaranteeTransparencyImage from "@/assets/guarantee-transparency.png";
 import { usePublicProjects } from "@/hooks/usePublicProjects";
 
 type ServiceImage = {
@@ -114,42 +114,42 @@ const constructionGuarantees = [
     title: "Money Safety",
     body: "Detailed scope and package conversations before work begins, so budgets stay practical and visible.",
     icon: IndianRupee,
-    image: { src: clearGuidanceImage, alt: "Tathastu Infra clear construction quote and project guidance" },
+    image: { src: guaranteeMoneySafetyImage, alt: "Money safety and protected construction budget with Tathastu Infra" },
     tone: "from-[#f05a2a] to-[#c94720]",
   },
   {
     title: "Quality Assurance",
     body: "Material choices, technical checks and finish reviews are handled with one accountable Tathastu Infra team.",
     icon: ShieldCheck,
-    image: { src: constructionQualityImage, alt: "Tathastu Infra construction quality and durability" },
+    image: { src: guaranteeQualityImage, alt: "Quality assurance checklist for Tathastu Infra construction work" },
     tone: "from-[#0f3857] to-[#0a2034]",
   },
   {
     title: "On-Time Delivery",
     body: "Planning, vendor coordination and execution tracking are shaped around predictable delivery.",
     icon: Clock3,
-    image: { src: constructionSiteImage, alt: "Tathastu Infra construction timeline and site supervision" },
+    image: { src: guaranteeOnTimeImage, alt: "On-time construction delivery and site supervision by Tathastu Infra" },
     tone: "from-[#12699b] to-[#073657]",
   },
   {
     title: "Transparency",
     body: "Simple communication from first visit to handover, so clients know what is happening and why.",
     icon: Eye,
-    image: { src: clientRelationshipImage, alt: "Tathastu Infra transparent client relationship and planning" },
+    image: { src: guaranteeTransparencyImage, alt: "Transparent construction communication and handshake with Tathastu Infra" },
     tone: "from-[#080321] to-[#101d34]",
   },
   {
     title: "Assurance",
     body: "Every step is backed by clear guidance, practical decisions and a team that stays close after handover.",
     icon: BadgeCheck,
-    image: { src: trustHandshakeImage, alt: "Tathastu Infra assurance and client trust" },
+    image: { src: guaranteeAssuranceImage, alt: "Assurance inspection and verified construction steps by Tathastu Infra" },
     tone: "from-[#1c466d] to-[#0b1f35]",
   },
   {
     title: "In-House Experts",
     body: "Architect, site coordination, technical guidance and client relationship support stay close to your project.",
     icon: ShieldCheck,
-    image: { src: clientRelationshipImage, alt: "Tathastu Infra in-house experts and client relationship support" },
+    image: { src: guaranteeTransparencyImage, alt: "In-house Tathastu Infra experts and project communication" },
     tone: "from-[#102b44] to-[#071c30]",
   },
 ] as const;

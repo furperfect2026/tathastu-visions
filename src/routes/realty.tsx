@@ -49,11 +49,16 @@ const content: ServicePageContent = {
 export const Route = createFileRoute("/realty")({
   head: () => ({
     meta: [
-      { title: "Real Estate & Properties in Lohegaon, Pune | Tathastu Infra Realty" },
+      { title: "Real Estate Company in Lohegaon Pune | Flats, Rent & Plots | Tathastu Infra" },
       {
         name: "description",
         content:
-          "Tathastu Infra Realty offers real estate consulting, property buying, flats, resale properties, rentals, site visits and documentation support in Lohegaon, Pune.",
+          "Tathastu Infra Realty helps with flats in Lohegaon Pune, 2 BHK flats, resale properties, flats for rent, plots for sale, site visits and documentation support.",
+      },
+      {
+        name: "keywords",
+        content:
+          "real estate company in Lohegaon, flats in Lohegaon Pune, 2 BHK flats in Lohegaon, flats for rent in Lohegaon, plots for sale in Lohegaon, resale flats Pune, property consultant Lohegaon",
       },
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/realty" }],

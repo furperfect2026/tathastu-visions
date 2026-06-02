@@ -33,9 +33,24 @@ const faqs = [
       "Yes. Tathastu Infra Construction handles home construction, villas, bungalows and residential projects with supervision, material planning and quality checks.",
   },
   {
+    question: "Is Tathastu Infra a construction company in Pune?",
+    answer:
+      "Yes. Tathastu Infra is a construction company in Pune serving Lohegaon and nearby areas for residential construction, commercial construction, RCC structural work and turnkey execution.",
+  },
+  {
+    question: "Do you provide construction services in Lohegaon?",
+    answer:
+      "Yes. We provide construction services in Lohegaon for homes, villas, shops, offices and structural work with planning, supervision, material clarity and transparent communication.",
+  },
+  {
     question: "Do you work on commercial construction projects?",
     answer:
       "Yes. We support commercial construction for offices, shops and business spaces with planning, structural execution and site coordination.",
+  },
+  {
+    question: "Can Tathastu Infra help with RCC work in Pune?",
+    answer:
+      "Yes. Our construction team supports RCC and structural work in Pune with engineering coordination, safety checks, material planning and stage-wise execution.",
   },
   {
     question: "What construction packages are available?",
@@ -61,6 +76,16 @@ const faqs = [
     question: "Do you provide interior design in Pune?",
     answer:
       "Yes. Tathastu Infra Interior Design works on home interiors, office interiors, modular kitchens, bedrooms, living rooms and space planning.",
+  },
+  {
+    question: "Is Tathastu Infra an interior designer in Lohegaon?",
+    answer:
+      "Yes. Tathastu Infra provides interior design in Lohegaon and Pune for home interiors, office interiors, modular kitchens, bedrooms, living rooms, furniture and decor.",
+  },
+  {
+    question: "Can you design full home interiors in Pune?",
+    answer:
+      "Yes. We plan full home interiors in Pune including layout, storage, lighting, finishes, furniture, modular kitchens and room-by-room execution guidance.",
   },
   {
     question: "Can you design modular kitchens in Pune?",

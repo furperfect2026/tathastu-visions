@@ -22,6 +22,9 @@ import interior3 from "@/assets/interior-3.jpg";
 import interior4 from "@/assets/interior-4.jpg";
 import realty3 from "@/assets/realty-3.jpg";
 import realty4 from "@/assets/realty-4.jpg";
+import wtgFoundationBase from "@/assets/wtg-foundation-base.png";
+import wtgGovernmentHero from "@/assets/wtg-government-hero.jpg";
+import wtgInstallation from "@/assets/wtg-turbine-installation.png";
 
 export type ServiceDetailCategory = "realty" | "construction" | "interior";
 
@@ -38,6 +41,12 @@ export type ServiceDetail = {
   highlights: string[];
   suitedFor: string[];
   parentPath: "/realty" | "/construction" | "/interior";
+  gallery?: {
+    title: string;
+    body: string;
+    image: string;
+    imageAlt: string;
+  }[];
 };
 
 export const serviceDetails: ServiceDetail[] = [
@@ -138,13 +147,34 @@ export const serviceDetails: ServiceDetail[] = [
     eyebrow: "Tathastu Infra Construction",
     subtitle: "Institutional and government-focused execution support.",
     intro:
-      "We support documentation-heavy and infrastructure-oriented work with clarity, coordination and disciplined execution control.",
-    image: construction4,
-    imageAlt: "Infrastructure and government construction planning",
+      "We support documentation-heavy and infrastructure-oriented work with clarity, coordination and disciplined execution control, including WTG foundation base activity and civil work around wind turbine infrastructure.",
+    image: wtgGovernmentHero,
+    imageAlt: "Government and WTG infrastructure work by Tathastu Infra",
     icon: Landmark,
-    highlights: ["Documentation support", "Execution planning", "Site accountability", "Progress coordination"],
-    suitedFor: ["Government contracts", "Institutional projects", "Infrastructure-linked construction"],
+    highlights: [
+      "WTG foundation base civil work",
+      "Government contract documentation",
+      "Infrastructure execution planning",
+      "Site accountability and progress coordination",
+    ],
+    suitedFor: ["WTG foundation work", "Government contracts", "Institutional projects", "Infrastructure-linked construction"],
     parentPath: "/construction",
+    gallery: [
+      {
+        title: "WTG Foundation Base",
+        body:
+          "Civil base work for wind turbine projects is coordinated around foundation preparation, reinforcement planning, concrete sequencing and site safety.",
+        image: wtgFoundationBase,
+        imageAlt: "Wind turbine foundation base civil construction work",
+      },
+      {
+        title: "Turbine Infrastructure Support",
+        body:
+          "We support execution around wind turbine installation zones with documentation, coordination, access planning and government-compliant work control.",
+        image: wtgInstallation,
+        imageAlt: "Wind turbine installation and infrastructure execution support",
+      },
+    ],
   },
   {
     category: "interior",

@@ -63,11 +63,16 @@ const content: ServicePageContent = {
 export const Route = createFileRoute("/construction")({
   head: () => ({
     meta: [
-      { title: "Tathastu Infra Construction Pune | Residential & Commercial Construction" },
+      { title: "Construction Company in Pune & Lohegaon | Tathastu Infra Construction" },
       {
         name: "description",
         content:
-          "Residential construction, commercial construction, structural work, material planning, supervision and turnkey execution in Lohegaon, Pune.",
+          "Tathastu Infra is a construction company in Pune and Lohegaon for residential construction, commercial construction, RCC structural work, turnkey execution, material planning and site supervision.",
+      },
+      {
+        name: "keywords",
+        content:
+          "construction company in Pune, construction company in Lohegaon, residential construction Pune, commercial construction Pune, RCC contractor Pune, turnkey construction Pune, house construction cost Pune",
       },
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/construction" }],
