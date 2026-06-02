@@ -171,7 +171,11 @@ function AdminProjectsPage() {
       toast.success("Welcome to the Tathastu Infra admin panel.");
     } catch (error) {
       console.error(error);
-      toast.error("Login failed. Check the admin email and password.");
+      const message =
+        error && typeof error === "object" && "message" in error
+          ? String((error as { message?: unknown }).message)
+          : "Login failed. Check the admin email and password.";
+      toast.error(message);
     } finally {
       setIsSaving(false);
     }
