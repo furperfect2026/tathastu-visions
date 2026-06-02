@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Outlet, createFileRoute, useRouterState } from "@tanstack/react-router";
 import { Building, Factory, Landmark, Layers3 } from "lucide-react";
 import { ServicePage, type ServicePageContent } from "@/components/ServicePage";
 import construction1 from "@/assets/construction-1.jpg";
@@ -72,5 +72,12 @@ export const Route = createFileRoute("/construction")({
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/construction" }],
   }),
-  component: () => <ServicePage content={content} />,
+  component: ConstructionRoute,
 });
+
+function ConstructionRoute() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const isConstructionIndex = pathname.replace(/\/$/, "") === "/construction";
+
+  return isConstructionIndex ? <ServicePage content={content} /> : <Outlet />;
+}

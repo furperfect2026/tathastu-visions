@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Outlet, createFileRoute, useRouterState } from "@tanstack/react-router";
 import { Building2, CalendarCheck, Handshake } from "lucide-react";
 import { ServicePage, type ServicePageContent } from "@/components/ServicePage";
 import realty3 from "@/assets/realty-3.jpg";
@@ -58,5 +58,12 @@ export const Route = createFileRoute("/realty")({
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/realty" }],
   }),
-  component: () => <ServicePage content={content} />,
+  component: RealtyRoute,
 });
+
+function RealtyRoute() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const isRealtyIndex = pathname.replace(/\/$/, "") === "/realty";
+
+  return isRealtyIndex ? <ServicePage content={content} /> : <Outlet />;
+}

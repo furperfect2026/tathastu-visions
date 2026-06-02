@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Outlet, createFileRoute, useRouterState } from "@tanstack/react-router";
 import { BriefcaseBusiness, CookingPot, Home } from "lucide-react";
 import { ServicePage, type ServicePageContent } from "@/components/ServicePage";
 import interior1 from "@/assets/interior-1.jpg";
@@ -63,5 +63,12 @@ export const Route = createFileRoute("/interior")({
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/interior" }],
   }),
-  component: () => <ServicePage content={content} />,
+  component: InteriorRoute,
 });
+
+function InteriorRoute() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const isInteriorIndex = pathname.replace(/\/$/, "") === "/interior";
+
+  return isInteriorIndex ? <ServicePage content={content} /> : <Outlet />;
+}
