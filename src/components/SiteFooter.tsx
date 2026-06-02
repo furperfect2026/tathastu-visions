@@ -144,10 +144,17 @@ export function SiteFooter() {
       <div className="border-t border-ivory/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-6 text-center text-xs text-ivory/50 sm:px-6 md:flex-row md:text-left">
           <p>© {new Date().getFullYear()} Tathastu Infra. Building dreams. Creating reality.</p>
-          <p>Design & build · Tathastu Infra Studio</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 md:justify-end">
+            <p>Design & build · Tathastu Infra Studio</p>
+            <Link
+              to="/admin/projects"
+              className="text-ivory/45 underline-offset-4 transition-colors hover:text-primary-glow hover:underline"
+            >
+              Admin Login
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
-
