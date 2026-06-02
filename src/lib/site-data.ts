@@ -91,6 +91,7 @@ export const projects = [
     year: 2024,
     image: realtyProject2,
     blurb: "Premium residential community guidance for buyers exploring Lohegaon and nearby Pune growth corridors.",
+    priceLabel: "Price on request",
   },
   {
     id: "p2",
@@ -100,6 +101,7 @@ export const projects = [
     year: 2025,
     image: realtyProject1,
     blurb: "Modern apartment options with practical site-visit, documentation and buying support.",
+    priceLabel: "Site visit available",
   },
   {
     id: "p3",

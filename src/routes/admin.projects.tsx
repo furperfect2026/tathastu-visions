@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
   Edit3,
+  Handshake,
   ImagePlus,
   Loader2,
   LogOut,
@@ -32,6 +33,16 @@ type AdminProject = PublicProject & {
   isPublished: boolean;
 };
 
+type AdminPartner = {
+  id: string;
+  name: string;
+  description: string;
+  logoUrl: string;
+  websiteUrl: string;
+  sortOrder: number;
+  isActive: boolean;
+};
+
 type ProjectForm = {
   id?: string;
   title: string;
@@ -39,9 +50,20 @@ type ProjectForm = {
   category: ProjectCategory;
   location: string;
   year: string;
+  priceLabel: string;
   sortOrder: string;
   imageUrl: string;
   isPublished: boolean;
+};
+
+type PartnerForm = {
+  id?: string;
+  name: string;
+  description: string;
+  logoUrl: string;
+  websiteUrl: string;
+  sortOrder: string;
+  isActive: boolean;
 };
 
 const emptyForm: ProjectForm = {
@@ -50,9 +72,19 @@ const emptyForm: ProjectForm = {
   category: "construction",
   location: "Lohegaon, Pune",
   year: String(new Date().getFullYear()),
+  priceLabel: "",
   sortOrder: "0",
   imageUrl: "",
   isPublished: true,
+};
+
+const emptyPartnerForm: PartnerForm = {
+  name: "",
+  description: "",
+  logoUrl: "",
+  websiteUrl: "",
+  sortOrder: "0",
+  isActive: true,
 };
 
 const categories = [
@@ -81,8 +113,21 @@ function mapRow(row: any): AdminProject {
     image: row.image_url,
     imageUrl: row.image_url,
     blurb: row.description || "",
+    priceLabel: row.price_label || undefined,
     sortOrder: row.sort_order || 0,
     isPublished: row.is_published !== false,
+  };
+}
+
+function mapPartnerRow(row: any): AdminPartner {
+  return {
+    id: row.id,
+    name: row.name,
+    description: row.description || "",
+    logoUrl: row.logo_url || "",
+    websiteUrl: row.website_url || "",
+    sortOrder: row.sort_order || 0,
+    isActive: row.is_active !== false,
   };
 }
 
@@ -94,9 +139,22 @@ function formFromProject(project: AdminProject): ProjectForm {
     category: project.category,
     location: project.location,
     year: String(project.year),
+    priceLabel: project.priceLabel || "",
     sortOrder: String(project.sortOrder),
     imageUrl: project.imageUrl,
     isPublished: project.isPublished,
+  };
+}
+
+function formFromPartner(partner: AdminPartner): PartnerForm {
+  return {
+    id: partner.id,
+    name: partner.name,
+    description: partner.description,
+    logoUrl: partner.logoUrl,
+    websiteUrl: partner.websiteUrl,
+    sortOrder: String(partner.sortOrder),
+    isActive: partner.isActive,
   };
 }
 
@@ -106,8 +164,11 @@ function AdminProjectsPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [projects, setProjects] = useState<AdminProject[]>([]);
+  const [partners, setPartners] = useState<AdminPartner[]>([]);
   const [form, setForm] = useState<ProjectForm>(emptyForm);
+  const [partnerForm, setPartnerForm] = useState<PartnerForm>(emptyPartnerForm);
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [partnerLogoFile, setPartnerLogoFile] = useState<File | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -115,6 +176,10 @@ function AdminProjectsPage() {
   const previewImage = useMemo(
     () => (imageFile ? URL.createObjectURL(imageFile) : form.imageUrl),
     [form.imageUrl, imageFile],
+  );
+  const partnerPreviewImage = useMemo(
+    () => (partnerLogoFile ? URL.createObjectURL(partnerLogoFile) : partnerForm.logoUrl),
+    [partnerForm.logoUrl, partnerLogoFile],
   );
 
   useEffect(() => {
@@ -140,7 +205,10 @@ function AdminProjectsPage() {
   }, []);
 
   useEffect(() => {
-    if (isAuthed) fetchProjects();
+    if (isAuthed) {
+      fetchProjects();
+      fetchPartners();
+    }
   }, [isAuthed]);
 
   async function fetchProjects() {
@@ -159,6 +227,22 @@ function AdminProjectsPage() {
       toast.error("Could not load projects. Please apply the Supabase setup SQL first.");
     } finally {
       setIsLoading(false);
+    }
+  }
+
+  async function fetchPartners() {
+    try {
+      const { data, error } = await (supabase as any)
+        .from("partners")
+        .select("*")
+        .order("sort_order", { ascending: true })
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+      setPartners((data || []).map(mapPartnerRow));
+    } catch (error) {
+      console.warn("[Admin] Partners table is not ready yet.", error);
+      setPartners([]);
     }
   }
 
@@ -181,16 +265,16 @@ function AdminProjectsPage() {
     }
   }
 
-  async function uploadImage(projectTitle: string) {
-    if (!imageFile) return form.imageUrl;
+  async function uploadImage(file: File | null, title: string, fallbackUrl: string) {
+    if (!file) return fallbackUrl;
 
-    const ext = imageFile.name.split(".").pop() || "jpg";
-    const safeTitle = projectTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+    const ext = file.name.split(".").pop() || "jpg";
+    const safeTitle = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
     const path = `${Date.now()}-${safeTitle || "project"}.${ext}`;
 
     const { error } = await (supabase as any).storage
       .from("project-images")
-      .upload(path, imageFile, { cacheControl: "31536000", upsert: false });
+      .upload(path, file, { cacheControl: "31536000", upsert: false });
 
     if (error) throw error;
 
@@ -209,15 +293,16 @@ function AdminProjectsPage() {
       return;
     }
 
-    setIsSaving(true);
+      setIsSaving(true);
     try {
-      const imageUrl = await uploadImage(form.title);
+      const imageUrl = await uploadImage(imageFile, form.title, form.imageUrl);
       const payload = {
         title: form.title.trim(),
         description: form.description.trim(),
         category: form.category,
         location: form.location.trim() || "Pune",
         year: Number(form.year) || new Date().getFullYear(),
+        price_label: form.category === "realty" ? form.priceLabel.trim() || null : null,
         image_url: imageUrl,
         sort_order: Number(form.sortOrder) || 0,
         is_published: form.isPublished,
@@ -254,6 +339,61 @@ function AdminProjectsPage() {
     } catch (error) {
       console.error(error);
       toast.error("Could not delete project.");
+    } finally {
+      setIsSaving(false);
+    }
+  }
+
+  async function savePartner(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!partnerForm.name.trim()) {
+      toast.error("Partner name is required.");
+      return;
+    }
+
+    setIsSaving(true);
+    try {
+      const logoUrl = await uploadImage(partnerLogoFile, partnerForm.name, partnerForm.logoUrl);
+      const payload = {
+        name: partnerForm.name.trim(),
+        description: partnerForm.description.trim(),
+        logo_url: logoUrl,
+        website_url: partnerForm.websiteUrl.trim() || null,
+        sort_order: Number(partnerForm.sortOrder) || 0,
+        is_active: partnerForm.isActive,
+      };
+
+      const query = partnerForm.id
+        ? (supabase as any).from("partners").update(payload).eq("id", partnerForm.id)
+        : (supabase as any).from("partners").insert(payload);
+
+      const { error } = await query;
+      if (error) throw error;
+
+      toast.success(partnerForm.id ? "Partner updated." : "Partner added.");
+      setPartnerForm(emptyPartnerForm);
+      setPartnerLogoFile(null);
+      await fetchPartners();
+    } catch (error) {
+      console.error(error);
+      toast.error("Could not save partner. Apply the updated Supabase SQL if this is the first time.");
+    } finally {
+      setIsSaving(false);
+    }
+  }
+
+  async function deletePartner(partner: AdminPartner) {
+    if (!window.confirm(`Delete "${partner.name}" from partner management?`)) return;
+
+    setIsSaving(true);
+    try {
+      const { error } = await (supabase as any).from("partners").delete().eq("id", partner.id);
+      if (error) throw error;
+      toast.success("Partner deleted.");
+      await fetchPartners();
+    } catch (error) {
+      console.error(error);
+      toast.error("Could not delete partner.");
     } finally {
       setIsSaving(false);
     }
@@ -398,6 +538,22 @@ function AdminProjectsPage() {
                 </Select>
               </div>
 
+              {form.category === "realty" && (
+                <div>
+                  <Label htmlFor="project-price">Realty price / starting from</Label>
+                  <Input
+                    id="project-price"
+                    value={form.priceLabel}
+                    onChange={(event) => setForm((value) => ({ ...value, priceLabel: event.target.value }))}
+                    className="mt-2"
+                    placeholder="Starting ₹45L / Rent ₹22k per month / Price on request"
+                  />
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Optional. This appears as a small price badge on Realty project cards.
+                  </p>
+                </div>
+              )}
+
               <div>
                 <Label htmlFor="project-description">Description</Label>
                 <Textarea
@@ -526,6 +682,11 @@ function AdminProjectsPage() {
                             <p className="text-xs text-muted-foreground">
                               {project.location} - {project.year}
                             </p>
+                            {project.priceLabel && (
+                              <p className="mt-2 inline-flex rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary">
+                                {project.priceLabel}
+                              </p>
+                            )}
                           </div>
                           <div className="flex gap-2">
                             <Button
@@ -568,6 +729,221 @@ function AdminProjectsPage() {
                 )}
               </div>
             )}
+          </div>
+        </div>
+
+        <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <form onSubmit={savePartner} className="rounded-3xl bg-card p-6 shadow-luxe ring-1 ring-border sm:p-8">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <p className="eyebrow">Future Section</p>
+                <h2 className="mt-2 font-display text-3xl font-semibold text-ink">
+                  {partnerForm.id ? "Edit partner" : "Add partner"}
+                </h2>
+              </div>
+              {partnerForm.id && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full"
+                  onClick={() => {
+                    setPartnerForm(emptyPartnerForm);
+                    setPartnerLogoFile(null);
+                  }}
+                >
+                  <Plus className="h-4 w-4" /> New
+                </Button>
+              )}
+            </div>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Prepare trusted partners for the construction page. Add logos, descriptions and optional
+              links now; we can display them publicly whenever the client is ready.
+            </p>
+
+            <div className="mt-7 space-y-5">
+              <div>
+                <Label htmlFor="partner-name">Partner name</Label>
+                <Input
+                  id="partner-name"
+                  value={partnerForm.name}
+                  onChange={(event) => setPartnerForm((value) => ({ ...value, name: event.target.value }))}
+                  className="mt-2"
+                  placeholder="Civil & RCC Partner"
+                  required
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="partner-description">Description</Label>
+                <Textarea
+                  id="partner-description"
+                  value={partnerForm.description}
+                  onChange={(event) => setPartnerForm((value) => ({ ...value, description: event.target.value }))}
+                  className="mt-2 min-h-24"
+                  placeholder="Short description of this partner's role..."
+                />
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <Label htmlFor="partner-url">Website / profile link</Label>
+                  <Input
+                    id="partner-url"
+                    value={partnerForm.websiteUrl}
+                    onChange={(event) => setPartnerForm((value) => ({ ...value, websiteUrl: event.target.value }))}
+                    className="mt-2"
+                    placeholder="https://..."
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="partner-order">Order</Label>
+                  <Input
+                    id="partner-order"
+                    type="number"
+                    value={partnerForm.sortOrder}
+                    onChange={(event) => setPartnerForm((value) => ({ ...value, sortOrder: event.target.value }))}
+                    className="mt-2"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Label htmlFor="partner-logo">Partner logo / image</Label>
+                <label
+                  htmlFor="partner-logo"
+                  className="mt-2 flex min-h-36 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-3xl border border-dashed border-primary/40 bg-secondary/60 text-center transition-colors hover:bg-secondary"
+                >
+                  {partnerPreviewImage ? (
+                    <img src={partnerPreviewImage} alt="Partner preview" className="h-44 w-full object-cover" />
+                  ) : (
+                    <span className="flex flex-col items-center gap-2 p-8 text-sm text-muted-foreground">
+                      <Handshake className="h-8 w-8 text-primary" />
+                      Upload a logo or partner image
+                    </span>
+                  )}
+                </label>
+                <Input
+                  id="partner-logo"
+                  type="file"
+                  accept="image/*"
+                  onChange={(event) => setPartnerLogoFile(event.target.files?.[0] || null)}
+                  className="sr-only"
+                />
+              </div>
+
+              <label className="flex items-center justify-between rounded-2xl bg-secondary/70 px-4 py-3 text-sm font-medium text-ink">
+                Active partner
+                <input
+                  type="checkbox"
+                  checked={partnerForm.isActive}
+                  onChange={(event) => setPartnerForm((value) => ({ ...value, isActive: event.target.checked }))}
+                  className="h-4 w-4 accent-primary"
+                />
+              </label>
+
+              <Button disabled={isSaving} className="w-full rounded-full bg-gradient-gold text-ink shadow-gold">
+                {isSaving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
+                {partnerForm.id ? "Save partner" : "Add partner"}
+              </Button>
+            </div>
+          </form>
+
+          <div className="rounded-3xl bg-card p-6 shadow-luxe ring-1 ring-border sm:p-8">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <h2 className="font-display text-3xl font-semibold text-ink">Partners</h2>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {partners.length} partner{partners.length === 1 ? "" : "s"} prepared
+                </p>
+              </div>
+              <Button variant="outline" className="rounded-full" onClick={fetchPartners}>
+                Refresh
+              </Button>
+            </div>
+
+            <div className="mt-6 grid gap-4">
+              <AnimatePresence>
+                {partners.map((partner) => (
+                  <motion.article
+                    key={partner.id}
+                    layout
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="grid overflow-hidden rounded-3xl bg-secondary/60 ring-1 ring-border sm:grid-cols-[150px_1fr]"
+                  >
+                    <div className="grid min-h-36 place-items-center bg-card">
+                      {partner.logoUrl ? (
+                        <img src={partner.logoUrl} alt={partner.name} className="h-full w-full object-cover" />
+                      ) : (
+                        <Handshake className="h-8 w-8 text-primary" />
+                      )}
+                    </div>
+                    <div className="p-5">
+                      <div className="flex flex-wrap items-start justify-between gap-4">
+                        <div>
+                          <p className="text-[10px] uppercase tracking-[0.22em] text-primary">
+                            {partner.isActive ? "active" : "hidden"}
+                          </p>
+                          <h3 className="mt-1 font-display text-2xl font-semibold text-ink">
+                            {partner.name}
+                          </h3>
+                          {partner.websiteUrl && (
+                            <a
+                              href={partner.websiteUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="text-xs text-primary underline-offset-4 hover:underline"
+                            >
+                              {partner.websiteUrl}
+                            </a>
+                          )}
+                        </div>
+                        <div className="flex gap-2">
+                          <Button
+                            size="icon"
+                            variant="outline"
+                            className="rounded-full"
+                            onClick={() => {
+                              setPartnerForm(formFromPartner(partner));
+                              setPartnerLogoFile(null);
+                            }}
+                            aria-label={`Edit ${partner.name}`}
+                          >
+                            <Edit3 className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            size="icon"
+                            variant="outline"
+                            className="rounded-full text-destructive hover:text-destructive"
+                            onClick={() => deletePartner(partner)}
+                            aria-label={`Delete ${partner.name}`}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </div>
+                      <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                        {partner.description || "No description yet."}
+                      </p>
+                    </div>
+                  </motion.article>
+                ))}
+              </AnimatePresence>
+
+              {partners.length === 0 && (
+                <div className="rounded-3xl border border-dashed border-primary/30 p-10 text-center">
+                  <Handshake className="mx-auto h-8 w-8 text-primary" />
+                  <h3 className="mt-4 font-display text-2xl font-semibold text-ink">
+                    No partners added yet
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Add partner details here after running the updated Supabase SQL.
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

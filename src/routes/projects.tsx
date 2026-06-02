@@ -76,6 +76,11 @@ function ProjectsPage() {
                   <p className="text-[10px] uppercase tracking-[0.22em] text-primary">{p.category}</p>
                   <h3 className="mt-1 font-display text-xl font-semibold">{p.title}</h3>
                   <p className="text-xs text-muted-foreground">{p.location} · {p.year}</p>
+                  {p.priceLabel && (
+                    <p className="mt-3 inline-flex rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary">
+                      {p.priceLabel}
+                    </p>
+                  )}
                   <p className="mt-3 text-sm text-muted-foreground">{p.blurb}</p>
                 </div>
               </motion.article>

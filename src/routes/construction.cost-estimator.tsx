@@ -23,9 +23,9 @@ const rates: Record<PackageTier, number> = {
 
 const floorFactors: Record<string, number> = {
   "ground": 1,
-  "g+1": 1.12,
-  "g+2": 1.21,
-  "g+3": 1.31,
+  "g+1": 2,
+  "g+2": 3,
+  "g+3": 4,
 };
 
 export const Route = createFileRoute("/construction/cost-estimator")({
@@ -48,13 +48,16 @@ function ConstructionCostEstimatorPage() {
   const [tier, setTier] = useState<PackageTier>("standard");
   const [floors, setFloors] = useState("ground");
 
-  const estimate = useMemo(() => {
+  const totalBuiltUpArea = useMemo(() => {
     const areaNum = Number(area);
     if (!Number.isFinite(areaNum) || areaNum <= 0) return null;
-    const base = areaNum * rates[tier];
-    const adjusted = Math.round(base * floorFactors[floors]);
-    return adjusted;
-  }, [area, floors, tier]);
+    return Math.round(areaNum * floorFactors[floors]);
+  }, [area, floors]);
+
+  const estimate = useMemo(() => {
+    if (!totalBuiltUpArea) return null;
+    return Math.round(totalBuiltUpArea * rates[tier]);
+  }, [tier, totalBuiltUpArea]);
 
   return (
     <>
@@ -83,7 +86,7 @@ function ConstructionCostEstimatorPage() {
 
               <div className="mt-7 space-y-5">
                 <div>
-                  <Label htmlFor="area">Built-up area (sq ft)</Label>
+                  <Label htmlFor="area">Per-floor built-up area (sq ft)</Label>
                   <Input
                     id="area"
                     type="number"
@@ -141,6 +144,18 @@ function ConstructionCostEstimatorPage() {
                 This is a planning estimate. Site condition, structure complexity, elevation details and
                 finishing preferences can change final costing.
               </p>
+
+              <div className="mt-6 rounded-2xl bg-ivory/6 p-4">
+                <p className="text-sm text-ivory/70">Total built-up area used</p>
+                <p className="mt-1 font-display text-2xl font-semibold text-ivory">
+                  {totalBuiltUpArea ? `${totalBuiltUpArea.toLocaleString("en-IN")} sq ft` : "Enter area"}
+                </p>
+                <p className="mt-1 text-xs text-ivory/55">
+                  {Number(area) > 0
+                    ? `${Number(area).toLocaleString("en-IN")} sq ft x ${floorFactors[floors]} floor${floorFactors[floors] === 1 ? "" : "s"}`
+                    : "Area multiplies automatically when you select G+1, G+2 or G+3."}
+                </p>
+              </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button asChild className="rounded-full bg-gradient-gold px-7 text-ink shadow-gold">

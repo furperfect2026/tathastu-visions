@@ -12,6 +12,7 @@ export type PublicProject = {
   year: number;
   image: string;
   blurb: string;
+  priceLabel?: string;
   sortOrder?: number;
 };
 
@@ -23,6 +24,7 @@ type ProjectRow = {
   year: number | null;
   image_url: string | null;
   description: string | null;
+  price_label: string | null;
   sort_order: number | null;
 };
 
@@ -42,6 +44,7 @@ function mapProject(row: ProjectRow): PublicProject | null {
     year: row.year || new Date().getFullYear(),
     image: row.image_url,
     blurb: row.description,
+    priceLabel: row.price_label || undefined,
     sortOrder: row.sort_order || 0,
   };
 }
@@ -56,7 +59,7 @@ export function usePublicProjects(category?: ProjectCategory) {
       try {
         let query = (supabase as any)
           .from("projects")
-          .select("id, category, title, location, year, image_url, description, sort_order")
+          .select("*")
           .eq("is_published", true)
           .order("sort_order", { ascending: true })
           .order("created_at", { ascending: false });

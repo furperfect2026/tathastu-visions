@@ -70,9 +70,9 @@ const estimateRates: Record<PackageTier, number> = {
 
 const floorFactors: Record<string, number> = {
   ground: 1,
-  "g+1": 1.12,
-  "g+2": 1.21,
-  "g+3": 1.31,
+  "g+1": 2,
+  "g+2": 3,
+  "g+3": 4,
 };
 
 const socialLinks = [
@@ -184,9 +184,14 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
   const quickEstimate = useMemo(() => {
     const area = Number(estimateArea);
     if (!Number.isFinite(area) || area <= 0) return null;
-    const base = area * estimateRates[estimateTier];
-    return Math.round(base * floorFactors[estimateFloors]);
+    return Math.round(area * floorFactors[estimateFloors] * estimateRates[estimateTier]);
   }, [estimateArea, estimateFloors, estimateTier]);
+
+  const quickTotalArea = useMemo(() => {
+    const area = Number(estimateArea);
+    if (!Number.isFinite(area) || area <= 0) return null;
+    return Math.round(area * floorFactors[estimateFloors]);
+  }, [estimateArea, estimateFloors]);
 
   const relatedProjects = projects.slice(0, 3);
 
@@ -446,7 +451,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                     </p>
                     <div className="mt-6 grid gap-4 sm:grid-cols-2">
                       <div>
-                        <Label htmlFor="quick-estimate-area">Built-up area (sq ft)</Label>
+                        <Label htmlFor="quick-estimate-area">Per-floor built-up area (sq ft)</Label>
                         <Input
                           id="quick-estimate-area"
                           type="number"
@@ -505,6 +510,19 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                       This is a quick estimate. Final cost depends on site conditions, structure
                       complexity and finish scope.
                     </p>
+                    <div className="mt-5 rounded-2xl bg-ivory/6 p-4">
+                      <p className="text-xs uppercase tracking-[0.16em] text-primary-glow/75">
+                        Total built-up area
+                      </p>
+                      <p className="mt-1 font-display text-2xl font-semibold">
+                        {quickTotalArea ? `${quickTotalArea.toLocaleString("en-IN")} sq ft` : "Enter area"}
+                      </p>
+                      <p className="mt-1 text-xs text-ivory/55">
+                        {Number(estimateArea) > 0
+                          ? `${Number(estimateArea).toLocaleString("en-IN")} sq ft x ${floorFactors[estimateFloors]} floor${floorFactors[estimateFloors] === 1 ? "" : "s"}`
+                          : "Area multiplies automatically by selected floors."}
+                      </p>
+                    </div>
                     <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                       <Button
                         asChild
@@ -603,6 +621,11 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                     <p className="text-xs text-muted-foreground">
                       {project.location} · {project.year}
                     </p>
+                    {project.priceLabel && (
+                      <p className="mt-3 inline-flex rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary">
+                        {project.priceLabel}
+                      </p>
+                    )}
                     <p className="mt-3 text-sm text-muted-foreground">{project.blurb}</p>
                   </div>
                 </motion.article>
