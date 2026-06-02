@@ -332,6 +332,33 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
 
           {content.projectCategory === "construction" && (
             <Reveal className="mt-12">
+              <div className="rounded-3xl bg-card p-6 shadow-luxe ring-1 ring-border sm:p-8 lg:p-10">
+                <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+                  <div>
+                    <p className="eyebrow">Our Partners</p>
+                    <h3 className="mt-3 font-display text-3xl font-medium text-ink sm:text-4xl">
+                      Built with trusted execution partners.
+                    </h3>
+                    <p className="mt-4 text-muted-foreground">
+                      Tathastu Infra coordinates with specialist partner teams so every construction
+                      project moves with better quality control, clearer timelines and disciplined delivery.
+                    </p>
+                  </div>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {constructionPartners.map((partner) => (
+                      <div key={partner.title} className="rounded-2xl bg-secondary/70 p-5">
+                        <h4 className="font-display text-2xl font-semibold text-ink">{partner.title}</h4>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{partner.body}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          )}
+
+          {content.projectCategory === "construction" && (
+            <Reveal className="mt-12">
               <div className="flex items-end justify-between gap-4">
                 <div>
                   <p className="eyebrow">Every Construction Category Includes</p>
@@ -398,33 +425,6 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
           )}
         </div>
       </section>
-
-      {content.projectCategory === "construction" && (
-        <section className="pb-20 sm:pb-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <Reveal>
-              <div className="rounded-3xl bg-card p-7 shadow-luxe ring-1 ring-border sm:p-8">
-                <p className="eyebrow">Our Partners</p>
-                <h2 className="mt-3 font-display text-3xl font-medium text-ink sm:text-4xl">
-                  Built with trusted execution partners.
-                </h2>
-                <p className="mt-4 max-w-3xl text-muted-foreground">
-                  Tathastu Infra coordinates with specialist partner teams so every construction
-                  project moves with better quality control, clearer timelines and disciplined delivery.
-                </p>
-                <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                  {constructionPartners.map((partner) => (
-                    <div key={partner.title} className="rounded-2xl bg-secondary/70 p-5">
-                      <h3 className="font-display text-2xl font-semibold text-ink">{partner.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{partner.body}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-      )}
 
       {content.projectCategory === "construction" && <PackagesSection mode="construction" />}
       {content.projectCategory === "interior" && <PackagesSection mode="interior" />}
