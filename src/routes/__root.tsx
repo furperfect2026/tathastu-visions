@@ -85,6 +85,46 @@ const localBusinessJsonLd = {
       },
       {
         "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Best construction company in Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Top construction company in Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Leading construction company in Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Civil construction company in Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Building construction company in Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Bungalow construction company in Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Warehouse construction company in Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Industrial construction company in Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Road and highway construction company in Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "WTG and government contracts construction support" },
+      },
+      {
+        "@type": "Offer",
         itemOffered: {
           "@type": "Service",
           name: "Construction company in Lohegaon Pune for residential and commercial projects",
@@ -107,6 +147,14 @@ const localBusinessJsonLd = {
       },
       {
         "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Best interior designer in Pune" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Top interior designer in Pune" },
+      },
+      {
+        "@type": "Offer",
         itemOffered: {
           "@type": "Service",
           name: "Interior designer in Lohegaon Pune for homes and offices",
@@ -118,6 +166,10 @@ const localBusinessJsonLd = {
           "@type": "Service",
           name: "Home interiors, modular kitchen and office interior design in Pune",
         },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "2 BHK and 3 BHK interior design in Pune" },
       },
     ],
   },
@@ -201,9 +253,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "keywords",
         content:
-          "Tathastu Infra, construction company in Pune, construction company in Lohegaon, real estate Lohegaon Pune, flats in Lohegaon, flats for rent in Lohegaon, plots for sale in Lohegaon, interior designer in Pune",
+          "Tathastu Infra, construction company in Pune, best construction company in Pune, top construction company in Pune, leading construction company in Pune, construction company in Lohegaon, home construction company in Pune, civil construction company in Pune, building construction company in Pune, bungalow construction company in Pune, warehouse construction company in Pune, industrial construction company in Pune, road construction company in Pune, highway construction company in Pune, real estate Lohegaon Pune, property consultant in Lohegaon, flats in Lohegaon, flats for sale in Lohegaon Pune, 2 BHK flats in Lohegaon, 3 BHK flats in Lohegaon, flats for rent in Lohegaon, plots for sale in Lohegaon, interior designer in Pune, best interior designer in Pune, modular kitchen Pune",
       },
       { name: "theme-color", content: "#FBF8F1" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
       { property: "og:type", content: "website" },
       { property: "og:title", content: "Tathastu Infra — Building Spaces. Creating Futures." },
       {
@@ -211,7 +264,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Premium real estate, properties, construction and interior design from Tathastu Infra in Lohegaon, Pune.",
       },
+      { property: "og:site_name", content: "Tathastu Infra" },
+      { property: "og:title", content: "Tathastu Infra Pune | Construction, Realty & Interior Design" },
+      {
+        property: "og:description",
+        content:
+          "Tathastu Infra helps clients in Pune and Lohegaon with construction, property consulting, flats, rentals, plots and premium interior design.",
+      },
+      { property: "og:url", content: siteUrl },
+      { property: "og:image", content: `${siteUrl}/assets/tathastu-logo.png` },
+      { property: "og:image:alt", content: "Tathastu Infra Pune logo" },
+      { property: "og:locale", content: "en_IN" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Tathastu Infra Pune | Construction, Realty & Interior Design" },
+      {
+        name: "twitter:description",
+        content:
+          "Construction company, real estate consultant and interior design studio in Lohegaon, Pune.",
+      },
+      { name: "twitter:image", content: `${siteUrl}/assets/tathastu-logo.png` },
     ],
     links: [
       { rel: "canonical", href: siteUrl },

@@ -67,12 +67,12 @@ export const Route = createFileRoute("/construction")({
       {
         name: "description",
         content:
-          "Tathastu Infra is a construction company in Pune and Lohegaon for residential construction, commercial construction, RCC structural work, turnkey execution, material planning and site supervision.",
+          "Tathastu Infra is a construction company in Pune and Lohegaon for residential, commercial, civil, RCC, bungalow, warehouse, industrial, road, highway and turnkey construction.",
       },
       {
         name: "keywords",
         content:
-          "construction company in Pune, construction company in Lohegaon, residential construction Pune, commercial construction Pune, RCC contractor Pune, turnkey construction Pune, house construction cost Pune",
+          "construction company in Pune, best construction company in Pune, top construction company in Pune, leading construction company in Pune, construction company in Lohegaon, home construction company in Pune, civil construction company in Pune, building construction company in Pune, bungalow construction company in Pune, warehouse construction company in Pune, industrial construction company in Pune, road construction company in Pune, highway construction company in Pune, residential construction Pune, commercial construction Pune, RCC contractor Pune, turnkey construction Pune, house construction cost Pune",
       },
     ],
     links: [{ rel: "canonical", href: "https://www.tathastuinfra.in/construction" }],
