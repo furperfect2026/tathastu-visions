@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
-import { projects } from "@/lib/site-data";
+import { usePublicProjects } from "@/hooks/usePublicProjects";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/projects")({
@@ -27,6 +27,7 @@ const filters = [
 
 function ProjectsPage() {
   const [filter, setFilter] = useState<(typeof filters)[number]["key"]>("all");
+  const { projects } = usePublicProjects();
   const visible = projects.filter((p) => filter === "all" || p.category === filter);
 
   return (

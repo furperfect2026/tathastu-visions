@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle2, IndianRupee } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/Reveal";
 import type { ServiceDetail } from "@/lib/service-detail-data";
-import { projects } from "@/lib/site-data";
+import { usePublicProjects } from "@/hooks/usePublicProjects";
 
 const constructionPartners = [
   {
@@ -27,7 +27,7 @@ const constructionPartners = [
 export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
   const Icon = detail.icon;
   const isConstruction = detail.category === "construction";
-  const relatedConstructionProjects = projects.filter((project) => project.category === "construction");
+  const { projects: relatedConstructionProjects } = usePublicProjects("construction");
 
   return (
     <>

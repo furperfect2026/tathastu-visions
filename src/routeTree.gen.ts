@@ -22,6 +22,7 @@ import { Route as ProjectsConstructionRouteImport } from './routes/projects.cons
 import { Route as InteriorSlugRouteImport } from './routes/interior.$slug'
 import { Route as ConstructionCostEstimatorRouteImport } from './routes/construction.cost-estimator'
 import { Route as ConstructionSlugRouteImport } from './routes/construction.$slug'
+import { Route as AdminProjectsRouteImport } from './routes/admin.projects'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -89,6 +90,11 @@ const ConstructionSlugRoute = ConstructionSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ConstructionRoute,
 } as any)
+const AdminProjectsRoute = AdminProjectsRouteImport.update({
+  id: '/admin/projects',
+  path: '/admin/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/projects': typeof ProjectsRouteWithChildren
   '/realty': typeof RealtyRouteWithChildren
   '/services': typeof ServicesRoute
+  '/admin/projects': typeof AdminProjectsRoute
   '/construction/$slug': typeof ConstructionSlugRoute
   '/construction/cost-estimator': typeof ConstructionCostEstimatorRoute
   '/interior/$slug': typeof InteriorSlugRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByTo {
   '/projects': typeof ProjectsRouteWithChildren
   '/realty': typeof RealtyRouteWithChildren
   '/services': typeof ServicesRoute
+  '/admin/projects': typeof AdminProjectsRoute
   '/construction/$slug': typeof ConstructionSlugRoute
   '/construction/cost-estimator': typeof ConstructionCostEstimatorRoute
   '/interior/$slug': typeof InteriorSlugRoute
@@ -130,6 +138,7 @@ export interface FileRoutesById {
   '/projects': typeof ProjectsRouteWithChildren
   '/realty': typeof RealtyRouteWithChildren
   '/services': typeof ServicesRoute
+  '/admin/projects': typeof AdminProjectsRoute
   '/construction/$slug': typeof ConstructionSlugRoute
   '/construction/cost-estimator': typeof ConstructionCostEstimatorRoute
   '/interior/$slug': typeof InteriorSlugRoute
@@ -147,6 +156,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/realty'
     | '/services'
+    | '/admin/projects'
     | '/construction/$slug'
     | '/construction/cost-estimator'
     | '/interior/$slug'
@@ -162,6 +172,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/realty'
     | '/services'
+    | '/admin/projects'
     | '/construction/$slug'
     | '/construction/cost-estimator'
     | '/interior/$slug'
@@ -177,6 +188,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/realty'
     | '/services'
+    | '/admin/projects'
     | '/construction/$slug'
     | '/construction/cost-estimator'
     | '/interior/$slug'
@@ -193,6 +205,7 @@ export interface RootRouteChildren {
   ProjectsRoute: typeof ProjectsRouteWithChildren
   RealtyRoute: typeof RealtyRouteWithChildren
   ServicesRoute: typeof ServicesRoute
+  AdminProjectsRoute: typeof AdminProjectsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -288,6 +301,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConstructionSlugRouteImport
       parentRoute: typeof ConstructionRoute
     }
+    '/admin/projects': {
+      id: '/admin/projects'
+      path: '/admin/projects'
+      fullPath: '/admin/projects'
+      preLoaderRoute: typeof AdminProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -349,6 +369,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsRoute: ProjectsRouteWithChildren,
   RealtyRoute: RealtyRouteWithChildren,
   ServicesRoute: ServicesRoute,
+  AdminProjectsRoute: AdminProjectsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

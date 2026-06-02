@@ -1,9 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
-import { projects } from "@/lib/site-data";
-
-const constructionProjects = projects.filter((project) => project.category === "construction");
+import { usePublicProjects } from "@/hooks/usePublicProjects";
 
 export const Route = createFileRoute("/projects/construction")({
   head: () => ({
@@ -21,6 +19,8 @@ export const Route = createFileRoute("/projects/construction")({
 });
 
 function ConstructionProjectsPage() {
+  const { projects: constructionProjects } = usePublicProjects("construction");
+
   return (
     <section className="pt-36 pb-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -73,4 +73,3 @@ function ConstructionProjectsPage() {
     </section>
   );
 }
-

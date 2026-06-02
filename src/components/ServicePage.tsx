@@ -33,7 +33,7 @@ import clientRelationshipImage from "@/assets/client-relationship.jpg";
 import constructionQualityImage from "@/assets/construction-2.jpg";
 import constructionSiteImage from "@/assets/construction-3.jpg";
 import trustHandshakeImage from "@/assets/trust-handshake.jpg";
-import { projects } from "@/lib/site-data";
+import { usePublicProjects } from "@/hooks/usePublicProjects";
 
 type ServiceImage = {
   src: string;
@@ -176,6 +176,7 @@ const constructionPartners = [
 export function ServicePage({ content }: { content: ServicePageContent }) {
   const navigate = useNavigate();
   const guaranteeTrackRef = useRef<HTMLDivElement>(null);
+  const { projects } = usePublicProjects(content.projectCategory);
   const [estimateArea, setEstimateArea] = useState("1000");
   const [estimateTier, setEstimateTier] = useState<PackageTier>("standard");
   const [estimateFloors, setEstimateFloors] = useState("ground");
@@ -187,9 +188,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
     return Math.round(base * floorFactors[estimateFloors]);
   }, [estimateArea, estimateFloors, estimateTier]);
 
-  const relatedProjects = projects
-    .filter((project) => project.category === content.projectCategory)
-    .slice(0, 3);
+  const relatedProjects = projects.slice(0, 3);
 
   const scrollGuarantees = (direction: "left" | "right") => {
     const track = guaranteeTrackRef.current;

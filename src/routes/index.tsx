@@ -8,7 +8,8 @@ import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
 import { Button } from "@/components/ui/button";
 import { ContactSection } from "@/components/ContactSection";
-import { pillars, projects, stats } from "@/lib/site-data";
+import { usePublicProjects } from "@/hooks/usePublicProjects";
+import { pillars, stats } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import realtyCourtyard from "@/assets/realty-3.jpg";
 import constructionSite from "@/assets/construction-1.jpg";
@@ -140,6 +141,7 @@ function useDesktopHeroVideo() {
 function HomePage() {
   const [heroVideoDone, setHeroVideoDone] = useState(false);
   const showHeroVideo = useDesktopHeroVideo();
+  const { projects } = usePublicProjects();
 
   return (
     <>
