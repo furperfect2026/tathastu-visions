@@ -125,18 +125,35 @@ export function ChatbotWidget() {
 
   return (
     <>
-      <Button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="fixed bottom-5 right-4 z-[85] h-16 w-16 overflow-hidden rounded-full border border-primary/30 bg-card p-0 shadow-gold transition hover:-translate-y-1 hover:shadow-[0_18px_42px_-18px_rgba(212,174,118,0.95)]"
-        aria-label="Open chatbot"
-      >
-        <img
-          src={chatbotAvatar}
-          alt="Chat with Ronal"
-          className="h-full w-full object-cover object-top"
-        />
-      </Button>
+      {!open && (
+        <motion.div
+          className="fixed bottom-5 right-4 z-[85] flex flex-col items-center gap-2"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.35, ease: "easeOut" }}
+        >
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="rounded-full border border-primary/25 bg-card/95 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-ink shadow-gold backdrop-blur-md transition hover:-translate-y-0.5 hover:bg-primary hover:text-ink"
+            aria-label="Open chatbot"
+          >
+            Need help?
+          </button>
+          <Button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="h-16 w-16 overflow-hidden rounded-full border border-primary/30 bg-card p-0 shadow-gold transition hover:-translate-y-1 hover:shadow-[0_18px_42px_-18px_rgba(212,174,118,0.95)]"
+            aria-label="Open chatbot"
+          >
+            <img
+              src={chatbotAvatar}
+              alt="Chat with Ronal"
+              className="h-full w-full object-cover object-top"
+            />
+          </Button>
+        </motion.div>
+      )}
 
       <AnimatePresence>
         {open && (
