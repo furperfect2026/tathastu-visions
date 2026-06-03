@@ -4,30 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/Reveal";
 import type { ServiceDetail } from "@/lib/service-detail-data";
 import { usePublicProjects } from "@/hooks/usePublicProjects";
-
-const constructionPartners = [
-  {
-    title: "Civil & RCC Teams",
-    body: "Experienced partner teams for structural execution, RCC sequencing and on-site discipline.",
-  },
-  {
-    title: "Architecture Collaborators",
-    body: "Partner architects helping align design intent with practical build delivery.",
-  },
-  {
-    title: "MEP & Finishing Specialists",
-    body: "Electrical, plumbing and finishing partners coordinated for cleaner handover quality.",
-  },
-  {
-    title: "Material Supply Network",
-    body: "Trusted vendor network for cement, steel, blocks and finishing materials across Pune.",
-  },
-] as const;
+import { usePublicPartners } from "@/hooks/usePublicPartners";
 
 export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
   const Icon = detail.icon;
   const isConstruction = detail.category === "construction";
   const { projects: relatedConstructionProjects } = usePublicProjects("construction");
+  const { partners } = usePublicPartners();
 
   return (
     <>
@@ -206,11 +189,28 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
                 </p>
 
                 <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                  {constructionPartners.map((partner) => (
-                    <div key={partner.title} className="rounded-2xl bg-secondary/70 p-5">
-                      <h3 className="font-display text-2xl font-semibold text-ink">{partner.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{partner.body}</p>
-                    </div>
+                  {partners.map((partner) => (
+                    <a
+                      key={partner.id}
+                      href={partner.websiteUrl || "#"}
+                      target={partner.websiteUrl ? "_blank" : undefined}
+                      rel={partner.websiteUrl ? "noreferrer" : undefined}
+                      className="group overflow-hidden rounded-2xl bg-secondary/70 transition duration-300 hover:-translate-y-1 hover:shadow-luxe"
+                    >
+                      {partner.logoUrl && (
+                        <img
+                          src={partner.logoUrl}
+                          alt={partner.name}
+                          className="h-32 w-full object-cover transition duration-500 group-hover:scale-105"
+                        />
+                      )}
+                      <div className="p-5">
+                        <h3 className="font-display text-2xl font-semibold text-ink">{partner.name}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                          {partner.description}
+                        </p>
+                      </div>
+                    </a>
                   ))}
                 </div>
 

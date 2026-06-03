@@ -34,6 +34,7 @@ import guaranteeOnTimeImage from "@/assets/guarantee-on-time-delivery.png";
 import guaranteeQualityImage from "@/assets/guarantee-quality-assurance.png";
 import guaranteeTransparencyImage from "@/assets/guarantee-transparency.png";
 import { usePublicProjects } from "@/hooks/usePublicProjects";
+import { usePublicPartners } from "@/hooks/usePublicPartners";
 
 type ServiceImage = {
   src: string;
@@ -154,29 +155,11 @@ const constructionGuarantees = [
   },
 ] as const;
 
-const constructionPartners = [
-  {
-    title: "Civil & RCC Teams",
-    body: "Execution crews aligned with structural discipline and practical site accountability.",
-  },
-  {
-    title: "Architecture Collaborators",
-    body: "Partner architects supporting build-ready planning and site-aware detailing.",
-  },
-  {
-    title: "MEP & Finishing Specialists",
-    body: "Electrical, plumbing, and finish teams coordinated for cleaner handover quality.",
-  },
-  {
-    title: "Material Supply Network",
-    body: "Trusted vendors for cement, steel, blocks and finishing materials across Pune.",
-  },
-] as const;
-
 export function ServicePage({ content }: { content: ServicePageContent }) {
   const navigate = useNavigate();
   const guaranteeTrackRef = useRef<HTMLDivElement>(null);
   const { projects } = usePublicProjects(content.projectCategory);
+  const { partners } = usePublicPartners();
   const [estimateArea, setEstimateArea] = useState("1000");
   const [estimateTier, setEstimateTier] = useState<PackageTier>("standard");
   const [estimateFloors, setEstimateFloors] = useState("ground");
@@ -350,11 +333,28 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                     </p>
                   </div>
                   <div className="grid gap-4 sm:grid-cols-2">
-                    {constructionPartners.map((partner) => (
-                      <div key={partner.title} className="rounded-2xl bg-secondary/70 p-5">
-                        <h4 className="font-display text-2xl font-semibold text-ink">{partner.title}</h4>
-                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{partner.body}</p>
-                      </div>
+                    {partners.map((partner) => (
+                      <a
+                        key={partner.id}
+                        href={partner.websiteUrl || "#"}
+                        target={partner.websiteUrl ? "_blank" : undefined}
+                        rel={partner.websiteUrl ? "noreferrer" : undefined}
+                        className="group overflow-hidden rounded-2xl bg-secondary/70 transition duration-300 hover:-translate-y-1 hover:shadow-luxe"
+                      >
+                        {partner.logoUrl && (
+                          <img
+                            src={partner.logoUrl}
+                            alt={partner.name}
+                            className="h-32 w-full object-cover transition duration-500 group-hover:scale-105"
+                          />
+                        )}
+                        <div className="p-5">
+                          <h4 className="font-display text-2xl font-semibold text-ink">{partner.name}</h4>
+                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                            {partner.description}
+                          </p>
+                        </div>
+                      </a>
                     ))}
                   </div>
                 </div>

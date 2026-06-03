@@ -54,7 +54,7 @@ function escapeHtml(value: string) {
 }
 
 async function sendInquiryEmail(data: Inquiry) {
-  const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || "tathastu.infra.info@gmail.com";
+  const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || "tathastuinfra.info@gmail.com";
   const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || "Tathastu Infra Website <onboarding@resend.dev>";
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
