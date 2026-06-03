@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, IndianRupee } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PartnerLogoSection } from "@/components/PartnerLogoSection";
 import { Reveal } from "@/components/Reveal";
 import type { ServiceDetail } from "@/lib/service-detail-data";
 import { usePublicProjects } from "@/hooks/usePublicProjects";
@@ -174,59 +175,10 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
       </section>
 
       {isConstruction && (
-        <section className="bg-gradient-ivory pb-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <Reveal>
-              <div className="rounded-3xl bg-card p-7 shadow-luxe ring-1 ring-border sm:p-8">
-                <p className="eyebrow">Our Partners</p>
-                <h2 className="mt-3 font-display text-3xl font-semibold text-ink sm:text-4xl">
-                  Partner network that strengthens delivery.
-                </h2>
-                <p className="mt-4 max-w-3xl text-muted-foreground">
-                  For construction projects, Tathastu Infra works with trusted technical teams,
-                  specialist vendors and execution partners to keep quality, timelines and site control
-                  reliable from start to handover.
-                </p>
-
-                <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                  {partners.map((partner) => (
-                    <a
-                      key={partner.id}
-                      href={partner.websiteUrl || "#"}
-                      target={partner.websiteUrl ? "_blank" : undefined}
-                      rel={partner.websiteUrl ? "noreferrer" : undefined}
-                      className="group overflow-hidden rounded-2xl bg-secondary/70 transition duration-300 hover:-translate-y-1 hover:shadow-luxe"
-                    >
-                      {partner.logoUrl && (
-                        <img
-                          src={partner.logoUrl}
-                          alt={partner.name}
-                          className="h-32 w-full object-cover transition duration-500 group-hover:scale-105"
-                        />
-                      )}
-                      <div className="p-5">
-                        <h3 className="font-display text-2xl font-semibold text-ink">{partner.name}</h3>
-                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                          {partner.description}
-                        </p>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-
-                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                  <Button asChild className="rounded-full bg-gradient-gold px-7 text-ink shadow-gold">
-                    <Link to="/construction/cost-estimator">
-                      Try Cost Estimator <IndianRupee className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <Button asChild variant="outline" className="rounded-full px-7">
-                    <Link to="/projects/construction">See Construction Projects</Link>
-                  </Button>
-                </div>
-              </div>
-            </Reveal>
-
+        <>
+          <PartnerLogoSection partners={partners} compact />
+          <section className="bg-gradient-ivory pb-24">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <Reveal delay={0.08} className="mt-8">
               <div className="rounded-3xl bg-card p-7 shadow-luxe ring-1 ring-border sm:p-8">
                 <p className="eyebrow">Construction Projects</p>
@@ -272,8 +224,9 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
                 </div>
               </div>
             </Reveal>
-          </div>
-        </section>
+            </div>
+          </section>
+        </>
       )}
     </>
   );

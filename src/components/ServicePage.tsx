@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { BrandSocialLink, type SocialBrand } from "@/components/BrandSocialLink";
 import { PackagesSection } from "@/components/PackagesSection";
+import { PartnerLogoSection } from "@/components/PartnerLogoSection";
 import { RealtySearchLinks } from "@/components/RealtySearchLinks";
 import { Reveal } from "@/components/Reveal";
 import { ServiceSearchLinks } from "@/components/ServiceSearchLinks";
@@ -320,50 +321,6 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
 
           {content.projectCategory === "construction" && (
             <Reveal className="mt-12">
-              <div className="rounded-3xl bg-card p-6 shadow-luxe ring-1 ring-border sm:p-8 lg:p-10">
-                <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-                  <div>
-                    <p className="eyebrow">Our Partners</p>
-                    <h3 className="mt-3 font-display text-3xl font-medium text-ink sm:text-4xl">
-                      Built with trusted execution partners.
-                    </h3>
-                    <p className="mt-4 text-muted-foreground">
-                      Tathastu Infra coordinates with specialist partner teams so every construction
-                      project moves with better quality control, clearer timelines and disciplined delivery.
-                    </p>
-                  </div>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    {partners.map((partner) => (
-                      <a
-                        key={partner.id}
-                        href={partner.websiteUrl || "#"}
-                        target={partner.websiteUrl ? "_blank" : undefined}
-                        rel={partner.websiteUrl ? "noreferrer" : undefined}
-                        className="group overflow-hidden rounded-2xl bg-secondary/70 transition duration-300 hover:-translate-y-1 hover:shadow-luxe"
-                      >
-                        {partner.logoUrl && (
-                          <img
-                            src={partner.logoUrl}
-                            alt={partner.name}
-                            className="h-32 w-full object-cover transition duration-500 group-hover:scale-105"
-                          />
-                        )}
-                        <div className="p-5">
-                          <h4 className="font-display text-2xl font-semibold text-ink">{partner.name}</h4>
-                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                            {partner.description}
-                          </p>
-                        </div>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          )}
-
-          {content.projectCategory === "construction" && (
-            <Reveal className="mt-12">
               <div className="flex items-end justify-between gap-4">
                 <div>
                   <p className="eyebrow">Every Construction Category Includes</p>
@@ -549,6 +506,8 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
           </div>
         </section>
       )}
+
+      {content.projectCategory === "construction" && <PartnerLogoSection partners={partners} />}
 
       {content.projectCategory === "realty" && <RealtySearchLinks compact />}
       {content.projectCategory === "construction" && (
