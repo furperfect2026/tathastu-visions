@@ -6,7 +6,7 @@ import { Logo } from "./Logo";
 const socialLinks = [
   { label: "YouTube", href: "https://www.youtube.com/@Tathastu_Infra", brand: "youtube" },
   { label: "Instagram", href: "https://www.instagram.com/tathastu_infra/", brand: "instagram" },
-  { label: "LinkedIn", href: "https://linkedin.com", brand: "linkedin" },
+  { label: "LinkedIn", href: "https://in.linkedin.com/company/tathastu-infra?trk=public_post_feed-actor-name", brand: "linkedin" },
 ] satisfies { label: string; href: string; brand: SocialBrand }[];
 
 const sisterBrands = [

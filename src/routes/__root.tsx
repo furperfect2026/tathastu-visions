@@ -52,7 +52,11 @@ const localBusinessJsonLd = {
     { "@type": "Place", name: "Wagholi" },
     { "@type": "Place", name: "Viman Nagar" },
   ],
-  sameAs: ["https://www.instagram.com/tathastu_infra/", "https://www.youtube.com/@Tathastu_Infra"],
+  sameAs: [
+    "https://www.instagram.com/tathastu_infra/",
+    "https://www.youtube.com/@Tathastu_Infra",
+    "https://in.linkedin.com/company/tathastu-infra?trk=public_post_feed-actor-name",
+  ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Tathastu Infra Services",

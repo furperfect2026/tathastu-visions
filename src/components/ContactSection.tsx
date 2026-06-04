@@ -40,7 +40,7 @@ const MAPS_EMBED =
 const socialLinks = [
   { label: "Instagram", brand: "instagram", href: "https://www.instagram.com/tathastu_infra/" },
   { label: "YouTube", brand: "youtube", href: "https://www.youtube.com/@Tathastu_Infra" },
-  { label: "LinkedIn", brand: "linkedin", href: "https://linkedin.com" },
+  { label: "LinkedIn", brand: "linkedin", href: "https://in.linkedin.com/company/tathastu-infra?trk=public_post_feed-actor-name" },
 ] satisfies { label: string; href: string; brand: SocialBrand }[];
 
 export function ContactSection() {
