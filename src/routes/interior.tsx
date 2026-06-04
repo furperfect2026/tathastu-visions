@@ -20,6 +20,7 @@ const content: ServicePageContent = {
     { src: interior4, alt: "Modern office interior planning by Tathastu Infra" },
     { src: project5, alt: "Featured Tathastu Infra interior design project" },
   ],
+  heroVideoSrc: "/media/hero-section.mp4",
   overviewTitle: "Beautiful interiors should also work beautifully.",
   overview:
     "Tathastu Infra Interior Design brings together space planning, materials, lighting, furniture and decor for homes and offices in Lohegaon, Pune. Every room is designed to feel personal, refined and practical for everyday life.",

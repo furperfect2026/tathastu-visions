@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
@@ -48,6 +48,7 @@ export type ServicePageContent = {
   accent: string;
   subtitle: string;
   heroImages: ServiceImage[];
+  heroVideoSrc?: string;
   overviewTitle: string;
   overview: string;
   offers: {
@@ -156,6 +157,26 @@ const constructionGuarantees = [
   },
 ] as const;
 
+function useMotionSafeVideo(enabled: boolean) {
+  const [canPlay, setCanPlay] = useState(false);
+
+  useEffect(() => {
+    if (!enabled) {
+      setCanPlay(false);
+      return;
+    }
+
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: no-preference)");
+    const sync = () => setCanPlay(mediaQuery.matches);
+
+    sync();
+    mediaQuery.addEventListener("change", sync);
+    return () => mediaQuery.removeEventListener("change", sync);
+  }, [enabled]);
+
+  return canPlay;
+}
+
 export function ServicePage({ content }: { content: ServicePageContent }) {
   const navigate = useNavigate();
   const guaranteeTrackRef = useRef<HTMLDivElement>(null);
@@ -164,6 +185,8 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
   const [estimateArea, setEstimateArea] = useState("1000");
   const [estimateTier, setEstimateTier] = useState<PackageTier>("standard");
   const [estimateFloors, setEstimateFloors] = useState("ground");
+  const [heroVideoDone, setHeroVideoDone] = useState(false);
+  const showHeroVideo = useMotionSafeVideo(Boolean(content.heroVideoSrc)) && !heroVideoDone;
 
   const quickEstimate = useMemo(() => {
     const area = Number(estimateArea);
@@ -201,6 +224,20 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
           rounded="rounded-none"
           className="absolute inset-0 h-full w-full"
         />
+        {content.heroVideoSrc && showHeroVideo && (
+          <video
+            className="absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-1000 ease-out"
+            src={content.heroVideoSrc}
+            poster={content.heroImages[0]?.src}
+            autoPlay
+            muted
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+            onEnded={() => setHeroVideoDone(true)}
+            onError={() => setHeroVideoDone(true)}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-ink/82 via-ink/48 to-ink/16" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/78 via-ink/28 to-transparent" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_18%,transparent),transparent_55%)]" />
