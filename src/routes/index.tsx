@@ -12,7 +12,6 @@ import { usePublicProjects } from "@/hooks/usePublicProjects";
 import { pillars, stats } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import realtyCourtyard from "@/assets/realty-3.jpg";
-import constructionSite from "@/assets/construction-1.jpg";
 import livingInterior from "@/assets/interior-1.jpg";
 import bedroomInterior from "@/assets/interior-2.jpg";
 import trustHandshake from "@/assets/trust-handshake.jpg";
@@ -22,7 +21,6 @@ import longTermValue from "@/assets/long-term-value.jpg";
 
 const heroImages = [
   { src: realtyCourtyard, alt: "Tathastu Infra residential project and realty guidance in Pune" },
-  { src: constructionSite, alt: "Tathastu Infra construction and infrastructure site in Pune" },
   { src: livingInterior, alt: "Tathastu Infra premium living room interior design" },
   { src: bedroomInterior, alt: "Tathastu Infra calm luxury bedroom interior design" },
 ];
@@ -144,13 +142,11 @@ function HeroSocialLinks({ mobile = false }: { mobile?: boolean }) {
   );
 }
 
-function useDesktopHeroVideo() {
+function useHeroVideo() {
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia(
-      "(min-width: 768px) and (prefers-reduced-motion: no-preference)",
-    );
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: no-preference)");
     const sync = () => setEnabled(mediaQuery.matches);
 
     sync();
@@ -163,7 +159,7 @@ function useDesktopHeroVideo() {
 
 function HomePage() {
   const [heroVideoDone, setHeroVideoDone] = useState(false);
-  const showHeroVideo = useDesktopHeroVideo();
+  const showHeroVideo = useHeroVideo();
   const { projects } = usePublicProjects();
 
   return (

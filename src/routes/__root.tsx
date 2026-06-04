@@ -3,6 +3,7 @@ import {
   Outlet,
   Link,
   createRootRouteWithContext,
+  useLocation,
   useRouter,
   HeadContent,
   Scripts,
@@ -329,6 +330,9 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+
   return (
     <QueryClientProvider client={queryClient}>
       <SmoothScroll />
@@ -339,7 +343,7 @@ function RootComponent() {
       <SeoFaqSection />
       <SiteFooter />
       <ChatbotWidget />
-      <ConsultationPopup />
+      {!isAdminRoute && <ConsultationPopup />}
       <Toaster richColors position="top-center" />
     </QueryClientProvider>
   );
