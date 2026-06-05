@@ -2,6 +2,18 @@
   "installCommand": "npm install",
   "buildCommand": "npm run build",
   "redirects": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "tathastuinterior.in" }],
+      "destination": "/interior",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.tathastuinterior.in" }],
+      "destination": "/interior",
+      "permanent": true
+    },
     { "source": "/flats-in-lohegaon-pune", "destination": "/realty", "permanent": true },
     { "source": "/2-bhk-flats-in-lohegaon-pune", "destination": "/realty", "permanent": true },
     { "source": "/flats-for-rent-in-lohegaon-pune", "destination": "/realty", "permanent": true },
