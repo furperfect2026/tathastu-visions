@@ -3,7 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Loader2, Phone, X } from "lucide-react";
 import { toast } from "sonner";
-import constructionImage from "@/assets/construction-2.jpg";
+import consultationPopupImage from "@/assets/consultation-popup.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -131,11 +131,11 @@ export function ConsultationPopup() {
               <X className="h-5 w-5" />
             </button>
 
-            <div className="relative h-44 overflow-hidden bg-ink sm:h-56 md:h-auto md:min-h-[560px]">
+            <div className="relative aspect-[1595/986] overflow-hidden bg-ink md:aspect-auto md:min-h-[560px]">
               <img
-                src={constructionImage}
+                src={consultationPopupImage}
                 alt="Tathastu Infra construction consultation"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" />
               <div className="absolute bottom-5 left-5 rounded-full bg-ivory/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink shadow-luxe">
