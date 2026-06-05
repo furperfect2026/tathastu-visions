@@ -226,7 +226,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         />
         {content.heroVideoSrc && showHeroVideo && (
           <video
-            className="absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-1000 ease-out"
+            className="absolute inset-0 z-[1] h-full w-full object-cover opacity-85 brightness-[0.48] saturate-[0.9] transition-opacity duration-1000 ease-out"
             src={content.heroVideoSrc}
             poster={content.heroImages[0]?.src}
             autoPlay

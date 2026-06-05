@@ -164,6 +164,34 @@ function HomePage() {
         {/* Warm gold tint */}
         <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_22%,transparent),transparent_55%)]" />
         <HeroSocialLinks />
+        <motion.div
+          className="absolute right-8 top-[54%] z-10 hidden w-[240px] -translate-y-1/2 overflow-hidden rounded-[1.35rem] border border-ivory/25 bg-ivory/10 p-2 shadow-[0_28px_80px_-35px_rgba(0,0,0,0.95)] backdrop-blur-xl xl:block 2xl:right-16 2xl:w-[280px]"
+          initial={{ opacity: 0, x: 28, scale: 0.96 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ delay: 1.25, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          aria-label="3D apartment model preview"
+        >
+          <div className="relative overflow-hidden rounded-[1rem] bg-ink">
+            <video
+              src="/media/apartment-model-preview.mp4"
+              className="aspect-[4/5] w-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/65 via-transparent to-transparent" />
+            <div className="absolute bottom-3 left-3 right-3">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-primary-glow">
+                3D Preview
+              </p>
+              <p className="mt-1 font-display text-lg leading-tight text-ivory">
+                Apartment planning view
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
         <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-20 pt-28 sm:px-6 sm:pb-24 md:justify-center md:pb-0 md:pl-20 lg:pl-20">
           <motion.div
