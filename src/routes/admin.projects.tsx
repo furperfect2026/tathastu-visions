@@ -53,6 +53,8 @@ type ProjectForm = {
   priceLabel: string;
   sortOrder: string;
   imageUrl: string;
+  galleryImages: string[];
+  galleryFiles: File[];
   isPublished: boolean;
 };
 
@@ -75,8 +77,14 @@ const emptyForm: ProjectForm = {
   priceLabel: "",
   sortOrder: "0",
   imageUrl: "",
+  galleryImages: [],
+  galleryFiles: [],
   isPublished: true,
 };
+
+function freshProjectForm(): ProjectForm {
+  return { ...emptyForm, galleryImages: [], galleryFiles: [] };
+}
 
 const emptyPartnerForm: PartnerForm = {
   name: "",
@@ -112,6 +120,7 @@ function mapRow(row: any): AdminProject {
     year: row.year || new Date().getFullYear(),
     image: row.image_url,
     imageUrl: row.image_url,
+    galleryImages: Array.isArray(row.gallery_images) ? row.gallery_images : [],
     blurb: row.description || "",
     priceLabel: row.price_label || undefined,
     sortOrder: row.sort_order || 0,
@@ -142,6 +151,8 @@ function formFromProject(project: AdminProject): ProjectForm {
     priceLabel: project.priceLabel || "",
     sortOrder: String(project.sortOrder),
     imageUrl: project.imageUrl,
+    galleryImages: project.galleryImages || [],
+    galleryFiles: [],
     isPublished: project.isPublished,
   };
 }
@@ -165,7 +176,7 @@ function AdminProjectsPage() {
   const [password, setPassword] = useState("");
   const [projects, setProjects] = useState<AdminProject[]>([]);
   const [partners, setPartners] = useState<AdminPartner[]>([]);
-  const [form, setForm] = useState<ProjectForm>(emptyForm);
+  const [form, setForm] = useState<ProjectForm>(freshProjectForm);
   const [partnerForm, setPartnerForm] = useState<PartnerForm>(emptyPartnerForm);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [partnerLogoFile, setPartnerLogoFile] = useState<File | null>(null);
@@ -293,9 +304,15 @@ function AdminProjectsPage() {
       return;
     }
 
-      setIsSaving(true);
+    setIsSaving(true);
     try {
       const imageUrl = await uploadImage(imageFile, form.title, form.imageUrl);
+      const uploadedGalleryImages = await Promise.all(
+        form.galleryFiles.map((file) => uploadImage(file, `${form.title}-gallery`, "")),
+      );
+      const galleryImages = Array.from(
+        new Set([...form.galleryImages, ...uploadedGalleryImages].filter(Boolean)),
+      );
       const payload = {
         title: form.title.trim(),
         description: form.description.trim(),
@@ -304,6 +321,7 @@ function AdminProjectsPage() {
         year: Number(form.year) || new Date().getFullYear(),
         price_label: form.category === "realty" ? form.priceLabel.trim() || null : null,
         image_url: imageUrl,
+        gallery_images: galleryImages,
         sort_order: Number(form.sortOrder) || 0,
         is_published: form.isPublished,
       };
@@ -316,7 +334,7 @@ function AdminProjectsPage() {
       if (error) throw error;
 
       toast.success(form.id ? "Project updated." : "Project added.");
-      setForm(emptyForm);
+      setForm(freshProjectForm());
       setImageFile(null);
       await fetchProjects();
     } catch (error) {
@@ -497,7 +515,7 @@ function AdminProjectsPage() {
                   size="sm"
                   className="rounded-full"
                   onClick={() => {
-                    setForm(emptyForm);
+                    setForm(freshProjectForm());
                     setImageFile(null);
                   }}
                 >
@@ -623,6 +641,58 @@ function AdminProjectsPage() {
                 />
               </div>
 
+              <div>
+                <Label htmlFor="project-gallery">Popup gallery photos</Label>
+                <Input
+                  id="project-gallery"
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={(event) =>
+                    setForm((value) => ({
+                      ...value,
+                      galleryFiles: Array.from(event.target.files || []),
+                    }))
+                  }
+                  className="mt-2"
+                />
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Optional. These appear inside the project popup when visitors open the project.
+                </p>
+
+                {(form.galleryImages.length > 0 || form.galleryFiles.length > 0) && (
+                  <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                    {form.galleryImages.map((image, index) => (
+                      <div key={image} className="relative overflow-hidden rounded-2xl ring-1 ring-border">
+                        <img src={image} alt={`Gallery ${index + 1}`} className="h-24 w-full object-cover" />
+                        <button
+                          type="button"
+                          className="absolute right-2 top-2 grid h-8 w-8 place-items-center rounded-full bg-ink/80 text-ivory"
+                          onClick={() =>
+                            setForm((value) => ({
+                              ...value,
+                              galleryImages: value.galleryImages.filter((item) => item !== image),
+                            }))
+                          }
+                          aria-label="Remove gallery image"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+                      </div>
+                    ))}
+                    {form.galleryFiles.map((file, index) => (
+                      <div key={`${file.name}-${index}`} className="overflow-hidden rounded-2xl ring-1 ring-border">
+                        <img
+                          src={URL.createObjectURL(file)}
+                          alt={`New gallery ${index + 1}`}
+                          className="h-24 w-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               <label className="flex items-center justify-between rounded-2xl bg-secondary/70 px-4 py-3 text-sm font-medium text-ink">
                 Show on website
                 <input
@@ -713,6 +783,12 @@ function AdminProjectsPage() {
                           </div>
                         </div>
                         <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{project.blurb}</p>
+                        {project.galleryImages?.length ? (
+                          <p className="mt-3 text-xs font-medium uppercase tracking-[0.18em] text-primary">
+                            {project.galleryImages.length} popup gallery photo
+                            {project.galleryImages.length === 1 ? "" : "s"}
+                          </p>
+                        ) : null}
                       </div>
                     </motion.article>
                   ))}

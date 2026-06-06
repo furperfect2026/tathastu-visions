@@ -10,6 +10,7 @@ create table if not exists public.projects (
   year integer not null default extract(year from now())::integer,
   price_label text,
   image_url text not null,
+  gallery_images text[] not null default '{}',
   sort_order integer not null default 0,
   is_published boolean not null default true,
   created_at timestamptz not null default now(),
@@ -18,6 +19,9 @@ create table if not exists public.projects (
 
 alter table public.projects
 add column if not exists price_label text;
+
+alter table public.projects
+add column if not exists gallery_images text[] not null default '{}';
 
 create table if not exists public.partners (
   id uuid primary key default gen_random_uuid(),

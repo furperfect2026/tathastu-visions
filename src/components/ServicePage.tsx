@@ -19,6 +19,7 @@ import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { BrandSocialLink, type SocialBrand } from "@/components/BrandSocialLink";
 import { PackagesSection } from "@/components/PackagesSection";
 import { PartnerLogoSection } from "@/components/PartnerLogoSection";
+import { ProjectCard } from "@/components/ProjectShowcase";
 import { RealtySearchLinks } from "@/components/RealtySearchLinks";
 import { Reveal } from "@/components/Reveal";
 import { ServiceSearchLinks } from "@/components/ServiceSearchLinks";
@@ -701,34 +702,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {relatedProjects.map((project, index) => (
               <Reveal key={project.id} delay={index * 0.08}>
-                <motion.article
-                  whileHover={{ y: -6 }}
-                  className="group overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border"
-                >
-                  <div className="aspect-[4/5] overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <p className="text-[10px] uppercase tracking-[0.22em] text-primary">
-                      {project.category}
-                    </p>
-                    <h3 className="mt-1 font-display text-xl font-semibold">{project.title}</h3>
-                    <p className="text-xs text-muted-foreground">
-                      {project.location} · {project.year}
-                    </p>
-                    {project.priceLabel && (
-                      <p className="mt-3 inline-flex rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary">
-                        {project.priceLabel}
-                      </p>
-                    )}
-                    <p className="mt-3 text-sm text-muted-foreground">{project.blurb}</p>
-                  </div>
-                </motion.article>
+                <ProjectCard project={project} index={index} />
               </Reveal>
             ))}
           </div>
@@ -774,3 +748,4 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
     </>
   );
 }
+

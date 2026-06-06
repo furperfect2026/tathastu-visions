@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, IndianRupee } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PartnerLogoSection } from "@/components/PartnerLogoSection";
+import { ProjectCard } from "@/components/ProjectShowcase";
 import { Reveal } from "@/components/Reveal";
 import type { ServiceDetail } from "@/lib/service-detail-data";
 import { usePublicProjects } from "@/hooks/usePublicProjects";
@@ -191,27 +192,14 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
                 </p>
 
                 <div className="mt-8 grid gap-5 md:grid-cols-3">
-                  {relatedConstructionProjects.map((project) => (
-                    <article
+                  {relatedConstructionProjects.map((project, index) => (
+                    <ProjectCard
                       key={project.id}
-                      className="group overflow-hidden rounded-2xl bg-secondary/60 ring-1 ring-border"
-                    >
-                      <div className="aspect-[4/5] overflow-hidden">
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          loading="lazy"
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </div>
-                      <div className="p-4">
-                        <h3 className="font-display text-xl font-semibold text-ink">{project.title}</h3>
-                        <p className="text-xs text-muted-foreground">
-                          {project.location} - {project.year}
-                        </p>
-                        <p className="mt-2 text-sm text-muted-foreground">{project.blurb}</p>
-                      </div>
-                    </article>
+                      project={project}
+                      index={index}
+                      label="construction"
+                      compact
+                    />
                   ))}
                 </div>
 

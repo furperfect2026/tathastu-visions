@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { ProjectCard } from "@/components/ProjectShowcase";
 import { Reveal } from "@/components/Reveal";
 import { usePublicProjects } from "@/hooks/usePublicProjects";
 
@@ -34,31 +34,7 @@ function ConstructionProjectsPage() {
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {constructionProjects.map((project, index) => (
-            <motion.article
-              key={project.id}
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: index * 0.05 }}
-              whileHover={{ y: -6 }}
-              className="group overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border"
-            >
-              <div className="aspect-[4/5] overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-              <div className="p-6">
-                <p className="text-[10px] uppercase tracking-[0.22em] text-primary">construction</p>
-                <h3 className="mt-1 font-display text-xl font-semibold">{project.title}</h3>
-                <p className="text-xs text-muted-foreground">
-                  {project.location} - {project.year}
-                </p>
-                <p className="mt-3 text-sm text-muted-foreground">{project.blurb}</p>
-              </div>
-            </motion.article>
+            <ProjectCard key={project.id} project={project} index={index} label="construction" />
           ))}
         </div>
 

@@ -11,6 +11,7 @@ export type PublicProject = {
   location: string;
   year: number;
   image: string;
+  galleryImages?: string[];
   blurb: string;
   priceLabel?: string;
   sortOrder?: number;
@@ -23,6 +24,7 @@ type ProjectRow = {
   location: string | null;
   year: number | null;
   image_url: string | null;
+  gallery_images?: string[] | null;
   description: string | null;
   price_label: string | null;
   sort_order: number | null;
@@ -43,6 +45,7 @@ function mapProject(row: ProjectRow): PublicProject | null {
     location: row.location || "Pune",
     year: row.year || new Date().getFullYear(),
     image: row.image_url,
+    galleryImages: Array.isArray(row.gallery_images) ? row.gallery_images : [],
     blurb: row.description,
     priceLabel: row.price_label || undefined,
     sortOrder: row.sort_order || 0,

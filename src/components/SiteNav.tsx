@@ -13,7 +13,7 @@ const links = [
   { to: "/", hash: "contact", label: "Contact" },
 ] as const;
 
-const mobileServiceLinks = [
+const serviceLinks = [
   { to: "/realty", label: "Realty" },
   { to: "/construction", label: "Construction" },
   { to: "/interior", label: "Interior" },
@@ -24,6 +24,7 @@ export function SiteNav() {
   const [activeSection, setActiveSection] = useState("/");
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [desktopServicesOpen, setDesktopServicesOpen] = useState(false);
   const pathname = useRouterState({ select: (state) => state.location.pathname });
 
   useEffect(() => {
@@ -76,44 +77,109 @@ export function SiteNav() {
           <Logo light={transparent} />
         </Link>
         <nav className="hidden items-center gap-7 lg:flex xl:gap-9">
-          {links.map((l) => (
-            <Link
-              key={l.label}
-              to={l.to}
-              hash={"hash" in l ? l.hash : undefined}
-              className={cn(
-                "group relative text-[0.95rem] font-semibold tracking-[0.01em] transition-colors duration-300 ease-out xl:text-base",
-                transparent
-                  ? "text-ivory/90 hover:text-primary-glow"
-                  : "text-foreground/75 hover:text-ink",
-              )}
-              activeOptions={{ exact: l.to === "/" }}
-            >
-              {({ isActive }) => {
-                const activeTo = "hash" in l ? `/#${l.hash}` : l.to;
-                const active = pathname === "/" ? activeSection === activeTo : isActive;
-
-                return (
-                  <>
+          {links.map((l) => {
+            if (l.label === "Services") {
+              return (
+                <div
+                  key={l.label}
+                  className="relative"
+                  onMouseEnter={() => setDesktopServicesOpen(true)}
+                  onMouseLeave={() => setDesktopServicesOpen(false)}
+                >
+                  <Link
+                    to="/services"
+                    className={cn(
+                      "group relative inline-flex items-center gap-1 text-[0.95rem] font-semibold tracking-[0.01em] transition-colors duration-300 ease-out xl:text-base",
+                      transparent
+                        ? "text-ivory/90 hover:text-primary-glow"
+                        : "text-foreground/75 hover:text-ink",
+                    )}
+                  >
                     <span
                       className={cn(
                         "transition-colors duration-300 ease-out",
-                        active && (transparent ? "text-primary-glow" : "text-ink"),
+                        servicesActive && (transparent ? "text-primary-glow" : "text-ink"),
                       )}
                     >
-                      {l.label}
+                      Services
                     </span>
+                    <ChevronDown
+                      className={cn(
+                        "h-4 w-4 transition-transform duration-300",
+                        desktopServicesOpen && "rotate-180",
+                      )}
+                    />
                     <span
                       className={cn(
                         "absolute -bottom-1.5 left-0 h-0.5 rounded-full bg-primary transition-all duration-300 ease-out",
-                        active ? "w-full" : "w-0 group-hover:w-full",
+                        servicesActive ? "w-full" : "w-0 group-hover:w-full",
                       )}
                     />
-                  </>
-                );
-              }}
-            </Link>
-          ))}
+                  </Link>
+                  <div
+                    className={cn(
+                      "absolute left-1/2 top-full mt-4 w-56 -translate-x-1/2 rounded-3xl border border-border/80 bg-background/95 p-2 text-foreground shadow-luxe backdrop-blur-xl transition-all duration-300 ease-out",
+                      desktopServicesOpen
+                        ? "pointer-events-auto translate-y-0 opacity-100"
+                        : "pointer-events-none -translate-y-2 opacity-0",
+                    )}
+                  >
+                    {serviceLinks.map((item) => (
+                      <Link
+                        key={item.to}
+                        to={item.to}
+                        className={cn(
+                          "block rounded-2xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:bg-secondary",
+                          pathname === item.to ? "bg-primary/10 text-ink" : "text-foreground/75",
+                        )}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={l.label}
+                to={l.to}
+                hash={"hash" in l ? l.hash : undefined}
+                className={cn(
+                  "group relative text-[0.95rem] font-semibold tracking-[0.01em] transition-colors duration-300 ease-out xl:text-base",
+                  transparent
+                    ? "text-ivory/90 hover:text-primary-glow"
+                    : "text-foreground/75 hover:text-ink",
+                )}
+                activeOptions={{ exact: l.to === "/" }}
+              >
+                {({ isActive }) => {
+                  const activeTo = "hash" in l ? `/#${l.hash}` : l.to;
+                  const active = pathname === "/" ? activeSection === activeTo : isActive;
+
+                  return (
+                    <>
+                      <span
+                        className={cn(
+                          "transition-colors duration-300 ease-out",
+                          active && (transparent ? "text-primary-glow" : "text-ink"),
+                        )}
+                      >
+                        {l.label}
+                      </span>
+                      <span
+                        className={cn(
+                          "absolute -bottom-1.5 left-0 h-0.5 rounded-full bg-primary transition-all duration-300 ease-out",
+                          active ? "w-full" : "w-0 group-hover:w-full",
+                        )}
+                      />
+                    </>
+                  );
+                }}
+              </Link>
+            );
+          })}
         </nav>
         <div className="hidden lg:block">
           <Button
@@ -191,7 +257,7 @@ export function SiteNav() {
               </button>
               {servicesOpen && (
                 <div className="grid gap-1 px-2 pb-2">
-                  {mobileServiceLinks.map((item) => (
+                  {serviceLinks.map((item) => (
                     <Link
                       key={item.to}
                       to={item.to}
