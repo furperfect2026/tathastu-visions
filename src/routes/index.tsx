@@ -11,7 +11,7 @@ import { ContactSection } from "@/components/ContactSection";
 import { usePublicProjects } from "@/hooks/usePublicProjects";
 import { pillars, stats } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
-import realtyCourtyard from "@/assets/realty-3.jpg";
+import realty4 from "@/assets/realty-4.jpg";
 import livingInterior from "@/assets/interior-1.jpg";
 import bedroomInterior from "@/assets/interior-2.jpg";
 import trustHandshake from "@/assets/trust-handshake.jpg";
@@ -20,7 +20,7 @@ import clearGuidance from "@/assets/clear-guidance.jpg";
 import longTermValue from "@/assets/long-term-value.jpg";
 
 const heroImages = [
-  { src: realtyCourtyard, alt: "Tathastu Infra residential project and realty guidance in Pune" },
+  { src: realty4, alt: "Tathastu Infra premium realty apartment hero background in Pune" },
   { src: livingInterior, alt: "Tathastu Infra premium living room interior design" },
   { src: bedroomInterior, alt: "Tathastu Infra calm luxury bedroom interior design" },
 ];
