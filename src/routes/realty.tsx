@@ -14,7 +14,13 @@ const content: ServicePageContent = {
     { src: realty3, alt: "Modern apartment project for Tathastu Infra Realty clients" },
     { src: realty4, alt: "Residential property guidance and site visits in Pune" },
   ],
-  heroVideoSrc: "/media/realty-hero.mp4",
+  heroSidePreview: {
+    videoSrc: "/media/apartment-model-preview.mp4",
+    eyebrow: "3D Realty Preview",
+    title: "Apartment Planning View",
+    description:
+      "Explore the feel of a modern apartment layout before site visits. Tathastu Infra Realty helps buyers compare space, comfort and long-term value with clearer visual guidance.",
+  },
   overviewTitle: "Real estate decisions deserve calm expertise.",
   overview:
     "Tathastu Infra Realty is a local real estate and property consultant in Lohegaon, Pune, supporting buyers, sellers, investors and tenants with a trusted, end-to-end approach. From shortlisting residential properties, flats and new projects to site visits, documentation and handover, we help clients make decisions with clarity, confidence and long-term value in mind.",

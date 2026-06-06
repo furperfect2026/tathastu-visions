@@ -10,7 +10,9 @@ import {
   Clock3,
   Eye,
   IndianRupee,
+  Maximize2,
   ShieldCheck,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AutoSlideshow } from "@/components/AutoSlideshow";
@@ -49,6 +51,12 @@ export type ServicePageContent = {
   subtitle: string;
   heroImages: ServiceImage[];
   heroVideoSrc?: string;
+  heroSidePreview?: {
+    videoSrc: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+  };
   overviewTitle: string;
   overview: string;
   offers: {
@@ -186,6 +194,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
   const [estimateTier, setEstimateTier] = useState<PackageTier>("standard");
   const [estimateFloors, setEstimateFloors] = useState("ground");
   const [heroVideoDone, setHeroVideoDone] = useState(false);
+  const [isHeroPreviewOpen, setIsHeroPreviewOpen] = useState(false);
   const showHeroVideo = useMotionSafeVideo(Boolean(content.heroVideoSrc)) && !heroVideoDone;
 
   const quickEstimate = useMemo(() => {
@@ -296,6 +305,43 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
           </motion.div>
         </div>
 
+        {content.heroSidePreview && (
+          <motion.button
+            type="button"
+            onClick={() => setIsHeroPreviewOpen(true)}
+            className="group absolute right-8 top-[54%] z-10 hidden w-[240px] -translate-y-1/2 overflow-hidden rounded-[1.35rem] border border-ivory/25 bg-ivory/10 p-2 text-left shadow-[0_28px_80px_-35px_rgba(0,0,0,0.95)] backdrop-blur-xl transition-colors duration-300 hover:border-primary/70 hover:bg-ivory/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary xl:block 2xl:right-16 2xl:w-[280px]"
+            initial={{ opacity: 0, x: 28, scale: 0.96 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ delay: 1.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            aria-label={`Open ${content.heroSidePreview.title} preview`}
+          >
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1rem]">
+              <video
+                src={content.heroSidePreview.videoSrc}
+                className="h-full w-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-hidden="true"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/78 via-ink/8 to-transparent" />
+              <span className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-ivory/14 text-ivory backdrop-blur transition-colors duration-300 group-hover:bg-primary group-hover:text-ink">
+                <Maximize2 className="h-4 w-4" />
+              </span>
+              <div className="absolute inset-x-0 bottom-0 p-4">
+                <p className="text-[10px] uppercase tracking-[0.22em] text-primary-glow">
+                  {content.heroSidePreview.eyebrow}
+                </p>
+                <p className="mt-1 font-display text-xl font-semibold text-ivory">
+                  {content.heroSidePreview.title}
+                </p>
+              </div>
+            </div>
+          </motion.button>
+        )}
+
         <motion.div
           className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-[10px] uppercase tracking-[0.35em] text-ivory/60"
           initial={{ opacity: 0 }}
@@ -305,6 +351,64 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
           scroll down
         </motion.div>
       </section>
+
+      {content.heroSidePreview && isHeroPreviewOpen && (
+        <div
+          className="fixed inset-0 z-[90] flex items-center justify-center bg-ink/82 p-4 backdrop-blur-xl"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${content.heroSidePreview.title} preview`}
+          onClick={() => setIsHeroPreviewOpen(false)}
+        >
+          <motion.div
+            className="relative w-full max-w-5xl overflow-hidden rounded-[1.5rem] bg-ink shadow-[0_32px_100px_-45px_rgba(0,0,0,1)] ring-1 ring-ivory/15"
+            initial={{ opacity: 0, scale: 0.96, y: 18 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 18 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setIsHeroPreviewOpen(false)}
+              className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full bg-ink/60 text-ivory backdrop-blur transition-colors duration-300 hover:bg-primary hover:text-ink"
+              aria-label="Close preview"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <div className="grid bg-ivory lg:grid-cols-[1.35fr_0.65fr]">
+              <div className="aspect-video bg-ink lg:aspect-auto lg:min-h-[560px]">
+                <video
+                  src={content.heroSidePreview.videoSrc}
+                  className="h-full w-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                />
+              </div>
+              <div className="flex flex-col justify-center p-6 text-ink sm:p-8">
+                <p className="eyebrow">{content.heroSidePreview.eyebrow}</p>
+                <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
+                  {content.heroSidePreview.title}
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  {content.heroSidePreview.description}
+                </p>
+                <Button
+                  asChild
+                  className="mt-7 w-fit rounded-full bg-gradient-gold px-6 text-ink shadow-gold"
+                >
+                  <Link to="/" hash="contact">
+                    Discuss This Project <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
 
       <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
