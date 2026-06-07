@@ -23,6 +23,7 @@ import { CountUp } from "@/components/CountUp";
 import { Button } from "@/components/ui/button";
 import { ContactSection } from "@/components/ContactSection";
 import { usePublicProjects } from "@/hooks/usePublicProjects";
+import { usePublicReviews } from "@/hooks/usePublicReviews";
 import { pillars, stats } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import realty4 from "@/assets/realty-4.jpg";
@@ -122,41 +123,6 @@ const trustPolicies = [
   },
 ] as const;
 
-const clientReviews = [
-  {
-    initials: "VP",
-    name: "Vaibhav P.",
-    location: "Lohegaon, Pune",
-    service: "Construction",
-    quote:
-      "Great service, clear planning and smooth execution. The Tathastu Infra team kept us updated and handled every step with care.",
-  },
-  {
-    initials: "AK",
-    name: "Anmol K.",
-    location: "Pune",
-    service: "Interior",
-    quote:
-      "Elegant and stylish interior work. The design felt premium, practical and very comfortable for daily living.",
-  },
-  {
-    initials: "RP",
-    name: "Rohit P.",
-    location: "Lohegaon",
-    service: "Realty",
-    quote:
-      "They guided us patiently through property options, site visits and documentation. The process felt transparent from the first call.",
-  },
-  {
-    initials: "MS",
-    name: "Manasi S.",
-    location: "Pune",
-    service: "Turnkey Support",
-    quote:
-      "The team understood our budget and explained the next steps clearly. We liked the honest communication and quick responses.",
-  },
-] as const;
-
 const serviceQuickLinks = [
   { to: "/realty", label: "Realty" },
   { to: "/construction", label: "Construction" },
@@ -193,10 +159,11 @@ function HeroSocialLinks({ mobile = false }: { mobile?: boolean }) {
 
 function HomePage() {
   const { projects } = usePublicProjects();
+  const { reviews: clientReviews } = usePublicReviews();
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
   const visibleReviews = Array.from(
-    { length: 3 },
+    { length: Math.min(3, clientReviews.length) },
     (_, offset) => clientReviews[(reviewIndex + offset) % clientReviews.length],
   );
 
@@ -511,8 +478,17 @@ function HomePage() {
                   className="relative h-full overflow-hidden rounded-3xl border border-border bg-gradient-ivory p-6 text-center shadow-luxe sm:p-8"
                 >
                   <Quote className="absolute right-6 top-6 h-8 w-8 text-primary/25" />
-                  <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-primary/30 bg-gradient-gold font-display text-2xl font-semibold text-ink shadow-gold">
-                    {review.initials}
+                  <div className="mx-auto grid h-24 w-24 place-items-center overflow-hidden rounded-full border border-primary/30 bg-gradient-gold font-display text-2xl font-semibold text-ink shadow-gold">
+                    {review.imageUrl ? (
+                      <img
+                        src={review.imageUrl}
+                        alt={review.name}
+                        loading="lazy"
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      review.initials
+                    )}
                   </div>
                   <h3 className="mt-6 font-display text-2xl font-semibold text-ink">
                     {review.name}
@@ -524,7 +500,10 @@ function HomePage() {
                     {Array.from({ length: 5 }).map((_, starIndex) => (
                       <Star
                         key={starIndex}
-                        className="h-4 w-4 fill-primary text-primary"
+                        className={cn(
+                          "h-4 w-4",
+                          starIndex < review.rating ? "fill-primary text-primary" : "text-primary/25",
+                        )}
                         aria-hidden="true"
                       />
                     ))}

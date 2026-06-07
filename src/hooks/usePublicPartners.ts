@@ -10,6 +10,14 @@ export type PublicPartner = {
   sortOrder?: number;
 };
 
+export type PublicBankingPartner = {
+  id: string;
+  name: string;
+  logoUrl?: string;
+  websiteUrl?: string;
+  sortOrder?: number;
+};
+
 const fallbackPartners: PublicPartner[] = [
   {
     id: "civil-rcc",
@@ -37,10 +45,25 @@ const fallbackPartners: PublicPartner[] = [
   },
 ];
 
+const fallbackBankingPartners: PublicBankingPartner[] = [
+  { id: "hdfc", name: "HDFC", sortOrder: 1 },
+  { id: "sbi", name: "SBI", sortOrder: 2 },
+  { id: "axis", name: "Axis Bank", sortOrder: 3 },
+  { id: "idbi", name: "IDBI Bank", sortOrder: 4 },
+];
+
 type PartnerRow = {
   id: string;
   name: string;
   description: string | null;
+  logo_url: string | null;
+  website_url: string | null;
+  sort_order: number | null;
+};
+
+type BankingPartnerRow = {
+  id: string;
+  name: string;
   logo_url: string | null;
   website_url: string | null;
   sort_order: number | null;
@@ -57,8 +80,21 @@ function mapPartner(row: PartnerRow): PublicPartner {
   };
 }
 
+function mapBankingPartner(row: BankingPartnerRow): PublicBankingPartner {
+  return {
+    id: row.id,
+    name: row.name,
+    logoUrl: row.logo_url || undefined,
+    websiteUrl: row.website_url || undefined,
+    sortOrder: row.sort_order || 0,
+  };
+}
+
 export function usePublicPartners() {
   const [managedPartners, setManagedPartners] = useState<PublicPartner[] | null>(null);
+  const [managedBankingPartners, setManagedBankingPartners] = useState<PublicBankingPartner[] | null>(
+    null,
+  );
 
   useEffect(() => {
     let isMounted = true;
@@ -80,6 +116,25 @@ export function usePublicPartners() {
         console.warn("[Partners] Falling back to static partners", error);
         if (isMounted) setManagedPartners(null);
       }
+
+      try {
+        const { data, error } = await (supabase as any)
+          .from("banking_partners")
+          .select("id,name,logo_url,website_url,sort_order")
+          .eq("is_active", true)
+          .order("sort_order", { ascending: true })
+          .order("created_at", { ascending: false });
+
+        if (error) throw error;
+
+        const nextBankingPartners = ((data || []) as BankingPartnerRow[]).map(mapBankingPartner);
+        if (isMounted) {
+          setManagedBankingPartners(nextBankingPartners.length ? nextBankingPartners : null);
+        }
+      } catch (error) {
+        console.warn("[Banking partners] Falling back to static partners", error);
+        if (isMounted) setManagedBankingPartners(null);
+      }
     }
 
     fetchPartners();
@@ -92,8 +147,10 @@ export function usePublicPartners() {
   return useMemo(
     () => ({
       partners: managedPartners || fallbackPartners,
+      bankingPartners: managedBankingPartners || fallbackBankingPartners,
       isManaged: Boolean(managedPartners),
+      isBankingManaged: Boolean(managedBankingPartners),
     }),
-    [managedPartners],
+    [managedBankingPartners, managedPartners],
   );
 }

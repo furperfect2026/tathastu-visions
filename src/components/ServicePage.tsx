@@ -190,7 +190,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
   const navigate = useNavigate();
   const guaranteeTrackRef = useRef<HTMLDivElement>(null);
   const { projects } = usePublicProjects(content.projectCategory);
-  const { partners } = usePublicPartners();
+  const { partners, bankingPartners } = usePublicPartners();
   const [estimateArea, setEstimateArea] = useState("1000");
   const [estimateTier, setEstimateTier] = useState<PackageTier>("standard");
   const [estimateFloors, setEstimateFloors] = useState("ground");
@@ -649,7 +649,9 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         </section>
       )}
 
-      {content.projectCategory === "construction" && <PartnerLogoSection partners={partners} />}
+      {content.projectCategory === "construction" && (
+        <PartnerLogoSection partners={partners} bankingPartners={bankingPartners} />
+      )}
 
       {content.projectCategory === "realty" && <RealtySearchLinks compact />}
       {content.projectCategory === "construction" && (

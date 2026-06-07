@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/Reveal";
-import type { PublicPartner } from "@/hooks/usePublicPartners";
+import type { PublicBankingPartner, PublicPartner } from "@/hooks/usePublicPartners";
 import axisBankLogo from "@/assets/bank-axis.jpg";
 import hdfcBankLogo from "@/assets/bank-hdfc.jpg";
 import idbiBankLogo from "@/assets/bank-idbi.jpg";
@@ -10,15 +10,18 @@ import sbiBankLogo from "@/assets/bank-sbi.jpg";
 
 type PartnerLogoSectionProps = {
   partners: PublicPartner[];
+  bankingPartners?: PublicBankingPartner[];
   compact?: boolean;
 };
 
-const bankingPartners = [
-  { name: "HDFC", logo: hdfcBankLogo },
-  { name: "SBI", logo: sbiBankLogo },
-  { name: "Axis Bank", logo: axisBankLogo },
-  { name: "IDBI Bank", logo: idbiBankLogo },
-] as const;
+const fallbackBankLogos: Record<string, string> = {
+  hdfc: hdfcBankLogo,
+  sbi: sbiBankLogo,
+  "axis bank": axisBankLogo,
+  axis: axisBankLogo,
+  "idbi bank": idbiBankLogo,
+  idbi: idbiBankLogo,
+};
 
 function PartnerTile({ partner }: { partner: PublicPartner }) {
   const content = (
@@ -66,10 +69,49 @@ function PartnerTile({ partner }: { partner: PublicPartner }) {
   );
 }
 
-export function PartnerLogoSection({ partners, compact = false }: PartnerLogoSectionProps) {
+function BankingPartnerTile({ partner }: { partner: PublicBankingPartner }) {
+  const logo = partner.logoUrl || fallbackBankLogos[partner.name.toLowerCase()];
+  const content = (
+    <>
+      <div className="flex h-24 items-center justify-center rounded-2xl bg-white p-4 shadow-sm ring-1 ring-border transition duration-300 group-hover:-translate-y-1 group-hover:shadow-luxe">
+        {logo ? (
+          <img
+            src={logo}
+            alt={`${partner.name} home loan partner logo`}
+            loading="lazy"
+            className="max-h-16 max-w-full object-contain"
+          />
+        ) : (
+          <span className="font-display text-2xl font-semibold text-primary">{partner.name}</span>
+        )}
+      </div>
+      <p className="mt-3 text-sm font-semibold text-ink">{partner.name}</p>
+    </>
+  );
+
+  if (!partner.websiteUrl) return <div className="group">{content}</div>;
+
+  return (
+    <a
+      href={partner.websiteUrl}
+      target="_blank"
+      rel="noreferrer"
+      className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+    >
+      {content}
+    </a>
+  );
+}
+
+export function PartnerLogoSection({
+  partners,
+  bankingPartners = [],
+  compact = false,
+}: PartnerLogoSectionProps) {
   if (!partners.length) return null;
 
   const visiblePartners = compact ? partners.slice(0, 8) : partners;
+  const visibleBankingPartners = compact ? bankingPartners.slice(0, 4) : bankingPartners;
 
   return (
     <section className="bg-gradient-ivory py-16 sm:py-20">
@@ -96,7 +138,8 @@ export function PartnerLogoSection({ partners, compact = false }: PartnerLogoSec
           </div>
         </Reveal>
 
-        <Reveal delay={0.12}>
+        {visibleBankingPartners.length > 0 && (
+          <Reveal delay={0.12}>
           <div className="mt-16 text-center">
             <h3 className="font-display text-3xl font-semibold text-ink sm:text-4xl">
               Our Banking Partners
@@ -107,22 +150,13 @@ export function PartnerLogoSection({ partners, compact = false }: PartnerLogoSec
               conversations through trusted banking channels.
             </p>
             <div className="mt-9 grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-4">
-              {bankingPartners.map((partner) => (
-                <div key={partner.name}>
-                  <div className="flex h-24 items-center justify-center rounded-2xl bg-white p-4 shadow-sm ring-1 ring-border transition duration-300 hover:-translate-y-1 hover:shadow-luxe">
-                    <img
-                      src={partner.logo}
-                      alt={`${partner.name} home loan partner logo`}
-                      loading="lazy"
-                      className="max-h-16 max-w-full object-contain"
-                    />
-                  </div>
-                  <p className="mt-3 text-sm font-semibold text-ink">{partner.name}</p>
-                </div>
+              {visibleBankingPartners.map((partner) => (
+                <BankingPartnerTile key={partner.id} partner={partner} />
               ))}
             </div>
           </div>
-        </Reveal>
+          </Reveal>
+        )}
 
         {!compact && (
           <Reveal delay={0.16}>

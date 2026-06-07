@@ -35,6 +35,32 @@ create table if not exists public.partners (
   updated_at timestamptz not null default now()
 );
 
+create table if not exists public.banking_partners (
+  id uuid primary key default gen_random_uuid(),
+  name text not null,
+  logo_url text,
+  website_url text,
+  sort_order integer not null default 0,
+  is_active boolean not null default true,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.client_reviews (
+  id uuid primary key default gen_random_uuid(),
+  name text not null,
+  location text not null default 'Pune',
+  service text not null default 'Tathastu Infra',
+  quote text not null,
+  rating integer not null default 5 check (rating between 1 and 5),
+  initials text,
+  image_url text,
+  sort_order integer not null default 0,
+  is_published boolean not null default true,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
 create or replace function public.set_updated_at()
 returns trigger as $$
 begin
@@ -53,8 +79,20 @@ create trigger partners_set_updated_at
 before update on public.partners
 for each row execute function public.set_updated_at();
 
+drop trigger if exists banking_partners_set_updated_at on public.banking_partners;
+create trigger banking_partners_set_updated_at
+before update on public.banking_partners
+for each row execute function public.set_updated_at();
+
+drop trigger if exists client_reviews_set_updated_at on public.client_reviews;
+create trigger client_reviews_set_updated_at
+before update on public.client_reviews
+for each row execute function public.set_updated_at();
+
 alter table public.projects enable row level security;
 alter table public.partners enable row level security;
+alter table public.banking_partners enable row level security;
+alter table public.client_reviews enable row level security;
 
 drop policy if exists "Published projects are public" on public.projects;
 create policy "Published projects are public"
@@ -108,6 +146,62 @@ with check (true);
 drop policy if exists "Authenticated admins can delete partners" on public.partners;
 create policy "Authenticated admins can delete partners"
 on public.partners
+for delete
+to authenticated
+using (true);
+
+drop policy if exists "Active banking partners are public" on public.banking_partners;
+create policy "Active banking partners are public"
+on public.banking_partners
+for select
+using (is_active = true or auth.role() = 'authenticated');
+
+drop policy if exists "Authenticated admins can add banking partners" on public.banking_partners;
+create policy "Authenticated admins can add banking partners"
+on public.banking_partners
+for insert
+to authenticated
+with check (true);
+
+drop policy if exists "Authenticated admins can update banking partners" on public.banking_partners;
+create policy "Authenticated admins can update banking partners"
+on public.banking_partners
+for update
+to authenticated
+using (true)
+with check (true);
+
+drop policy if exists "Authenticated admins can delete banking partners" on public.banking_partners;
+create policy "Authenticated admins can delete banking partners"
+on public.banking_partners
+for delete
+to authenticated
+using (true);
+
+drop policy if exists "Published reviews are public" on public.client_reviews;
+create policy "Published reviews are public"
+on public.client_reviews
+for select
+using (is_published = true or auth.role() = 'authenticated');
+
+drop policy if exists "Authenticated admins can add reviews" on public.client_reviews;
+create policy "Authenticated admins can add reviews"
+on public.client_reviews
+for insert
+to authenticated
+with check (true);
+
+drop policy if exists "Authenticated admins can update reviews" on public.client_reviews;
+create policy "Authenticated admins can update reviews"
+on public.client_reviews
+for update
+to authenticated
+using (true)
+with check (true);
+
+drop policy if exists "Authenticated admins can delete reviews" on public.client_reviews;
+create policy "Authenticated admins can delete reviews"
+on public.client_reviews
 for delete
 to authenticated
 using (true);

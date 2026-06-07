@@ -12,7 +12,7 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
   const Icon = detail.icon;
   const isConstruction = detail.category === "construction";
   const { projects: relatedConstructionProjects } = usePublicProjects("construction");
-  const { partners } = usePublicPartners();
+  const { partners, bankingPartners } = usePublicPartners();
 
   return (
     <>
@@ -177,7 +177,7 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
 
       {isConstruction && (
         <>
-          <PartnerLogoSection partners={partners} compact />
+          <PartnerLogoSection partners={partners} bankingPartners={bankingPartners} compact />
           <section className="bg-gradient-ivory pb-24">
             <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <Reveal delay={0.08} className="mt-8">
