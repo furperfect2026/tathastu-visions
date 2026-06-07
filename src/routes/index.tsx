@@ -1,7 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Award, Building2, Calendar, Eye, Maximize2, ShieldCheck, Users, X } from "lucide-react";
+import {
+  ArrowRight,
+  Award,
+  Building2,
+  Calendar,
+  ChevronLeft,
+  ChevronRight,
+  Eye,
+  Maximize2,
+  Quote,
+  ShieldCheck,
+  Star,
+  Users,
+  X,
+} from "lucide-react";
 import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { BrandSocialLink, type SocialBrand } from "@/components/BrandSocialLink";
 import { Reveal } from "@/components/Reveal";
@@ -108,6 +122,41 @@ const trustPolicies = [
   },
 ] as const;
 
+const clientReviews = [
+  {
+    initials: "VP",
+    name: "Vaibhav P.",
+    location: "Lohegaon, Pune",
+    service: "Construction",
+    quote:
+      "Great service, clear planning and smooth execution. The Tathastu Infra team kept us updated and handled every step with care.",
+  },
+  {
+    initials: "AK",
+    name: "Anmol K.",
+    location: "Pune",
+    service: "Interior",
+    quote:
+      "Elegant and stylish interior work. The design felt premium, practical and very comfortable for daily living.",
+  },
+  {
+    initials: "RP",
+    name: "Rohit P.",
+    location: "Lohegaon",
+    service: "Realty",
+    quote:
+      "They guided us patiently through property options, site visits and documentation. The process felt transparent from the first call.",
+  },
+  {
+    initials: "MS",
+    name: "Manasi S.",
+    location: "Pune",
+    service: "Turnkey Support",
+    quote:
+      "The team understood our budget and explained the next steps clearly. We liked the honest communication and quick responses.",
+  },
+] as const;
+
 const serviceQuickLinks = [
   { to: "/realty", label: "Realty" },
   { to: "/construction", label: "Construction" },
@@ -145,6 +194,15 @@ function HeroSocialLinks({ mobile = false }: { mobile?: boolean }) {
 function HomePage() {
   const { projects } = usePublicProjects();
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [reviewIndex, setReviewIndex] = useState(0);
+  const visibleReviews = Array.from(
+    { length: 3 },
+    (_, offset) => clientReviews[(reviewIndex + offset) % clientReviews.length],
+  );
+
+  const moveReviews = (direction: number) => {
+    setReviewIndex((current) => (current + direction + clientReviews.length) % clientReviews.length);
+  };
 
   return (
     <>
@@ -409,6 +467,97 @@ function HomePage() {
       </section>
 
       {/* STATS — dark band */}
+      <section className="bg-card py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <Reveal className="max-w-3xl">
+              <p className="eyebrow">Client Reviews</p>
+              <h2 className="mt-3 font-display text-3xl font-medium text-ink sm:text-4xl md:text-5xl">
+                People remember the way a project feels.
+              </h2>
+              <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                Genuine feedback from clients who trusted Tathastu Infra for realty guidance,
+                construction coordination and interior design conversations across Pune.
+              </p>
+            </Reveal>
+
+            <div className="hidden items-center gap-3 md:flex">
+              <button
+                type="button"
+                onClick={() => moveReviews(-1)}
+                className="grid h-12 w-12 place-items-center rounded-full border border-border bg-secondary text-ink transition hover:bg-gradient-gold hover:shadow-gold"
+                aria-label="Show previous client reviews"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => moveReviews(1)}
+                className="grid h-12 w-12 place-items-center rounded-full border border-border bg-secondary text-ink transition hover:bg-gradient-gold hover:shadow-gold"
+                aria-label="Show next client reviews"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {visibleReviews.map((review, index) => (
+              <Reveal key={`${review.name}-${reviewIndex}`} delay={index * 0.06}>
+                <motion.article
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="relative h-full overflow-hidden rounded-3xl border border-border bg-gradient-ivory p-6 text-center shadow-luxe sm:p-8"
+                >
+                  <Quote className="absolute right-6 top-6 h-8 w-8 text-primary/25" />
+                  <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-primary/30 bg-gradient-gold font-display text-2xl font-semibold text-ink shadow-gold">
+                    {review.initials}
+                  </div>
+                  <h3 className="mt-6 font-display text-2xl font-semibold text-ink">
+                    {review.name}
+                  </h3>
+                  <p className="mt-1 text-xs uppercase tracking-[0.24em] text-primary">
+                    {review.location} - {review.service}
+                  </p>
+                  <div className="mt-5 flex justify-center gap-1 text-primary">
+                    {Array.from({ length: 5 }).map((_, starIndex) => (
+                      <Star
+                        key={starIndex}
+                        className="h-4 w-4 fill-primary text-primary"
+                        aria-hidden="true"
+                      />
+                    ))}
+                  </div>
+                  <p className="mx-auto mt-6 max-w-sm text-sm leading-7 text-muted-foreground">
+                    "{review.quote}"
+                  </p>
+                </motion.article>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="mt-7 flex justify-center gap-3 md:hidden">
+            <button
+              type="button"
+              onClick={() => moveReviews(-1)}
+              className="grid h-11 w-11 place-items-center rounded-full border border-border bg-secondary text-ink"
+              aria-label="Show previous client reviews"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => moveReviews(1)}
+              className="grid h-11 w-11 place-items-center rounded-full border border-border bg-secondary text-ink"
+              aria-label="Show next client reviews"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+      </section>
+
       <section className="relative bg-gradient-ink py-24 text-ivory">
         <div
           className="pointer-events-none absolute inset-0 opacity-20"

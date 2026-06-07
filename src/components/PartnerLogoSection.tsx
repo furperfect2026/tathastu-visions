@@ -3,11 +3,22 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/Reveal";
 import type { PublicPartner } from "@/hooks/usePublicPartners";
+import axisBankLogo from "@/assets/bank-axis.jpg";
+import hdfcBankLogo from "@/assets/bank-hdfc.jpg";
+import idbiBankLogo from "@/assets/bank-idbi.jpg";
+import sbiBankLogo from "@/assets/bank-sbi.jpg";
 
 type PartnerLogoSectionProps = {
   partners: PublicPartner[];
   compact?: boolean;
 };
+
+const bankingPartners = [
+  { name: "HDFC", logo: hdfcBankLogo },
+  { name: "SBI", logo: sbiBankLogo },
+  { name: "Axis Bank", logo: axisBankLogo },
+  { name: "IDBI Bank", logo: idbiBankLogo },
+] as const;
 
 function PartnerTile({ partner }: { partner: PublicPartner }) {
   const content = (
@@ -96,12 +107,17 @@ export function PartnerLogoSection({ partners, compact = false }: PartnerLogoSec
               conversations through trusted banking channels.
             </p>
             <div className="mt-9 grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-4">
-              {["HDFC", "SBI", "Axis Bank", "ICICI Bank"].map((name) => (
-                <div key={name}>
-                  <div className="flex h-20 items-center justify-center rounded-2xl bg-white px-5 text-center font-semibold text-ink shadow-sm ring-1 ring-border">
-                    {name}
+              {bankingPartners.map((partner) => (
+                <div key={partner.name}>
+                  <div className="flex h-24 items-center justify-center rounded-2xl bg-white p-4 shadow-sm ring-1 ring-border transition duration-300 hover:-translate-y-1 hover:shadow-luxe">
+                    <img
+                      src={partner.logo}
+                      alt={`${partner.name} home loan partner logo`}
+                      loading="lazy"
+                      className="max-h-16 max-w-full object-contain"
+                    />
                   </div>
-                  <p className="mt-3 text-sm font-semibold text-ink">{name}</p>
+                  <p className="mt-3 text-sm font-semibold text-ink">{partner.name}</p>
                 </div>
               ))}
             </div>
