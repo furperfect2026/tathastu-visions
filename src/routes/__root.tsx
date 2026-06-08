@@ -30,7 +30,7 @@ const localBusinessJsonLd = {
     "Tathastu Infra is a Lohegaon, Pune based real estate, property consulting, construction and interior design firm for premium homes, commercial spaces and luxury interiors.",
   url: siteUrl,
   telephone: "+917820864384",
-  email: "tathastu.infra.info@gmail.com",
+  email: "tathastuinfra.info@gmail.com",
   priceRange: "$$",
   image: `${siteUrl}/assets/tathastu-logo.png`,
   address: {
@@ -348,3 +348,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+

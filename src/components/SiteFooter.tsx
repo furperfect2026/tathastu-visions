@@ -116,7 +116,7 @@ export function SiteFooter() {
             </li>
             <li className="flex min-w-0 gap-2">
               <Mail className="mt-0.5 h-4 w-4 flex-none text-primary" />
-              <span className="break-words">tathastu.infra.info@gmail.com</span>
+              <span className="break-words">tathastuinfra.info@gmail.com</span>
             </li>
           </ul>
         </div>
@@ -158,3 +158,4 @@ export function SiteFooter() {
     </footer>
   );
 }
+

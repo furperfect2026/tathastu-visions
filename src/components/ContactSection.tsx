@@ -32,7 +32,7 @@ const schema = z.object({
 const PHONE = "+91 78208 64384";
 const PHONE_TEL = "+917820864384";
 const WHATSAPP_TEL = "+917820864384";
-const EMAIL = "tathastu.infra.info@gmail.com";
+const EMAIL = "tathastuinfra.info@gmail.com";
 const ADDRESS = "Tathastu Infra, Lohegaon, Pune 411047";
 const MAPS_EMBED =
   "https://www.google.com/maps?q=Tathastu Infra%20Real%20Estate%20Builders%20%26%20Construction%20Company%2C%20Shop%20No.2%2C%20DY%20Patil%20University%20Road%2C%20Lohegaon%2C%20Pune&ll=18.6159241,73.9093115&z=18&output=embed";
@@ -218,3 +218,4 @@ export function ContactSection() {
     </section>
   );
 }
+
