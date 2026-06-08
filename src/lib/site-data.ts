@@ -78,8 +78,8 @@ export const pillars = [
 
 export const stats = [
   { label: "Years of Experience", value: 8, suffix: "+" },
-  { label: "Projects Completed", value: 138, suffix: "" },
-  { label: "Happy Clients", value: 100, suffix: "+" },
+  { label: "Projects Completed", value: 150, suffix: "+" },
+  { label: "Happy Clients", value: 120, suffix: "+" },
   { label: "Awards Won", value: 5, suffix: "" },
 ];
 
