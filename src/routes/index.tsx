@@ -27,17 +27,27 @@ import { usePublicReviews } from "@/hooks/usePublicReviews";
 import { pillars, stats } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import realty4 from "@/assets/realty-4.jpg";
+import heroBuilding from "@/assets/hero-building.jpg";
+import heroRealty from "@/assets/hero-realty.jpg";
+import heroInfra2 from "@/assets/hero-infra-2.jpg";
+import heroInterior from "@/assets/hero-interior.jpg";
 import livingInterior from "@/assets/interior-1.jpg";
-import bedroomInterior from "@/assets/interior-2.jpg";
+import kitchenInterior from "@/assets/interior-3.jpg";
+import construction2 from "@/assets/construction-2.jpg";
 import trustHandshake from "@/assets/trust-handshake.jpg";
 import clientRelationship from "@/assets/client-relationship.jpg";
 import clearGuidance from "@/assets/clear-guidance.jpg";
 import longTermValue from "@/assets/long-term-value.jpg";
 
 const heroImages = [
-  { src: realty4, alt: "Tathastu Infra premium realty apartment hero background in Pune" },
-  { src: livingInterior, alt: "Tathastu Infra premium living room interior design" },
-  { src: bedroomInterior, alt: "Tathastu Infra calm luxury bedroom interior design" },
+  { src: heroBuilding, alt: "Tathastu Infra luxury residential building in Pune" },
+  { src: heroInterior, alt: "Tathastu Infra premium interior design living room" },
+  { src: heroInfra2, alt: "Tathastu Infra large-scale construction site at dusk" },
+  { src: realty4, alt: "Tathastu Infra premium villa with pool in Pune" },
+  { src: heroRealty, alt: "Tathastu Infra luxury realty apartment at golden hour" },
+  { src: kitchenInterior, alt: "Tathastu Infra premium modular kitchen interior design" },
+  { src: construction2, alt: "Tathastu Infra site engineer reviewing construction blueprints" },
+  { src: livingInterior, alt: "Tathastu Infra elegant living room interior design" },
 ];
 
 export const Route = createFileRoute("/")({

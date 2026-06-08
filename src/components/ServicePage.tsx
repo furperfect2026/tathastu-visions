@@ -37,6 +37,7 @@ import guaranteeMoneySafetyImage from "@/assets/guarantee-money-safety.png";
 import guaranteeOnTimeImage from "@/assets/guarantee-on-time-delivery.png";
 import guaranteeQualityImage from "@/assets/guarantee-quality-assurance.png";
 import guaranteeTransparencyImage from "@/assets/guarantee-transparency.png";
+import guaranteeInhouseExpertsImage from "@/assets/guarantee-inhouse-experts.png";
 import { usePublicProjects } from "@/hooks/usePublicProjects";
 import { usePublicPartners } from "@/hooks/usePublicPartners";
 
@@ -161,7 +162,7 @@ const constructionGuarantees = [
     title: "In-House Experts",
     body: "Architect, site coordination, technical guidance and client relationship support stay close to your project.",
     icon: ShieldCheck,
-    image: { src: guaranteeTransparencyImage, alt: "In-house Tathastu Infra experts and project communication" },
+    image: { src: guaranteeInhouseExpertsImage, alt: "In-house Tathastu Infra architect and design experts at work" },
     tone: "from-[#102b44] to-[#071c30]",
   },
 ] as const;

@@ -1,11 +1,13 @@
 import { Outlet, createFileRoute, useRouterState } from "@tanstack/react-router";
 import { Building, Factory, Landmark, Layers3 } from "lucide-react";
 import { ServicePage, type ServicePageContent } from "@/components/ServicePage";
+import heroInfra1 from "@/assets/hero-infra-1.jpg";
+import heroInfra2 from "@/assets/hero-infra-2.jpg";
+import heroInfra3 from "@/assets/hero-infra-3.jpg";
 import construction1 from "@/assets/construction-1.jpg";
 import construction2 from "@/assets/construction-2.jpg";
 import construction3 from "@/assets/construction-3.jpg";
 import construction4 from "@/assets/construction-4.jpg";
-import heroInfra1 from "@/assets/hero-infra-1.jpg";
 
 const content: ServicePageContent = {
   eyebrow: "Tathastu Infra Construction",
@@ -14,11 +16,13 @@ const content: ServicePageContent = {
   subtitle:
     "Residential and commercial construction in Pune shaped by structure, safety, material discipline and reliable supervision.",
   heroImages: [
-    { src: heroInfra1, alt: "Tathastu infrastructure construction site in Pune" },
-    { src: construction3, alt: "Tathastu Infra construction site in Pune" },
-    { src: construction1, alt: "Civil construction and scaffolding by Tathastu Infra" },
-    { src: construction2, alt: "Residential construction work in progress" },
-    { src: construction4, alt: "Structural construction execution and supervision" },
+    { src: heroInfra2, alt: "Tathastu Infra large-scale construction site at dusk with cranes" },
+    { src: construction1, alt: "Tathastu Infra premium residential construction site in Pune" },
+    { src: heroInfra1, alt: "Tathastu Infra multi-storey building with scaffolding" },
+    { src: construction3, alt: "Tathastu Infra dramatic construction framework at sunset" },
+    { src: construction2, alt: "Tathastu Infra site engineer reviewing blueprints on site" },
+    { src: heroInfra3, alt: "Tathastu Infra construction worker laying tiles" },
+    { src: construction4, alt: "Tathastu Infra structural construction supervision" },
   ],
   overviewTitle: "Strong spaces begin with strong systems.",
   overview:
