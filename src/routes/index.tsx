@@ -511,41 +511,65 @@ function HomePage() {
                 <motion.article
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="relative h-full overflow-hidden rounded-3xl border border-border bg-gradient-ivory p-6 text-center shadow-luxe sm:p-8"
+                  className="group relative h-full overflow-hidden rounded-3xl border border-border bg-gradient-ivory p-6 text-center shadow-luxe transition-shadow duration-300 hover:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.16)] sm:p-8"
                 >
-                  <Quote className="absolute right-6 top-6 h-8 w-8 text-primary/25" />
-                  <div className="mx-auto grid h-24 w-24 place-items-center overflow-hidden rounded-full border border-primary/30 bg-gradient-gold font-display text-2xl font-semibold text-ink shadow-gold">
+                  {/* Gold bottom accent bar slides in on hover */}
+                  <span className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 rounded-b-3xl bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 transition-transform duration-500 ease-out group-hover:scale-x-100" />
+
+                  {/* Quote icon — scales + brightens */}
+                  <motion.div
+                    whileHover={{ scale: 1.2, rotate: 10 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute right-6 top-6"
+                  >
+                    <Quote className="h-8 w-8 text-primary/25 transition-colors duration-300 group-hover:text-primary/60" />
+                  </motion.div>
+
+                  {/* Avatar — glow ring on hover */}
+                  <div className="mx-auto grid h-24 w-24 place-items-center overflow-hidden rounded-full border-2 border-primary/30 bg-gradient-gold font-display text-2xl font-semibold text-ink shadow-gold transition-all duration-300 group-hover:border-amber-400 group-hover:shadow-[0_0_24px_6px_rgba(212,175,55,0.45)]">
                     {review.imageUrl ? (
                       <img
                         src={review.imageUrl}
                         alt={review.name}
                         loading="lazy"
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     ) : (
                       review.initials
                     )}
                   </div>
-                  <h3 className="mt-6 font-display text-2xl font-semibold text-ink">
+
+                  <h3 className="mt-6 font-display text-2xl font-semibold text-ink transition-colors duration-300 group-hover:text-primary">
                     {review.name}
                   </h3>
                   <p className="mt-1 text-xs uppercase tracking-[0.24em] text-primary">
                     {review.location} - {review.service}
                   </p>
+
+                  {/* Stars — individually hoverable */}
                   <div className="mt-5 flex justify-center gap-1 text-primary">
                     {Array.from({ length: 5 }).map((_, starIndex) => (
-                      <Star
+                      <motion.span
                         key={starIndex}
-                        className={cn(
-                          "h-4 w-4",
-                          starIndex < review.rating ? "fill-primary text-primary" : "text-primary/25",
-                        )}
-                        aria-hidden="true"
-                      />
+                        whileHover={{ scale: 1.4, y: -2 }}
+                        transition={{ delay: starIndex * 0.05, duration: 0.2 }}
+                      >
+                        <Star
+                          className={cn(
+                            "h-4 w-4 transition-all duration-300",
+                            starIndex < review.rating
+                              ? "fill-primary text-primary group-hover:fill-amber-400 group-hover:text-amber-400"
+                              : "text-primary/25",
+                          )}
+                          aria-hidden="true"
+                        />
+                      </motion.span>
                     ))}
                   </div>
-                  <p className="mx-auto mt-6 max-w-sm text-sm leading-7 text-muted-foreground">
+
+                  <p className="mx-auto mt-6 max-w-sm text-sm leading-7 text-muted-foreground transition-colors duration-300 group-hover:text-ink/75">
                     "{review.quote}"
                   </p>
                 </motion.article>
