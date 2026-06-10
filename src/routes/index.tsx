@@ -421,22 +421,49 @@ function HomePage() {
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {trustPolicies.map(({ icon: Icon, title, body, image, alt }, index) => (
               <Reveal key={title} delay={index * 0.05}>
-                <div className="h-full overflow-hidden rounded-3xl border border-border bg-card p-5 shadow-luxe sm:p-6">
+                <motion.div
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  className="group relative h-full cursor-default overflow-hidden rounded-3xl border border-border bg-card p-5 shadow-luxe transition-shadow duration-300 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.18)] sm:p-6"
+                >
+                  {/* Gold shimmer border on hover */}
+                  <span className="pointer-events-none absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-br from-amber-400/60 via-yellow-300/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{WebkitMask:"linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0)",WebkitMaskComposite:"destination-out",maskComposite:"exclude"}} />
+
                   <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
                     <img
                       src={image}
                       alt={alt}
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/25 via-transparent to-transparent" />
-                    <div className="absolute left-4 top-4 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
-                      <Icon className="h-5 w-5" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-90" />
+                    {/* Icon badge — scales + glows on hover */}
+                    <motion.div
+                      whileHover={{ scale: 1.15 }}
+                      className="absolute left-4 top-4 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold transition-shadow duration-300 group-hover:shadow-[0_0_24px_4px_rgba(212,175,55,0.55)]"
+                    >
+                      <Icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                    </motion.div>
+                    {/* Overlay label on hover */}
+                    <div className="absolute inset-x-0 bottom-0 translate-y-full p-4 transition-transform duration-400 ease-out group-hover:translate-y-0">
+                      <span className="inline-block rounded-full bg-gradient-gold px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-ink shadow-gold">
+                        {title}
+                      </span>
                     </div>
                   </div>
-                  <h3 className="mt-7 font-display text-2xl font-semibold text-ink">{title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
-                </div>
+
+                  <div className="mt-5 translate-y-1 transition-transform duration-400 ease-out group-hover:translate-y-0">
+                    <h3 className="font-display text-2xl font-semibold text-ink transition-colors duration-300 group-hover:text-primary">
+                      {title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-ink/70">
+                      {body}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-primary opacity-0 transition-all duration-400 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-2">
+                      Learn more <span className="text-base leading-none">→</span>
+                    </span>
+                  </div>
+                </motion.div>
               </Reveal>
             ))}
           </div>
