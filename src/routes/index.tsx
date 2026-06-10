@@ -351,35 +351,68 @@ function HomePage() {
               return (
                 <Reveal key={p.key} delay={i * 0.1}>
                   <motion.div
-                    whileHover={{ y: -8 }}
-                    transition={{ type: "spring", stiffness: 180, damping: 18 }}
+                    whileHover={{ y: -12, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
                     className="h-full"
                   >
                     <Link
                       to={`/${p.key}`}
                       aria-label={`Explore ${p.title}`}
-                      className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border transition-shadow duration-300 hover:shadow-[0_28px_80px_-35px_color-mix(in_oklab,var(--color-primary)_45%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                      className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl bg-card ring-1 ring-border transition-all duration-500 hover:ring-amber-400/60 hover:shadow-[0_32px_80px_-20px_rgba(0,0,0,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
                     >
-                      <div className="relative h-60">
-                        <AutoSlideshow
-                          images={[...p.images]}
-                          startIndex={i}
-                          interval={3500 + i * 400}
-                          rounded="rounded-none"
-                        />
-                        <div className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-full bg-gradient-gold text-ink shadow-gold">
-                          <Icon className="h-5 w-5" />
+                      {/* Image area with zoom + darkening overlay */}
+                      <div className="relative h-60 overflow-hidden">
+                        <div className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-110">
+                          <AutoSlideshow
+                            images={[...p.images]}
+                            startIndex={i}
+                            interval={3500 + i * 400}
+                            rounded="rounded-none"
+                          />
+                        </div>
+                        {/* Darkening overlay on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                        {/* Icon badge — glows on hover */}
+                        <motion.div
+                          whileHover={{ scale: 1.15 }}
+                          className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-full bg-gradient-gold text-ink shadow-gold transition-shadow duration-300 group-hover:shadow-[0_0_28px_6px_rgba(212,175,55,0.6)]"
+                        >
+                          <Icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                        </motion.div>
+
+                        {/* Category label slides up from bottom on hover */}
+                        <div className="absolute inset-x-0 bottom-0 translate-y-full p-5 transition-transform duration-500 ease-out group-hover:translate-y-0">
+                          <p className="text-xs font-semibold uppercase tracking-widest text-white/90 drop-shadow">
+                            {p.title} →
+                          </p>
                         </div>
                       </div>
+
+                      {/* Content */}
                       <div className="flex flex-1 flex-col p-7">
-                        <h3 className="font-display text-2xl font-semibold">{p.title}</h3>
-                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        <div className="relative">
+                          <h3 className="font-display text-2xl font-semibold transition-colors duration-300 group-hover:text-primary">
+                            {p.title}
+                          </h3>
+                          {/* Gold underline sweeps in on hover */}
+                          <span className="absolute -bottom-1 left-0 h-0.5 w-0 rounded-full bg-gradient-to-r from-amber-400 to-yellow-300 transition-all duration-500 group-hover:w-full" />
+                        </div>
+                        <p className="mt-4 text-sm leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-ink/70">
                           {p.blurb}
                         </p>
-                        <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-foreground transition-all duration-300 group-hover:bg-gradient-gold group-hover:shadow-gold">
-                          Explore <ArrowRight className="h-3.5 w-3.5" />
-                        </span>
+
+                        {/* Explore button — slides right + gold shimmer */}
+                        <div className="mt-6 flex items-center gap-2">
+                          <span className="inline-flex w-fit items-center gap-2 rounded-full bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-foreground transition-all duration-400 group-hover:bg-gradient-gold group-hover:shadow-gold group-hover:pr-5">
+                            Explore
+                            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                          </span>
+                        </div>
                       </div>
+
+                      {/* Bottom gold accent border sweeps in */}
+                      <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 transition-transform duration-600 ease-out group-hover:scale-x-100" />
                     </Link>
                   </motion.div>
                 </Reveal>
