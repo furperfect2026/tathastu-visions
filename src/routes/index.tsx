@@ -9,6 +9,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Eye,
+  Handshake,
   Maximize2,
   Quote,
   ShieldCheck,
@@ -38,6 +39,7 @@ import trustHandshake from "@/assets/trust-handshake.jpg";
 import clientRelationship from "@/assets/client-relationship.jpg";
 import clearGuidance from "@/assets/clear-guidance.jpg";
 import longTermValue from "@/assets/long-term-value.jpg";
+
 
 const heroImages = [
   { src: heroBuilding, alt: "Tathastu Infra luxury residential building in Pune" },
@@ -639,19 +641,21 @@ function HomePage() {
               "radial-gradient(circle at 20% 0%, var(--color-primary), transparent 40%)",
           }}
         />
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-4">
+        <div className="relative mx-auto grid max-w-7xl gap-x-6 gap-y-10 px-4 sm:px-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s, i) => {
-            const Icon = [Calendar, Building2, Users, Award][i];
+            const statsIcons = [Calendar, Building2, Handshake, Award];
+            const StatIcon = statsIcons[i];
             return (
               <Reveal key={s.label} delay={i * 0.08} className="flex items-center gap-5">
-                <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-gold text-primary-foreground shadow-gold">
-                  <Icon className="h-6 w-6" />
-                </div>
+                <StatIcon
+                  className="h-12 w-12 sm:h-14 sm:w-14 text-primary-glow drop-shadow-[0_0_8px_rgba(229,193,88,0.4)] shrink-0"
+                  strokeWidth={1.5}
+                />
                 <div>
-                  <div className="font-display text-4xl font-semibold tabular-nums text-gradient-gold">
+                  <div className="font-display text-4xl sm:text-5xl lg:text-4xl xl:text-5xl font-bold tabular-nums text-gradient-gold">
                     <CountUp value={s.value} suffix={s.suffix} />
                   </div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-ivory/60">{s.label}</div>
+                  <div className="text-xs uppercase tracking-[0.25em] text-ivory/60">{s.label}</div>
                 </div>
               </Reveal>
             );
