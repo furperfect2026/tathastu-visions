@@ -249,24 +249,24 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
             onError={() => setHeroVideoDone(true)}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/82 via-ink/48 to-ink/16" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/78 via-ink/28 to-transparent" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_18%,transparent),transparent_55%)]" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink/86 to-transparent" />
+        <div className="absolute inset-0 z-[2] bg-gradient-to-t from-ink/90 via-ink/65 to-ink/30" />
+        <div className="absolute inset-0 z-[2] bg-gradient-to-r from-ink/85 via-ink/35 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_18%,transparent),transparent_55%)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-ink/90 to-transparent" />
         <ServiceSocialLinks />
 
-        <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col justify-end px-4 pb-20 pt-28 sm:px-6 sm:pb-24 md:justify-center md:pb-0 md:pl-20 lg:pl-20">
+        <div className="relative z-[5] mx-auto flex h-full w-full max-w-7xl flex-col justify-end px-4 pb-20 pt-28 sm:px-6 sm:pb-24 md:justify-center md:pb-0 md:pl-20 lg:pl-20">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-4xl"
           >
-            <p className="eyebrow !text-primary-glow">{content.eyebrow}</p>
-            <h1 className="mt-5 break-words font-display text-[clamp(2rem,8.5vw,2.75rem)] font-medium leading-[1.04] sm:text-5xl md:text-7xl md:leading-[1.02] lg:text-[5.6rem]">
+            <p className="eyebrow !text-primary-glow drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">{content.eyebrow}</p>
+            <h1 className="mt-5 break-words font-display text-[clamp(2rem,8.5vw,2.75rem)] font-medium leading-[1.04] sm:text-5xl md:text-7xl md:leading-[1.02] lg:text-[5.6rem] drop-shadow-[0_4px_16px_rgba(0,0,0,0.55)]">
               {content.title} <span className="italic text-gradient-gold">{content.accent}</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ivory/78 md:text-lg">
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ivory/85 md:text-lg drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
               {content.subtitle}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

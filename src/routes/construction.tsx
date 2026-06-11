@@ -15,6 +15,7 @@ const content: ServicePageContent = {
   accent: "Tathastu Can Build It.",
   subtitle:
     "Residential and commercial construction in Pune shaped by structure, safety, material discipline and reliable supervision.",
+  heroVideoSrc: "/media/hero-construction.mp4",
   heroImages: [
     { src: heroInfra2, alt: "Tathastu Infra large-scale construction site at dusk with cranes" },
     { src: construction1, alt: "Tathastu Infra premium residential construction site in Pune" },
