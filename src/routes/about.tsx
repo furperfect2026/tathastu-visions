@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import founder from "@/assets/founder.jpg";
-import teamStudio from "@/assets/team-studio.jpg";
+import officeFront from "@/assets/office-front.jpg";
 import trustImage from "@/assets/realty-3.jpg";
 import luxuryImage from "@/assets/interior-1.jpg";
 import craftsmanshipImage from "@/assets/construction-1.jpg";
@@ -113,8 +113,8 @@ function AboutPage() {
               <div className="overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border">
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <img
-                    src={teamStudio}
-                    alt="Tathastu Infra studio team reviewing plans in a premium design office"
+                    src={officeFront}
+                    alt="Tathastu Infra office storefront and physical studio facade in Lohegaon, Pune"
                     loading="lazy"
                     className="h-full w-full object-cover"
                   />
