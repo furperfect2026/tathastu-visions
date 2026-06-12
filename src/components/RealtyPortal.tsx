@@ -675,7 +675,7 @@ export function RealtyPortal() {
             <Reveal>
               <div className="text-center max-w-3xl mx-auto mb-10">
                 <p className="eyebrow font-semibold">Tathastu Realty Search</p>
-                <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
+                <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl text-ink">
                   Premium Real Estate Properties in <span className="text-gradient-gold italic">{selectedCity === "All" ? "India" : selectedCity}</span>
                 </h2>
               </div>
@@ -795,7 +795,7 @@ export function RealtyPortal() {
 
             {/* Main Listings Layout (Sidebar + Results) */}
             <div className="flex items-center justify-between mb-8">
-              <h3 className="font-display text-2xl font-medium text-gradient-gold">
+              <h3 className="font-display text-2xl font-semibold text-ink">
                 Upcoming New Launches {selectedCity !== "All" && `in ${selectedCity}`}
               </h3>
               <div className="flex items-center border border-border bg-card rounded-full p-1 shadow-sm">
@@ -822,11 +822,11 @@ export function RealtyPortal() {
               {/* Left Sidebar Filter Panel */}
               <aside className="bg-card border border-border rounded-3xl p-6 space-y-6 shadow-sm sticky top-28">
                 <div>
-                  <h4 className="text-xs uppercase tracking-wider text-primary font-bold mb-3 flex items-center gap-1.5">
-                    <SlidersHorizontal className="h-3.5 w-3.5" /> Property Type
+                  <h4 className="text-xs uppercase tracking-wider text-ink font-bold mb-3 flex items-center gap-1.5">
+                    <SlidersHorizontal className="h-3.5 w-3.5 text-primary" /> Property Type
                   </h4>
                   <div className="space-y-2.5 text-sm">
-                    <label className="flex items-center gap-2 cursor-pointer text-muted-foreground hover:text-foreground">
+                    <label className="flex items-center gap-2 cursor-pointer text-ink/80 hover:text-ink font-medium">
                       <input
                         type="radio"
                         name="sidebarCategory"
@@ -836,7 +836,7 @@ export function RealtyPortal() {
                       />
                       <span>All Properties</span>
                     </label>
-                    <label className="flex items-center gap-2 cursor-pointer text-muted-foreground hover:text-foreground">
+                    <label className="flex items-center gap-2 cursor-pointer text-ink/80 hover:text-ink font-medium">
                       <input
                         type="radio"
                         name="sidebarCategory"
@@ -846,7 +846,7 @@ export function RealtyPortal() {
                       />
                       <span>Residential</span>
                     </label>
-                    <label className="flex items-center gap-2 cursor-pointer text-muted-foreground hover:text-foreground">
+                    <label className="flex items-center gap-2 cursor-pointer text-ink/80 hover:text-ink font-medium">
                       <input
                         type="radio"
                         name="sidebarCategory"
@@ -862,9 +862,9 @@ export function RealtyPortal() {
                 <hr className="border-border" />
 
                 <div>
-                  <h4 className="text-xs uppercase tracking-wider text-primary font-bold mb-3">Construction Status</h4>
+                  <h4 className="text-xs uppercase tracking-wider text-ink font-bold mb-3">Construction Status</h4>
                   <div className="space-y-2.5 text-sm">
-                    <label className="flex items-center gap-2 cursor-pointer text-muted-foreground hover:text-foreground">
+                    <label className="flex items-center gap-2 cursor-pointer text-ink/80 hover:text-ink font-medium">
                       <input
                         type="checkbox"
                         checked={sidebarStatus.readyToMove}
@@ -873,7 +873,7 @@ export function RealtyPortal() {
                       />
                       <span>Ready to Move</span>
                     </label>
-                    <label className="flex items-center gap-2 cursor-pointer text-muted-foreground hover:text-foreground">
+                    <label className="flex items-center gap-2 cursor-pointer text-ink/80 hover:text-ink font-medium">
                       <input
                         type="checkbox"
                         checked={sidebarStatus.underConstruction}
@@ -882,7 +882,7 @@ export function RealtyPortal() {
                       />
                       <span>Under Construction</span>
                     </label>
-                    <label className="flex items-center gap-2 cursor-pointer text-muted-foreground hover:text-foreground">
+                    <label className="flex items-center gap-2 cursor-pointer text-ink/80 hover:text-ink font-medium">
                       <input
                         type="checkbox"
                         checked={sidebarStatus.newLaunches}
@@ -898,7 +898,7 @@ export function RealtyPortal() {
 
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <h4 className="text-xs uppercase tracking-wider text-primary font-bold">Max Budget</h4>
+                    <h4 className="text-xs uppercase tracking-wider text-ink font-bold">Max Budget</h4>
                     <span className="text-xs font-semibold text-gradient-gold">{sidebarBudget} Cr</span>
                   </div>
                   <input
@@ -910,7 +910,7 @@ export function RealtyPortal() {
                     onChange={(e) => setSidebarBudget(Number(e.target.value))}
                     className="w-full accent-amber-400 bg-secondary h-1.5 rounded-full appearance-none cursor-pointer"
                   />
-                  <div className="flex justify-between text-[10px] text-muted-foreground mt-1">
+                  <div className="flex justify-between text-[10px] text-ink/60 mt-1 font-medium">
                     <span>1 Cr</span>
                     <span>5 Cr</span>
                     <span>10 Cr+</span>
@@ -920,12 +920,12 @@ export function RealtyPortal() {
                 <hr className="border-border" />
 
                 <div>
-                  <h4 className="text-xs uppercase tracking-wider text-primary font-bold mb-3">Type of Property</h4>
+                  <h4 className="text-xs uppercase tracking-wider text-ink font-bold mb-3">Type of Property</h4>
                   <div className="space-y-2.5 text-sm">
                     {["Plot", "Retail Shop", "Commercial Office", "Food Court", "Showroom"].map((type) => {
                       const isChecked = sidebarPropertyType.includes(type);
                       return (
-                        <label key={type} className="flex items-center gap-2 cursor-pointer text-muted-foreground hover:text-foreground">
+                        <label key={type} className="flex items-center gap-2 cursor-pointer text-ink/80 hover:text-ink font-medium">
                           <input
                             type="checkbox"
                             checked={isChecked}
@@ -951,7 +951,7 @@ export function RealtyPortal() {
                 {filteredProperties.length === 0 ? (
                   <div className="text-center py-20 bg-card border border-border rounded-3xl">
                     <Info className="h-12 w-12 text-primary mx-auto mb-4" />
-                    <h4 className="font-display text-xl font-semibold">No Properties Found</h4>
+                    <h4 className="font-display text-xl font-semibold text-ink">No Properties Found</h4>
                     <p className="mt-2 text-muted-foreground max-w-md mx-auto">
                       We couldn't find any premium properties matching your exact search. Try resetting filters or changing the search queries.
                     </p>
@@ -1178,7 +1178,7 @@ export function RealtyPortal() {
               <div className="mt-16 border-t border-border/40 pt-12">
                 <div className="max-w-3xl mb-2">
                   <p className="eyebrow font-semibold">Location Map</p>
-                  <h3 className="mt-2 font-display text-2xl font-medium sm:text-3xl">
+                  <h3 className="mt-2 font-display text-2xl font-semibold text-ink sm:text-3xl">
                     Explore Pune Neighborhoods
                   </h3>
                   <p className="text-sm text-muted-foreground mt-2">
@@ -1367,7 +1367,7 @@ export function RealtyPortal() {
                       exit={{ opacity: 0 }}
                       className="space-y-6"
                     >
-                      <h3 className="font-display text-2xl font-semibold text-gradient-gold">
+                      <h3 className="font-display text-2xl font-semibold text-ink">
                         Highlights of {selectedProperty.title}
                       </h3>
                       <ul className="space-y-4">
@@ -1391,7 +1391,7 @@ export function RealtyPortal() {
                       exit={{ opacity: 0 }}
                       className="space-y-4"
                     >
-                      <h3 className="font-display text-2xl font-semibold text-gradient-gold">
+                      <h3 className="font-display text-2xl font-semibold text-ink">
                         Project Overview
                       </h3>
                       <p className="text-sm leading-relaxed text-muted-foreground">
@@ -1418,7 +1418,7 @@ export function RealtyPortal() {
                       exit={{ opacity: 0 }}
                       className="space-y-4"
                     >
-                      <h3 className="font-display text-2xl font-semibold text-gradient-gold font-semibold">
+                      <h3 className="font-display text-2xl font-semibold text-ink">
                         Pricing & Floor Plans
                       </h3>
                       <div className="space-y-3">
@@ -1479,7 +1479,7 @@ export function RealtyPortal() {
               {/* Right Column: Callback & Scheduling Form */}
               <aside className="bg-card border border-border rounded-3xl p-6 md:p-8 space-y-6 shadow-luxe sticky top-28">
                 <div>
-                  <h4 className="font-display text-2xl font-bold">Instant Call Back</h4>
+                  <h4 className="font-display text-2xl font-bold text-ink">Instant Call Back</h4>
                   <p className="text-xs text-muted-foreground mt-1">
                     Or arrange a detailed site visit with our team.
                   </p>
@@ -1551,7 +1551,7 @@ export function RealtyPortal() {
             </button>
 
             <p className="eyebrow !text-primary-glow">Callback Request</p>
-            <h4 className="font-display text-2xl font-bold mt-2">
+            <h4 className="font-display text-2xl font-bold mt-2 text-ink">
               Instant Callback for {callbackProperty.title}
             </h4>
             <p className="text-xs text-muted-foreground mt-1">
@@ -1634,7 +1634,7 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
     <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-6 mt-8">
       {/* Sidebar List */}
       <div className="bg-card border border-border rounded-3xl p-5 max-h-[500px] overflow-y-auto space-y-3 [scrollbar-width:thin] focus:outline-none">
-        <h4 className="text-xs uppercase tracking-wider text-primary font-bold mb-4">
+        <h4 className="text-xs uppercase tracking-wider text-ink font-bold mb-4">
           Properties on Map ({properties.length})
         </h4>
         {properties.map((p) => {
