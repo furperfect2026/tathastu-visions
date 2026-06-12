@@ -34,7 +34,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import guaranteeAssuranceImage from "@/assets/guarantee-assurance.png";
-import guaranteeMoneySafetyImage from "@/assets/guarantee-money-safety.png";
+import guaranteeMoneySafetyImage from "@/assets/guarantee-money-safety.jpg";
 import guaranteeOnTimeImage from "@/assets/guarantee-on-time-delivery.png";
 import guaranteeQualityImage from "@/assets/guarantee-quality-assurance.png";
 import guaranteeTransparencyImage from "@/assets/guarantee-transparency.png";
