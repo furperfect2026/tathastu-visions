@@ -6,7 +6,7 @@ import {
   MapPin,
   Heart,
   Star,
-  Map as MapIcon,
+  List,
   Grid,
   Home,
   Building,
@@ -463,7 +463,7 @@ export function RealtyPortal() {
   const [selectedCity, setSelectedCity] = useState("Pune");
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [selectedNeighborhood, setSelectedNeighborhood] = useState<string | null>(null);
-  const [viewMode, setViewMode] = useState<"grid" | "split">("split");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [hoveredPropertyId, setHoveredPropertyId] = useState<string | null>(null);
   
   // Left sidebar filter states
@@ -808,10 +808,10 @@ export function RealtyPortal() {
                 </Button>
                 <Button
                   variant="ghost"
-                  onClick={() => setViewMode("split")}
-                  className={`p-2 rounded-full h-8 w-8 ${viewMode === "split" ? "bg-gradient-gold text-ink" : "text-muted-foreground"}`}
+                  onClick={() => setViewMode("list")}
+                  className={`p-2 rounded-full h-8 w-8 ${viewMode === "list" ? "bg-gradient-gold text-ink" : "text-muted-foreground"}`}
                 >
-                  <MapIcon className="h-4 w-4" />
+                  <List className="h-4 w-4" />
                 </Button>
               </div>
             </div>
@@ -957,22 +957,21 @@ export function RealtyPortal() {
                     </p>
                   </div>
                 ) : (
-                  <div className="flex flex-col xl:flex-row gap-6 items-start relative">
-                    <div className={`flex-1 grid gap-6 w-full ${viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 xl:grid-cols-3" : "grid-cols-1"}`}>
-                      {filteredProperties.map((p) => {
-                        const activeImgIndex = carouselIndices[p.id] || 0;
-                        const isFav = favorites.includes(p.id);
+                  <div className={`grid gap-6 ${viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 xl:grid-cols-3" : "grid-cols-1"}`}>
+                    {filteredProperties.map((p) => {
+                      const activeImgIndex = carouselIndices[p.id] || 0;
+                      const isFav = favorites.includes(p.id);
 
-                        // Standard Card for Grid View
-                        if (viewMode === "grid") {
-                          return (
-                            <motion.article
-                              key={p.id}
-                              onMouseEnter={() => setHoveredPropertyId(p.id)}
-                              onMouseLeave={() => setHoveredPropertyId(null)}
-                              className="group flex flex-col overflow-hidden rounded-3xl bg-card border border-border hover:border-amber-400/30 hover:shadow-luxe transition-all duration-300"
-                              layout
-                            >
+                      // Standard Card for Grid View
+                      if (viewMode === "grid") {
+                        return (
+                          <motion.article
+                            key={p.id}
+                            onMouseEnter={() => setHoveredPropertyId(p.id)}
+                            onMouseLeave={() => setHoveredPropertyId(null)}
+                            className="group flex flex-col overflow-hidden rounded-3xl bg-card border border-border hover:border-amber-400/30 hover:shadow-luxe transition-all duration-300"
+                            layout
+                          >
                             <div className="relative aspect-[1.4/1] overflow-hidden bg-slate-900 shrink-0">
                               <img
                                 src={p.images[activeImgIndex]}
@@ -1059,15 +1058,15 @@ export function RealtyPortal() {
                         );
                       }
 
-                        // Landscape Card for Split View (looks like the second user screenshot)
-                        return (
-                          <motion.article
-                            key={p.id}
-                            onMouseEnter={() => setHoveredPropertyId(p.id)}
-                            onMouseLeave={() => setHoveredPropertyId(null)}
-                            className="group flex flex-col md:flex-row overflow-hidden rounded-3xl bg-card border border-border hover:border-amber-400/30 hover:shadow-luxe transition-all duration-300"
-                            layout
-                          >
+                      // Landscape Card for Split View (looks like the second user screenshot)
+                      return (
+                        <motion.article
+                          key={p.id}
+                          onMouseEnter={() => setHoveredPropertyId(p.id)}
+                          onMouseLeave={() => setHoveredPropertyId(null)}
+                          className="group flex flex-col md:flex-row overflow-hidden rounded-3xl bg-card border border-border hover:border-amber-400/30 hover:shadow-luxe transition-all duration-300"
+                          layout
+                        >
                           {/* Image Left Panel */}
                           <div className="relative w-full md:w-72 aspect-[1.3/1] md:aspect-auto overflow-hidden bg-slate-900 shrink-0">
                             <img
@@ -1167,41 +1166,31 @@ export function RealtyPortal() {
                             </div>
                           </div>
                         </motion.article>
-                        );
-                      })}
-                    </div>
-
-                    {/* Sticky Map Panel — only rendered in split mode */}
-                    {viewMode === "split" && (
-                      <div className="hidden xl:block w-[38%] sticky top-28 h-[calc(100vh-160px)] min-h-[500px] rounded-3xl border border-border bg-[#0a1622] overflow-hidden shadow-luxe shrink-0">
-                        <iframe
-                          title="Interactive Map showcasing property locations"
-                          width="100%"
-                          height="100%"
-                          style={{ border: 0 }}
-                          loading="lazy"
-                          src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                            (hoveredProperty || filteredProperties[0])
-                              ? `${(hoveredProperty || filteredProperties[0]).title}, ${(hoveredProperty || filteredProperties[0]).location}, ${(hoveredProperty || filteredProperties[0]).city}`
-                              : "Pune, Maharashtra"
-                          )}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-                        />
-                        {(hoveredProperty || filteredProperties[0]) && (
-                          <div className="absolute bottom-4 left-4 right-4 bg-ink/80 backdrop-blur border border-ivory/15 p-4 rounded-2xl text-ivory">
-                            <p className="text-[9px] uppercase tracking-widest text-primary-glow font-bold">Showing Location</p>
-                            <h5 className="font-semibold text-sm mt-0.5">{(hoveredProperty || filteredProperties[0]).title}</h5>
-                            <p className="text-xs text-ivory/60 flex items-center gap-1 mt-1">
-                              <MapPin className="h-3 w-3 text-primary shrink-0" />
-                              {(hoveredProperty || filteredProperties[0]).location}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    )}
+                      );
+                    })}
                   </div>
                 )}
               </div>
             </div>
+
+            {/* Explore Pune Neighborhoods Map Section */}
+            <Reveal delay={0.1}>
+              <div className="mt-16 border-t border-border/40 pt-12">
+                <div className="max-w-3xl mb-2">
+                  <p className="eyebrow font-semibold">Location Map</p>
+                  <h3 className="mt-2 font-display text-2xl font-medium sm:text-3xl">
+                    Explore Pune Neighborhoods
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    Browse all our premium residential projects, commercial spaces, and new launches across growth corridors in Pune East, West, North, and South.
+                  </p>
+                </div>
+                <InteractivePuneMap 
+                  properties={filteredProperties.length > 0 ? filteredProperties : allProperties} 
+                  onSelectProperty={handleOpenDetail} 
+                />
+              </div>
+            </Reveal>
           </>
         )}
 
@@ -1606,5 +1595,181 @@ export function RealtyPortal() {
         </div>
       )}
     </section>
+  );
+}
+
+interface InteractivePuneMapProps {
+  properties: Property[];
+  onSelectProperty: (p: Property) => void;
+}
+
+function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMapProps) {
+  const [hoveredPinId, setHoveredPinId] = useState<string | null>(null);
+  const [selectedPinId, setSelectedPinId] = useState<string | null>(null);
+
+  const getCoordinates = (p: Property) => {
+    if (p.x !== 50 || p.y !== 50) {
+      return { x: p.x, y: p.y };
+    }
+    const loc = (p.location + " " + p.neighborhood).toLowerCase();
+    if (loc.includes("hinjewadi")) return { x: 15, y: 32 };
+    if (loc.includes("baner")) return { x: 25, y: 40 };
+    if (loc.includes("pashan")) return { x: 28, y: 48 };
+    if (loc.includes("kothrud")) return { x: 30, y: 58 };
+    if (loc.includes("shivajinagar") || loc.includes("central")) return { x: 45, y: 50 };
+    if (loc.includes("dhanori")) return { x: 58, y: 35 };
+    if (loc.includes("lohegaon")) return { x: 60, y: 32 };
+    if (loc.includes("charholi")) return { x: 48, y: 24 };
+    if (loc.includes("manjri")) return { x: 76, y: 48 };
+    if (loc.includes("hadapsar")) return { x: 72, y: 54 };
+    if (loc.includes("kondhwa")) return { x: 52, y: 72 };
+    if (loc.includes("undri")) return { x: 52, y: 78 };
+    return { x: 50, y: 50 };
+  };
+
+  const activePinId = hoveredPinId || selectedPinId;
+  const activeProperty = properties.find((p) => p.id === activePinId);
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-6 mt-8">
+      {/* Sidebar List */}
+      <div className="bg-card border border-border rounded-3xl p-5 max-h-[500px] overflow-y-auto space-y-3 [scrollbar-width:thin] focus:outline-none">
+        <h4 className="text-xs uppercase tracking-wider text-primary font-bold mb-4">
+          Properties on Map ({properties.length})
+        </h4>
+        {properties.map((p) => {
+          const isActive = p.id === activePinId;
+          return (
+            <button
+              key={p.id}
+              onClick={() => setSelectedPinId(p.id === selectedPinId ? null : p.id)}
+              onMouseEnter={() => setHoveredPinId(p.id)}
+              onMouseLeave={() => setHoveredPinId(null)}
+              className={`w-full text-left p-3.5 rounded-2xl border transition-all flex items-start gap-3 ${
+                isActive
+                  ? "bg-[#0b1f35] border-amber-400/80 shadow-gold font-medium"
+                  : "bg-card/50 border-border/60 hover:border-amber-400/40 hover:bg-card"
+              }`}
+            >
+              <div className="relative h-12 w-12 rounded-xl overflow-hidden bg-slate-900 shrink-0 mt-0.5">
+                <img src={p.images[0]} alt={p.title} className="h-full w-full object-cover" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h5 className="font-semibold text-xs text-foreground truncate">{p.title}</h5>
+                <p className="text-[10px] text-muted-foreground mt-0.5 truncate flex items-center gap-1">
+                  <MapPin className="h-3 w-3 text-primary shrink-0" />
+                  {p.location.split(",")[0]}
+                </p>
+                <div className="mt-1.5 flex items-center justify-between gap-2">
+                  <span className="text-[10px] text-gradient-gold font-bold">₹{p.price.split(" ")[0]}</span>
+                  <span className="text-[9px] bg-secondary px-1.5 py-0.5 rounded text-muted-foreground uppercase font-semibold">
+                    {p.type.split(" ")[0]}
+                  </span>
+                </div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Map Canvas */}
+      <div className="relative h-[500px] rounded-3xl border border-border bg-[#05101a] overflow-hidden shadow-luxe">
+        {/* SVG Pune Schematic Map */}
+        <svg className="absolute inset-0 w-full h-full text-slate-800 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+          {/* Grid lines */}
+          <pattern id="map-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.08" className="text-ivory/5" />
+          </pattern>
+          <rect width="100" height="100" fill="url(#map-grid)" />
+
+          {/* Styled rivers (Mula & Mutha confluence) */}
+          <path d="M -10,30 C 15,25 25,35 45,45" fill="none" stroke="#005bb7" strokeWidth="1.2" className="opacity-40" />
+          <path d="M 10,110 C 20,80 30,65 45,45" fill="none" stroke="#005bb7" strokeWidth="1.2" className="opacity-40" />
+          <path d="M 45,45 C 55,42 70,48 110,48" fill="none" stroke="#005bb7" strokeWidth="1.6" className="opacity-45" />
+
+          {/* Highways */}
+          <path d="M 15,-10 L 18,30 C 20,50 25,70 35,110" fill="none" stroke="currentColor" strokeDasharray="1,2" strokeWidth="0.25" className="text-ivory/15" />
+          <path d="M 45,45 L 60,32 L 110,10" fill="none" stroke="currentColor" strokeDasharray="1,2" strokeWidth="0.25" className="text-ivory/15" />
+          <path d="M 45,45 L 75,55 L 110,65" fill="none" stroke="currentColor" strokeDasharray="1,2" strokeWidth="0.25" className="text-ivory/15" />
+
+          {/* Sector Labels */}
+          <text x="12" y="22" className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider">PUNE WEST (IT HUB)</text>
+          <text x="45" y="15" className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider">PUNE NORTH</text>
+          <text x="75" y="38" className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider">PUNE EAST</text>
+          <text x="40" y="88" className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider">PUNE SOUTH</text>
+          <text x="36" y="58" className="text-[2px] font-bold fill-muted-foreground/45 tracking-wider">KOTHRUD</text>
+          <text x="46" y="47" className="text-[2px] font-bold fill-muted-foreground/45 tracking-wider">SHIVAJINAGAR</text>
+        </svg>
+
+        {/* Property Pins */}
+        {properties.map((p) => {
+          const { x, y } = getCoordinates(p);
+          const isActive = p.id === activePinId;
+          return (
+            <div
+              key={p.id}
+              className="absolute -translate-x-1/2 -translate-y-1/2 transition-all duration-300"
+              style={{ left: `${x}%`, top: `${y}%`, zIndex: isActive ? 50 : 10 }}
+            >
+              <button
+                onClick={() => setSelectedPinId(p.id === selectedPinId ? null : p.id)}
+                onMouseEnter={() => setHoveredPinId(p.id)}
+                onMouseLeave={() => setHoveredPinId(null)}
+                className={`relative flex items-center justify-center h-8 w-8 rounded-full border transition-all ${
+                  isActive
+                    ? "bg-gradient-gold border-amber-400 text-ink scale-110 shadow-gold"
+                    : "bg-ink/75 border-border text-primary hover:border-amber-400 hover:scale-105"
+                }`}
+              >
+                {isActive && (
+                  <span className="absolute inset-0 rounded-full bg-amber-400/40 animate-ping pointer-events-none" />
+                )}
+                <MapPin className={`h-4 w-4 ${isActive ? "fill-current" : ""}`} />
+              </button>
+            </div>
+          );
+        })}
+
+        {/* Popup Card */}
+        {activeProperty && (
+          <div
+            className="absolute bottom-6 left-6 right-6 md:left-auto md:right-6 md:w-80 bg-card/95 backdrop-blur border border-border shadow-luxe p-4 rounded-2xl z-[60] flex items-start gap-4 transition-all duration-300 animate-in fade-in slide-in-from-bottom-2 duration-300"
+          >
+            <div className="relative h-16 w-16 rounded-xl overflow-hidden bg-slate-900 shrink-0">
+              <img src={activeProperty.images[0]} alt={activeProperty.title} className="h-full w-full object-cover" />
+            </div>
+            <div className="min-w-0 flex-1 relative">
+              <button
+                onClick={() => {
+                  setSelectedPinId(null);
+                  setHoveredPinId(null);
+                }}
+                className="absolute -top-1 -right-1 text-muted-foreground hover:text-foreground p-1"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+              <span className="inline-block rounded-full bg-ink/70 px-2 py-0.5 text-[8px] font-semibold uppercase tracking-wider text-primary-glow border border-primary/20">
+                {activeProperty.type}
+              </span>
+              <h5 className="font-semibold text-sm text-foreground mt-1 truncate pr-5">{activeProperty.title}</h5>
+              <p className="text-xs text-muted-foreground truncate flex items-center gap-1 mt-0.5">
+                <MapPin className="h-3 w-3 text-primary shrink-0" />
+                {activeProperty.location}
+              </p>
+              <div className="mt-2.5 flex items-center justify-between gap-2">
+                <span className="text-sm font-bold text-gradient-gold">₹{activeProperty.price}</span>
+                <Button
+                  size="sm"
+                  onClick={() => onSelectProperty(activeProperty)}
+                  className="rounded-full bg-[#005bb7] hover:bg-[#004a96] text-white px-3 py-1 h-auto text-[10px] font-semibold"
+                >
+                  View Details
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
