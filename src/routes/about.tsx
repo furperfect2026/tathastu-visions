@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import founder from "@/assets/founder.jpg";
-import cofounder from "@/assets/cofounder.png";
 import officeFront from "@/assets/office-front.jpg";
 import trustImage from "@/assets/realty-3.jpg";
 import luxuryImage from "@/assets/interior-1.jpg";
@@ -66,29 +65,40 @@ function AboutPage() {
               </Reveal>
             </div>
 
-            {/* Founder 2: Harsh */}
+            {/* Founder 2: Sneha */}
             <div className="grid items-center gap-8 sm:grid-cols-[1fr_1.2fr] md:grid-cols-1 lg:grid-cols-[1fr_1.2fr]">
               <Reveal>
                 <motion.div
                   whileHover={{ rotate: 1, scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 120 }}
-                  className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-luxe"
+                  className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-luxe bg-[#0c1a2e]/40 border border-border flex flex-col items-center justify-center text-muted-foreground"
                 >
-                  <img src={cofounder} alt="Harsh, Co-Founder of Tathastu Infra" loading="lazy" className="h-full w-full object-cover" />
-                  <div className="absolute -left-3 -top-3 h-full w-full rounded-3xl border border-primary/40" />
+                  <div className="absolute inset-0 opacity-10 pointer-events-none">
+                    <svg className="w-full h-full text-slate-800" viewBox="0 0 100 100" preserveAspectRatio="none">
+                      <pattern id="placeholder-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.2" className="text-ivory" />
+                      </pattern>
+                      <rect width="100" height="100" fill="url(#placeholder-grid)" />
+                    </svg>
+                  </div>
+                  <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
+                    <Users className="h-8 w-8" />
+                  </div>
+                  <p className="mt-4 font-display text-xs uppercase tracking-wider text-gradient-gold font-semibold">Tathastu Leadership</p>
+                  <div className="absolute -left-3 -top-3 h-full w-full rounded-3xl border border-primary/40 pointer-events-none" />
                 </motion.div>
               </Reveal>
               <Reveal delay={0.1}>
                 <p className="eyebrow">Co-Founder</p>
-                <h2 className="mt-3 font-display text-3xl font-medium">Harsh</h2>
+                <h2 className="mt-3 font-display text-3xl font-medium">Sneha</h2>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  Co-leading operations and execution at Tathastu Infra, supervising engineering excellence, vendor planning, and site scheduling to match quality standards.
+                  Co-leading business operations and strategy at Tathastu Infra, guiding client relationship development, design management, and organizational growth.
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Managing client delivery workflows and coordination from Lohegaon studio to ensure client budgets, material clarity and supervisors stay aligned end to end.
+                  Supervising client integration, financial planning, and project management workflows to ensure client budgets, material selections, and project schedules stay fully aligned.
                 </p>
                 <blockquote className="mt-6 border-l-2 border-primary pl-4 font-display text-base italic text-foreground">
-                  "Shaping spaces with integrity, precision and structure."
+                  "Translating design concepts and client dreams into lasting, trusted realities."
                 </blockquote>
               </Reveal>
             </div>
