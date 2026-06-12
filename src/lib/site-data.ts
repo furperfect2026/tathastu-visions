@@ -88,11 +88,11 @@ export const projects = [
     id: "p1",
     category: "realty",
     title: "Pride World City",
-    location: "Lohegaon, Pune",
+    location: "Charholi, Pune East",
     year: 2024,
     image: realtyProject1,
     blurb: "Premium residential community guidance for buyers exploring Lohegaon and nearby Pune growth corridors.",
-    priceLabel: "Price on request",
+    priceLabel: "₹ 69.99 L Onwards",
   },
   {
     id: "p2",

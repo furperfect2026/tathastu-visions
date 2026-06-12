@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePublicProjects, type PublicProject } from "@/hooks/usePublicProjects";
 import {
   Search,
   MapPin,
@@ -316,6 +317,67 @@ const realtyProperties: Property[] = [
       { bhk: "1 BHK", size: "650 Sq.ft", price: "₹ 55 L" },
       { bhk: "2 BHK", size: "1050 Sq.ft", price: "₹ 95 L" }
     ]
+  },
+  {
+    id: "rp9",
+    title: "Godrej Eternia",
+    location: "Shivajinagar, Pune Central",
+    neighborhood: "Pune Central",
+    city: "Pune",
+    price: "Price on Request",
+    priceVal: 0,
+    type: "Ready to Move",
+    category: "Commercial",
+    rating: 4.8,
+    lat: 18.5308,
+    lng: 73.8475,
+    x: 48,
+    y: 52,
+    images: [realty3, realty4, constructionProject3],
+    beds: "Offices & Retail Shops",
+    area: "Area on Request",
+    tagline: "Retail Shops & Offices in Old Mumbai Road",
+    description: "Godrej Eternia in Shivajinagar, Pune Central comprises a wide selection of premium retail spaces and modern corporate offices. G+7 storey project spread across 5 acres with state-of-the-art facilities.",
+    highlights: [
+      "Old Mumbai Road highway frontage",
+      "Shivajinagar Metro Station (3 mins walk)",
+      "Pune Railway Station (10 mins drive)"
+    ],
+    amenities: ["Cafeteria", "Conference Room", "Air Conditioned", "Intercom", "Power Backup"],
+    configs: [
+      { bhk: "Commercial Office", size: "Area on Request", price: "Price on Request" },
+      { bhk: "Retail Shop", size: "Area on Request", price: "Price on Request" }
+    ]
+  },
+  {
+    id: "rp10",
+    title: "Kolte Patil Three Jewels",
+    location: "Tilekar Nagar, Kondhwa, Pune",
+    neighborhood: "Pune South",
+    city: "Pune",
+    price: "Price on Request",
+    priceVal: 0,
+    type: "Ready to Move",
+    category: "Commercial",
+    rating: 4.7,
+    lat: 18.4575,
+    lng: 73.8908,
+    x: 52,
+    y: 72,
+    images: [realty4, realty2, constructionProject3],
+    beds: "Retail Shops",
+    area: "Area on Request",
+    tagline: "Retail Shops in Tilekar Nagar, Kondhwa",
+    description: "Kolte Patil Three Jewels in Kondhwa, Pune South is thoughtfully designed to cater to modern retail businesses. Offering excellent visibility, wide walkways, and robust infrastructure in a high-footfall zone.",
+    highlights: [
+      "High density residential neighborhood",
+      "Katraj-Kondhwa Road connectivity (5 mins)",
+      "Excellent road frontage"
+    ],
+    amenities: ["Conference Room", "Air Conditioned", "Intercom", "Internet / Wi-Fi", "Ample Parking"],
+    configs: [
+      { bhk: "Retail Shop", size: "Area on Request", price: "Price on Request" }
+    ]
   }
 ];
 
@@ -325,11 +387,84 @@ const neighborhoodsByCity: Record<string, string[]> = {
   Bangalore: ["Whitefield", "Indiranagar", "Koramangala", "Hebbal", "Electronic City"]
 };
 
+function parseDynamicRealtyProject(p: PublicProject): Property {
+  let description = p.blurb || "";
+  let neighborhood = "Pune East";
+  let beds = "";
+  let area = "";
+  let tagline = "";
+  let highlights: string[] = [];
+  let amenities: string[] = [];
+  let configs: PropertyConfig[] = [];
+  let realtyType = "Under Construction";
+  let realtyCategory = "Residential";
+
+  if (p.blurb && p.blurb.trim().startsWith("{")) {
+    try {
+      const parsed = JSON.parse(p.blurb);
+      if (parsed.isRealtyJson) {
+        description = parsed.description || "";
+        neighborhood = parsed.neighborhood || "Pune East";
+        beds = parsed.beds || "";
+        area = parsed.area || "";
+        tagline = parsed.tagline || "";
+        highlights = parsed.highlights || [];
+        amenities = parsed.amenities || [];
+        configs = parsed.configs || [];
+        realtyType = parsed.realtyType || "Under Construction";
+        realtyCategory = parsed.realtyCategory || "Residential";
+      }
+    } catch (e) {
+      console.error("Error parsing dynamic project description", e);
+    }
+  }
+
+  // Parse price label into a numeric value for filtering
+  let priceVal = 5000000; // default 50L
+  if (p.priceLabel) {
+    const rawPrice = p.priceLabel.toLowerCase();
+    if (rawPrice.includes("cr")) {
+      const match = rawPrice.match(/[\d.]+/);
+      if (match) priceVal = parseFloat(match[0]) * 10000000;
+    } else if (rawPrice.includes("l")) {
+      const match = rawPrice.match(/[\d.]+/);
+      if (match) priceVal = parseFloat(match[0]) * 100000;
+    }
+  }
+
+  return {
+    id: p.id,
+    title: p.title,
+    location: p.location,
+    neighborhood,
+    city: "Pune", // default
+    price: p.priceLabel || "Price on Request",
+    priceVal,
+    type: realtyType,
+    category: realtyCategory as "Residential" | "Commercial",
+    rating: 4.8,
+    lat: 18.5204,
+    lng: 73.8567,
+    x: 50,
+    y: 50,
+    images: p.galleryImages && p.galleryImages.length ? [p.image, ...p.galleryImages] : [p.image],
+    beds,
+    area,
+    tagline,
+    description,
+    highlights,
+    amenities,
+    configs
+  };
+}
+
 export function RealtyPortal() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCity, setSelectedCity] = useState("Pune");
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [selectedNeighborhood, setSelectedNeighborhood] = useState<string | null>(null);
+  const [viewMode, setViewMode] = useState<"grid" | "split">("split");
+  const [hoveredPropertyId, setHoveredPropertyId] = useState<string | null>(null);
   
   // Left sidebar filter states
   const [sidebarCategory, setSidebarCategory] = useState<"All" | "Residential" | "Commercial">("All");
@@ -338,6 +473,64 @@ export function RealtyPortal() {
     underConstruction: false,
     newLaunches: false
   });
+
+  const { projects: dbProjects } = usePublicProjects("realty");
+
+  const allProperties = useMemo(() => {
+    const parsedDb = dbProjects.map(parseDynamicRealtyProject).filter(Boolean);
+    const dbTitles = new Set(parsedDb.map((p) => p.title.toLowerCase()));
+    const filteredFallback = realtyProperties.filter((p) => !dbTitles.has(p.title.toLowerCase()));
+    return [...parsedDb, ...filteredFallback];
+  }, [dbProjects]);
+
+  const hoveredProperty = useMemo(() => {
+    return allProperties.find((p) => p.id === hoveredPropertyId) || null;
+  }, [hoveredPropertyId, allProperties]);
+
+  // Handle URL query parameters for deep linking
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const typeParam = params.get("type"); // e.g. "Commercial", "Residential", "Under Construction", "Ready to Move"
+    const statusParam = params.get("status"); // e.g. "readyToMove", "underConstruction", "newLaunches"
+    const cityParam = params.get("city");
+    const neighborhoodParam = params.get("neighborhood");
+
+    if (typeParam) {
+      setSelectedType(typeParam);
+      if (typeParam === "Commercial") {
+        setSidebarCategory("Commercial");
+      } else if (typeParam === "Residential") {
+        setSidebarCategory("Residential");
+      }
+    }
+    if (statusParam) {
+      if (statusParam === "underConstruction" || statusParam === "Under Construction") {
+        setSidebarStatus((prev) => ({ ...prev, underConstruction: true }));
+        setSelectedType("Under Construction");
+      } else if (statusParam === "readyToMove" || statusParam === "Ready to Move") {
+        setSidebarStatus((prev) => ({ ...prev, readyToMove: true }));
+        setSelectedType("Ready to Move");
+      } else if (statusParam === "newLaunches" || statusParam === "Upcoming New Launches") {
+        setSidebarStatus((prev) => ({ ...prev, newLaunches: true }));
+        setSelectedType("Under Construction");
+      }
+    }
+    if (cityParam) {
+      setSelectedCity(cityParam);
+    }
+    if (neighborhoodParam) {
+      setSelectedNeighborhood(neighborhoodParam);
+    }
+
+    if (typeParam || statusParam || neighborhoodParam) {
+      setTimeout(() => {
+        const portal = document.getElementById("realty-portal");
+        if (portal) {
+          portal.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 500);
+    }
+  }, []);
   const [sidebarBudget, setSidebarBudget] = useState(10); // in Crores
   const [sidebarPropertyType, setSidebarPropertyType] = useState<string[]>([]);
 
@@ -392,7 +585,7 @@ export function RealtyPortal() {
   };
 
   const filteredProperties = useMemo(() => {
-    return realtyProperties.filter((p) => {
+    return allProperties.filter((p) => {
       // Filter by city
       if (selectedCity !== "All" && p.city !== selectedCity) return false;
 
@@ -420,7 +613,25 @@ export function RealtyPortal() {
 
       // Sidebar Budget
       const maxBudgetVal = sidebarBudget * 10000000; // convert to Rupees
-      if (p.priceVal > maxBudgetVal) return false;
+      if (p.priceVal > 0 && p.priceVal > maxBudgetVal) return false;
+
+      // Filter by property sub-type (Plot, Retail Shop, Commercial Office, Food Court, Showroom)
+      if (sidebarPropertyType.length > 0) {
+        const matchesType = sidebarPropertyType.some((type) => {
+          const t = type.toLowerCase();
+          const bedsLower = p.beds.toLowerCase();
+          const titleLower = p.title.toLowerCase();
+          const descLower = p.description.toLowerCase();
+          
+          if (t === "plot" && (bedsLower.includes("plot") || titleLower.includes("plot"))) return true;
+          if (t === "retail shop" && (bedsLower.includes("shop") || titleLower.includes("shop"))) return true;
+          if (t === "commercial office" && (bedsLower.includes("office") || titleLower.includes("office"))) return true;
+          if (t === "food court" && (bedsLower.includes("food") || titleLower.includes("food") || descLower.includes("food"))) return true;
+          if (t === "showroom" && (bedsLower.includes("showroom") || titleLower.includes("showroom"))) return true;
+          return false;
+        });
+        if (!matchesType) return false;
+      }
 
       // Filter by search query
       if (searchQuery.trim() !== "") {
@@ -434,13 +645,18 @@ export function RealtyPortal() {
 
       return true;
     });
-  }, [selectedCity, selectedType, selectedNeighborhood, searchQuery, sidebarCategory, sidebarStatus, sidebarBudget]);
+  }, [allProperties, selectedCity, selectedType, selectedNeighborhood, searchQuery, sidebarCategory, sidebarStatus, sidebarBudget, sidebarPropertyType]);
+
+  const residentialCount = allProperties.filter((p) => p.category === "Residential").length;
+  const commercialCount = allProperties.filter((p) => p.category === "Commercial").length;
+  const underConstructionCount = allProperties.filter((p) => p.type === "Under Construction").length;
+  const readyToMoveCount = allProperties.filter((p) => p.type === "Ready to Move").length;
 
   const categories = [
-    { label: "Residential Properties", type: "Residential", icon: Home, count: "7 properties" },
-    { label: "Commercial Properties", type: "Commercial", icon: Building, count: "1 property" },
-    { label: "Under Construction", type: "Under Construction", icon: Wrench, count: "5 properties" },
-    { label: "Ready to Move", type: "Ready to Move", icon: CheckSquare, count: "3 properties" },
+    { label: "Residential Properties", type: "Residential", icon: Home, count: `${residentialCount} properties` },
+    { label: "Commercial Properties", type: "Commercial", icon: Building, count: `${commercialCount} properties` },
+    { label: "Under Construction", type: "Under Construction", icon: Wrench, count: `${underConstructionCount} properties` },
+    { label: "Ready to Move", type: "Ready to Move", icon: CheckSquare, count: `${readyToMoveCount} properties` },
   ];
 
   const handleOpenDetail = (p: Property) => {
@@ -700,6 +916,34 @@ export function RealtyPortal() {
                     <span>10 Cr+</span>
                   </div>
                 </div>
+
+                <hr className="border-border" />
+
+                <div>
+                  <h4 className="text-xs uppercase tracking-wider text-primary font-bold mb-3">Type of Property</h4>
+                  <div className="space-y-2.5 text-sm">
+                    {["Plot", "Retail Shop", "Commercial Office", "Food Court", "Showroom"].map((type) => {
+                      const isChecked = sidebarPropertyType.includes(type);
+                      return (
+                        <label key={type} className="flex items-center gap-2 cursor-pointer text-muted-foreground hover:text-foreground">
+                          <input
+                            type="checkbox"
+                            checked={isChecked}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setSidebarPropertyType([...sidebarPropertyType, type]);
+                              } else {
+                                setSidebarPropertyType(sidebarPropertyType.filter((t) => t !== type));
+                              }
+                            }}
+                            className="h-4 w-4 border-border rounded text-primary focus:ring-primary"
+                          />
+                          <span>{type}</span>
+                        </label>
+                      );
+                    })}
+                  </div>
+                </div>
               </aside>
 
               {/* Right Side: Properties Listings */}
@@ -713,19 +957,22 @@ export function RealtyPortal() {
                     </p>
                   </div>
                 ) : (
-                  <div className={`grid gap-6 ${viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 xl:grid-cols-3" : "grid-cols-1"}`}>
-                    {filteredProperties.map((p) => {
-                      const activeImgIndex = carouselIndices[p.id] || 0;
-                      const isFav = favorites.includes(p.id);
+                  <div className="flex flex-col xl:flex-row gap-6 items-start relative">
+                    <div className={`flex-1 grid gap-6 w-full ${viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 xl:grid-cols-3" : "grid-cols-1"}`}>
+                      {filteredProperties.map((p) => {
+                        const activeImgIndex = carouselIndices[p.id] || 0;
+                        const isFav = favorites.includes(p.id);
 
-                      // Standard Card for Grid View
-                      if (viewMode === "grid") {
-                        return (
-                          <motion.article
-                            key={p.id}
-                            className="group flex flex-col overflow-hidden rounded-3xl bg-card border border-border hover:border-amber-400/30 hover:shadow-luxe transition-all duration-300"
-                            layout
-                          >
+                        // Standard Card for Grid View
+                        if (viewMode === "grid") {
+                          return (
+                            <motion.article
+                              key={p.id}
+                              onMouseEnter={() => setHoveredPropertyId(p.id)}
+                              onMouseLeave={() => setHoveredPropertyId(null)}
+                              className="group flex flex-col overflow-hidden rounded-3xl bg-card border border-border hover:border-amber-400/30 hover:shadow-luxe transition-all duration-300"
+                              layout
+                            >
                             <div className="relative aspect-[1.4/1] overflow-hidden bg-slate-900 shrink-0">
                               <img
                                 src={p.images[activeImgIndex]}
@@ -812,13 +1059,15 @@ export function RealtyPortal() {
                         );
                       }
 
-                      // Landscape Card for Split View (looks like the second user screenshot)
-                      return (
-                        <motion.article
-                          key={p.id}
-                          className="group flex flex-col md:flex-row overflow-hidden rounded-3xl bg-card border border-border hover:border-amber-400/30 hover:shadow-luxe transition-all duration-300"
-                          layout
-                        >
+                        // Landscape Card for Split View (looks like the second user screenshot)
+                        return (
+                          <motion.article
+                            key={p.id}
+                            onMouseEnter={() => setHoveredPropertyId(p.id)}
+                            onMouseLeave={() => setHoveredPropertyId(null)}
+                            className="group flex flex-col md:flex-row overflow-hidden rounded-3xl bg-card border border-border hover:border-amber-400/30 hover:shadow-luxe transition-all duration-300"
+                            layout
+                          >
                           {/* Image Left Panel */}
                           <div className="relative w-full md:w-72 aspect-[1.3/1] md:aspect-auto overflow-hidden bg-slate-900 shrink-0">
                             <img
@@ -918,8 +1167,37 @@ export function RealtyPortal() {
                             </div>
                           </div>
                         </motion.article>
-                      );
-                    })}
+                        );
+                      })}
+                    </div>
+
+                    {/* Sticky Map Panel — only rendered in split mode */}
+                    {viewMode === "split" && (
+                      <div className="hidden xl:block w-[38%] sticky top-28 h-[calc(100vh-160px)] min-h-[500px] rounded-3xl border border-border bg-[#0a1622] overflow-hidden shadow-luxe shrink-0">
+                        <iframe
+                          title="Interactive Map showcasing property locations"
+                          width="100%"
+                          height="100%"
+                          style={{ border: 0 }}
+                          loading="lazy"
+                          src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                            (hoveredProperty || filteredProperties[0])
+                              ? `${(hoveredProperty || filteredProperties[0]).title}, ${(hoveredProperty || filteredProperties[0]).location}, ${(hoveredProperty || filteredProperties[0]).city}`
+                              : "Pune, Maharashtra"
+                          )}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                        />
+                        {(hoveredProperty || filteredProperties[0]) && (
+                          <div className="absolute bottom-4 left-4 right-4 bg-ink/80 backdrop-blur border border-ivory/15 p-4 rounded-2xl text-ivory">
+                            <p className="text-[9px] uppercase tracking-widest text-primary-glow font-bold">Showing Location</p>
+                            <h5 className="font-semibold text-sm mt-0.5">{(hoveredProperty || filteredProperties[0]).title}</h5>
+                            <p className="text-xs text-ivory/60 flex items-center gap-1 mt-1">
+                              <MapPin className="h-3 w-3 text-primary shrink-0" />
+                              {(hoveredProperty || filteredProperties[0]).location}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -1190,22 +1468,20 @@ export function RealtyPortal() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="relative h-72 rounded-2xl border border-border bg-[#0a1622] overflow-hidden"
+                      className="relative h-96 rounded-2xl border border-border bg-[#0a1622] overflow-hidden"
                     >
-                      {/* Styled Mini SVG Map */}
-                      <svg className="absolute inset-0 w-full h-full opacity-30 text-slate-800" viewBox="0 0 100 100" preserveAspectRatio="none">
-                        <pattern id="mini-map-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                          <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.1" className="text-ivory/10" />
-                        </pattern>
-                        <rect width="100" height="100" fill="url(#mini-map-grid)" />
-                        <path d="M-10,35 Q25,30 45,60 T85,70 T110,80" fill="none" stroke="#2b6cb0" strokeWidth="1.5" />
-                        <line x1="0" y1="25" x2="100" y2="45" stroke="currentColor" strokeWidth="0.5" className="text-ivory/15" />
-                        <line x1="25" y1="0" x2="45" y2="100" stroke="currentColor" strokeWidth="0.5" className="text-ivory/15" />
-                      </svg>
-                      {/* Property Marker */}
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-gold text-ink px-3 py-1.5 rounded-full text-xs font-bold shadow-lg border border-amber-400 flex items-center gap-1">
-                        <MapPin className="h-3.5 w-3.5" /> {selectedProperty.location.split(",")[0]}
-                      </div>
+                      <iframe
+                        title={`Map showing location of ${selectedProperty.title}`}
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        loading="lazy"
+                        allowFullScreen
+                        referrerPolicy="no-referrer-when-downgrade"
+                        src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                          selectedProperty.title + ", " + selectedProperty.location + ", " + selectedProperty.city
+                        )}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+                      />
                     </motion.div>
                   )}
                 </AnimatePresence>

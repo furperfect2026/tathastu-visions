@@ -79,6 +79,17 @@ type ProjectForm = {
   galleryImages: string[];
   galleryFiles: File[];
   isPublished: boolean;
+  
+  // Realty-specific fields
+  neighborhood?: string;
+  beds?: string;
+  area?: string;
+  tagline?: string;
+  highlightsText?: string;
+  amenitiesText?: string;
+  configsText?: string;
+  realtyType?: string;
+  realtyCategory?: string;
 };
 
 type PartnerForm = {
@@ -125,6 +136,17 @@ const emptyForm: ProjectForm = {
   galleryImages: [],
   galleryFiles: [],
   isPublished: true,
+  
+  // Realty defaults
+  neighborhood: "Pune East",
+  beds: "",
+  area: "",
+  tagline: "",
+  highlightsText: "",
+  amenitiesText: "",
+  configsText: "",
+  realtyType: "Under Construction",
+  realtyCategory: "Residential",
 };
 
 function freshProjectForm(): ProjectForm {
@@ -232,10 +254,43 @@ function mapReviewRow(row: any): AdminReview {
 }
 
 function formFromProject(project: AdminProject): ProjectForm {
+  let description = project.blurb;
+  let neighborhood = "Pune East";
+  let beds = "";
+  let area = "";
+  let tagline = "";
+  let highlightsText = "";
+  let amenitiesText = "";
+  let configsText = "";
+  let realtyType = "Under Construction";
+  let realtyCategory = "Residential";
+
+  if (project.category === "realty" && project.blurb && project.blurb.trim().startsWith("{")) {
+    try {
+      const parsed = JSON.parse(project.blurb);
+      if (parsed.isRealtyJson) {
+        description = parsed.description || "";
+        neighborhood = parsed.neighborhood || "Pune East";
+        beds = parsed.beds || "";
+        area = parsed.area || "";
+        tagline = parsed.tagline || "";
+        highlightsText = Array.isArray(parsed.highlights) ? parsed.highlights.join("\n") : "";
+        amenitiesText = Array.isArray(parsed.amenities) ? parsed.amenities.join(", ") : "";
+        configsText = Array.isArray(parsed.configs)
+          ? parsed.configs.map((c: any) => `${c.bhk} | ${c.size} | ${c.price}`).join("\n")
+          : "";
+        realtyType = parsed.realtyType || "Under Construction";
+        realtyCategory = parsed.realtyCategory || "Residential";
+      }
+    } catch (e) {
+      console.error("Error parsing JSON description for realty project", e);
+    }
+  }
+
   return {
     id: project.id,
     title: project.title,
-    description: project.blurb,
+    description,
     category: project.category,
     location: project.location,
     year: String(project.year),
@@ -245,6 +300,17 @@ function formFromProject(project: AdminProject): ProjectForm {
     galleryImages: project.galleryImages || [],
     galleryFiles: [],
     isPublished: project.isPublished,
+    
+    // Realty fields
+    neighborhood,
+    beds,
+    area,
+    tagline,
+    highlightsText,
+    amenitiesText,
+    configsText,
+    realtyType,
+    realtyCategory
   };
 }
 
@@ -480,9 +546,31 @@ function AdminProjectsPage() {
       const galleryImages = Array.from(
         new Set([...form.galleryImages, ...uploadedGalleryImages].filter(Boolean)),
       );
+      const isRealty = form.category === "realty";
+      const descriptionToSave = isRealty ? JSON.stringify({
+        isRealtyJson: true,
+        description: form.description.trim(),
+        neighborhood: form.neighborhood?.trim() || "Pune East",
+        beds: form.beds?.trim() || "",
+        area: form.area?.trim() || "",
+        tagline: form.tagline?.trim() || "",
+        highlights: (form.highlightsText || "").split("\n").map(h => h.trim()).filter(Boolean),
+        amenities: (form.amenitiesText || "").split(",").map(a => a.trim()).filter(Boolean),
+        configs: (form.configsText || "").split("\n").map(line => {
+          const parts = line.split("|").map(p => p.trim());
+          return {
+            bhk: parts[0] || "",
+            size: parts[1] || "",
+            price: parts[2] || ""
+          };
+        }).filter(cfg => cfg.bhk),
+        realtyType: form.realtyType || "Under Construction",
+        realtyCategory: form.realtyCategory || "Residential"
+      }) : form.description.trim();
+
       const payload = {
         title: form.title.trim(),
-        description: form.description.trim(),
+        description: descriptionToSave,
         category: form.category,
         location: form.location.trim() || "Pune",
         year: Number(form.year) || new Date().getFullYear(),
@@ -848,19 +936,140 @@ function AdminProjectsPage() {
               </div>
 
               {form.category === "realty" && (
-                <div>
-                  <Label htmlFor="project-price">Realty price / starting from</Label>
-                  <Input
-                    id="project-price"
-                    value={form.priceLabel}
-                    onChange={(event) => setForm((value) => ({ ...value, priceLabel: event.target.value }))}
-                    className="mt-2"
-                    placeholder="Starting ₹45L / Rent ₹22k per month / Price on request"
-                  />
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    Optional. This appears as a small price badge on Realty project cards.
-                  </p>
-                </div>
+                <>
+                  <div>
+                    <Label htmlFor="project-price">Realty price / starting from</Label>
+                    <Input
+                      id="project-price"
+                      value={form.priceLabel}
+                      onChange={(event) => setForm((value) => ({ ...value, priceLabel: event.target.value }))}
+                      className="mt-2"
+                      placeholder="Starting ₹45L / Rent ₹22k per month / Price on request"
+                    />
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      Optional. This appears as a price badge on Realty project cards (e.g. ₹ 69.99 L - 2.65 Cr).
+                    </p>
+                  </div>
+
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <Label htmlFor="realty-category">Property Type</Label>
+                      <Select
+                        value={form.realtyCategory}
+                        onValueChange={(val) => setForm((current) => ({ ...current, realtyCategory: val }))}
+                      >
+                        <SelectTrigger id="realty-category" className="mt-2">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="Residential">Residential</SelectItem>
+                          <SelectItem value="Commercial">Commercial</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div>
+                      <Label htmlFor="realty-type">Construction Status</Label>
+                      <Select
+                        value={form.realtyType}
+                        onValueChange={(val) => setForm((current) => ({ ...current, realtyType: val }))}
+                      >
+                        <SelectTrigger id="realty-type" className="mt-2">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="Under Construction">Under Construction</SelectItem>
+                          <SelectItem value="Ready to Move">Ready to Move</SelectItem>
+                          <SelectItem value="Upcoming New Launches">Upcoming New Launches</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-4 sm:grid-cols-3">
+                    <div>
+                      <Label htmlFor="realty-neighborhood">Neighborhood Area</Label>
+                      <Select
+                        value={form.neighborhood}
+                        onValueChange={(val) => setForm((current) => ({ ...current, neighborhood: val }))}
+                      >
+                        <SelectTrigger id="realty-neighborhood" className="mt-2">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="Pune East">Pune East (Charholi, Manjri, Lohegaon etc.)</SelectItem>
+                          <SelectItem value="Pune West">Pune West (Baner, Pashan, Hinjewadi etc.)</SelectItem>
+                          <SelectItem value="Pune North">Pune North (Dhanori etc.)</SelectItem>
+                          <SelectItem value="Pune South">Pune South (Undri, Kondhwa etc.)</SelectItem>
+                          <SelectItem value="Pune Central">Pune Central (Kothrud etc.)</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div>
+                      <Label htmlFor="realty-beds">BHK Overview</Label>
+                      <Input
+                        id="realty-beds"
+                        value={form.beds}
+                        onChange={(event) => setForm((value) => ({ ...value, beds: event.target.value }))}
+                        className="mt-2"
+                        placeholder="e.g. 2, 3 BHK / Shops / Offices"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="realty-area">Carpet Area</Label>
+                      <Input
+                        id="realty-area"
+                        value={form.area}
+                        onChange={(event) => setForm((value) => ({ ...value, area: event.target.value }))}
+                        className="mt-2"
+                        placeholder="e.g. 673 to 1,260 Sq.ft"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="realty-tagline">Realty Tagline</Label>
+                    <Input
+                      id="realty-tagline"
+                      value={form.tagline}
+                      onChange={(event) => setForm((value) => ({ ...value, tagline: event.target.value }))}
+                      className="mt-2"
+                      placeholder="e.g. Premium Township Living in Charholi"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="realty-highlights">Location Highlights (One per line)</Label>
+                    <Textarea
+                      id="realty-highlights"
+                      value={form.highlightsText}
+                      onChange={(event) => setForm((value) => ({ ...value, highlightsText: event.target.value }))}
+                      className="mt-2 min-h-20"
+                      placeholder="e.g. Pune International Airport (Located 20 minutes away)&#10;Viman Nagar (Connected in 8 mins)"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="realty-amenities">Amenities (Comma separated)</Label>
+                    <Input
+                      id="realty-amenities"
+                      value={form.amenitiesText}
+                      onChange={(event) => setForm((value) => ({ ...value, amenitiesText: event.target.value }))}
+                      className="mt-2"
+                      placeholder="e.g. Clubhouse, Swimming Pool, Gym, 24/7 Security"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="realty-configs">Unit Configurations Table (One per line, Format: BHK | Size | Price)</Label>
+                    <Textarea
+                      id="realty-configs"
+                      value={form.configsText}
+                      onChange={(event) => setForm((value) => ({ ...value, configsText: event.target.value }))}
+                      className="mt-2 min-h-24"
+                      placeholder="e.g. 2 BHK | 673 Sq.ft | ₹ 69.99 L&#10;3 BHK | 1050 Sq.ft | ₹ 1.25 Cr"
+                    />
+                  </div>
+                </>
               )}
 
               <div>

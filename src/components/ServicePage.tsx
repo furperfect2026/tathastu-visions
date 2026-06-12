@@ -55,7 +55,8 @@ export type ServicePageContent = {
   heroImages: ServiceImage[];
   heroVideoSrc?: string;
   heroSidePreview?: {
-    videoSrc: string;
+    videoSrc?: string;
+    imageSrc?: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -238,7 +239,9 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         />
         {content.heroVideoSrc && showHeroVideo && (
           <video
-            className="absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-1000 ease-out"
+            className={`absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-1000 ease-out ${
+              content.projectCategory === "construction" ? "hidden md:block" : ""
+            }`}
             src={content.heroVideoSrc}
             poster={content.heroImages[0]?.src}
             autoPlay
@@ -318,29 +321,41 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
             transition={{ delay: 1.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             aria-label={`Open ${content.heroSidePreview.title} preview`}
           >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[1rem]">
-              <video
-                src={content.heroSidePreview.videoSrc}
-                className="h-full w-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-hidden="true"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/78 via-ink/8 to-transparent" />
-              <span className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-ivory/14 text-ivory backdrop-blur transition-colors duration-300 group-hover:bg-primary group-hover:text-ink">
-                <Maximize2 className="h-4 w-4" />
-              </span>
-              <div className="absolute inset-x-0 bottom-0 p-4">
-                <p className="text-[10px] uppercase tracking-[0.22em] text-primary-glow">
-                  {content.heroSidePreview.eyebrow}
-                </p>
-                <p className="mt-1 font-display text-xl font-semibold text-ivory">
-                  {content.heroSidePreview.title}
-                </p>
-              </div>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1rem] bg-ink">
+              {content.heroSidePreview.imageSrc ? (
+                <img
+                  src={content.heroSidePreview.imageSrc}
+                  alt={content.heroSidePreview.title}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              ) : (
+                <>
+                  {content.heroSidePreview.videoSrc && (
+                    <video
+                      src={content.heroSidePreview.videoSrc}
+                      className="h-full w-full object-cover"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      aria-hidden="true"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/78 via-ink/8 to-transparent" />
+                  <span className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-ivory/14 text-ivory backdrop-blur transition-colors duration-300 group-hover:bg-primary group-hover:text-ink">
+                    <Maximize2 className="h-4 w-4" />
+                  </span>
+                  <div className="absolute inset-x-0 bottom-0 p-4">
+                    <p className="text-[10px] uppercase tracking-[0.22em] text-primary-glow">
+                      {content.heroSidePreview.eyebrow}
+                    </p>
+                    <p className="mt-1 font-display text-xl font-semibold text-ivory">
+                      {content.heroSidePreview.title}
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
           </motion.button>
         )}
@@ -380,16 +395,26 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
               <X className="h-5 w-5" />
             </button>
             <div className="grid bg-ivory lg:grid-cols-[1.35fr_0.65fr]">
-              <div className="aspect-video bg-ink lg:aspect-auto lg:min-h-[560px]">
-                <video
-                  src={content.heroSidePreview.videoSrc}
-                  className="h-full w-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls
-                />
+              <div className="aspect-video bg-ink lg:aspect-auto lg:min-h-[560px] flex items-center justify-center">
+                {content.heroSidePreview.videoSrc ? (
+                  <video
+                    src={content.heroSidePreview.videoSrc}
+                    className="h-full w-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls
+                  />
+                ) : (
+                  content.heroSidePreview.imageSrc && (
+                    <img
+                      src={content.heroSidePreview.imageSrc}
+                      alt={content.heroSidePreview.title}
+                      className="h-full w-full object-contain bg-ink"
+                    />
+                  )
+                )}
               </div>
               <div className="flex flex-col justify-center p-6 text-ink sm:p-8">
                 <p className="eyebrow">{content.heroSidePreview.eyebrow}</p>
@@ -417,62 +442,63 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         <RealtyPortal />
       )}
 
-      <section className="py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <Reveal className="max-w-2xl">
-            <p className="eyebrow">What We Offer</p>
-            <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
-              Thoughtful service, handled end to end.
-            </h2>
-          </Reveal>
+      {content.projectCategory !== "realty" && (
+        <section className="py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <Reveal className="max-w-2xl">
+              <p className="eyebrow">What We Offer</p>
+              <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
+                Thoughtful service, handled end to end.
+              </h2>
+            </Reveal>
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {content.offers.map(({ title, description, icon: Icon, image, href }, index) => (
-              <Reveal key={title} delay={(index % 3) * 0.06}>
-                <motion.article
-                  whileHover={{ y: -6 }}
-                  className="group h-full cursor-pointer overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                  role="link"
-                  tabIndex={0}
-                  onClick={() => navigate({ to: href })}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      event.preventDefault();
-                      navigate({ to: href });
-                    }
-                  }}
-                >
-                  <div className="relative aspect-[16/10] overflow-hidden bg-ink">
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/65 via-ink/10 to-transparent" />
-                    <div className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
-                      <Icon className="h-5 w-5" />
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {content.offers.map(({ title, description, icon: Icon, image, href }, index) => (
+                <Reveal key={title} delay={(index % 3) * 0.06}>
+                  <motion.article
+                    whileHover={{ y: -6 }}
+                    className="group h-full cursor-pointer overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    role="link"
+                    tabIndex={0}
+                    onClick={() => navigate({ to: href })}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        navigate({ to: href });
+                      }
+                    }}
+                  >
+                    <div className="relative aspect-[16/10] overflow-hidden bg-ink">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink/65 via-ink/10 to-transparent" />
+                      <div className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
+                        <Icon className="h-5 w-5" />
+                      </div>
                     </div>
-                  </div>
-                  <div className="p-6 sm:p-7">
-                    <h3 className="font-display text-2xl font-semibold">{title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
-                      Learn more{" "}
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </div>
-                </motion.article>
-              </Reveal>
-            ))}
-          </div>
+                    <div className="p-6 sm:p-7">
+                      <h3 className="font-display text-2xl font-semibold">{title}</h3>
+                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
+                      <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                        Learn more{" "}
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </motion.article>
+                </Reveal>
+              ))}
+            </div>
 
-          {content.projectCategory === "construction" && (
-            <Reveal className="mt-12">
-              <div className="flex items-end justify-between gap-4">
-                <div>
-                  <p className="eyebrow">Every Construction Category Includes</p>
-                  <h3 className="mt-2 font-display text-3xl font-medium text-ink sm:text-4xl">
+            {content.projectCategory === "construction" && (
+              <Reveal className="mt-12">
+                <div className="flex items-end justify-between gap-4">
+                  <div>
+                    <p className="eyebrow">Every Construction Category Includes</p>
+                    <h3 className="mt-2 font-display text-3xl font-medium text-ink sm:text-4xl">
                     Guarantees every homeowner deserves.
                   </h3>
                 </div>
@@ -535,6 +561,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
           )}
         </div>
       </section>
+      )}
 
       {content.projectCategory === "construction" && <PackagesSection mode="construction" />}
       {content.projectCategory === "interior" && <PackagesSection mode="interior" />}
