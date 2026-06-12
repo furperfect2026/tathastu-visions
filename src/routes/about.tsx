@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import founder from "@/assets/founder.jpg";
+import cofounder from "@/assets/cofounder.png";
 import officeFront from "@/assets/office-front.jpg";
 import trustImage from "@/assets/realty-3.jpg";
 import luxuryImage from "@/assets/interior-1.jpg";
@@ -36,30 +37,62 @@ function AboutPage() {
       </section>
 
       <section className="py-16">
-        <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 md:grid-cols-2">
-          <Reveal>
-            <motion.div
-              whileHover={{ rotate: -1, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 120 }}
-              className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-luxe"
-            >
-              <img src={founder} alt="Rohit, Founder & CEO of Tathastu Infra" loading="lazy" className="h-full w-full object-cover" />
-              <div className="absolute -left-3 -top-3 h-full w-full rounded-3xl border border-primary/40" />
-            </motion.div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="eyebrow">Founder & CEO</p>
-            <h2 className="mt-3 font-display text-4xl font-medium">Rohit</h2>
-            <p className="mt-6 text-lg text-muted-foreground">
-              What began as a singular vision to redefine architectural elegance has evolved into a multi-disciplinary firm dedicated to shaping the future of modern living.
-            </p>
-            <p className="mt-4 text-muted-foreground">
-              Headquartered in Lohegaon, Pune, Tathastu Infra transforms raw structures into elegant, functional homes and commercial spaces across Maharashtra where luxury, utility and timeless design intersect.
-            </p>
-            <blockquote className="mt-8 border-l-2 border-primary pl-5 font-display text-xl italic text-foreground">
-              "Building spaces that inspire future generations."
-            </blockquote>
-          </Reveal>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid gap-16 md:grid-cols-2">
+            {/* Founder 1: Rohit */}
+            <div className="grid items-center gap-8 sm:grid-cols-[1fr_1.2fr] md:grid-cols-1 lg:grid-cols-[1fr_1.2fr]">
+              <Reveal>
+                <motion.div
+                  whileHover={{ rotate: -1, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 120 }}
+                  className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-luxe"
+                >
+                  <img src={founder} alt="Rohit, Founder & CEO of Tathastu Infra" loading="lazy" className="h-full w-full object-cover" />
+                  <div className="absolute -left-3 -top-3 h-full w-full rounded-3xl border border-primary/40" />
+                </motion.div>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="eyebrow">Founder & CEO</p>
+                <h2 className="mt-3 font-display text-3xl font-medium">Rohit</h2>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  What began as a singular vision to redefine architectural elegance has evolved into a multi-disciplinary firm dedicated to shaping the future of modern living.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Headquartered in Lohegaon, Pune, Tathastu Infra transforms raw structures into elegant, functional homes and commercial spaces across Maharashtra where luxury, utility and timeless design intersect.
+                </p>
+                <blockquote className="mt-6 border-l-2 border-primary pl-4 font-display text-base italic text-foreground">
+                  "Building spaces that inspire future generations."
+                </blockquote>
+              </Reveal>
+            </div>
+
+            {/* Founder 2: Harsh */}
+            <div className="grid items-center gap-8 sm:grid-cols-[1fr_1.2fr] md:grid-cols-1 lg:grid-cols-[1fr_1.2fr]">
+              <Reveal>
+                <motion.div
+                  whileHover={{ rotate: 1, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 120 }}
+                  className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-luxe"
+                >
+                  <img src={cofounder} alt="Harsh, Co-Founder of Tathastu Infra" loading="lazy" className="h-full w-full object-cover" />
+                  <div className="absolute -left-3 -top-3 h-full w-full rounded-3xl border border-primary/40" />
+                </motion.div>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="eyebrow">Co-Founder</p>
+                <h2 className="mt-3 font-display text-3xl font-medium">Harsh</h2>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  Co-leading operations and execution at Tathastu Infra, supervising engineering excellence, vendor planning, and site scheduling to match quality standards.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Managing client delivery workflows and coordination from Lohegaon studio to ensure client budgets, material clarity and supervisors stay aligned end to end.
+                </p>
+                <blockquote className="mt-6 border-l-2 border-primary pl-4 font-display text-base italic text-foreground">
+                  "Shaping spaces with integrity, precision and structure."
+                </blockquote>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 
