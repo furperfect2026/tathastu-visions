@@ -23,6 +23,7 @@ import { ProjectCard } from "@/components/ProjectShowcase";
 import { RealtySearchLinks } from "@/components/RealtySearchLinks";
 import { Reveal } from "@/components/Reveal";
 import { ServiceSearchLinks } from "@/components/ServiceSearchLinks";
+import { RealtyPortal } from "@/components/RealtyPortal";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -410,6 +411,10 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
             </div>
           </motion.div>
         </div>
+      )}
+
+      {content.projectCategory === "realty" && (
+        <RealtyPortal />
       )}
 
       <section className="py-20 sm:py-24">
