@@ -131,7 +131,7 @@ export function ConsultationPopup() {
               <X className="h-5 w-5" />
             </button>
 
-            <div className="hidden md:block relative aspect-[1595/986] overflow-hidden bg-ink md:aspect-auto md:min-h-[560px]">
+            <div className="relative h-28 sm:h-36 overflow-hidden bg-ink md:h-auto md:aspect-auto md:min-h-[560px]">
               <img
                 src={consultationPopupImage}
                 alt="Tathastu Infra construction consultation"
