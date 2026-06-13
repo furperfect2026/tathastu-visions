@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { AnimatePresence, motion } from "framer-motion";
 import { Bot, Send, X } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { toast } from "sonner";
 import chatbotAvatar from "@/assets/chatbot-ronal.png";
 import { Button } from "@/components/ui/button";
@@ -132,6 +133,15 @@ export function ChatbotWidget() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.35, ease: "easeOut" }}
         >
+          <a
+            href="https://wa.me/917820864384"
+            target="_blank"
+            rel="noreferrer"
+            className="mb-1 grid h-12 w-12 place-items-center rounded-[14px] bg-card border border-border/50 shadow-luxe transition-all hover:-translate-y-1 hover:shadow-[0_18px_40px_-15px_rgba(37,211,102,0.6)]"
+            aria-label="Chat on WhatsApp"
+          >
+            <WhatsAppIcon className="h-8 w-8 text-[#25D366]" />
+          </a>
           <button
             type="button"
             onClick={() => setOpen(true)}

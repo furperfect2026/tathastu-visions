@@ -131,7 +131,7 @@ export function ConsultationPopup() {
               <X className="h-5 w-5" />
             </button>
 
-            <div className="relative aspect-[1595/986] overflow-hidden bg-ink md:aspect-auto md:min-h-[560px]">
+            <div className="hidden md:block relative aspect-[1595/986] overflow-hidden bg-ink md:aspect-auto md:min-h-[560px]">
               <img
                 src={consultationPopupImage}
                 alt="Tathastu Infra construction consultation"
@@ -144,15 +144,15 @@ export function ConsultationPopup() {
             </div>
 
             <div className="flex flex-col justify-center p-5 sm:p-8 md:p-10">
-              <p className="eyebrow">Don't leave yet</p>
+              <p className="hidden md:block eyebrow">Don't leave yet</p>
               <h2
                 id="consultation-popup-title"
-                className="mt-2 max-w-md font-display text-[2rem] font-semibold leading-[1.05] text-ink sm:mt-3 sm:text-4xl"
+                className="mt-0 md:mt-2 max-w-md font-display text-2xl md:text-[2rem] font-semibold leading-[1.05] text-ink sm:mt-3 sm:text-4xl"
               >
                 Resolve your queries with our{" "}
                 <span className="italic text-gradient-gold">experts</span>
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              <p className="hidden md:block mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
                 Share your name and number. Tathastu Infra will call you back with clear next steps.
               </p>
 
@@ -227,7 +227,7 @@ export function ConsultationPopup() {
                 </Button>
               </form>
 
-              <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+              <p className="hidden md:block mt-4 text-xs leading-relaxed text-muted-foreground">
                 By submitting, you agree that our team may contact you about your project enquiry.
               </p>
             </div>
