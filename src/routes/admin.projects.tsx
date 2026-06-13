@@ -90,6 +90,7 @@ type ProjectForm = {
   configsText?: string;
   realtyType?: string;
   realtyCategory?: string;
+  isRecommended?: boolean;
 };
 
 type PartnerForm = {
@@ -147,6 +148,7 @@ const emptyForm: ProjectForm = {
   configsText: "",
   realtyType: "Under Construction",
   realtyCategory: "Residential",
+  isRecommended: false,
 };
 
 function freshProjectForm(): ProjectForm {
@@ -281,6 +283,7 @@ function formFromProject(project: AdminProject): ProjectForm {
           : "";
         realtyType = parsed.realtyType || "Under Construction";
         realtyCategory = parsed.realtyCategory || "Residential";
+        isRecommended = parsed.isRecommended || false;
       }
     } catch (e) {
       console.error("Error parsing JSON description for realty project", e);
@@ -565,7 +568,8 @@ function AdminProjectsPage() {
           };
         }).filter(cfg => cfg.bhk),
         realtyType: form.realtyType || "Under Construction",
-        realtyCategory: form.realtyCategory || "Residential"
+        realtyCategory: form.realtyCategory || "Residential",
+        isRecommended: form.isRecommended || false
       }) : form.description.trim();
 
       const payload = {
@@ -964,6 +968,9 @@ function AdminProjectsPage() {
                         <SelectContent>
                           <SelectItem value="Residential">Residential</SelectItem>
                           <SelectItem value="Commercial">Commercial</SelectItem>
+                          <SelectItem value="Resale">Resale</SelectItem>
+                          <SelectItem value="Rental">Rental</SelectItem>
+                          <SelectItem value="Plots / Land">Plots / Land</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -983,6 +990,19 @@ function AdminProjectsPage() {
                         </SelectContent>
                       </Select>
                     </div>
+                  </div>
+
+                  <div className="flex items-center space-x-2 mt-2 mb-4">
+                    <input
+                      type="checkbox"
+                      id="project-recommended"
+                      checked={form.isRecommended}
+                      onChange={(e) => setForm((val) => ({ ...val, isRecommended: e.target.checked }))}
+                      className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                    />
+                    <Label htmlFor="project-recommended" className="font-semibold text-primary">
+                      Highlight as Recommended (Shows first in listings)
+                    </Label>
                   </div>
 
                   <div className="grid gap-4 sm:grid-cols-3">

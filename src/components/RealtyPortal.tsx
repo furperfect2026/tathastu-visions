@@ -63,6 +63,7 @@ interface Property {
   highlights: string[];
   amenities: string[];
   configs: PropertyConfig[];
+  isRecommended?: boolean;
 }
 
 const realtyProperties: Property[] = [
@@ -399,6 +400,7 @@ function parseDynamicRealtyProject(p: PublicProject): Property {
   let configs: PropertyConfig[] = [];
   let realtyType = "Under Construction";
   let realtyCategory = "Residential";
+  let isRecommended = false;
 
   if (p.blurb && p.blurb.trim().startsWith("{")) {
     try {
@@ -414,6 +416,7 @@ function parseDynamicRealtyProject(p: PublicProject): Property {
         configs = parsed.configs || [];
         realtyType = parsed.realtyType || "Under Construction";
         realtyCategory = parsed.realtyCategory || "Residential";
+        isRecommended = parsed.isRecommended || false;
       }
     } catch (e) {
       console.error("Error parsing dynamic project description", e);
@@ -455,7 +458,8 @@ function parseDynamicRealtyProject(p: PublicProject): Property {
     description,
     highlights,
     amenities,
-    configs
+    configs,
+    isRecommended,
   };
 }
 
@@ -645,6 +649,9 @@ export function RealtyPortal() {
       }
 
       return true;
+    }).sort((a, b) => {
+      if (a.isRecommended === b.isRecommended) return 0;
+      return a.isRecommended ? -1 : 1;
     });
   }, [allProperties, selectedCity, selectedType, selectedNeighborhood, searchQuery, sidebarCategory, sidebarStatus, sidebarBudget, sidebarPropertyType]);
 
