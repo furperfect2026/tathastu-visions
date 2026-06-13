@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { Mail, Phone, MapPin, MessageCircle, Send, Loader2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { z } from "zod";
 import { BrandSocialLink, type SocialBrand } from "@/components/BrandSocialLink";
 import { Button } from "@/components/ui/button";
@@ -185,7 +186,7 @@ export function ContactSection() {
                   rel="noreferrer"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.03] sm:w-auto"
                 >
-                  <MessageCircle className="h-4 w-4" /> WhatsApp
+                  <WhatsAppIcon className="h-4 w-4" /> WhatsApp
                 </a>
                 <div className="flex items-center gap-2">
                   {socialLinks.map(({ label, brand, href }) => (

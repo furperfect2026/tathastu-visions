@@ -22,8 +22,8 @@ import {
   PhoneCall,
   SlidersHorizontal,
   Share2,
-  MessageCircle,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 
@@ -1054,7 +1054,7 @@ export function RealtyPortal() {
                                     rel="noreferrer"
                                     className="grid place-items-center h-8 w-8 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-sm transition-all"
                                   >
-                                    <MessageCircle className="h-4 w-4" />
+                                    <WhatsAppIcon className="h-4 w-4" />
                                   </a>
                                   <Button
                                     onClick={() => handleOpenDetail(p)}
@@ -1169,7 +1169,7 @@ export function RealtyPortal() {
                                   rel="noreferrer"
                                   className="grid place-items-center h-9 w-9 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-sm transition-all"
                                 >
-                                  <MessageCircle className="h-4 w-4" />
+                                  <WhatsAppIcon className="h-4 w-4" />
                                 </a>
                                 <Button
                                   onClick={(e) => {
@@ -1784,7 +1784,7 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
                     rel="noreferrer"
                     className="grid place-items-center h-6 w-6 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-sm transition-all"
                   >
-                    <MessageCircle className="h-3 w-3" />
+                    <WhatsAppIcon className="h-3 w-3" />
                   </a>
                   <Button
                     size="sm"
