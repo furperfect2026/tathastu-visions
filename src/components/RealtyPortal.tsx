@@ -22,6 +22,7 @@ import {
   PhoneCall,
   SlidersHorizontal,
   Share2,
+  MessageCircle,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
@@ -1046,12 +1047,22 @@ export function RealtyPortal() {
                                   <p className="text-[9px] uppercase tracking-widest text-muted-foreground font-semibold">Price</p>
                                   <p className="text-lg font-bold text-gradient-gold">₹{p.price}</p>
                                 </div>
-                                <Button
-                                  onClick={() => handleOpenDetail(p)}
-                                  className="rounded-full bg-[#005bb7] hover:bg-[#004a96] text-white px-4 py-1.5 h-auto text-xs font-semibold shadow-sm transition-all"
-                                >
-                                  View Details
-                                </Button>
+                                <div className="flex items-center gap-2">
+                                  <a
+                                    href={`https://wa.me/917820864384?text=${encodeURIComponent(`Hi, I'm interested in ${p.title}.`)}`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="grid place-items-center h-8 w-8 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-sm transition-all"
+                                  >
+                                    <MessageCircle className="h-4 w-4" />
+                                  </a>
+                                  <Button
+                                    onClick={() => handleOpenDetail(p)}
+                                    className="rounded-full bg-[#005bb7] hover:bg-[#004a96] text-white px-4 py-1.5 h-auto text-xs font-semibold shadow-sm transition-all"
+                                  >
+                                    View Details
+                                  </Button>
+                                </div>
                               </div>
                             </div>
                           </motion.article>
@@ -1152,6 +1163,14 @@ export function RealtyPortal() {
                                 >
                                   View Details
                                 </Button>
+                                <a
+                                  href={`https://wa.me/917820864384?text=${encodeURIComponent(`Hi, I'm interested in ${p.title}.`)}`}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="grid place-items-center h-9 w-9 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-sm transition-all"
+                                >
+                                  <MessageCircle className="h-4 w-4" />
+                                </a>
                                 <Button
                                   onClick={(e) => {
                                     e.stopPropagation();
@@ -1758,13 +1777,23 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
               </p>
               <div className="mt-2.5 flex items-center justify-between gap-2">
                 <span className="text-sm font-bold text-gradient-gold">₹{activeProperty.price}</span>
-                <Button
-                  size="sm"
-                  onClick={() => onSelectProperty(activeProperty)}
-                  className="rounded-full bg-[#005bb7] hover:bg-[#004a96] text-white px-3 py-1 h-auto text-[10px] font-semibold"
-                >
-                  View Details
-                </Button>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={`https://wa.me/917820864384?text=${encodeURIComponent(`Hi, I'm interested in ${activeProperty.title}.`)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="grid place-items-center h-6 w-6 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-sm transition-all"
+                  >
+                    <MessageCircle className="h-3 w-3" />
+                  </a>
+                  <Button
+                    size="sm"
+                    onClick={() => onSelectProperty(activeProperty)}
+                    className="rounded-full bg-[#005bb7] hover:bg-[#004a96] text-white px-3 py-1 h-auto text-[10px] font-semibold"
+                  >
+                    View Details
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
