@@ -17,6 +17,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConstructionRouteImport } from './routes/construction'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RealtyPuneDeskRouteImport } from './routes/realty.pune-desk'
 import { Route as RealtySlugRouteImport } from './routes/realty.$slug'
 import { Route as ProjectsConstructionRouteImport } from './routes/projects.construction'
 import { Route as InteriorSlugRouteImport } from './routes/interior.$slug'
@@ -63,6 +64,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const RealtyPuneDeskRoute = RealtyPuneDeskRouteImport.update({
+  id: '/pune-desk',
+  path: '/pune-desk',
+  getParentRoute: () => RealtyRoute,
 } as any)
 const RealtySlugRoute = RealtySlugRouteImport.update({
   id: '/$slug',
@@ -111,6 +117,7 @@ export interface FileRoutesByFullPath {
   '/interior/$slug': typeof InteriorSlugRoute
   '/projects/construction': typeof ProjectsConstructionRoute
   '/realty/$slug': typeof RealtySlugRoute
+  '/realty/pune-desk': typeof RealtyPuneDeskRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -127,6 +134,7 @@ export interface FileRoutesByTo {
   '/interior/$slug': typeof InteriorSlugRoute
   '/projects/construction': typeof ProjectsConstructionRoute
   '/realty/$slug': typeof RealtySlugRoute
+  '/realty/pune-desk': typeof RealtyPuneDeskRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -144,6 +152,7 @@ export interface FileRoutesById {
   '/interior/$slug': typeof InteriorSlugRoute
   '/projects/construction': typeof ProjectsConstructionRoute
   '/realty/$slug': typeof RealtySlugRoute
+  '/realty/pune-desk': typeof RealtyPuneDeskRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -162,6 +171,7 @@ export interface FileRouteTypes {
     | '/interior/$slug'
     | '/projects/construction'
     | '/realty/$slug'
+    | '/realty/pune-desk'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -178,6 +188,7 @@ export interface FileRouteTypes {
     | '/interior/$slug'
     | '/projects/construction'
     | '/realty/$slug'
+    | '/realty/pune-desk'
   id:
     | '__root__'
     | '/'
@@ -194,6 +205,7 @@ export interface FileRouteTypes {
     | '/interior/$slug'
     | '/projects/construction'
     | '/realty/$slug'
+    | '/realty/pune-desk'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -265,6 +277,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/realty/pune-desk': {
+      id: '/realty/pune-desk'
+      path: '/pune-desk'
+      fullPath: '/realty/pune-desk'
+      preLoaderRoute: typeof RealtyPuneDeskRouteImport
+      parentRoute: typeof RealtyRoute
     }
     '/realty/$slug': {
       id: '/realty/$slug'
@@ -351,10 +370,12 @@ const ProjectsRouteWithChildren = ProjectsRoute._addFileChildren(
 
 interface RealtyRouteChildren {
   RealtySlugRoute: typeof RealtySlugRoute
+  RealtyPuneDeskRoute: typeof RealtyPuneDeskRoute
 }
 
 const RealtyRouteChildren: RealtyRouteChildren = {
   RealtySlugRoute: RealtySlugRoute,
+  RealtyPuneDeskRoute: RealtyPuneDeskRoute,
 }
 
 const RealtyRouteWithChildren =

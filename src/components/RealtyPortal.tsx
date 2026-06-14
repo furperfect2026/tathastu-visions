@@ -86,19 +86,27 @@ const realtyProperties: Property[] = [
     beds: "2, 3, 4, 4.5 BHK",
     area: "673 to 2,260 Sq.ft",
     tagline: "Premium Township Living in Charholi",
-    description: "Pride World City is a massive, multi-acre township project situated in Charholi, Pune East. Designed with contemporary architecture, it offers beautiful views, wide-open roads, and comprehensive state-of-the-art amenities including schools, shopping malls, and premium clubhouse facilities.",
+    description:
+      "Pride World City is a massive, multi-acre township project situated in Charholi, Pune East. Designed with contemporary architecture, it offers beautiful views, wide-open roads, and comprehensive state-of-the-art amenities including schools, shopping malls, and premium clubhouse facilities.",
     highlights: [
       "Pune International Airport (Located 20 minutes away)",
       "Pune-Ahmednagar Highway (Can be reached in 15 mins)",
-      "Ramwadi Metro Station (Situated 15 minutes away)"
+      "Ramwadi Metro Station (Situated 15 minutes away)",
     ],
-    amenities: ["Clubhouse", "Swimming Pool", "Kids Play Area", "24/7 Security", "Gymnasium", "Landscape Garden"],
+    amenities: [
+      "Clubhouse",
+      "Swimming Pool",
+      "Kids Play Area",
+      "24/7 Security",
+      "Gymnasium",
+      "Landscape Garden",
+    ],
     configs: [
       { bhk: "2 BHK", size: "673 Sq.ft", price: "₹ 69.99 L" },
       { bhk: "3 BHK", size: "1050 Sq.ft", price: "₹ 1.25 Cr" },
       { bhk: "4 BHK", size: "1850 Sq.ft", price: "₹ 2.10 Cr" },
-      { bhk: "4.5 BHK", size: "2260 Sq.ft", price: "₹ 2.65 Cr" }
-    ]
+      { bhk: "4.5 BHK", size: "2260 Sq.ft", price: "₹ 2.65 Cr" },
+    ],
   },
   {
     id: "rp2",
@@ -112,26 +120,34 @@ const realtyProperties: Property[] = [
     category: "Residential",
     rating: 4.6,
     lat: 18.5204,
-    lng: 73.9780,
+    lng: 73.978,
     x: 76,
     y: 48,
     images: [realty3, realty4, realtyProject2],
     beds: "Plots, 1, 2, 3 BHK",
     area: "554 to 1,700 Sq.ft",
     tagline: "Mega township project with premium plots & flats in Manjri",
-    description: "Kumar Magnacity in Manjri, East Pune, is a luxury township offering a curated selection of residential flats and premium plots. The project features excellent open spaces, organic farming spaces, clean environment corridors, and a grand luxury clubhouse.",
+    description:
+      "Kumar Magnacity in Manjri, East Pune, is a luxury township offering a curated selection of residential flats and premium plots. The project features excellent open spaces, organic farming spaces, clean environment corridors, and a grand luxury clubhouse.",
     highlights: [
       "Solapur Highway connectivity (2 mins away)",
       "Hadapsar IT Park (Located 10 minutes away)",
-      "Noble Hospital (Situated 12 minutes away)"
+      "Noble Hospital (Situated 12 minutes away)",
     ],
-    amenities: ["Sports Courts", "Mega Central Park", "Clubhouse", "Party Lawn", "Jogging Track", "Swimming Pool"],
+    amenities: [
+      "Sports Courts",
+      "Mega Central Park",
+      "Clubhouse",
+      "Party Lawn",
+      "Jogging Track",
+      "Swimming Pool",
+    ],
     configs: [
       { bhk: "1 BHK", size: "554 Sq.ft", price: "₹ 49.99 L" },
       { bhk: "2 BHK", size: "850 Sq.ft", price: "₹ 82 L" },
       { bhk: "3 BHK", size: "1250 Sq.ft", price: "₹ 1.15 Cr" },
-      { bhk: "Plots", size: "1700 Sq.ft", price: "₹ 1.49 Cr" }
-    ]
+      { bhk: "Plots", size: "1700 Sq.ft", price: "₹ 1.49 Cr" },
+    ],
   },
   {
     id: "rp3",
@@ -152,17 +168,25 @@ const realtyProperties: Property[] = [
     beds: "3.5, 4.5 BHK",
     area: "1,767 to 5,360 Sq.ft",
     tagline: "Ultra-luxury Nature Escape Apartments and Penthouses",
-    description: "Lodha Massimo is a nature-focused luxury retreat in Baner. Located right on Pan Card Club Road, this iconic high-rise complex offers stunning panoramic views of the Baner hills, private pools, personal elevator access, and a masterfully designed clubhouse.",
+    description:
+      "Lodha Massimo is a nature-focused luxury retreat in Baner. Located right on Pan Card Club Road, this iconic high-rise complex offers stunning panoramic views of the Baner hills, private pools, personal elevator access, and a masterfully designed clubhouse.",
     highlights: [
       "Pan Card Club Road (Heart of Baner)",
       "Mumbai-Pune Expressway (Connected in 5 mins)",
-      "Balewadi High Street (Located 3 minutes away)"
+      "Balewadi High Street (Located 3 minutes away)",
     ],
-    amenities: ["Banquet Hall", "Clubhouse", "Jogging Track", "Sports Courts", "Infinity Pool", "Private Decks"],
+    amenities: [
+      "Banquet Hall",
+      "Clubhouse",
+      "Jogging Track",
+      "Sports Courts",
+      "Infinity Pool",
+      "Private Decks",
+    ],
     configs: [
       { bhk: "3.5 BHK", size: "1767 Sq.ft", price: "₹ 4.25 Cr" },
-      { bhk: "4.5 BHK", size: "2108 - 5360 Sq.ft", price: "Price on Request" }
-    ]
+      { bhk: "4.5 BHK", size: "2108 - 5360 Sq.ft", price: "Price on Request" },
+    ],
   },
   {
     id: "rp4",
@@ -183,17 +207,25 @@ const realtyProperties: Property[] = [
     beds: "3, 4.5 BHK",
     area: "1,583 to 1,739 Sq.ft",
     tagline: "Absolute Luxury Nestled in Pashan Valley",
-    description: "Pristine The Lords in Pashan is a design-first residential enclave optimized for elite comfort and privacy. Offering hill-facing apartments with premium fittings, massive window spaces, and private elevator lobbies.",
+    description:
+      "Pristine The Lords in Pashan is a design-first residential enclave optimized for elite comfort and privacy. Offering hill-facing apartments with premium fittings, massive window spaces, and private elevator lobbies.",
     highlights: [
       "Pashan Lake (Located 2 minutes away)",
       "Pune University (Connected in 10 mins)",
-      "Hinjewadi IT Phase 1 (Located 15 minutes away)"
+      "Hinjewadi IT Phase 1 (Located 15 minutes away)",
     ],
-    amenities: ["Pashan Lake View", "Private Deck", "Gymnasium", "Power Backup", "Clubhouse", "Swimming Pool"],
+    amenities: [
+      "Pashan Lake View",
+      "Private Deck",
+      "Gymnasium",
+      "Power Backup",
+      "Clubhouse",
+      "Swimming Pool",
+    ],
     configs: [
       { bhk: "3 BHK", size: "1583 Sq.ft", price: "₹ 1.35 Cr" },
-      { bhk: "4.5 BHK", size: "1739 Sq.ft", price: "₹ 2.80 Cr" }
-    ]
+      { bhk: "4.5 BHK", size: "1739 Sq.ft", price: "₹ 2.80 Cr" },
+    ],
   },
   {
     id: "rp5",
@@ -214,17 +246,25 @@ const realtyProperties: Property[] = [
     beds: "2, 3 BHK",
     area: "944 to 1,255 Sq.ft",
     tagline: "Modern high-rise residences in Hinjewadi Tech Park",
-    description: "Godrej Greenfront brings premium green living to Hinjewadi. Situated close to the major IT offices, the project offers smart home automation, organic gardens, oxygen parks, and an award-winning layout for maximum sunlight and ventilation.",
+    description:
+      "Godrej Greenfront brings premium green living to Hinjewadi. Situated close to the major IT offices, the project offers smart home automation, organic gardens, oxygen parks, and an award-winning layout for maximum sunlight and ventilation.",
     highlights: [
       "Hinjewadi IT Park Phase 1 (Walkable)",
       "Upcoming Metro Station (Located 2 minutes away)",
-      "D-Mart Hinjewadi (Situated 5 minutes away)"
+      "D-Mart Hinjewadi (Situated 5 minutes away)",
     ],
-    amenities: ["Metro Walk", "Phase 1 IT Hub", "Organic Garden", "Swimming Pool", "Sports Turf", "Indoor Games Area"],
+    amenities: [
+      "Metro Walk",
+      "Phase 1 IT Hub",
+      "Organic Garden",
+      "Swimming Pool",
+      "Sports Turf",
+      "Indoor Games Area",
+    ],
     configs: [
       { bhk: "2 BHK", size: "944 Sq.ft", price: "₹ 1.29 Cr" },
-      { bhk: "3 BHK", size: "1255 Sq.ft", price: "₹ 1.80 Cr" }
-    ]
+      { bhk: "3 BHK", size: "1255 Sq.ft", price: "₹ 1.80 Cr" },
+    ],
   },
   {
     id: "rp6",
@@ -245,17 +285,25 @@ const realtyProperties: Property[] = [
     beds: "3, 4 BHK",
     area: "1,100 to 2,100 Sq.ft",
     tagline: "Luxury high-rise apartments overlooking green hills",
-    description: "Prestige Beverly Hills is a state-of-the-art residential tower complex located in Undri. Backed by Prestige's structural excellence, it features beautiful modern layouts, open views of the southern hills, and close proximity to premium educational institutes.",
+    description:
+      "Prestige Beverly Hills is a state-of-the-art residential tower complex located in Undri. Backed by Prestige's structural excellence, it features beautiful modern layouts, open views of the southern hills, and close proximity to premium educational institutes.",
     highlights: [
       "NIBM Road Corridor (5 mins away)",
       "Delhi Public School (Located 3 minutes away)",
-      "Command Hospital (Situated 15 minutes away)"
+      "Command Hospital (Situated 15 minutes away)",
     ],
-    amenities: ["DPS School Proximity", "Hill View", "Clubhouse", "Security", "Yoga Deck", "Kids Pool"],
+    amenities: [
+      "DPS School Proximity",
+      "Hill View",
+      "Clubhouse",
+      "Security",
+      "Yoga Deck",
+      "Kids Pool",
+    ],
     configs: [
       { bhk: "3 BHK", size: "1100 Sq.ft", price: "₹ 1.40 Cr" },
-      { bhk: "4 BHK", size: "2100 Sq.ft", price: "₹ 2.80 Cr" }
-    ]
+      { bhk: "4 BHK", size: "2100 Sq.ft", price: "₹ 2.80 Cr" },
+    ],
   },
   {
     id: "rp7",
@@ -276,18 +324,26 @@ const realtyProperties: Property[] = [
     beds: "Retail Shops & Office Spaces",
     area: "450 to 1,600 Sq.ft",
     tagline: "Premium commercial spaces in central Kothrud corridor",
-    description: "Tathastu Central Plaza Kothrud is a premium hybrid destination. It features high-visibility commercial retail spaces on the lower floors and custom luxury residences above, situated in the heart of Pune's central commercial corridor.",
+    description:
+      "Tathastu Central Plaza Kothrud is a premium hybrid destination. It features high-visibility commercial retail spaces on the lower floors and custom luxury residences above, situated in the heart of Pune's central commercial corridor.",
     highlights: [
       "Karve Road Intersection (1 min walk)",
       "Deccan Gymkhana (Connected in 8 mins)",
-      "Kothrud Metro Station (Located 2 minutes away)"
+      "Kothrud Metro Station (Located 2 minutes away)",
     ],
-    amenities: ["Karve Road Walk", "Boutique Living", "Underground Parking", "Elevators", "Power Backup", "CCTV Surveillance"],
+    amenities: [
+      "Karve Road Walk",
+      "Boutique Living",
+      "Underground Parking",
+      "Elevators",
+      "Power Backup",
+      "CCTV Surveillance",
+    ],
     configs: [
       { bhk: "2 BHK", size: "850 Sq.ft", price: "₹ 95 L" },
       { bhk: "3 BHK", size: "1250 Sq.ft", price: "₹ 1.60 Cr" },
-      { bhk: "Shops", size: "450 Sq.ft", price: "₹ 2.20 Cr" }
-    ]
+      { bhk: "Shops", size: "450 Sq.ft", price: "₹ 2.20 Cr" },
+    ],
   },
   {
     id: "rp8",
@@ -308,17 +364,25 @@ const realtyProperties: Property[] = [
     beds: "1 & 2 BHK Flats",
     area: "650 to 1,050 Sq.ft",
     tagline: "Excellent Airport Access & Connectivity",
-    description: "Sai Residency is a boutique apartment complex in Dhanori, offering highly efficient, budget-friendly layouts with premium building materials, excellent water facilities, and quick airport access.",
+    description:
+      "Sai Residency is a boutique apartment complex in Dhanori, offering highly efficient, budget-friendly layouts with premium building materials, excellent water facilities, and quick airport access.",
     highlights: [
       "Pune Airport (Located 5 minutes away)",
       "Viman Nagar (Connected in 8 mins)",
-      "Dhanori Lake Park (Located 2 minutes away)"
+      "Dhanori Lake Park (Located 2 minutes away)",
     ],
-    amenities: ["Airport Access", "Viman Nagar Proximity", "24/7 Security", "Intercom", "Solar Water Heating", "Rainwater Harvesting"],
+    amenities: [
+      "Airport Access",
+      "Viman Nagar Proximity",
+      "24/7 Security",
+      "Intercom",
+      "Solar Water Heating",
+      "Rainwater Harvesting",
+    ],
     configs: [
       { bhk: "1 BHK", size: "650 Sq.ft", price: "₹ 55 L" },
-      { bhk: "2 BHK", size: "1050 Sq.ft", price: "₹ 95 L" }
-    ]
+      { bhk: "2 BHK", size: "1050 Sq.ft", price: "₹ 95 L" },
+    ],
   },
   {
     id: "rp9",
@@ -339,17 +403,18 @@ const realtyProperties: Property[] = [
     beds: "Offices & Retail Shops",
     area: "Area on Request",
     tagline: "Retail Shops & Offices in Old Mumbai Road",
-    description: "Godrej Eternia in Shivajinagar, Pune Central comprises a wide selection of premium retail spaces and modern corporate offices. G+7 storey project spread across 5 acres with state-of-the-art facilities.",
+    description:
+      "Godrej Eternia in Shivajinagar, Pune Central comprises a wide selection of premium retail spaces and modern corporate offices. G+7 storey project spread across 5 acres with state-of-the-art facilities.",
     highlights: [
       "Old Mumbai Road highway frontage",
       "Shivajinagar Metro Station (3 mins walk)",
-      "Pune Railway Station (10 mins drive)"
+      "Pune Railway Station (10 mins drive)",
     ],
     amenities: ["Cafeteria", "Conference Room", "Air Conditioned", "Intercom", "Power Backup"],
     configs: [
       { bhk: "Commercial Office", size: "Area on Request", price: "Price on Request" },
-      { bhk: "Retail Shop", size: "Area on Request", price: "Price on Request" }
-    ]
+      { bhk: "Retail Shop", size: "Area on Request", price: "Price on Request" },
+    ],
   },
   {
     id: "rp10",
@@ -370,23 +435,36 @@ const realtyProperties: Property[] = [
     beds: "Retail Shops",
     area: "Area on Request",
     tagline: "Retail Shops in Tilekar Nagar, Kondhwa",
-    description: "Kolte Patil Three Jewels in Kondhwa, Pune South is thoughtfully designed to cater to modern retail businesses. Offering excellent visibility, wide walkways, and robust infrastructure in a high-footfall zone.",
+    description:
+      "Kolte Patil Three Jewels in Kondhwa, Pune South is thoughtfully designed to cater to modern retail businesses. Offering excellent visibility, wide walkways, and robust infrastructure in a high-footfall zone.",
     highlights: [
       "High density residential neighborhood",
       "Katraj-Kondhwa Road connectivity (5 mins)",
-      "Excellent road frontage"
+      "Excellent road frontage",
     ],
-    amenities: ["Conference Room", "Air Conditioned", "Intercom", "Internet / Wi-Fi", "Ample Parking"],
-    configs: [
-      { bhk: "Retail Shop", size: "Area on Request", price: "Price on Request" }
-    ]
-  }
+    amenities: [
+      "Conference Room",
+      "Air Conditioned",
+      "Intercom",
+      "Internet / Wi-Fi",
+      "Ample Parking",
+    ],
+    configs: [{ bhk: "Retail Shop", size: "Area on Request", price: "Price on Request" }],
+  },
 ];
 
+import { Link } from "@tanstack/react-router";
 const neighborhoodsByCity: Record<string, string[]> = {
   Pune: ["Pune East", "Pune West", "Pune North", "Pune South", "Pune Central"],
-  Mumbai: ["Navi Mumbai", "Thane", "Central Mumbai", "Western Mumbai", "South Mumbai", "Kalyan Dombivali"],
-  Bangalore: ["Whitefield", "Indiranagar", "Koramangala", "Hebbal", "Electronic City"]
+  Mumbai: [
+    "Navi Mumbai",
+    "Thane",
+    "Central Mumbai",
+    "Western Mumbai",
+    "South Mumbai",
+    "Kalyan Dombivali",
+  ],
+  Bangalore: ["Whitefield", "Indiranagar", "Koramangala", "Hebbal", "Electronic City"],
 };
 
 function parseDynamicRealtyProject(p: PublicProject): Property {
@@ -471,13 +549,15 @@ export function RealtyPortal() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [hoveredPropertyId, setHoveredPropertyId] = useState<string | null>(null);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
-  
+
   // Left sidebar filter states
-  const [sidebarCategory, setSidebarCategory] = useState<"All" | "Residential" | "Commercial">("All");
+  const [sidebarCategory, setSidebarCategory] = useState<"All" | "Residential" | "Commercial">(
+    "All",
+  );
   const [sidebarStatus, setSidebarStatus] = useState({
     readyToMove: false,
     underConstruction: false,
-    newLaunches: false
+    newLaunches: false,
   });
 
   const { projects: dbProjects } = usePublicProjects("realty");
@@ -544,11 +624,13 @@ export function RealtyPortal() {
   const [currentView, setCurrentView] = useState<"search" | "detail">("search");
   const [carouselIndices, setCarouselIndices] = useState<Record<string, number>>({});
   const [favorites, setFavorites] = useState<string[]>([]);
-  
+
   // Call Back Modal states
   const [showCallbackModal, setShowCallbackModal] = useState(false);
   const [callbackProperty, setCallbackProperty] = useState<Property | null>(null);
-  const [detailTab, setDetailTab] = useState<"highlights" | "overview" | "pricing" | "gallery" | "map">("highlights");
+  const [detailTab, setDetailTab] = useState<
+    "highlights" | "overview" | "pricing" | "gallery" | "map"
+  >("highlights");
 
   // Load favorites from local storage
   useEffect(() => {
@@ -591,81 +673,136 @@ export function RealtyPortal() {
   };
 
   const filteredProperties = useMemo(() => {
-    return allProperties.filter((p) => {
-      // Filter by city
-      if (selectedCity !== "All" && p.city !== selectedCity) return false;
+    return allProperties
+      .filter((p) => {
+        // Filter by city
+        if (selectedCity !== "All" && p.city !== selectedCity) return false;
 
-      // Filter by sub-location tag
-      if (selectedNeighborhood && p.neighborhood !== selectedNeighborhood) return false;
+        // Filter by sub-location tag
+        if (selectedNeighborhood && p.neighborhood !== selectedNeighborhood) return false;
 
-      // Filter by category cards / sidebar
-      if (selectedType) {
-        if (selectedType === "Residential" && p.category !== "Residential") return false;
-        if (selectedType === "Commercial" && p.category !== "Commercial") return false;
-        if (selectedType === "Under Construction" && p.type !== "Under Construction") return false;
-        if (selectedType === "Ready to Move" && p.type !== "Ready to Move") return false;
-      }
+        // Filter by category cards / sidebar
+        if (selectedType) {
+          if (selectedType === "Residential" && p.category !== "Residential") return false;
+          if (selectedType === "Commercial" && p.category !== "Commercial") return false;
+          if (selectedType === "Under Construction" && p.type !== "Under Construction")
+            return false;
+          if (selectedType === "Ready to Move" && p.type !== "Ready to Move") return false;
+        }
 
-      // Sidebar Category (Residential / Commercial)
-      if (sidebarCategory !== "All" && p.category !== sidebarCategory) return false;
+        // Sidebar Category (Residential / Commercial)
+        if (sidebarCategory !== "All" && p.category !== sidebarCategory) return false;
 
-      // Sidebar Status
-      if (sidebarStatus.readyToMove || sidebarStatus.underConstruction || sidebarStatus.newLaunches) {
-        const matchReady = sidebarStatus.readyToMove && p.type === "Ready to Move";
-        const matchUnder = sidebarStatus.underConstruction && p.type === "Under Construction";
-        const matchLaunch = sidebarStatus.newLaunches && p.type === "Under Construction"; // count launches under UC
-        if (!matchReady && !matchUnder && !matchLaunch) return false;
-      }
+        // Sidebar Status
+        if (
+          sidebarStatus.readyToMove ||
+          sidebarStatus.underConstruction ||
+          sidebarStatus.newLaunches
+        ) {
+          const matchReady = sidebarStatus.readyToMove && p.type === "Ready to Move";
+          const matchUnder = sidebarStatus.underConstruction && p.type === "Under Construction";
+          const matchLaunch = sidebarStatus.newLaunches && p.type === "Under Construction"; // count launches under UC
+          if (!matchReady && !matchUnder && !matchLaunch) return false;
+        }
 
-      // Sidebar Budget
-      const maxBudgetVal = sidebarBudget * 10000000; // convert to Rupees
-      if (p.priceVal > 0 && p.priceVal > maxBudgetVal) return false;
+        // Sidebar Budget
+        const maxBudgetVal = sidebarBudget * 10000000; // convert to Rupees
+        if (p.priceVal > 0 && p.priceVal > maxBudgetVal) return false;
 
-      // Filter by property sub-type (Plot, Retail Shop, Commercial Office, Food Court, Showroom)
-      if (sidebarPropertyType.length > 0) {
-        const matchesType = sidebarPropertyType.some((type) => {
-          const t = type.toLowerCase();
-          const bedsLower = p.beds.toLowerCase();
-          const titleLower = p.title.toLowerCase();
-          const descLower = p.description.toLowerCase();
-          
-          if (t === "plot" && (bedsLower.includes("plot") || titleLower.includes("plot"))) return true;
-          if (t === "retail shop" && (bedsLower.includes("shop") || titleLower.includes("shop"))) return true;
-          if (t === "commercial office" && (bedsLower.includes("office") || titleLower.includes("office"))) return true;
-          if (t === "food court" && (bedsLower.includes("food") || titleLower.includes("food") || descLower.includes("food"))) return true;
-          if (t === "showroom" && (bedsLower.includes("showroom") || titleLower.includes("showroom"))) return true;
-          return false;
-        });
-        if (!matchesType) return false;
-      }
+        // Filter by property sub-type (Plot, Retail Shop, Commercial Office, Food Court, Showroom)
+        if (sidebarPropertyType.length > 0) {
+          const matchesType = sidebarPropertyType.some((type) => {
+            const t = type.toLowerCase();
+            const bedsLower = p.beds.toLowerCase();
+            const titleLower = p.title.toLowerCase();
+            const descLower = p.description.toLowerCase();
 
-      // Filter by search query
-      if (searchQuery.trim() !== "") {
-        const query = searchQuery.toLowerCase();
-        const matchesTitle = p.title.toLowerCase().includes(query);
-        const matchesLocation = p.location.toLowerCase().includes(query);
-        const matchesTagline = p.tagline.toLowerCase().includes(query);
-        const matchesBeds = p.beds.toLowerCase().includes(query);
-        return matchesTitle || matchesLocation || matchesTagline || matchesBeds;
-      }
+            if (t === "plot" && (bedsLower.includes("plot") || titleLower.includes("plot")))
+              return true;
+            if (t === "retail shop" && (bedsLower.includes("shop") || titleLower.includes("shop")))
+              return true;
+            if (
+              t === "commercial office" &&
+              (bedsLower.includes("office") || titleLower.includes("office"))
+            )
+              return true;
+            if (
+              t === "food court" &&
+              (bedsLower.includes("food") ||
+                titleLower.includes("food") ||
+                descLower.includes("food"))
+            )
+              return true;
+            if (
+              t === "showroom" &&
+              (bedsLower.includes("showroom") || titleLower.includes("showroom"))
+            )
+              return true;
+            return false;
+          });
+          if (!matchesType) return false;
+        }
 
-      return true;
-    }).sort((a, b) => {
-      if (a.isRecommended === b.isRecommended) return 0;
-      return a.isRecommended ? -1 : 1;
-    });
-  }, [allProperties, selectedCity, selectedType, selectedNeighborhood, searchQuery, sidebarCategory, sidebarStatus, sidebarBudget, sidebarPropertyType]);
+        // Filter by search query
+        if (searchQuery.trim() !== "") {
+          const query = searchQuery.toLowerCase();
+          const matchesTitle = p.title.toLowerCase().includes(query);
+          const matchesLocation = p.location.toLowerCase().includes(query);
+          const matchesTagline = p.tagline.toLowerCase().includes(query);
+          const matchesBeds = p.beds.toLowerCase().includes(query);
+          return matchesTitle || matchesLocation || matchesTagline || matchesBeds;
+        }
+
+        return true;
+      })
+      .sort((a, b) => {
+        if (a.isRecommended === b.isRecommended) return 0;
+        return a.isRecommended ? -1 : 1;
+      });
+  }, [
+    allProperties,
+    selectedCity,
+    selectedType,
+    selectedNeighborhood,
+    searchQuery,
+    sidebarCategory,
+    sidebarStatus,
+    sidebarBudget,
+    sidebarPropertyType,
+  ]);
 
   const residentialCount = allProperties.filter((p) => p.category === "Residential").length;
   const commercialCount = allProperties.filter((p) => p.category === "Commercial").length;
-  const underConstructionCount = allProperties.filter((p) => p.type === "Under Construction").length;
+  const underConstructionCount = allProperties.filter(
+    (p) => p.type === "Under Construction",
+  ).length;
   const readyToMoveCount = allProperties.filter((p) => p.type === "Ready to Move").length;
 
   const categories = [
-    { label: "Residential Properties", type: "Residential", icon: Home, count: `${residentialCount} properties` },
-    { label: "Commercial Properties", type: "Commercial", icon: Building, count: `${commercialCount} properties` },
-    { label: "Under Construction", type: "Under Construction", icon: Wrench, count: `${underConstructionCount} properties` },
-    { label: "Ready to Move", type: "Ready to Move", icon: CheckSquare, count: `${readyToMoveCount} properties` },
+    {
+      label: "Residential Properties",
+      type: "Residential",
+      icon: Home,
+      count: `${residentialCount} properties`,
+    },
+    {
+      label: "Commercial Properties",
+      type: "Commercial",
+      icon: Building,
+      count: `${commercialCount} properties`,
+    },
+    {
+      label: "Under Construction",
+      type: "Under Construction",
+      icon: Wrench,
+      count: `${underConstructionCount} properties`,
+    },
+    {
+      label: "Ready to Move",
+      type: "Ready to Move",
+      icon: CheckSquare,
+      count: `${readyToMoveCount} properties`,
+    },
   ];
 
   const handleOpenDetail = (p: Property) => {
@@ -675,9 +812,11 @@ export function RealtyPortal() {
   };
 
   return (
-    <section id="realty-portal" className="bg-background py-16 text-foreground relative border-t border-border/10">
+    <section
+      id="realty-portal"
+      className="bg-background py-16 text-foreground relative border-t border-border/10"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        
         {/* Render Search Results View */}
         {currentView === "search" && (
           <>
@@ -685,7 +824,10 @@ export function RealtyPortal() {
               <div className="text-center max-w-3xl mx-auto mb-10">
                 <p className="eyebrow font-semibold">Tathastu Realty Search</p>
                 <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl text-ink">
-                  Premium Real Estate Properties in <span className="text-gradient-gold italic">{selectedCity === "All" ? "India" : selectedCity}</span>
+                  Premium Real Estate Properties in{" "}
+                  <span className="text-gradient-gold italic">
+                    {selectedCity === "All" ? "India" : selectedCity}
+                  </span>
                 </h2>
               </div>
             </Reveal>
@@ -709,13 +851,21 @@ export function RealtyPortal() {
                       {isSelected && (
                         <span className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-br from-amber-400/30 to-transparent opacity-40 pointer-events-none" />
                       )}
-                      <div className={`p-2.5 md:p-3.5 rounded-xl transition-all duration-300 ${
-                        isSelected ? "bg-gradient-gold text-ink" : "bg-secondary text-primary group-hover:bg-gradient-gold group-hover:text-ink"
-                      }`}>
+                      <div
+                        className={`p-2.5 md:p-3.5 rounded-xl transition-all duration-300 ${
+                          isSelected
+                            ? "bg-gradient-gold text-ink"
+                            : "bg-secondary text-primary group-hover:bg-gradient-gold group-hover:text-ink"
+                        }`}
+                      >
                         <Icon className="h-4 w-4 md:h-5 md:w-5" />
                       </div>
-                      <h3 className="mt-3 font-display text-[10px] md:text-xs font-semibold tracking-wide">{cat.label}</h3>
-                      <p className="mt-1 text-[9px] md:text-[10px] text-muted-foreground">{cat.count}</p>
+                      <h3 className="mt-3 font-display text-[10px] md:text-xs font-semibold tracking-wide">
+                        {cat.label}
+                      </h3>
+                      <p className="mt-1 text-[9px] md:text-[10px] text-muted-foreground">
+                        {cat.count}
+                      </p>
                     </button>
                   );
                 })}
@@ -726,6 +876,18 @@ export function RealtyPortal() {
             <Reveal delay={0.1}>
               <div className="relative bg-card border border-border shadow-luxe rounded-3xl p-5 mb-6 max-w-5xl mx-auto">
                 <div className="flex flex-col md:flex-row gap-4 items-center">
+                  <div className="flex items-center gap-3 w-full md:w-auto shrink-0 mb-4 md:mb-0 md:mr-4 border-b md:border-b-0 md:border-r border-border pb-4 md:pb-0 md:pr-4">
+                    <Link
+                      to="/realty/pune-desk"
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-muted/50 transition-colors"
+                    >
+                      <span className="font-semibold text-ink">Pune Desk</span>
+                      <span className="px-2 py-0.5 rounded-full bg-[#3b5972] text-[10px] font-bold text-white uppercase tracking-wider">
+                        Exclusive
+                      </span>
+                    </Link>
+                  </div>
+
                   <div className="w-full md:w-1/4 relative border-b md:border-b-0 md:border-r border-border pb-3 md:pb-0 md:pr-4">
                     <label className="block text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
                       Search City
@@ -738,10 +900,18 @@ export function RealtyPortal() {
                       }}
                       className="mt-1 block w-full bg-transparent border-0 text-base font-semibold focus:outline-none focus:ring-0 cursor-pointer text-ink dark:text-ivory"
                     >
-                      <option value="Pune" className="bg-card text-foreground">Pune</option>
-                      <option value="Mumbai" className="bg-card text-foreground">Mumbai</option>
-                      <option value="Bangalore" className="bg-card text-foreground">Bangalore</option>
-                      <option value="All" className="bg-card text-foreground">All Cities</option>
+                      <option value="Pune" className="bg-card text-foreground">
+                        Pune
+                      </option>
+                      <option value="Mumbai" className="bg-card text-foreground">
+                        Mumbai
+                      </option>
+                      <option value="Bangalore" className="bg-card text-foreground">
+                        Bangalore
+                      </option>
+                      <option value="All" className="bg-card text-foreground">
+                        All Cities
+                      </option>
                     </select>
                   </div>
 
@@ -812,7 +982,9 @@ export function RealtyPortal() {
                   variant="ghost"
                   onClick={() => setShowMobileFilters(!showMobileFilters)}
                   className={`lg:hidden flex-1 md:flex-none flex items-center justify-center gap-1.5 h-8 rounded-full text-[11px] font-semibold transition-all ${
-                    showMobileFilters ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-ink hover:bg-secondary"
+                    showMobileFilters
+                      ? "bg-primary/10 text-primary"
+                      : "text-muted-foreground hover:text-ink hover:bg-secondary"
                   }`}
                 >
                   <SlidersHorizontal className="h-3.5 w-3.5" /> Filters
@@ -839,11 +1011,12 @@ export function RealtyPortal() {
 
             {/* Split Panel Grid (Sidebar Filters on Left, Properties on Right) */}
             <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 lg:gap-8 items-start">
-              
               {/* Left Sidebar Filter Panel */}
-              <aside className={`bg-card border border-border rounded-3xl p-5 md:p-6 space-y-6 shadow-sm lg:sticky lg:top-28 transition-all duration-300 ${
-                showMobileFilters ? "block" : "hidden lg:block"
-              }`}>
+              <aside
+                className={`bg-card border border-border rounded-3xl p-5 md:p-6 space-y-6 shadow-sm lg:sticky lg:top-28 transition-all duration-300 ${
+                  showMobileFilters ? "block" : "hidden lg:block"
+                }`}
+              >
                 <div>
                   <h4 className="text-xs uppercase tracking-wider text-ink font-bold mb-3 flex items-center gap-1.5">
                     <SlidersHorizontal className="h-3.5 w-3.5 text-primary" /> Property Type
@@ -885,13 +1058,17 @@ export function RealtyPortal() {
                 <hr className="border-border" />
 
                 <div>
-                  <h4 className="text-xs uppercase tracking-wider text-ink font-bold mb-3">Construction Status</h4>
+                  <h4 className="text-xs uppercase tracking-wider text-ink font-bold mb-3">
+                    Construction Status
+                  </h4>
                   <div className="space-y-2.5 text-sm">
                     <label className="flex items-center gap-2 cursor-pointer text-ink/80 hover:text-ink font-medium">
                       <input
                         type="checkbox"
                         checked={sidebarStatus.readyToMove}
-                        onChange={(e) => setSidebarStatus({ ...sidebarStatus, readyToMove: e.target.checked })}
+                        onChange={(e) =>
+                          setSidebarStatus({ ...sidebarStatus, readyToMove: e.target.checked })
+                        }
                         className="h-4 w-4 border-border rounded text-primary focus:ring-primary"
                       />
                       <span>Ready to Move</span>
@@ -900,7 +1077,12 @@ export function RealtyPortal() {
                       <input
                         type="checkbox"
                         checked={sidebarStatus.underConstruction}
-                        onChange={(e) => setSidebarStatus({ ...sidebarStatus, underConstruction: e.target.checked })}
+                        onChange={(e) =>
+                          setSidebarStatus({
+                            ...sidebarStatus,
+                            underConstruction: e.target.checked,
+                          })
+                        }
                         className="h-4 w-4 border-border rounded text-primary focus:ring-primary"
                       />
                       <span>Under Construction</span>
@@ -909,7 +1091,9 @@ export function RealtyPortal() {
                       <input
                         type="checkbox"
                         checked={sidebarStatus.newLaunches}
-                        onChange={(e) => setSidebarStatus({ ...sidebarStatus, newLaunches: e.target.checked })}
+                        onChange={(e) =>
+                          setSidebarStatus({ ...sidebarStatus, newLaunches: e.target.checked })
+                        }
                         className="h-4 w-4 border-border rounded text-primary focus:ring-primary"
                       />
                       <span>Upcoming New Launches</span>
@@ -921,8 +1105,12 @@ export function RealtyPortal() {
 
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <h4 className="text-xs uppercase tracking-wider text-ink font-bold">Max Budget</h4>
-                    <span className="text-xs font-semibold text-gradient-gold">{sidebarBudget} Cr</span>
+                    <h4 className="text-xs uppercase tracking-wider text-ink font-bold">
+                      Max Budget
+                    </h4>
+                    <span className="text-xs font-semibold text-gradient-gold">
+                      {sidebarBudget} Cr
+                    </span>
                   </div>
                   <input
                     type="range"
@@ -943,28 +1131,37 @@ export function RealtyPortal() {
                 <hr className="border-border" />
 
                 <div>
-                  <h4 className="text-xs uppercase tracking-wider text-ink font-bold mb-3">Type of Property</h4>
+                  <h4 className="text-xs uppercase tracking-wider text-ink font-bold mb-3">
+                    Type of Property
+                  </h4>
                   <div className="space-y-2.5 text-sm">
-                    {["Plot", "Retail Shop", "Commercial Office", "Food Court", "Showroom"].map((type) => {
-                      const isChecked = sidebarPropertyType.includes(type);
-                      return (
-                        <label key={type} className="flex items-center gap-2 cursor-pointer text-ink/80 hover:text-ink font-medium">
-                          <input
-                            type="checkbox"
-                            checked={isChecked}
-                            onChange={(e) => {
-                              if (e.target.checked) {
-                                setSidebarPropertyType([...sidebarPropertyType, type]);
-                              } else {
-                                setSidebarPropertyType(sidebarPropertyType.filter((t) => t !== type));
-                              }
-                            }}
-                            className="h-4 w-4 border-border rounded text-primary focus:ring-primary"
-                          />
-                          <span>{type}</span>
-                        </label>
-                      );
-                    })}
+                    {["Plot", "Retail Shop", "Commercial Office", "Food Court", "Showroom"].map(
+                      (type) => {
+                        const isChecked = sidebarPropertyType.includes(type);
+                        return (
+                          <label
+                            key={type}
+                            className="flex items-center gap-2 cursor-pointer text-ink/80 hover:text-ink font-medium"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={isChecked}
+                              onChange={(e) => {
+                                if (e.target.checked) {
+                                  setSidebarPropertyType([...sidebarPropertyType, type]);
+                                } else {
+                                  setSidebarPropertyType(
+                                    sidebarPropertyType.filter((t) => t !== type),
+                                  );
+                                }
+                              }}
+                              className="h-4 w-4 border-border rounded text-primary focus:ring-primary"
+                            />
+                            <span>{type}</span>
+                          </label>
+                        );
+                      },
+                    )}
                   </div>
                 </div>
               </aside>
@@ -974,13 +1171,18 @@ export function RealtyPortal() {
                 {filteredProperties.length === 0 ? (
                   <div className="text-center py-20 bg-card border border-border rounded-3xl">
                     <Info className="h-12 w-12 text-primary mx-auto mb-4" />
-                    <h4 className="font-display text-xl font-semibold text-ink">No Properties Found</h4>
+                    <h4 className="font-display text-xl font-semibold text-ink">
+                      No Properties Found
+                    </h4>
                     <p className="mt-2 text-muted-foreground max-w-md mx-auto">
-                      We couldn't find any premium properties matching your exact search. Try resetting filters or changing the search queries.
+                      We couldn't find any premium properties matching your exact search. Try
+                      resetting filters or changing the search queries.
                     </p>
                   </div>
                 ) : (
-                  <div className={`grid gap-6 ${viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 xl:grid-cols-3" : "grid-cols-1"}`}>
+                  <div
+                    className={`grid gap-6 ${viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 xl:grid-cols-3" : "grid-cols-1"}`}
+                  >
                     {filteredProperties.map((p) => {
                       const activeImgIndex = carouselIndices[p.id] || 0;
                       const isFav = favorites.includes(p.id);
@@ -1012,7 +1214,9 @@ export function RealtyPortal() {
                                   onClick={(e) => toggleFavorite(p.id, e)}
                                   className="grid h-8 w-8 place-items-center rounded-full bg-ink/65 border border-ivory/10 text-ivory backdrop-blur hover:bg-gradient-gold hover:text-ink transition-all"
                                 >
-                                  <Heart className={`h-4.5 w-4.5 ${isFav ? "fill-red-500 text-red-500" : ""}`} />
+                                  <Heart
+                                    className={`h-4.5 w-4.5 ${isFav ? "fill-red-500 text-red-500" : ""}`}
+                                  />
                                 </button>
                               </div>
 
@@ -1056,18 +1260,24 @@ export function RealtyPortal() {
 
                               <div className="mt-3 grid grid-cols-2 gap-2 text-xs border-y border-border/40 py-2.5 my-2.5">
                                 <div>
-                                  <p className="text-[9px] uppercase tracking-wider text-muted-foreground">Area Size</p>
+                                  <p className="text-[9px] uppercase tracking-wider text-muted-foreground">
+                                    Area Size
+                                  </p>
                                   <p className="font-semibold text-foreground mt-0.5">{p.area}</p>
                                 </div>
                                 <div>
-                                  <p className="text-[9px] uppercase tracking-wider text-muted-foreground">BHK Config</p>
+                                  <p className="text-[9px] uppercase tracking-wider text-muted-foreground">
+                                    BHK Config
+                                  </p>
                                   <p className="font-semibold text-foreground mt-0.5">{p.beds}</p>
                                 </div>
                               </div>
 
                               <div className="mt-auto pt-4 flex items-center justify-between gap-2">
                                 <div>
-                                  <p className="text-[9px] uppercase tracking-widest text-muted-foreground font-semibold">Price</p>
+                                  <p className="text-[9px] uppercase tracking-widest text-muted-foreground font-semibold">
+                                    Price
+                                  </p>
                                   <p className="text-lg font-bold text-gradient-gold">₹{p.price}</p>
                                 </div>
                                 <div className="flex items-center gap-2">
@@ -1081,7 +1291,10 @@ export function RealtyPortal() {
                                     <WhatsAppIcon className="h-4 w-4" />
                                   </a>
                                   <Button
-                                    onClick={(e) => { e.stopPropagation(); handleOpenDetail(p); }}
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleOpenDetail(p);
+                                    }}
                                     className="rounded-full bg-[#005bb7] hover:bg-[#004a96] text-white px-4 py-1.5 h-auto text-xs font-semibold shadow-sm transition-all"
                                   >
                                     View Details
@@ -1118,7 +1331,9 @@ export function RealtyPortal() {
                               onClick={(e) => toggleFavorite(p.id, e)}
                               className="absolute right-3 top-3 z-10 grid h-8 w-8 place-items-center rounded-full bg-ink/65 border border-ivory/10 text-ivory backdrop-blur hover:bg-gradient-gold hover:text-ink transition-all animate-fade"
                             >
-                              <Heart className={`h-4.5 w-4.5 ${isFav ? "fill-red-500 text-red-500" : ""}`} />
+                              <Heart
+                                className={`h-4.5 w-4.5 ${isFav ? "fill-red-500 text-red-500" : ""}`}
+                              />
                             </button>
 
                             {/* 360 View Indicator overlay */}
@@ -1153,10 +1368,19 @@ export function RealtyPortal() {
                               {/* Configurations Table Grid */}
                               <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-3">
                                 {p.configs.slice(0, 3).map((cfg, cidx) => (
-                                  <div key={cidx} className="bg-secondary/40 border border-border/40 p-2.5 rounded-xl text-center">
-                                    <p className="text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">{cfg.bhk}</p>
-                                    <p className="font-semibold text-foreground text-xs mt-0.5">{cfg.size}</p>
-                                    <p className="text-primary font-bold text-xs mt-0.5">{cfg.price}</p>
+                                  <div
+                                    key={cidx}
+                                    className="bg-secondary/40 border border-border/40 p-2.5 rounded-xl text-center"
+                                  >
+                                    <p className="text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">
+                                      {cfg.bhk}
+                                    </p>
+                                    <p className="font-semibold text-foreground text-xs mt-0.5">
+                                      {cfg.size}
+                                    </p>
+                                    <p className="text-primary font-bold text-xs mt-0.5">
+                                      {cfg.price}
+                                    </p>
                                   </div>
                                 ))}
                               </div>
@@ -1164,7 +1388,10 @@ export function RealtyPortal() {
                               {/* Amenities Row */}
                               <div className="mt-4 flex flex-wrap gap-1.5">
                                 {p.amenities.slice(0, 4).map((amenity) => (
-                                  <span key={amenity} className="text-[10px] text-muted-foreground bg-secondary/20 px-2 py-1 rounded border border-border/30">
+                                  <span
+                                    key={amenity}
+                                    className="text-[10px] text-muted-foreground bg-secondary/20 px-2 py-1 rounded border border-border/30"
+                                  >
                                     {amenity}
                                   </span>
                                 ))}
@@ -1178,12 +1405,18 @@ export function RealtyPortal() {
                             {/* Buttons Row */}
                             <div className="mt-6 pt-4 border-t border-border/40 flex flex-wrap items-center justify-between gap-3">
                               <div className="text-lg font-bold text-gradient-gold">
-                                ₹{p.price} <span className="text-[10px] text-muted-foreground font-normal uppercase">Onwards</span>
+                                ₹{p.price}{" "}
+                                <span className="text-[10px] text-muted-foreground font-normal uppercase">
+                                  Onwards
+                                </span>
                               </div>
                               <div className="flex items-center gap-3">
                                 <Button
                                   variant="outline"
-                                  onClick={(e) => { e.stopPropagation(); handleOpenDetail(p); }}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleOpenDetail(p);
+                                  }}
                                   className="rounded-full border border-border text-ink dark:text-ivory hover:bg-secondary px-5 py-2 h-auto text-xs font-semibold transition-all"
                                 >
                                   View Details
@@ -1227,12 +1460,13 @@ export function RealtyPortal() {
                     Explore Pune Neighborhoods
                   </h3>
                   <p className="text-sm text-muted-foreground mt-2">
-                    Browse all our premium residential projects, commercial spaces, and new launches across growth corridors in Pune East, West, North, and South.
+                    Browse all our premium residential projects, commercial spaces, and new launches
+                    across growth corridors in Pune East, West, North, and South.
                   </p>
                 </div>
-                <InteractivePuneMap 
-                  properties={filteredProperties.length > 0 ? filteredProperties : allProperties} 
-                  onSelectProperty={handleOpenDetail} 
+                <InteractivePuneMap
+                  properties={filteredProperties.length > 0 ? filteredProperties : allProperties}
+                  onSelectProperty={handleOpenDetail}
                 />
               </div>
             </Reveal>
@@ -1284,18 +1518,30 @@ export function RealtyPortal() {
               {/* Header Configurations row */}
               <div className="flex flex-wrap items-center gap-8 bg-secondary/30 border border-border/40 p-4 rounded-2xl w-full md:w-auto">
                 <div className="text-center">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Configuration</p>
-                  <p className="text-base font-bold text-foreground mt-1">{selectedProperty.beds}</p>
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                    Configuration
+                  </p>
+                  <p className="text-base font-bold text-foreground mt-1">
+                    {selectedProperty.beds}
+                  </p>
                 </div>
                 <div className="h-8 w-px bg-border/40" />
                 <div className="text-center">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Price</p>
-                  <p className="text-base font-bold text-gradient-gold mt-1">₹{selectedProperty.price}</p>
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                    Price
+                  </p>
+                  <p className="text-base font-bold text-gradient-gold mt-1">
+                    ₹{selectedProperty.price}
+                  </p>
                 </div>
                 <div className="h-8 w-px bg-border/40" />
                 <div className="text-center">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Carpet Area</p>
-                  <p className="text-base font-bold text-foreground mt-1">{selectedProperty.area}</p>
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                    Carpet Area
+                  </p>
+                  <p className="text-base font-bold text-foreground mt-1">
+                    {selectedProperty.area}
+                  </p>
                 </div>
               </div>
             </div>
@@ -1309,14 +1555,16 @@ export function RealtyPortal() {
                   alt={selectedProperty.title}
                   className="h-full w-full object-cover"
                 />
-                
+
                 {/* Heart & Share Overlay Buttons */}
                 <div className="absolute right-4 top-4 flex gap-2 z-10">
                   <button
                     onClick={(e) => toggleFavorite(selectedProperty.id, e)}
                     className="grid h-10 w-10 place-items-center rounded-full bg-ink/75 border border-ivory/10 text-ivory hover:bg-gradient-gold hover:text-ink transition-all shadow-md"
                   >
-                    <Heart className={`h-5 w-5 ${favorites.includes(selectedProperty.id) ? "fill-red-500 text-red-500" : ""}`} />
+                    <Heart
+                      className={`h-5 w-5 ${favorites.includes(selectedProperty.id) ? "fill-red-500 text-red-500" : ""}`}
+                    />
                   </button>
                   <button className="grid h-10 w-10 place-items-center rounded-full bg-ink/75 border border-ivory/10 text-ivory hover:bg-gradient-gold hover:text-ink transition-all shadow-md">
                     <Share2 className="h-5 w-5" />
@@ -1341,36 +1589,64 @@ export function RealtyPortal() {
               {/* Grid of gallery thumbs (looks like the right column in screenshot) */}
               <div className="grid grid-cols-2 gap-4 h-full">
                 <div className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer">
-                  <img src={selectedProperty.images[1] || selectedProperty.images[0]} alt="Video Thumbnail" className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500" />
+                  <img
+                    src={selectedProperty.images[1] || selectedProperty.images[0]}
+                    alt="Video Thumbnail"
+                    className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
+                  />
                   <div className="absolute inset-0 bg-black/45 flex items-center justify-center">
                     <span className="grid h-12 w-12 place-items-center rounded-full bg-ivory/10 border border-ivory/20 text-ivory backdrop-blur group-hover:bg-primary group-hover:text-ink transition-all">
                       ▶
                     </span>
                   </div>
-                  <span className="absolute left-3 top-3 text-[10px] font-semibold text-white uppercase tracking-wider bg-black/60 px-2 py-0.5 rounded">Video</span>
+                  <span className="absolute left-3 top-3 text-[10px] font-semibold text-white uppercase tracking-wider bg-black/60 px-2 py-0.5 rounded">
+                    Video
+                  </span>
                 </div>
 
                 <div className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer">
-                  <img src={realty3} alt="Floor Plan" className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500" />
+                  <img
+                    src={realty3}
+                    alt="Floor Plan"
+                    className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
+                  />
                   <div className="absolute inset-0 bg-black/45 flex items-center justify-center" />
-                  <span className="absolute left-3 top-3 text-[10px] font-semibold text-white uppercase tracking-wider bg-black/60 px-2 py-0.5 rounded">Unit Floor Plans</span>
+                  <span className="absolute left-3 top-3 text-[10px] font-semibold text-white uppercase tracking-wider bg-black/60 px-2 py-0.5 rounded">
+                    Unit Floor Plans
+                  </span>
                 </div>
 
                 <div className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer">
-                  <img src={selectedProperty.images[2] || selectedProperty.images[0]} alt="Amenities" className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500" />
+                  <img
+                    src={selectedProperty.images[2] || selectedProperty.images[0]}
+                    alt="Amenities"
+                    className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
+                  />
                   <div className="absolute inset-0 bg-black/45 flex items-center justify-center" />
-                  <span className="absolute left-3 top-3 text-[10px] font-semibold text-white uppercase tracking-wider bg-black/60 px-2 py-0.5 rounded">Amenities</span>
+                  <span className="absolute left-3 top-3 text-[10px] font-semibold text-white uppercase tracking-wider bg-black/60 px-2 py-0.5 rounded">
+                    Amenities
+                  </span>
                 </div>
 
                 <div className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer">
-                  <img src={realty2} alt="Sample Flat" className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500" />
+                  <img
+                    src={realty2}
+                    alt="Sample Flat"
+                    className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
+                  />
                   <div className="absolute inset-0 bg-black/45 flex items-center justify-center" />
-                  <span className="absolute left-3 top-3 text-[10px] font-semibold text-white uppercase tracking-wider bg-black/60 px-2 py-0.5 rounded">Sample Flat Image</span>
+                  <span className="absolute left-3 top-3 text-[10px] font-semibold text-white uppercase tracking-wider bg-black/60 px-2 py-0.5 rounded">
+                    Sample Flat Image
+                  </span>
                 </div>
 
                 {/* +47 Photos Grid Button */}
                 <div className="col-span-2 relative aspect-[20/8] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer flex items-center justify-center">
-                  <img src={selectedProperty.images[0]} alt="Full Gallery" className="absolute inset-0 h-full w-full object-cover group-hover:scale-102 transition-transform duration-500" />
+                  <img
+                    src={selectedProperty.images[0]}
+                    alt="Full Gallery"
+                    className="absolute inset-0 h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
+                  />
                   <div className="absolute inset-0 bg-black/65 flex items-center justify-center z-10" />
                   <div className="relative z-20 text-center text-ivory">
                     <span className="inline-block border border-ivory/30 bg-ivory/10 backdrop-blur px-5 py-2.5 rounded-xl text-sm font-semibold tracking-wider group-hover:bg-primary group-hover:text-ink transition-all">
@@ -1383,7 +1659,6 @@ export function RealtyPortal() {
 
             {/* Tabbed Info & Call Back Form */}
             <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-8 items-start">
-              
               {/* Left Column: Description, Highlights, Map */}
               <div className="bg-card border border-border rounded-3xl p-6 md:p-8 space-y-8">
                 {/* Custom Tab selectors */}
@@ -1417,11 +1692,16 @@ export function RealtyPortal() {
                       </h3>
                       <ul className="space-y-4">
                         {selectedProperty.highlights.map((hl, idx) => (
-                          <li key={idx} className="flex gap-4 items-start bg-secondary/20 p-4 rounded-2xl border border-border/30">
+                          <li
+                            key={idx}
+                            className="flex gap-4 items-start bg-secondary/20 p-4 rounded-2xl border border-border/30"
+                          >
                             <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-gold text-ink shrink-0 font-bold">
                               {idx + 1}
                             </span>
-                            <span className="text-sm text-foreground mt-2 leading-relaxed">{hl}</span>
+                            <span className="text-sm text-foreground mt-2 leading-relaxed">
+                              {hl}
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -1444,11 +1724,15 @@ export function RealtyPortal() {
                       </p>
                       <div className="pt-4 grid grid-cols-2 gap-4">
                         <div className="bg-secondary/20 p-4 rounded-2xl border border-border/30">
-                          <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Property Type</p>
+                          <p className="text-[10px] text-muted-foreground uppercase tracking-wider">
+                            Property Type
+                          </p>
                           <p className="font-semibold text-sm mt-1">{selectedProperty.category}</p>
                         </div>
                         <div className="bg-secondary/20 p-4 rounded-2xl border border-border/30">
-                          <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Status</p>
+                          <p className="text-[10px] text-muted-foreground uppercase tracking-wider">
+                            Status
+                          </p>
                           <p className="font-semibold text-sm mt-1">{selectedProperty.type}</p>
                         </div>
                       </div>
@@ -1468,10 +1752,15 @@ export function RealtyPortal() {
                       </h3>
                       <div className="space-y-3">
                         {selectedProperty.configs.map((cfg, cidx) => (
-                          <div key={cidx} className="flex justify-between items-center bg-secondary/30 p-4 rounded-xl border border-border/30">
+                          <div
+                            key={cidx}
+                            className="flex justify-between items-center bg-secondary/30 p-4 rounded-xl border border-border/30"
+                          >
                             <div>
                               <p className="font-semibold text-foreground text-sm">{cfg.bhk}</p>
-                              <p className="text-[10px] text-muted-foreground uppercase mt-0.5">Area: {cfg.size}</p>
+                              <p className="text-[10px] text-muted-foreground uppercase mt-0.5">
+                                Area: {cfg.size}
+                              </p>
                             </div>
                             <p className="font-bold text-gradient-gold text-sm">{cfg.price}</p>
                           </div>
@@ -1489,8 +1778,15 @@ export function RealtyPortal() {
                       className="grid grid-cols-2 gap-4"
                     >
                       {selectedProperty.images.map((img, idx) => (
-                        <div key={idx} className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-border">
-                          <img src={img} alt={`Gallery ${idx}`} className="h-full w-full object-cover" />
+                        <div
+                          key={idx}
+                          className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-border"
+                        >
+                          <img
+                            src={img}
+                            alt={`Gallery ${idx}`}
+                            className="h-full w-full object-cover"
+                          />
                         </div>
                       ))}
                     </motion.div>
@@ -1531,12 +1827,16 @@ export function RealtyPortal() {
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
-                    alert(`Site visit request submitted for ${selectedProperty.title}! Our team will call you shortly.`);
+                    alert(
+                      `Site visit request submitted for ${selectedProperty.title}! Our team will call you shortly.`,
+                    );
                   }}
                   className="space-y-4"
                 >
                   <div>
-                    <label className="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Your Name</label>
+                    <label className="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                      Your Name
+                    </label>
                     <input
                       type="text"
                       required
@@ -1546,7 +1846,9 @@ export function RealtyPortal() {
                   </div>
 
                   <div>
-                    <label className="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Phone Number</label>
+                    <label className="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                      Phone Number
+                    </label>
                     <input
                       type="tel"
                       required
@@ -1556,7 +1858,9 @@ export function RealtyPortal() {
                   </div>
 
                   <div>
-                    <label className="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Preferred Schedule</label>
+                    <label className="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                      Preferred Schedule
+                    </label>
                     <select className="mt-1.5 block w-full px-4 py-2.5 rounded-xl border border-border bg-background focus:outline-none focus:ring-1 focus:ring-primary text-sm text-muted-foreground focus:text-foreground">
                       <option>Arrange Site Visit</option>
                       <option>Request Immediate Callback</option>
@@ -1564,7 +1868,10 @@ export function RealtyPortal() {
                     </select>
                   </div>
 
-                  <Button type="submit" className="w-full rounded-full bg-[#005bb7] hover:bg-[#004a96] text-white font-semibold h-11 mt-6 hover:scale-[1.01] transition-transform flex items-center justify-center gap-1.5">
+                  <Button
+                    type="submit"
+                    className="w-full rounded-full bg-[#005bb7] hover:bg-[#004a96] text-white font-semibold h-11 mt-6 hover:scale-[1.01] transition-transform flex items-center justify-center gap-1.5"
+                  >
                     <PhoneCall className="h-4 w-4" /> Submit Call Back Request
                   </Button>
                 </form>
@@ -1572,7 +1879,6 @@ export function RealtyPortal() {
             </div>
           </motion.div>
         )}
-
       </div>
 
       {/* Instant Callback Modal */}
@@ -1604,14 +1910,18 @@ export function RealtyPortal() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                alert(`Callback request submitted for ${callbackProperty.title}! Our team will call you shortly.`);
+                alert(
+                  `Callback request submitted for ${callbackProperty.title}! Our team will call you shortly.`,
+                );
                 setShowCallbackModal(false);
                 setCallbackProperty(null);
               }}
               className="mt-6 space-y-4"
             >
               <div>
-                <label className="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Your Name</label>
+                <label className="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                  Your Name
+                </label>
                 <input
                   type="text"
                   required
@@ -1621,7 +1931,9 @@ export function RealtyPortal() {
               </div>
 
               <div>
-                <label className="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Phone Number</label>
+                <label className="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                  Phone Number
+                </label>
                 <input
                   type="tel"
                   required
@@ -1630,7 +1942,10 @@ export function RealtyPortal() {
                 />
               </div>
 
-              <Button type="submit" className="w-full rounded-full bg-[#005bb7] hover:bg-[#004a96] text-white font-semibold h-11 shadow-md mt-6 hover:scale-[1.01] transition-transform">
+              <Button
+                type="submit"
+                className="w-full rounded-full bg-[#005bb7] hover:bg-[#004a96] text-white font-semibold h-11 shadow-md mt-6 hover:scale-[1.01] transition-transform"
+              >
                 Request Instant Callback
               </Button>
             </form>
@@ -1705,7 +2020,11 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
                 </p>
                 <div className="mt-1.5 flex items-center justify-between gap-2">
                   <span className="text-[10px] text-gradient-gold font-bold">
-                    {p.price?.startsWith("₹") ? p.price : (p.price?.match(/^[0-9]/) ? `₹${p.price}` : p.price)}
+                    {p.price?.startsWith("₹")
+                      ? p.price
+                      : p.price?.match(/^[0-9]/)
+                        ? `₹${p.price}`
+                        : p.price}
                   </span>
                   <span className="text-[9px] bg-secondary px-1.5 py-0.5 rounded text-muted-foreground uppercase font-semibold">
                     {p.type.split(" ")[0]}
@@ -1720,30 +2039,115 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
       {/* Map Canvas */}
       <div className="relative h-[500px] rounded-3xl border border-border bg-[#05101a] overflow-hidden shadow-luxe">
         {/* SVG Pune Schematic Map */}
-        <svg className="absolute inset-0 w-full h-full text-slate-800 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <svg
+          className="absolute inset-0 w-full h-full text-slate-800 pointer-events-none"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
           {/* Grid lines */}
           <pattern id="map-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.08" className="text-ivory/5" />
+            <path
+              d="M 10 0 L 0 0 0 10"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="0.08"
+              className="text-ivory/5"
+            />
           </pattern>
           <rect width="100" height="100" fill="url(#map-grid)" />
 
           {/* Styled rivers (Mula & Mutha confluence) */}
-          <path d="M -10,30 C 15,25 25,35 45,45" fill="none" stroke="#005bb7" strokeWidth="1.2" className="opacity-40" />
-          <path d="M 10,110 C 20,80 30,65 45,45" fill="none" stroke="#005bb7" strokeWidth="1.2" className="opacity-40" />
-          <path d="M 45,45 C 55,42 70,48 110,48" fill="none" stroke="#005bb7" strokeWidth="1.6" className="opacity-45" />
+          <path
+            d="M -10,30 C 15,25 25,35 45,45"
+            fill="none"
+            stroke="#005bb7"
+            strokeWidth="1.2"
+            className="opacity-40"
+          />
+          <path
+            d="M 10,110 C 20,80 30,65 45,45"
+            fill="none"
+            stroke="#005bb7"
+            strokeWidth="1.2"
+            className="opacity-40"
+          />
+          <path
+            d="M 45,45 C 55,42 70,48 110,48"
+            fill="none"
+            stroke="#005bb7"
+            strokeWidth="1.6"
+            className="opacity-45"
+          />
 
           {/* Highways */}
-          <path d="M 15,-10 L 18,30 C 20,50 25,70 35,110" fill="none" stroke="currentColor" strokeDasharray="1,2" strokeWidth="0.25" className="text-ivory/15" />
-          <path d="M 45,45 L 60,32 L 110,10" fill="none" stroke="currentColor" strokeDasharray="1,2" strokeWidth="0.25" className="text-ivory/15" />
-          <path d="M 45,45 L 75,55 L 110,65" fill="none" stroke="currentColor" strokeDasharray="1,2" strokeWidth="0.25" className="text-ivory/15" />
+          <path
+            d="M 15,-10 L 18,30 C 20,50 25,70 35,110"
+            fill="none"
+            stroke="currentColor"
+            strokeDasharray="1,2"
+            strokeWidth="0.25"
+            className="text-ivory/15"
+          />
+          <path
+            d="M 45,45 L 60,32 L 110,10"
+            fill="none"
+            stroke="currentColor"
+            strokeDasharray="1,2"
+            strokeWidth="0.25"
+            className="text-ivory/15"
+          />
+          <path
+            d="M 45,45 L 75,55 L 110,65"
+            fill="none"
+            stroke="currentColor"
+            strokeDasharray="1,2"
+            strokeWidth="0.25"
+            className="text-ivory/15"
+          />
 
           {/* Sector Labels */}
-          <text x="12" y="22" className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider">PUNE WEST (IT HUB)</text>
-          <text x="45" y="15" className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider">PUNE NORTH</text>
-          <text x="75" y="38" className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider">PUNE EAST</text>
-          <text x="40" y="88" className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider">PUNE SOUTH</text>
-          <text x="36" y="58" className="text-[2px] font-bold fill-muted-foreground/45 tracking-wider">KOTHRUD</text>
-          <text x="46" y="47" className="text-[2px] font-bold fill-muted-foreground/45 tracking-wider">SHIVAJINAGAR</text>
+          <text
+            x="12"
+            y="22"
+            className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider"
+          >
+            PUNE WEST (IT HUB)
+          </text>
+          <text
+            x="45"
+            y="15"
+            className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider"
+          >
+            PUNE NORTH
+          </text>
+          <text
+            x="75"
+            y="38"
+            className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider"
+          >
+            PUNE EAST
+          </text>
+          <text
+            x="40"
+            y="88"
+            className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider"
+          >
+            PUNE SOUTH
+          </text>
+          <text
+            x="36"
+            y="58"
+            className="text-[2px] font-bold fill-muted-foreground/45 tracking-wider"
+          >
+            KOTHRUD
+          </text>
+          <text
+            x="46"
+            y="47"
+            className="text-[2px] font-bold fill-muted-foreground/45 tracking-wider"
+          >
+            SHIVAJINAGAR
+          </text>
         </svg>
 
         {/* Property Pins */}
@@ -1760,7 +2164,11 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
               <div className="absolute bottom-full left-1/2 mb-2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
                 <div className="bg-card border border-border shadow-luxe rounded-md px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-foreground flex items-center gap-1">
                   <span className="text-gradient-gold">
-                    {p.price?.startsWith("₹") ? p.price : (p.price?.match(/^[0-9]/) ? `₹${p.price}` : p.price)}
+                    {p.price?.startsWith("₹")
+                      ? p.price
+                      : p.price?.match(/^[0-9]/)
+                        ? `₹${p.price}`
+                        : p.price}
                   </span>
                 </div>
                 {/* Tooltip triangle */}
@@ -1788,11 +2196,13 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
 
         {/* Popup Card */}
         {activeProperty && (
-          <div
-            className="absolute bottom-6 left-6 right-6 md:left-auto md:right-6 md:w-80 bg-card/95 backdrop-blur border border-border shadow-luxe p-4 rounded-2xl z-[60] flex items-start gap-4 transition-all duration-300 animate-in fade-in slide-in-from-bottom-2 duration-300"
-          >
+          <div className="absolute bottom-6 left-6 right-6 md:left-auto md:right-6 md:w-80 bg-card/95 backdrop-blur border border-border shadow-luxe p-4 rounded-2xl z-[60] flex items-start gap-4 transition-all duration-300 animate-in fade-in slide-in-from-bottom-2 duration-300">
             <div className="relative h-16 w-16 rounded-xl overflow-hidden bg-slate-900 shrink-0">
-              <img src={activeProperty.images[0]} alt={activeProperty.title} className="h-full w-full object-cover" />
+              <img
+                src={activeProperty.images[0]}
+                alt={activeProperty.title}
+                className="h-full w-full object-cover"
+              />
             </div>
             <div className="min-w-0 flex-1 relative">
               <button
@@ -1807,13 +2217,17 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
               <span className="inline-block rounded-full bg-ink/70 px-2 py-0.5 text-[8px] font-semibold uppercase tracking-wider text-primary-glow border border-primary/20">
                 {activeProperty.type}
               </span>
-              <h5 className="font-semibold text-sm text-foreground mt-1 truncate pr-5">{activeProperty.title}</h5>
+              <h5 className="font-semibold text-sm text-foreground mt-1 truncate pr-5">
+                {activeProperty.title}
+              </h5>
               <p className="text-xs text-muted-foreground truncate flex items-center gap-1 mt-0.5">
                 <MapPin className="h-3 w-3 text-primary shrink-0" />
                 {activeProperty.location}
               </p>
               <div className="mt-2.5 flex items-center justify-between gap-2">
-                <span className="text-sm font-bold text-gradient-gold">₹{activeProperty.price}</span>
+                <span className="text-sm font-bold text-gradient-gold">
+                  ₹{activeProperty.price}
+                </span>
                 <div className="flex items-center gap-2">
                   <a
                     href={`https://wa.me/917820864384?text=${encodeURIComponent(`Hi, I'm interested in ${activeProperty.title}.`)}`}
