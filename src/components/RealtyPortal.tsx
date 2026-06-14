@@ -977,7 +977,8 @@ export function RealtyPortal() {
                             key={p.id}
                             onMouseEnter={() => setHoveredPropertyId(p.id)}
                             onMouseLeave={() => setHoveredPropertyId(null)}
-                            className="group flex flex-col overflow-hidden rounded-3xl bg-card border border-border hover:border-amber-400/30 hover:shadow-luxe transition-all duration-300"
+                            onClick={() => handleOpenDetail(p)}
+                            className="group flex flex-col overflow-hidden rounded-3xl bg-card border border-border hover:border-amber-400/30 hover:shadow-luxe transition-all duration-300 cursor-pointer"
                             layout
                           >
                             <div className="relative aspect-[1.4/1] overflow-hidden bg-slate-900 shrink-0">
@@ -1059,12 +1060,13 @@ export function RealtyPortal() {
                                     href={`https://wa.me/917820864384?text=${encodeURIComponent(`Hi, I'm interested in ${p.title}.`)}`}
                                     target="_blank"
                                     rel="noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
                                     className="grid place-items-center h-8 w-8 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-sm transition-all"
                                   >
                                     <WhatsAppIcon className="h-4 w-4" />
                                   </a>
                                   <Button
-                                    onClick={() => handleOpenDetail(p)}
+                                    onClick={(e) => { e.stopPropagation(); handleOpenDetail(p); }}
                                     className="rounded-full bg-[#005bb7] hover:bg-[#004a96] text-white px-4 py-1.5 h-auto text-xs font-semibold shadow-sm transition-all"
                                   >
                                     View Details
@@ -1082,7 +1084,8 @@ export function RealtyPortal() {
                           key={p.id}
                           onMouseEnter={() => setHoveredPropertyId(p.id)}
                           onMouseLeave={() => setHoveredPropertyId(null)}
-                          className="group flex flex-col md:flex-row overflow-hidden rounded-3xl bg-card border border-border hover:border-amber-400/30 hover:shadow-luxe transition-all duration-300"
+                          onClick={() => handleOpenDetail(p)}
+                          className="group flex flex-col md:flex-row overflow-hidden rounded-3xl bg-card border border-border hover:border-amber-400/30 hover:shadow-luxe transition-all duration-300 cursor-pointer"
                           layout
                         >
                           {/* Image Left Panel */}
@@ -1165,7 +1168,7 @@ export function RealtyPortal() {
                               <div className="flex items-center gap-3">
                                 <Button
                                   variant="outline"
-                                  onClick={() => handleOpenDetail(p)}
+                                  onClick={(e) => { e.stopPropagation(); handleOpenDetail(p); }}
                                   className="rounded-full border border-border text-ink dark:text-ivory hover:bg-secondary px-5 py-2 h-auto text-xs font-semibold transition-all"
                                 >
                                   View Details
@@ -1174,6 +1177,7 @@ export function RealtyPortal() {
                                   href={`https://wa.me/917820864384?text=${encodeURIComponent(`Hi, I'm interested in ${p.title}.`)}`}
                                   target="_blank"
                                   rel="noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
                                   className="grid place-items-center h-9 w-9 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-sm transition-all"
                                 >
                                   <WhatsAppIcon className="h-4 w-4" />
