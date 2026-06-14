@@ -470,6 +470,7 @@ export function RealtyPortal() {
   const [selectedNeighborhood, setSelectedNeighborhood] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [hoveredPropertyId, setHoveredPropertyId] = useState<string | null>(null);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
   
   // Left sidebar filter states
   const [sidebarCategory, setSidebarCategory] = useState<"All" | "Residential" | "Commercial">("All");
@@ -689,17 +690,17 @@ export function RealtyPortal() {
               </div>
             </Reveal>
 
-            {/* Category Cards Grid */}
-            <Reveal delay={0.05}>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            {/* Main Category Tabs */}
+            <Reveal>
+              <div className="grid grid-cols-2 sm:grid-cols-4 max-w-4xl mx-auto gap-3 mb-8 md:mb-10 px-2">
                 {categories.map((cat) => {
-                  const Icon = cat.icon;
                   const isSelected = selectedType === cat.type;
+                  const Icon = cat.icon;
                   return (
                     <button
                       key={cat.type}
                       onClick={() => setSelectedType(isSelected ? null : cat.type)}
-                      className={`group relative flex flex-col items-center justify-center p-6 rounded-2xl border text-center transition-all duration-300 ${
+                      className={`group relative flex flex-col items-center justify-center p-3 md:p-5 rounded-2xl border text-center transition-all duration-300 ${
                         isSelected
                           ? "bg-card border-amber-400/80 shadow-gold scale-[1.02]"
                           : "bg-card/50 border-border hover:border-amber-400/40 hover:bg-card hover:-translate-y-0.5"
@@ -708,13 +709,13 @@ export function RealtyPortal() {
                       {isSelected && (
                         <span className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-br from-amber-400/30 to-transparent opacity-40 pointer-events-none" />
                       )}
-                      <div className={`p-4 rounded-xl transition-all duration-300 ${
+                      <div className={`p-2.5 md:p-3.5 rounded-xl transition-all duration-300 ${
                         isSelected ? "bg-gradient-gold text-ink" : "bg-secondary text-primary group-hover:bg-gradient-gold group-hover:text-ink"
                       }`}>
-                        <Icon className="h-6 w-6" />
+                        <Icon className="h-4 w-4 md:h-5 md:w-5" />
                       </div>
-                      <h3 className="mt-4 font-display text-sm font-semibold tracking-wide">{cat.label}</h3>
-                      <p className="mt-1 text-xs text-muted-foreground">{cat.count}</p>
+                      <h3 className="mt-3 font-display text-[10px] md:text-xs font-semibold tracking-wide">{cat.label}</h3>
+                      <p className="mt-1 text-[9px] md:text-[10px] text-muted-foreground">{cat.count}</p>
                     </button>
                   );
                 })}
@@ -802,33 +803,47 @@ export function RealtyPortal() {
             )}
 
             {/* Main Listings Layout (Sidebar + Results) */}
-            <div className="flex items-center justify-between mb-8">
-              <h3 className="font-display text-2xl font-semibold text-ink">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+              <h3 className="font-display text-2xl md:text-3xl font-semibold text-ink">
                 Upcoming New Launches {selectedCity !== "All" && `in ${selectedCity}`}
               </h3>
-              <div className="flex items-center border border-border bg-card rounded-full p-1 shadow-sm">
+              <div className="flex items-center justify-between w-full md:w-auto gap-3 border border-border bg-card rounded-full p-1 shadow-sm overflow-hidden">
                 <Button
                   variant="ghost"
-                  onClick={() => setViewMode("grid")}
-                  className={`p-2 rounded-full h-8 w-8 ${viewMode === "grid" ? "bg-gradient-gold text-ink" : "text-muted-foreground"}`}
+                  onClick={() => setShowMobileFilters(!showMobileFilters)}
+                  className={`lg:hidden flex-1 md:flex-none flex items-center justify-center gap-1.5 h-8 rounded-full text-[11px] font-semibold transition-all ${
+                    showMobileFilters ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-ink hover:bg-secondary"
+                  }`}
                 >
-                  <Grid className="h-4 w-4" />
+                  <SlidersHorizontal className="h-3.5 w-3.5" /> Filters
                 </Button>
-                <Button
-                  variant="ghost"
-                  onClick={() => setViewMode("list")}
-                  className={`p-2 rounded-full h-8 w-8 ${viewMode === "list" ? "bg-gradient-gold text-ink" : "text-muted-foreground"}`}
-                >
-                  <List className="h-4 w-4" />
-                </Button>
+                <div className="w-px h-6 bg-border/50 lg:hidden" />
+                <div className="flex">
+                  <Button
+                    variant="ghost"
+                    onClick={() => setViewMode("grid")}
+                    className={`p-2 rounded-full h-8 w-8 transition-all ${viewMode === "grid" ? "bg-gradient-gold text-ink shadow-sm" : "text-muted-foreground hover:text-ink hover:bg-secondary"}`}
+                  >
+                    <Grid className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    onClick={() => setViewMode("list")}
+                    className={`p-2 rounded-full h-8 w-8 transition-all ${viewMode === "list" ? "bg-gradient-gold text-ink shadow-sm" : "text-muted-foreground hover:text-ink hover:bg-secondary"}`}
+                  >
+                    <List className="h-4 w-4" />
+                  </Button>
+                </div>
               </div>
             </div>
 
             {/* Split Panel Grid (Sidebar Filters on Left, Properties on Right) */}
-            <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 lg:gap-8 items-start">
               
               {/* Left Sidebar Filter Panel */}
-              <aside className="bg-card border border-border rounded-3xl p-6 space-y-6 shadow-sm sticky top-28">
+              <aside className={`bg-card border border-border rounded-3xl p-5 md:p-6 space-y-6 shadow-sm lg:sticky lg:top-28 transition-all duration-300 ${
+                showMobileFilters ? "block" : "hidden lg:block"
+              }`}>
                 <div>
                   <h4 className="text-xs uppercase tracking-wider text-ink font-bold mb-3 flex items-center gap-1.5">
                     <SlidersHorizontal className="h-3.5 w-3.5 text-primary" /> Property Type
