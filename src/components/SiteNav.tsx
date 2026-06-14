@@ -118,24 +118,26 @@ export function SiteNav() {
                   </Link>
                   <div
                     className={cn(
-                      "absolute left-1/2 top-full mt-4 w-56 -translate-x-1/2 rounded-3xl border border-border/80 bg-background/95 p-2 text-foreground shadow-luxe backdrop-blur-xl transition-all duration-300 ease-out",
+                      "absolute left-1/2 top-full pt-4 w-56 -translate-x-1/2 transition-all duration-300 ease-out",
                       desktopServicesOpen
                         ? "pointer-events-auto translate-y-0 opacity-100"
                         : "pointer-events-none -translate-y-2 opacity-0",
                     )}
                   >
-                    {serviceLinks.map((item) => (
-                      <Link
-                        key={item.to}
-                        to={item.to}
-                        className={cn(
-                          "block rounded-2xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:bg-secondary",
-                          pathname === item.to ? "bg-primary/10 text-ink" : "text-foreground/75",
-                        )}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
+                    <div className="rounded-3xl border border-border/80 bg-background/95 p-2 text-foreground shadow-luxe backdrop-blur-xl">
+                      {serviceLinks.map((item) => (
+                        <Link
+                          key={item.to}
+                          to={item.to}
+                          className={cn(
+                            "block rounded-2xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:bg-secondary",
+                            pathname === item.to ? "bg-primary/10 text-ink" : "text-foreground/75",
+                          )}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               );

@@ -133,7 +133,7 @@ export function ChatbotWidget() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.5, duration: 0.4, ease: "easeOut" }}
-        className="fixed right-4 top-1/2 -translate-y-1/2 z-[85] grid h-12 w-12 place-items-center rounded-[14px] bg-card border border-border/50 shadow-luxe transition-all hover:-translate-x-1 hover:shadow-[0_18px_40px_-15px_rgba(37,211,102,0.6)]"
+        className="fixed right-4 top-[70%] md:top-1/2 -translate-y-1/2 z-[85] grid h-12 w-12 place-items-center rounded-[14px] bg-card border border-border/50 shadow-luxe transition-all hover:-translate-x-1 hover:shadow-[0_18px_40px_-15px_rgba(37,211,102,0.6)]"
         aria-label="Chat on WhatsApp"
       >
         <WhatsAppIcon className="h-8 w-8 text-[#25D366]" />

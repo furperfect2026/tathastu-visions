@@ -1704,7 +1704,9 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
                   {p.location.split(",")[0]}
                 </p>
                 <div className="mt-1.5 flex items-center justify-between gap-2">
-                  <span className="text-[10px] text-gradient-gold font-bold">₹{p.price.split(" ")[0]}</span>
+                  <span className="text-[10px] text-gradient-gold font-bold">
+                    {p.price?.startsWith("₹") ? p.price : (p.price?.match(/^[0-9]/) ? `₹${p.price}` : p.price)}
+                  </span>
                   <span className="text-[9px] bg-secondary px-1.5 py-0.5 rounded text-muted-foreground uppercase font-semibold">
                     {p.type.split(" ")[0]}
                   </span>
@@ -1757,7 +1759,9 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
               {/* Hover Price Pop-up */}
               <div className="absolute bottom-full left-1/2 mb-2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
                 <div className="bg-card border border-border shadow-luxe rounded-md px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-foreground flex items-center gap-1">
-                  <span className="text-gradient-gold">₹{p.price}</span>
+                  <span className="text-gradient-gold">
+                    {p.price?.startsWith("₹") ? p.price : (p.price?.match(/^[0-9]/) ? `₹${p.price}` : p.price)}
+                  </span>
                 </div>
                 {/* Tooltip triangle */}
                 <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px] border-4 border-transparent border-t-border" />
