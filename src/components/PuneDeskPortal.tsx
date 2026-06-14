@@ -6,7 +6,7 @@ import { ArrowDown, Award, Globe, BadgePercent, Landmark, ArrowRight, Building2,
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { AutoSlideshow } from "./AutoSlideshow";
 import heroRealty from "@/assets/hero-realty.jpg";
-import realty2 from "@/assets/realty-2.jpg";
+import puneSkyline from "@/assets/pune-skyline.jpg";
 import clientRelationship from "@/assets/client-relationship.jpg";
 import realty4 from "@/assets/realty-4.jpg";
 import projectRealty from "@/assets/project-realty-pride-world-city.jpg";
@@ -186,7 +186,7 @@ export function PuneDeskPortal() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <Reveal>
               <div className="relative overflow-hidden rounded-xl bg-slate-100 aspect-square lg:aspect-auto lg:h-[500px]">
-                <img src={realty2} alt="Pune Skyline Sketch" className="w-full h-full object-cover mix-blend-multiply opacity-90" style={{ filter: 'grayscale(30%) sepia(10%) contrast(1.1)' }} />
+                <img src={puneSkyline} alt="Pune Skyline Sketch" className="w-full h-full object-cover mix-blend-multiply opacity-90" style={{ filter: 'grayscale(30%) sepia(10%) contrast(1.1)' }} />
                 <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent opacity-60" />
               </div>
             </Reveal>
