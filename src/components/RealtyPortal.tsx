@@ -1505,16 +1505,14 @@ export function RealtyPortal() {
                       className="relative h-96 rounded-2xl border border-border bg-[#0a1622] overflow-hidden"
                     >
                       <iframe
-                        title={`Map showing location of ${selectedProperty.title}`}
+                        title="Tathastu Infra office location"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
                         loading="lazy"
                         allowFullScreen
                         referrerPolicy="no-referrer-when-downgrade"
-                        src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                          selectedProperty.title + ", " + selectedProperty.location + ", " + selectedProperty.city
-                        )}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+                        src="https://www.google.com/maps?q=Tathastu Infra%20Real%20Estate%20Builders%20%26%20Construction%20Company%2C%20Shop%20No.2%2C%20DY%20Patil%20University%20Road%2C%20Lohegaon%2C%20Pune&ll=18.6159241,73.9093115&z=18&output=embed"
                       />
                     </motion.div>
                   )}
