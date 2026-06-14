@@ -134,7 +134,7 @@ export function PartnerLogoSection({
           <div className="mt-12 relative flex w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_64px,_black_calc(100%-64px),transparent_100%)] sm:[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
             <div className="flex w-max animate-[marquee_35s_linear_infinite] hover:[animation-play-state:paused]">
               {[...visiblePartners, ...visiblePartners, ...visiblePartners, ...visiblePartners].map((partner, index) => (
-                <div key={`${partner.id}-${index}`} className="w-[280px] shrink-0 pr-6">
+                <div key={`${partner.id}-${index}`} className="w-[200px] sm:w-[280px] shrink-0 pr-4 sm:pr-6">
                   <PartnerTile partner={partner} />
                 </div>
               ))}
@@ -156,7 +156,7 @@ export function PartnerLogoSection({
             <div className="mt-9 relative flex w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_64px,_black_calc(100%-64px),transparent_100%)] sm:[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
               <div className="flex w-max animate-[marquee_30s_linear_infinite_reverse] hover:[animation-play-state:paused]">
                 {[...visibleBankingPartners, ...visibleBankingPartners, ...visibleBankingPartners, ...visibleBankingPartners].map((partner, index) => (
-                  <div key={`${partner.id}-${index}`} className="w-[280px] shrink-0 pr-6">
+                  <div key={`${partner.id}-${index}`} className="w-[200px] sm:w-[280px] shrink-0 pr-4 sm:pr-6">
                     <BankingPartnerTile partner={partner} />
                   </div>
                 ))}
