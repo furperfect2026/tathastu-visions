@@ -10,6 +10,9 @@ import realty2 from "@/assets/realty-2.jpg";
 import clientRelationship from "@/assets/client-relationship.jpg";
 import realty4 from "@/assets/realty-4.jpg";
 import projectRealty from "@/assets/project-realty-pride-world-city.jpg";
+import puneDesk1 from "@/assets/pune-desk-1.webp";
+import puneDesk2 from "@/assets/pune-desk-2.webp";
+import puneDesk3 from "@/assets/pune-desk-3.webp";
 
 const whyInvestData = [
   {
@@ -61,7 +64,10 @@ export function PuneDeskPortal() {
           <AutoSlideshow 
             images={[
               { src: clientRelationship, alt: "Happy family getting their dream home" },
+              { src: puneDesk1, alt: "Pune investment vision" },
+              { src: puneDesk3, alt: "Young couple reviewing apartment financials" },
               { src: projectRealty, alt: "Premium Pune apartments" },
+              { src: puneDesk2, alt: "Our real estate vision" },
               { src: realty4, alt: "Luxury living in Pune" }
             ]} 
             interval={5000}
