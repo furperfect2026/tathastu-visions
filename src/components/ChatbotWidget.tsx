@@ -126,6 +126,19 @@ export function ChatbotWidget() {
 
   return (
     <>
+      <motion.a
+        href="https://wa.me/917820864384"
+        target="_blank"
+        rel="noreferrer"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.5, duration: 0.4, ease: "easeOut" }}
+        className="fixed right-4 top-1/2 -translate-y-1/2 z-[85] grid h-12 w-12 place-items-center rounded-[14px] bg-card border border-border/50 shadow-luxe transition-all hover:-translate-x-1 hover:shadow-[0_18px_40px_-15px_rgba(37,211,102,0.6)]"
+        aria-label="Chat on WhatsApp"
+      >
+        <WhatsAppIcon className="h-8 w-8 text-[#25D366]" />
+      </motion.a>
+
       {!open && (
         <motion.div
           className="fixed bottom-5 right-4 z-[85] flex flex-col items-center gap-2"
@@ -133,15 +146,6 @@ export function ChatbotWidget() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.35, ease: "easeOut" }}
         >
-          <a
-            href="https://wa.me/917820864384"
-            target="_blank"
-            rel="noreferrer"
-            className="mb-1 grid h-12 w-12 place-items-center rounded-[14px] bg-card border border-border/50 shadow-luxe transition-all hover:-translate-y-1 hover:shadow-[0_18px_40px_-15px_rgba(37,211,102,0.6)]"
-            aria-label="Chat on WhatsApp"
-          >
-            <WhatsAppIcon className="h-8 w-8 text-[#25D366]" />
-          </a>
           <button
             type="button"
             onClick={() => setOpen(true)}
