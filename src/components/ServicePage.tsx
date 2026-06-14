@@ -230,7 +230,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
 
   return (
     <>
-      <section className="relative flex h-[100svh] min-h-[620px] items-end overflow-hidden bg-ink pt-28 text-ivory sm:min-h-[640px] md:items-center md:pt-32">
+      <section className="relative flex h-[85svh] md:h-[100svh] min-h-[600px] md:min-h-[640px] items-end overflow-hidden bg-ink pt-28 text-ivory md:items-center md:pt-32">
         <AutoSlideshow
           images={content.heroImages}
           interval={4400}
@@ -259,7 +259,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-ink/90 to-transparent" />
         <ServiceSocialLinks />
 
-        <div className="relative z-[5] mx-auto flex h-full w-full max-w-7xl flex-col justify-end px-4 pb-20 pt-28 sm:px-6 sm:pb-24 md:justify-center md:pb-0 md:pl-20 lg:pl-20">
+        <div className="relative z-[5] mx-auto flex h-full w-full max-w-7xl flex-col justify-end px-4 pb-16 pt-24 sm:px-6 md:justify-center md:pb-0 md:pl-20 lg:pl-20">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -443,7 +443,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
       )}
 
       {content.projectCategory !== "realty" && (
-        <section className="py-20 sm:py-24">
+        <section className="py-16 md:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <Reveal className="max-w-2xl">
               <p className="eyebrow">What We Offer</p>
@@ -452,7 +452,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
               </h2>
             </Reveal>
 
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 md:mt-12 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {content.offers.map(({ title, description, icon: Icon, image, href }, index) => (
                 <Reveal key={title} delay={(index % 3) * 0.06}>
                   <motion.article
@@ -567,7 +567,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
       {content.projectCategory === "interior" && <PackagesSection mode="interior" />}
 
       {content.projectCategory === "construction" && (
-        <section className="bg-gradient-ivory pb-24">
+        <section className="bg-gradient-ivory pb-16 md:pb-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <Reveal>
               <div className="rounded-3xl bg-card p-7 shadow-luxe ring-1 ring-border sm:p-8">
@@ -692,7 +692,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
       )}
       {content.projectCategory === "interior" && <ServiceSearchLinks compact mode="interior" />}
 
-      <section className="bg-gradient-ink py-24 text-ivory">
+      <section className="bg-gradient-ink py-16 md:py-24 text-ivory">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal className="max-w-2xl">
             <p className="eyebrow !text-primary-glow">Process</p>
@@ -700,7 +700,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
               A calm, clear path from idea to handover.
             </h2>
           </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-4">
+          <div className="mt-10 md:mt-12 grid gap-5 grid-cols-1 md:grid-cols-4">
             {process.map((step, index) => (
               <Reveal key={step} delay={index * 0.08}>
                 <div className="h-full rounded-3xl border border-ivory/10 bg-ivory/[0.04] p-6 backdrop-blur">
@@ -726,7 +726,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal>
             <p className="eyebrow">Featured Projects</p>
@@ -734,7 +734,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
               Selected related work.
             </h2>
           </Reveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 md:mt-12 grid gap-6 grid-cols-1 md:grid-cols-3">
             {relatedProjects.map((project, index) => (
               <Reveal key={project.id} delay={index * 0.08}>
                 <ProjectCard project={project} index={index} />
@@ -744,7 +744,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         </div>
       </section>
 
-      <section className="bg-gradient-ivory pb-24">
+      <section className="bg-gradient-ivory pb-16 md:pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal>
             <div className="overflow-hidden rounded-3xl bg-ink p-6 text-ivory shadow-luxe sm:p-8 md:p-12">

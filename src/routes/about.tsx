@@ -26,7 +26,7 @@ export const Route = createFileRoute("/about")({
 function AboutPage() {
   return (
     <>
-      <section className="pt-36 pb-16">
+      <section className="pt-28 md:pt-36 pb-12 md:pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <p className="eyebrow">About Tathastu Infra</p>
           <h1 className="mt-4 max-w-6xl break-words font-display text-[2.75rem] font-medium leading-[1.05] sm:text-5xl md:text-7xl xl:text-[5.4rem]">
@@ -35,9 +35,9 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="grid gap-16 md:grid-cols-2">
+          <div className="grid gap-12 md:gap-16 md:grid-cols-2">
             {/* Founder 1: Rohit */}
             <div className="grid items-center gap-8 sm:grid-cols-[1fr_1.2fr] md:grid-cols-1 lg:grid-cols-[1fr_1.2fr]">
               <Reveal>
@@ -107,13 +107,13 @@ function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="bg-gradient-ivory py-24">
+      <section className="bg-gradient-ivory py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">What we stand for</p>
             <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">Three values, one promise.</h2>
           </Reveal>
-          <div className="mt-14 grid gap-8 md:grid-cols-3">
+          <div className="mt-10 md:mt-14 grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-3">
             {[
               { icon: Shield, title: "Trust", body: "Every relationship begins and ends with the trust our clients place in us.", image: trustImage, alt: "Premium Tathastu Infra real estate project representing client trust" },
               { icon: Gem, title: "Luxury", body: "Materials, finishes and details chosen with conviction � never by default.", image: luxuryImage, alt: "Luxury Tathastu Infra interior finishes and elegant living space" },
@@ -145,13 +145,13 @@ function AboutPage() {
       </section>
 
       {/* Leadership */}
-      <section className="py-24">
+      <section className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal>
             <p className="eyebrow">Leadership</p>
             <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">The people behind Tathastu Infra.</h2>
           </Reveal>
-          <div className="mt-14">
+          <div className="mt-10 md:mt-14">
             <Reveal>
               <div className="overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-border">
                 <div className="relative aspect-[16/9] overflow-hidden">
@@ -181,8 +181,8 @@ function AboutPage() {
         </div>
       </section>
       {/* Stats */}
-      <section className="bg-ink py-20 text-ivory">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-4">
+      <section className="bg-ink py-16 md:py-20 text-ivory">
+        <div className="mx-auto grid max-w-7xl gap-8 md:gap-10 px-4 sm:px-6 grid-cols-2 sm:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label}>
               <div className="font-display text-4xl font-semibold text-gradient-gold sm:text-5xl">

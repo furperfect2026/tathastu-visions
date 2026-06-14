@@ -187,7 +187,7 @@ function HomePage() {
       {/* HERO — cinematic full-bleed slideshow */}
       <section
         id="home"
-        className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-ink sm:min-h-[640px]"
+        className="relative h-[85svh] md:h-[100svh] min-h-[600px] md:min-h-[640px] w-full overflow-hidden bg-ink"
       >
         <AutoSlideshow
           images={heroImages}
@@ -203,7 +203,7 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_22%,transparent),transparent_55%)]" />
         <HeroSocialLinks />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-20 pt-28 sm:px-6 sm:pb-24 md:justify-center md:pb-0 md:pl-20 lg:pl-20">
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-16 pt-24 sm:px-6 md:justify-center md:pb-0 md:pl-20 lg:pl-20">
           <motion.div
             className="space-y-2"
             initial={{ opacity: 0, y: 10 }}
@@ -285,7 +285,7 @@ function HomePage() {
       </section>
 
       {/* PILLARS with auto-rotating slideshows */}
-      <section id="services" className="relative py-24">
+      <section id="services" className="relative py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">Our Services</p>
@@ -313,7 +313,7 @@ function HomePage() {
             </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-8 md:grid-cols-3">
+          <div className="mt-10 md:mt-14 grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-3">
             {pillars.map((p, i) => {
               const Icon = p.icon;
               return (
@@ -411,7 +411,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="bg-gradient-ivory py-20">
+      <section className="bg-gradient-ivory py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">Our Promise</p>
@@ -472,7 +472,7 @@ function HomePage() {
       </section>
 
       {/* STATS — dark band */}
-      <section className="bg-card py-20">
+      <section className="bg-card py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <Reveal className="max-w-3xl">
@@ -506,7 +506,7 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-8 md:mt-10 grid gap-5 grid-cols-1 md:grid-cols-3">
             {visibleReviews.map((review, index) => (
               <Reveal key={`${review.name}-${reviewIndex}`} delay={index * 0.06}>
                 <motion.article
@@ -599,7 +599,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="relative bg-gradient-ink py-24 text-ivory">
+      <section className="relative bg-gradient-ink py-16 md:py-24 text-ivory">
         <div
           className="pointer-events-none absolute inset-0 opacity-20"
           style={{
@@ -630,7 +630,7 @@ function HomePage() {
       </section>
 
       {/* FEATURED PROJECTS */}
-      <section id="projects" className="relative py-24">
+      <section id="projects" className="relative py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex items-end justify-between gap-6">
             <Reveal>
@@ -646,7 +646,7 @@ function HomePage() {
               View all →
             </Link>
           </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 md:mt-12 grid gap-6 grid-cols-1 md:grid-cols-3">
             {projects.slice(0, 6).map((p, i) => (
               <Reveal key={p.id} delay={(i % 3) * 0.08}>
                 <motion.div
@@ -683,7 +683,7 @@ function HomePage() {
       </section>
 
       {/* VISION QUOTE — dark band */}
-      <section className="relative overflow-hidden bg-gradient-ink py-28 text-ivory">
+      <section className="relative overflow-hidden bg-gradient-ink py-20 md:py-28 text-ivory">
         <div className="pointer-events-none absolute -top-32 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
           <Reveal>

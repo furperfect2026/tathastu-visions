@@ -82,14 +82,14 @@ function ContactPage() {
   }
 
   return (
-    <section className="pt-36 pb-24">
+    <section className="pt-28 md:pt-36 pb-16 md:pb-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <p className="eyebrow">Contact</p>
         <h1 className="mt-4 max-w-3xl break-words font-display text-[2.75rem] font-medium leading-[1.05] sm:text-5xl md:text-7xl">
           Let's design your <span className="text-gradient-gold italic">next space in Pune.</span>
         </h1>
 
-        <div className="mt-16 grid gap-12 md:grid-cols-5">
+        <div className="mt-12 md:mt-16 grid gap-8 md:gap-12 grid-cols-1 md:grid-cols-5">
           <Reveal className="md:col-span-3">
             <form onSubmit={onSubmit} className="rounded-3xl bg-card p-5 shadow-luxe ring-1 ring-border sm:p-8 md:p-10">
               <div className="grid gap-5 md:grid-cols-2">
