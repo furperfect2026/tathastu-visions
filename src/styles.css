@@ -188,3 +188,8 @@
   0% { transform: scale(1.05) translate(0, 0); }
   100% { transform: scale(1.18) translate(-2%, -2%); }
 }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

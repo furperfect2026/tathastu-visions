@@ -131,10 +131,14 @@ export function PartnerLogoSection({
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-3 lg:grid-cols-5">
-            {visiblePartners.map((partner) => (
-              <PartnerTile key={partner.id} partner={partner} />
-            ))}
+          <div className="mt-12 relative flex w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_64px,_black_calc(100%-64px),transparent_100%)] sm:[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+            <div className="flex w-max animate-[marquee_35s_linear_infinite] hover:[animation-play-state:paused]">
+              {[...visiblePartners, ...visiblePartners, ...visiblePartners, ...visiblePartners].map((partner, index) => (
+                <div key={`${partner.id}-${index}`} className="w-[280px] shrink-0 pr-6">
+                  <PartnerTile partner={partner} />
+                </div>
+              ))}
+            </div>
           </div>
         </Reveal>
 
@@ -149,10 +153,14 @@ export function PartnerLogoSection({
               We guide clients with documentation support for home loan and project finance
               conversations through trusted banking channels.
             </p>
-            <div className="mt-9 grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-4">
-              {visibleBankingPartners.map((partner) => (
-                <BankingPartnerTile key={partner.id} partner={partner} />
-              ))}
+            <div className="mt-9 relative flex w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_64px,_black_calc(100%-64px),transparent_100%)] sm:[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+              <div className="flex w-max animate-[marquee_30s_linear_infinite_reverse] hover:[animation-play-state:paused]">
+                {[...visibleBankingPartners, ...visibleBankingPartners, ...visibleBankingPartners, ...visibleBankingPartners].map((partner, index) => (
+                  <div key={`${partner.id}-${index}`} className="w-[280px] shrink-0 pr-6">
+                    <BankingPartnerTile partner={partner} />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           </Reveal>

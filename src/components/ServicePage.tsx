@@ -34,10 +34,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import guaranteeAssuranceImage from "@/assets/guarantee-assurance.png";
-import guaranteeMoneySafetyImage from "@/assets/guarantee-money-safety.jpg";
+import guaranteeMoneySafetyImage from "@/assets/guarantee-money-safety-new.png";
 import guaranteeOnTimeImage from "@/assets/guarantee-on-time-delivery.png";
 import guaranteeQualityImage from "@/assets/guarantee-quality-assurance.png";
-import guaranteeTransparencyImage from "@/assets/guarantee-transparency.png";
+import guaranteeTransparencyImage from "@/assets/guarantee-handshake-new.png";
 import guaranteeInhouseExpertsImage from "@/assets/guarantee-inhouse-experts.png";
 import { usePublicProjects } from "@/hooks/usePublicProjects";
 import { usePublicPartners } from "@/hooks/usePublicPartners";
