@@ -60,7 +60,6 @@ export function PuneDeskPortal() {
         <div className="absolute inset-0 z-0">
           <AutoSlideshow 
             images={[
-              { src: heroRealty, alt: "Pune Real Estate Skyline" },
               { src: clientRelationship, alt: "Happy family getting their dream home" },
               { src: projectRealty, alt: "Premium Pune apartments" },
               { src: realty4, alt: "Luxury living in Pune" }
@@ -90,10 +89,10 @@ export function PuneDeskPortal() {
           </Reveal>
           <Reveal delay={0.3}>
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
-              <Button asChild className="rounded-full bg-white text-ink hover:bg-ivory px-8 h-12 text-lg">
+              <Button asChild className="rounded-full bg-white text-ink hover:bg-ivory px-8 h-12 text-lg font-medium">
                 <Link to="/" hash="contact">Consult Our Experts</Link>
               </Button>
-              <Button asChild variant="outline" className="rounded-full border-white text-white hover:bg-white hover:text-ink px-8 h-12 text-lg">
+              <Button asChild variant="outline" className="rounded-full bg-transparent border-2 border-white/80 text-white hover:bg-white hover:text-ink px-8 h-12 text-lg font-medium">
                 <a href="#market-performance">View Market Performance</a>
               </Button>
             </div>
