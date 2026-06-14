@@ -126,46 +126,46 @@ function ServiceSocialLinks({ mobile = false }: { mobile?: boolean }) {
 
 const constructionGuarantees = [
   {
-    title: "Money Safety",
-    body: "Detailed scope and package conversations before work begins, so budgets stay practical and visible.",
+    title: "Contractor gets paid only after the work is done",
+    body: "Pay only for verified work, your money stays protected in escrow.",
     icon: IndianRupee,
     image: { src: guaranteeMoneySafetyImage, alt: "Money safety and protected construction budget with Tathastu Infra" },
-    tone: "from-[#0f172a] to-[#0f172a]",
+    tone: "from-[#212b36] to-[#151c24]",
   },
   {
     title: "Quality Assurance",
     body: "Material choices, technical checks and finish reviews are handled with one accountable Tathastu Infra team.",
     icon: ShieldCheck,
     image: { src: guaranteeQualityImage, alt: "Quality assurance checklist for Tathastu Infra construction work" },
-    tone: "from-[#ea580c] to-[#ea580c]",
+    tone: "from-[#212b36] to-[#151c24]",
   },
   {
     title: "On-Time Delivery",
     body: "Planning, vendor coordination and execution tracking are shaped around predictable delivery.",
     icon: Clock3,
     image: { src: guaranteeOnTimeImage, alt: "On-time construction delivery and site supervision by Tathastu Infra" },
-    tone: "from-[#0369a1] to-[#0369a1]",
+    tone: "from-[#212b36] to-[#151c24]",
   },
   {
     title: "Transparency",
     body: "Simple communication from first visit to handover, so clients know what is happening and why.",
     icon: Eye,
     image: { src: guaranteeTransparencyImage, alt: "Transparent construction communication and handshake with Tathastu Infra" },
-    tone: "from-[#0f172a] to-[#0f172a]",
+    tone: "from-[#212b36] to-[#151c24]",
   },
   {
     title: "Assurance",
     body: "Every step is backed by clear guidance, practical decisions and a team that stays close after handover.",
     icon: BadgeCheck,
     image: { src: guaranteeAssuranceImage, alt: "Assurance inspection and verified construction steps by Tathastu Infra" },
-    tone: "from-[#0369a1] to-[#0369a1]",
+    tone: "from-[#212b36] to-[#151c24]",
   },
   {
     title: "In-House Experts",
     body: "Architect, site coordination, technical guidance and client relationship support stay close to your project.",
     icon: ShieldCheck,
     image: { src: guaranteeInhouseExpertsImage, alt: "In-house Tathastu Infra architect and design experts at work" },
-    tone: "from-[#ea580c] to-[#ea580c]",
+    tone: "from-[#212b36] to-[#151c24]",
   },
 ] as const;
 
@@ -533,22 +533,22 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                     whileHover={{ y: -6 }}
                     className={`group relative flex min-h-[470px] w-[76vw] shrink-0 snap-start flex-col overflow-hidden rounded-3xl bg-gradient-to-b ${tone} text-ivory shadow-luxe ring-1 ring-ivory/10 sm:w-[300px] lg:w-[340px]`}
                   >
-                    <div className="relative z-10 p-7 pb-4">
-                      <h4 className="font-display text-[1.8rem] font-semibold leading-tight text-white md:text-[2.1rem]">
+                    <div className="relative z-10 p-8 pb-4">
+                      <h4 className="font-display text-[1.9rem] tracking-tight font-bold leading-[1.15] text-white md:text-[2.2rem]">
                         {title}
                       </h4>
-                      <p className="mt-4 text-[0.95rem] leading-relaxed text-white/90">{body}</p>
+                      <p className="mt-5 text-[1rem] leading-relaxed text-white/80">{body}</p>
                     </div>
-                    <div className="relative mt-auto min-h-[240px] overflow-hidden">
+                    <div className="relative mt-auto min-h-[250px] overflow-hidden">
                       <img
                         src={image.src}
                         alt={image.alt}
                         loading="lazy"
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                      <span className="absolute bottom-5 right-5 grid h-11 w-11 place-items-center rounded-full bg-[#fceee6] text-[#ea580c] shadow-md transition-transform duration-300 group-hover:translate-x-1">
-                        <ArrowRight className="h-5 w-5" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      <span className="absolute bottom-6 right-6 grid h-[3.25rem] w-[3.25rem] place-items-center rounded-full bg-[#fceee6] text-[#ea580c] shadow-lg transition-transform duration-300 group-hover:translate-x-1">
+                        <ArrowRight className="h-[1.35rem] w-[1.35rem] stroke-[2.5]" />
                       </span>
                     </div>
                   </motion.article>
