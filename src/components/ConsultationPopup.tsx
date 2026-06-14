@@ -138,7 +138,7 @@ export function ConsultationPopup() {
                 className="h-full w-full object-cover object-top md:object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5 rounded-full bg-ivory/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink shadow-luxe">
+              <div className="hidden md:block absolute bottom-5 left-5 rounded-full bg-ivory/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink shadow-luxe">
                 Free Site Consultation
               </div>
             </div>
