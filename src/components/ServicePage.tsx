@@ -130,42 +130,42 @@ const constructionGuarantees = [
     body: "Detailed scope and package conversations before work begins, so budgets stay practical and visible.",
     icon: IndianRupee,
     image: { src: guaranteeMoneySafetyImage, alt: "Money safety and protected construction budget with Tathastu Infra" },
-    tone: "from-[#f05a2a] to-[#c94720]",
+    tone: "from-[#0f172a] to-[#0f172a]",
   },
   {
     title: "Quality Assurance",
     body: "Material choices, technical checks and finish reviews are handled with one accountable Tathastu Infra team.",
     icon: ShieldCheck,
     image: { src: guaranteeQualityImage, alt: "Quality assurance checklist for Tathastu Infra construction work" },
-    tone: "from-[#0f3857] to-[#0a2034]",
+    tone: "from-[#ea580c] to-[#ea580c]",
   },
   {
     title: "On-Time Delivery",
     body: "Planning, vendor coordination and execution tracking are shaped around predictable delivery.",
     icon: Clock3,
     image: { src: guaranteeOnTimeImage, alt: "On-time construction delivery and site supervision by Tathastu Infra" },
-    tone: "from-[#12699b] to-[#073657]",
+    tone: "from-[#0369a1] to-[#0369a1]",
   },
   {
     title: "Transparency",
     body: "Simple communication from first visit to handover, so clients know what is happening and why.",
     icon: Eye,
     image: { src: guaranteeTransparencyImage, alt: "Transparent construction communication and handshake with Tathastu Infra" },
-    tone: "from-[#080321] to-[#101d34]",
+    tone: "from-[#0f172a] to-[#0f172a]",
   },
   {
     title: "Assurance",
     body: "Every step is backed by clear guidance, practical decisions and a team that stays close after handover.",
     icon: BadgeCheck,
     image: { src: guaranteeAssuranceImage, alt: "Assurance inspection and verified construction steps by Tathastu Infra" },
-    tone: "from-[#1c466d] to-[#0b1f35]",
+    tone: "from-[#0369a1] to-[#0369a1]",
   },
   {
     title: "In-House Experts",
     body: "Architect, site coordination, technical guidance and client relationship support stay close to your project.",
     icon: ShieldCheck,
     image: { src: guaranteeInhouseExpertsImage, alt: "In-house Tathastu Infra architect and design experts at work" },
-    tone: "from-[#102b44] to-[#071c30]",
+    tone: "from-[#ea580c] to-[#ea580c]",
   },
 ] as const;
 
@@ -533,24 +533,21 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
                     whileHover={{ y: -6 }}
                     className={`group relative flex min-h-[470px] w-[76vw] shrink-0 snap-start flex-col overflow-hidden rounded-3xl bg-gradient-to-b ${tone} text-ivory shadow-luxe ring-1 ring-ivory/10 sm:w-[300px] lg:w-[340px]`}
                   >
-                    <div className="relative z-10 p-6 pb-4">
-                      <div className="grid h-12 w-12 place-items-center rounded-2xl bg-primary/20 text-primary-glow ring-1 ring-primary/25">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <h4 className="mt-6 font-display text-2xl font-semibold leading-tight text-ivory md:text-[1.75rem]">
+                    <div className="relative z-10 p-7 pb-4">
+                      <h4 className="font-display text-[1.8rem] font-semibold leading-tight text-white md:text-[2.1rem]">
                         {title}
                       </h4>
-                      <p className="mt-5 text-sm leading-relaxed text-ivory/75">{body}</p>
+                      <p className="mt-4 text-[0.95rem] leading-relaxed text-white/90">{body}</p>
                     </div>
-                    <div className="relative mt-auto min-h-[210px] overflow-hidden">
+                    <div className="relative mt-auto min-h-[240px] overflow-hidden">
                       <img
                         src={image.src}
                         alt={image.alt}
                         loading="lazy"
-                        className="absolute inset-0 h-full w-full object-cover opacity-90 transition-transform duration-700 ease-out group-hover:scale-110"
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/12 to-transparent" />
-                      <span className="absolute bottom-5 right-5 grid h-12 w-12 place-items-center rounded-full bg-primary-glow text-primary-foreground shadow-gold transition-transform duration-300 group-hover:translate-x-1">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                      <span className="absolute bottom-5 right-5 grid h-11 w-11 place-items-center rounded-full bg-[#fceee6] text-[#ea580c] shadow-md transition-transform duration-300 group-hover:translate-x-1">
                         <ArrowRight className="h-5 w-5" />
                       </span>
                     </div>
@@ -682,6 +679,24 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         </section>
       )}
 
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <Reveal>
+            <p className="eyebrow">Featured Projects</p>
+            <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
+              Selected related work.
+            </h2>
+          </Reveal>
+          <div className="mt-10 md:mt-12 grid gap-6 grid-cols-1 md:grid-cols-3">
+            {relatedProjects.map((project, index) => (
+              <Reveal key={project.id} delay={index * 0.08}>
+                <ProjectCard project={project} index={index} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {content.projectCategory === "construction" && (
         <PartnerLogoSection partners={partners} bankingPartners={bankingPartners} />
       )}
@@ -726,23 +741,6 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <Reveal>
-            <p className="eyebrow">Featured Projects</p>
-            <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl">
-              Selected related work.
-            </h2>
-          </Reveal>
-          <div className="mt-10 md:mt-12 grid gap-6 grid-cols-1 md:grid-cols-3">
-            {relatedProjects.map((project, index) => (
-              <Reveal key={project.id} delay={index * 0.08}>
-                <ProjectCard project={project} index={index} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="bg-gradient-ivory pb-16 md:pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
