@@ -4,8 +4,12 @@ import { Reveal } from "./Reveal";
 import { Button } from "./ui/button";
 import { ArrowDown, Award, Globe, BadgePercent, Landmark, ArrowRight, Building2, TrendingUp, Handshake } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+import { AutoSlideshow } from "./AutoSlideshow";
 import heroRealty from "@/assets/hero-realty.jpg";
 import realty2 from "@/assets/realty-2.jpg";
+import clientRelationship from "@/assets/client-relationship.jpg";
+import realty4 from "@/assets/realty-4.jpg";
+import projectRealty from "@/assets/project-realty-pride-world-city.jpg";
 
 const whyInvestData = [
   {
@@ -54,18 +58,29 @@ export function PuneDeskPortal() {
       {/* Hero Section */}
       <section className="relative h-[90vh] min-h-[600px] w-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src={heroRealty} alt="Pune Real Estate Skyline" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/60" />
+          <AutoSlideshow 
+            images={[
+              { src: heroRealty, alt: "Pune Real Estate Skyline" },
+              { src: clientRelationship, alt: "Happy family getting their dream home" },
+              { src: projectRealty, alt: "Premium Pune apartments" },
+              { src: realty4, alt: "Luxury living in Pune" }
+            ]} 
+            interval={5000}
+            rounded="rounded-none"
+            className="w-full h-full"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-ink/90 mix-blend-multiply" />
         </div>
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto flex flex-col items-center">
           <Reveal>
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md mb-8">
-              <span className="text-ivory font-semibold tracking-wider text-sm">PUNE DESK BY TATHASTU INFRA</span>
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-primary/30 bg-ink/30 backdrop-blur-md mb-8">
+              <span className="text-primary-glow font-semibold tracking-[0.2em] text-xs uppercase">Pune Desk by Tathastu Infra</span>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
-              WHY JUST DREAM OF PUNE?<br />OWN IT.
+            <h1 className="font-display text-5xl md:text-6xl lg:text-[5rem] font-medium text-white leading-[1.1] tracking-tight">
+              Why just dream of Pune? <br />
+              <span className="font-serif italic font-light text-primary-glow">Own it.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.2}>
@@ -98,7 +113,7 @@ export function PuneDeskPortal() {
         <div className="max-w-6xl mx-auto px-6">
           <Reveal>
             <div className="text-center mb-16">
-              <h2 className="font-display text-4xl md:text-5xl font-semibold text-[#3b5972]">
+              <h2 className="font-display text-4xl md:text-5xl font-semibold text-ink">
                 Why Invest in Pune?
               </h2>
               <div className="w-20 h-1 bg-gradient-gold mx-auto mt-6" />
@@ -115,7 +130,7 @@ export function PuneDeskPortal() {
             {whyInvestData.map((item, idx) => (
               <Reveal key={idx} delay={0.1 * idx}>
                 <div className="bg-white p-8 lg:p-10 flex items-center gap-6 h-full">
-                  <div className="shrink-0 p-3 rounded-xl bg-[#f0f4f8] text-[#3b5972]">
+                  <div className="shrink-0 p-3 rounded-2xl bg-primary/10 text-primary">
                     <item.icon className="w-8 h-8 stroke-[1.5]" />
                   </div>
                   <h3 className="font-semibold text-lg text-ink/90 leading-snug">
@@ -133,7 +148,7 @@ export function PuneDeskPortal() {
         <div className="max-w-6xl mx-auto px-6">
           <Reveal>
             <div className="text-center mb-16">
-              <h2 className="font-display text-4xl md:text-5xl font-semibold text-[#3b5972]">
+              <h2 className="font-display text-4xl md:text-5xl font-semibold text-ink">
                 Pune’s Market Performance
               </h2>
             </div>
@@ -142,7 +157,7 @@ export function PuneDeskPortal() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {performanceData.map((data, idx) => (
               <Reveal key={idx} delay={0.1 * idx}>
-                <div className="bg-[#3b5972] p-8 text-white h-full flex flex-col justify-center">
+                <div className="bg-ink p-8 text-ivory h-full flex flex-col justify-center rounded-2xl border border-border shadow-md">
                   <div className="font-display text-4xl lg:text-5xl font-bold mb-3">{data.value}</div>
                   <div className="text-sm lg:text-base text-white/80">{data.label}</div>
                 </div>
@@ -173,7 +188,7 @@ export function PuneDeskPortal() {
 
             <Reveal delay={0.1}>
               <div className="space-y-6 text-muted-foreground leading-relaxed">
-                <p className="text-[#3b5972] font-semibold italic">Welcome to the Oxford of the East</p>
+                <p className="text-primary font-semibold tracking-wider uppercase text-sm">Welcome to the Oxford of the East</p>
                 <p>
                   Pune isn’t just a city — it’s one of India’s most robust and future-ready investment destinations. It began its journey as a cultural and educational capital, thriving today on IT infrastructure, manufacturing, and commerce. With high rental yields (up to 6-8%), and a transparent, RERA-regulated market, Pune continues to attract investors from across the globe.
                 </p>
@@ -212,7 +227,7 @@ export function PuneDeskPortal() {
           <Reveal>
             <div className="bg-white rounded-t-xl overflow-hidden shadow-sm border border-border">
               <div className="flex flex-wrap items-center bg-white border-b border-border">
-                <button className="px-6 py-4 text-sm font-semibold text-[#3b5972] border-b-2 border-[#3b5972] flex items-center gap-2">
+                <button className="px-6 py-4 text-sm font-semibold text-ink border-b-2 border-primary flex items-center gap-2">
                   <TrendingUp className="w-4 h-4" /> Q1 2025 Performance
                 </button>
                 <button className="px-6 py-4 text-sm font-medium text-muted-foreground hover:text-ink transition-colors">Q2 2024 Performance</button>
@@ -223,11 +238,11 @@ export function PuneDeskPortal() {
                 <div className="grid lg:grid-cols-3 gap-12 mb-16">
                   <div className="space-y-8">
                     <div>
-                      <div className="text-5xl font-display font-semibold text-[#3b5972]">22,488</div>
+                      <div className="text-5xl font-display font-semibold text-ink">22,488</div>
                       <div className="text-muted-foreground mt-2">Transactions</div>
                     </div>
                     <div>
-                      <div className="text-5xl font-display font-semibold text-[#3b5972]">₹2.58L Cr</div>
+                      <div className="text-5xl font-display font-semibold text-ink">₹2.58L Cr</div>
                       <div className="text-muted-foreground mt-2">Value</div>
                     </div>
                   </div>
@@ -276,7 +291,7 @@ export function PuneDeskPortal() {
 
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm text-left">
-                    <thead className="text-xs text-[#3b5972] bg-[#f8fafc] uppercase">
+                    <thead className="text-xs text-ink bg-muted/50 uppercase tracking-wider">
                       <tr>
                         <th className="px-6 py-4 font-semibold italic rounded-tl-lg border border-[#e2e8f0]">Property Segment</th>
                         <th className="px-6 py-4 font-semibold italic border border-[#e2e8f0]">Q1 Transactions</th>
@@ -287,28 +302,28 @@ export function PuneDeskPortal() {
                     </thead>
                     <tbody>
                       <tr className="bg-white border-b border-[#e2e8f0]">
-                        <td className="px-6 py-4 font-medium text-[#3b5972] border-l border-[#e2e8f0]">Freehold Properties</td>
+                        <td className="px-6 py-4 font-medium text-ink border-l border-[#e2e8f0]">Freehold Properties</td>
                         <td className="px-6 py-4 border-[#e2e8f0]">18,738</td>
                         <td className="px-6 py-4 border-[#e2e8f0]">22,509</td>
                         <td className="px-6 py-4 border-[#e2e8f0]">95.5%</td>
                         <td className="px-6 py-4 border-r border-[#e2e8f0]">+19.3%</td>
                       </tr>
                       <tr className="bg-white border-b border-[#e2e8f0]">
-                        <td className="px-6 py-4 font-medium text-[#3b5972] border-l border-[#e2e8f0]">Leasehold Properties</td>
+                        <td className="px-6 py-4 font-medium text-ink border-l border-[#e2e8f0]">Leasehold Properties</td>
                         <td className="px-6 py-4 border-[#e2e8f0]">1,750</td>
                         <td className="px-6 py-4 border-[#e2e8f0]">1,973</td>
                         <td className="px-6 py-4 border-[#e2e8f0]">4.5%</td>
                         <td className="px-6 py-4 border-r border-[#e2e8f0]">+8.1%</td>
                       </tr>
                       <tr className="bg-white border-b border-[#e2e8f0]">
-                        <td className="px-6 py-4 font-medium text-[#3b5972] border-l border-[#e2e8f0]">Residential Properties</td>
+                        <td className="px-6 py-4 font-medium text-ink border-l border-[#e2e8f0]">Residential Properties</td>
                         <td className="px-6 py-4 border-[#e2e8f0]">18,717</td>
                         <td className="px-6 py-4 border-[#e2e8f0]">23,733</td>
                         <td className="px-6 py-4 border-[#e2e8f0]">97.2%</td>
                         <td className="px-6 py-4 border-r border-[#e2e8f0]">+19.4%</td>
                       </tr>
                       <tr className="bg-white border-b border-[#e2e8f0]">
-                        <td className="px-6 py-4 font-medium text-[#3b5972] border-l border-[#e2e8f0] rounded-bl-lg">Commercial Properties</td>
+                        <td className="px-6 py-4 font-medium text-ink border-l border-[#e2e8f0] rounded-bl-lg">Commercial Properties</td>
                         <td className="px-6 py-4 border-[#e2e8f0]">1,771</td>
                         <td className="px-6 py-4 border-[#e2e8f0]">1,749</td>
                         <td className="px-6 py-4 border-[#e2e8f0]">2.8%</td>
@@ -325,10 +340,10 @@ export function PuneDeskPortal() {
 
       {/* Floating CTA */}
       <div className="fixed bottom-6 left-6 z-50">
-        <Link to="/" hash="contact" className="group flex flex-col bg-gradient-to-r from-[#dcedf9] to-[#ffffff] border border-[#a4c9e5] p-3 rounded-2xl shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
-          <span className="text-xs font-semibold text-muted-foreground italic mb-1">Invest in Pune</span>
-          <span className="text-[#3b5972] font-display font-semibold flex items-center gap-1 group-hover:text-primary transition-colors">
-            Talk to Us Now! <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        <Link to="/" hash="contact" className="group flex flex-col bg-ink border border-primary/30 p-3 px-5 rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-primary/20 transition-all hover:-translate-y-1">
+          <span className="text-[10px] uppercase tracking-widest text-primary-glow font-bold mb-1">Invest in Pune</span>
+          <span className="text-ivory font-display font-semibold flex items-center gap-1 group-hover:text-primary transition-colors">
+            Talk to Us Now <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </span>
         </Link>
       </div>
