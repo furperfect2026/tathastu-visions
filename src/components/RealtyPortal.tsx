@@ -1751,14 +1751,23 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
           return (
             <div
               key={p.id}
-              className="absolute -translate-x-1/2 -translate-y-1/2 transition-all duration-300"
+              className="absolute -translate-x-1/2 -translate-y-1/2 transition-all duration-300 group"
               style={{ left: `${x}%`, top: `${y}%`, zIndex: isActive ? 50 : 10 }}
             >
+              {/* Hover Price Pop-up */}
+              <div className="absolute bottom-full left-1/2 mb-2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
+                <div className="bg-card border border-border shadow-luxe rounded-md px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-foreground flex items-center gap-1">
+                  <span className="text-gradient-gold">₹{p.price}</span>
+                </div>
+                {/* Tooltip triangle */}
+                <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px] border-4 border-transparent border-t-border" />
+              </div>
+
               <button
                 onClick={() => setSelectedPinId(p.id === selectedPinId ? null : p.id)}
                 onMouseEnter={() => setHoveredPinId(p.id)}
                 onMouseLeave={() => setHoveredPinId(null)}
-                className={`relative flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full border transition-all whitespace-nowrap ${
+                className={`relative flex items-center justify-center h-8 w-8 rounded-full border transition-all ${
                   isActive
                     ? "bg-gradient-gold border-amber-400 text-ink scale-110 shadow-gold"
                     : "bg-ink/75 border-border text-primary hover:border-amber-400 hover:scale-105"
@@ -1767,10 +1776,7 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
                 {isActive && (
                   <span className="absolute inset-0 rounded-full bg-amber-400/40 animate-ping pointer-events-none" />
                 )}
-                <MapPin className={`h-3 w-3 shrink-0 ${isActive ? "fill-current" : ""}`} />
-                <span className={`text-[10px] font-bold tracking-wider ${isActive ? "text-ink" : "text-ivory"}`}>
-                  ₹{p.price.split(" ")[0]}
-                </span>
+                <MapPin className={`h-4 w-4 ${isActive ? "fill-current" : ""}`} />
               </button>
             </div>
           );
