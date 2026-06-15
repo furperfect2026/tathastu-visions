@@ -2,165 +2,87 @@ import { ChevronDown } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
 const faqs = [
+  // Realty & Real Estate
   {
-    question: "What does Tathastu Infra do in Lohegaon, Pune?",
+    question: "What realty and property consultant services does Tathastu Infra provide in Lohegaon, Pune?",
     answer:
-      "Tathastu Infra supports clients with real estate guidance, construction services and interior design in Lohegaon, Pune and nearby areas.",
+      "Tathastu Infra acts as a trusted local property consultant, supporting clients with real estate guidance, property buying, and end-to-end documentation in Lohegaon, Pune and surrounding areas.",
   },
   {
-    question: "Can Tathastu Realty help me find flats in Lohegaon Pune?",
+    question: "Can Tathastu Realty help me buy flats, 2 BHK apartments, or plots in Lohegaon, Pune?",
     answer:
-      "Yes. Tathastu Realty helps buyers shortlist flats, resale properties and new residential projects around Lohegaon and nearby Pune locations.",
+      "Yes. We help buyers discover the best flats for sale, new residential projects, practical 2 BHK flats, and investment plots in Lohegaon by comparing locations, budgets, and long-term value.",
   },
   {
-    question: "Does Tathastu Realty assist with 2 BHK flats in Lohegaon?",
+    question: "Do you assist with finding flats for rent or resale properties in Pune?",
     answer:
-      "Yes. Tathastu Realty helps clients compare practical 2 BHK options based on location, budget, site visits, documentation and long-term value.",
+      "Yes. Tathastu Realty supports both tenants and owners with 2 BHK and 3 BHK flat rentals, resale properties searches, owner coordination, and planning suitable site visits in Pune.",
+  },
+
+  // Construction
+  {
+    question: "What types of residential home construction do you handle in Pune & Lohegaon?",
+    answer:
+      "Tathastu Construction is a leading home construction company in Pune, handling complete residential projects including bungalows, villas, and farmhouses with dedicated site supervision.",
   },
   {
-    question: "Can Tathastu Realty help with flats for rent in Lohegaon?",
+    question: "Are you a civil construction company for commercial, industrial, and government projects?",
     answer:
-      "Yes. Tathastu Realty supports tenants and owners with rental assistance, property expectations, owner coordination and suitable site visits.",
+      "Yes. We handle commercial building work, warehouse and industrial construction, as well as WTG foundation base activities, roads, and government contracts with strict progress control.",
   },
   {
-    question: "Does Tathastu Infra guide clients for plots in Lohegaon?",
+    question: "Why is Tathastu considered among the best construction companies in Pune?",
     answer:
-      "Yes. We help clients discuss plot suitability, access, surrounding development, documentation questions and future construction possibilities.",
+      "Clients trust Tathastu Construction for our clear estimates, stage-wise site supervision, strict quality checks, transparent communication, and dedication to money safety.",
   },
   {
-    question: "Does Tathastu Construction handle residential construction in Pune?",
+    question: "Do you provide turnkey construction and RCC structural work in Pune?",
     answer:
-      "Yes. Tathastu Construction handles home construction, villas, bungalows and residential projects with supervision, material planning and quality checks.",
+      "Yes. Our engineering team expertly handles RCC structure, foundation coordination, and full turnkey construction—managing planning, materials, and handover in one accountable process.",
   },
   {
-    question: "Is Tathastu Construction a construction company in Pune?",
+    question: "What construction packages do you offer?",
     answer:
-      "Yes. Tathastu Construction is a construction company in Pune serving Lohegaon and nearby areas for residential construction, commercial construction, RCC structural work and turnkey execution.",
+      "We offer transparent Basic, Standard, and Premium construction packages, allowing clients to choose exact inclusions based on their project scope and desired finish expectations.",
   },
   {
-    question: "Is Tathastu Construction one of the best construction companies in Pune?",
+    question: "How does Tathastu Infra ensure construction quality and money safety?",
     answer:
-      "Tathastu Construction focuses on the qualities clients usually look for in the best construction company in Pune: clear estimates, site supervision, quality assurance, transparent communication, money safety and timely execution.",
+      "We protect clients' money safety through clear budget guidance before work begins. Quality is guaranteed via strict material planning, technical supervision, and regular stage reviews.",
+  },
+
+  // Interior Design
+  {
+    question: "Are you a top interior designer providing services in Pune and Lohegaon?",
+    answer:
+      "Yes. Tathastu Interior serves clients looking for premium interior designers in Pune and Lohegaon, offering end-to-end space planning, furniture, and decor guidance.",
   },
   {
-    question: "Do you provide home construction company services in Pune?",
+    question: "Can Tathastu Interior design full home interiors for 2 BHK and 3 BHK flats in Pune?",
     answer:
-      "Yes. We provide home construction company services in Pune for homes, villas, bungalows and farm houses with package clarity, material planning, RCC work, site supervision and final handover support.",
+      "Yes. We plan complete full home interiors for 2 BHK and 3 BHK spaces—coordinating layouts, storage, custom furniture, lighting, and finishes room by room.",
   },
   {
-    question: "Can Tathastu Construction handle bungalow construction in Pune?",
+    question: "Do you design modular kitchens and custom wardrobes in Pune?",
     answer:
-      "Yes. Tathastu Construction supports bungalow construction in Pune with planning, structural work, material choices, finish discussions, vendor coordination and stage-wise site supervision.",
+      "Yes. Our designers create highly practical modular kitchens, wardrobes, and storage units built around your daily workflow, using durable materials and premium finishes.",
   },
   {
-    question: "Do you work as a civil construction company in Pune?",
+    question: "Does Tathastu Interior create professional office interiors?",
     answer:
-      "Yes. Our team supports civil construction in Pune including RCC structure, foundation coordination, structural work, material planning, site checks and disciplined execution.",
+      "Yes. We design and execute office interiors that are focused on workflow efficiency, ergonomic comfort, intelligent lighting, and a strong professional brand feel.",
+  },
+
+  // General 
+  {
+    question: "Which locations and areas do you serve around Pune?",
+    answer:
+      "We primarily serve Lohegaon, Pune and nearby major growth corridors including Kharadi, Wagholi, Viman Nagar, and surrounding real estate hubs.",
   },
   {
-    question: "Can you handle warehouse or industrial construction in Pune?",
+    question: "How can I contact Tathastu Infra for my project?",
     answer:
-      "Yes. Tathastu Infra can discuss warehouse construction, industrial construction and commercial building work in Pune with attention to structure, utility, documentation, access and site coordination.",
-  },
-  {
-    question: "Do you support road, highway or government construction contracts?",
-    answer:
-      "Yes. Our WTG and Government Contracts service supports infrastructure-linked work, WTG foundation base activity and government-focused construction execution with documentation and progress control.",
-  },
-  {
-    question: "Do you provide construction services in Lohegaon?",
-    answer:
-      "Yes. We provide construction services in Lohegaon for homes, villas, shops, offices and structural work with planning, supervision, material clarity and transparent communication.",
-  },
-  {
-    question: "Do you work on commercial construction projects?",
-    answer:
-      "Yes. We support commercial construction for offices, shops and business spaces with planning, structural execution and site coordination.",
-  },
-  {
-    question: "Can Tathastu Construction help with RCC work in Pune?",
-    answer:
-      "Yes. Our construction team supports RCC and structural work in Pune with engineering coordination, safety checks, material planning and stage-wise execution.",
-  },
-  {
-    question: "What construction packages are available?",
-    answer:
-      "Our construction packages include Basic, Standard and Premium options, with transparent inclusions so clients can choose according to scope and finish expectations.",
-  },
-  {
-    question: "How does Tathastu Infra maintain money safety?",
-    answer:
-      "We focus on clear scope, transparent package conversations and practical budget guidance before work begins, so clients understand the next step.",
-  },
-  {
-    question: "How do you ensure construction quality?",
-    answer:
-      "Quality is supported through material planning, site checks, supervision, technical guidance and review of important stages before handover.",
-  },
-  {
-    question: "Can Tathastu Construction help with turnkey construction?",
-    answer:
-      "Yes. We can coordinate planning, materials, site supervision, execution and final handover through one accountable project path.",
-  },
-  {
-    question: "Is Tathastu Realty a property consultant in Lohegaon Pune?",
-    answer:
-      "Yes. Tathastu Realty works as a local property consultant in Lohegaon, Pune for flats, apartments, resale properties, rentals, plots, new projects, site visits and documentation discussions.",
-  },
-  {
-    question: "Can Tathastu Realty help with flats for sale in Lohegaon Pune?",
-    answer:
-      "Yes. We help clients explore flats for sale in Lohegaon Pune, including 2 BHK flats, 3 BHK flats, resale flats and new residential projects with local guidance.",
-  },
-  {
-    question: "Do you help with flat rentals in Lohegaon?",
-    answer:
-      "Yes. We assist with flats for rent in Lohegaon, 2 BHK flat rental searches, owner coordination, visit planning and practical next steps for tenants.",
-  },
-  {
-    question: "Does Tathastu Interior provide interior design in Pune?",
-    answer:
-      "Yes. Tathastu Interior works on home interiors, office interiors, modular kitchens, bedrooms, living rooms and space planning.",
-  },
-  {
-    question: "Is Tathastu Interior an interior designer in Lohegaon?",
-    answer:
-      "Yes. Tathastu Interior provides interior design in Lohegaon and Pune for home interiors, office interiors, modular kitchens, bedrooms, living rooms, furniture and decor.",
-  },
-  {
-    question: "Is Tathastu Interior a top interior designer in Pune?",
-    answer:
-      "Tathastu Interior serves clients looking for premium interior designers in Pune with home interiors, office interiors, modular kitchens, space planning, furniture and decor guidance.",
-  },
-  {
-    question: "Can Tathastu Interior design full home interiors in Pune?",
-    answer:
-      "Yes. We plan full home interiors in Pune including layout, storage, lighting, finishes, furniture, modular kitchens and room-by-room execution guidance.",
-  },
-  {
-    question: "Does Tathastu Interior design 2 BHK and 3 BHK interiors in Pune?",
-    answer:
-      "Yes. We design 2 BHK and 3 BHK interiors in Pune with living room, bedroom, modular kitchen, storage, furniture, lighting and decor planning.",
-  },
-  {
-    question: "Can Tathastu Interior design modular kitchens in Pune?",
-    answer:
-      "Yes. We plan modular kitchens around workflow, storage, materials, finishes and long-term daily use.",
-  },
-  {
-    question: "Do you design office interiors?",
-    answer:
-      "Yes. We create office interiors focused on workflow, comfort, storage, lighting and a professional brand feel.",
-  },
-  {
-    question: "Which areas do you serve near Pune?",
-    answer:
-      "We primarily serve Lohegaon, Pune and nearby growth areas including Kharadi, Wagholi, Viman Nagar and surrounding corridors.",
-  },
-  {
-    question: "How can I contact Tathastu Infra?",
-    answer:
-      "You can call +91 78208 64384, use the website contact form, WhatsApp us or visit Tathastu Infra in Lohegaon, Pune.",
+      "You can call us at +91 78208 64384, use the contact form on our website, reach out via WhatsApp, or visit the Tathastu Infra office directly in Lohegaon, Pune.",
   },
 ] as const;
 
