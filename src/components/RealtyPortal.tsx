@@ -644,6 +644,20 @@ export function RealtyPortal() {
     }
   }, []);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const propertyParam = params.get("property");
+    if (propertyParam && allProperties.length > 0 && !selectedProperty) {
+      const match = allProperties.find((p) => p.slug === propertyParam);
+      if (match) {
+        setSelectedProperty(match);
+        setCurrentView("detail");
+        // Remove param from URL without refreshing so back button works
+        window.history.replaceState({}, "", "/realty");
+      }
+    }
+  }, [allProperties, selectedProperty]);
+
   const toggleFavorite = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
     let updated;
@@ -811,11 +825,31 @@ export function RealtyPortal() {
     window.scrollTo({ top: 300, behavior: "smooth" });
   };
 
+  const realEstateJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: allProperties.map((p, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "RealEstateListing",
+        name: p.title,
+        description: p.description,
+        url: `https://www.tathastuinfra.in/realty?property=${p.slug}`,
+        image: p.images?.[0] || ""
+      }
+    }))
+  };
+
   return (
     <section
       id="realty-portal"
       className="bg-background py-16 text-foreground relative border-t border-border/10"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateJsonLd) }}
+      />
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         {/* Render Search Results View */}
         {currentView === "search" && (
