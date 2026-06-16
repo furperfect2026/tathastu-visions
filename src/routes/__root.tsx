@@ -263,20 +263,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "theme-color", content: "#FBF8F1" },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
       { property: "og:type", content: "website" },
-      { property: "og:title", content: "Tathastu Infra — Building Spaces. Creating Futures." },
-      {
-        property: "og:description",
-        content:
-          "Premium real estate, properties, construction and interior design from Tathastu Infra in Lohegaon, Pune.",
-      },
+      { property: "og:url", content: siteUrl },
       { property: "og:site_name", content: "Tathastu Infra" },
       { property: "og:title", content: "Tathastu Infra Pune | Construction, Realty & Interior Design" },
       {
         property: "og:description",
-        content:
-          "Tathastu Infra helps clients in Pune and Lohegaon with construction, property consulting, flats, rentals, plots and premium interior design.",
+        content: "Tathastu Infra helps clients in Pune and Lohegaon with construction, property consulting, flats, rentals, plots and premium interior design.",
       },
-      { property: "og:url", content: siteUrl },
       { property: "og:image", content: `${siteUrl}/assets/tathastu-logo.png` },
       { property: "og:image:alt", content: "Tathastu Infra Pune logo" },
       { property: "og:locale", content: "en_IN" },
@@ -284,8 +277,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Tathastu Infra Pune | Construction, Realty & Interior Design" },
       {
         name: "twitter:description",
-        content:
-          "Construction company, real estate consultant and interior design studio in Lohegaon, Pune.",
+        content: "Construction company, real estate consultant and interior design studio in Lohegaon, Pune.",
       },
       { name: "twitter:image", content: `${siteUrl}/assets/tathastu-logo.png` },
     ],
