@@ -270,7 +270,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         property: "og:description",
         content: "Tathastu Infra helps clients in Pune and Lohegaon with construction, property consulting, flats, rentals, plots and premium interior design.",
       },
-      { property: "og:image", content: `${siteUrl}/assets/tathastu-logo.png` },
+      { property: "og:image", content: `${siteUrl}/tathastu-logo.png` },
       { property: "og:image:alt", content: "Tathastu Infra Pune logo" },
       { property: "og:locale", content: "en_IN" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -279,7 +279,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         name: "twitter:description",
         content: "Construction company, real estate consultant and interior design studio in Lohegaon, Pune.",
       },
-      { name: "twitter:image", content: `${siteUrl}/assets/tathastu-logo.png` },
+      { name: "twitter:image", content: `${siteUrl}/tathastu-logo.png` },
     ],
     links: [
       { rel: "canonical", href: siteUrl },
