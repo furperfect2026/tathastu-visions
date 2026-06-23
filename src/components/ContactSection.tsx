@@ -181,7 +181,7 @@ export function ContactSection() {
 
               <div className="flex flex-wrap items-center gap-3">
                 <a
-                  href={`https://wa.me/${WHATSAPP_TEL.replace(/\D/g, "")}`}
+                  href={`https://wa.me/${WHATSAPP_TEL.replace(/\D/g, "")}?text=Hi%20Tathastu%20Infra,%20I%20would%20like%20to%20know%20more%20about%20your%20services.`}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.03] sm:w-auto"
