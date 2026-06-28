@@ -37,27 +37,31 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
                   View Projects <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="rounded-full border-ivory/30 bg-ivory/5 px-8 text-ivory hover:bg-ivory/10"
-              >
-                <Link to="/" hash="contact">
-                  Get Free Quote
-                </Link>
-              </Button>
-              {isConstruction && (
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="rounded-full border-ivory/30 bg-ivory/5 px-8 text-ivory hover:bg-ivory/10"
-                >
-                  <Link to="/construction/cost-estimator">
-                    Cost Estimator <IndianRupee className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
+              {detail.slug !== "wtg-government-contracts" && (
+                <>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="rounded-full border-ivory/30 bg-ivory/5 px-8 text-ivory hover:bg-ivory/10"
+                  >
+                    <Link to="/" hash="contact">
+                      Get Free Quote
+                    </Link>
+                  </Button>
+                  {isConstruction && (
+                    <Button
+                      asChild
+                      size="lg"
+                      variant="outline"
+                      className="rounded-full border-ivory/30 bg-ivory/5 px-8 text-ivory hover:bg-ivory/10"
+                    >
+                      <Link to="/construction/cost-estimator">
+                        Cost Estimator <IndianRupee className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  )}
+                </>
               )}
             </div>
           </Reveal>
