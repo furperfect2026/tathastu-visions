@@ -4,7 +4,7 @@ import { ServicePage, type ServicePageContent } from "@/components/ServicePage";
 import interior1 from "@/assets/interior-1.jpg";
 import interior2 from "@/assets/interior-2.jpg";
 import interior3 from "@/assets/interior-3.jpg";
-import interior4 from "@/assets/interior-4.jpg";
+import interior4 from "@/assets/interior-4.png";
 import project5 from "@/assets/project-5.jpg";
 
 const content: ServicePageContent = {

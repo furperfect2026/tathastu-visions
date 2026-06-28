@@ -116,7 +116,7 @@ export function ConsultationPopup() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="consultation-popup-title"
-            className="relative max-h-[calc(100dvh-1.5rem)] w-full max-w-lg overflow-y-auto rounded-2xl bg-card text-foreground shadow-[0_32px_90px_-32px_rgba(7,14,35,0.7)] ring-1 ring-border sm:rounded-3xl md:overflow-hidden mx-auto"
+            className="relative grid max-h-[calc(100dvh-1.5rem)] w-full max-w-5xl overflow-y-auto rounded-2xl bg-card text-foreground shadow-[0_32px_90px_-32px_rgba(7,14,35,0.7)] ring-1 ring-border sm:rounded-3xl md:grid-cols-[1.05fr_0.95fr] md:overflow-hidden"
             initial={{ opacity: 0, y: 28, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 18, scale: 0.98 }}
@@ -130,6 +130,18 @@ export function ConsultationPopup() {
             >
               <X className="h-5 w-5" />
             </button>
+
+            <div className="hidden md:block relative h-28 sm:h-36 overflow-hidden bg-ink md:h-auto md:aspect-auto md:min-h-[560px]">
+              <img
+                src={consultationPopupImage}
+                alt="Tathastu Infra construction consultation"
+                className="h-full w-full object-cover object-top md:object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" />
+              <div className="hidden md:block absolute bottom-5 left-5 rounded-full bg-ivory/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink shadow-luxe">
+                Free Site Consultation
+              </div>
+            </div>
 
             <div className="flex flex-col justify-center p-5 sm:p-8 md:p-10">
               <p className="hidden md:block eyebrow">Don't leave yet</p>
