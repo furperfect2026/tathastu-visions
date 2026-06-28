@@ -8,7 +8,7 @@ import construction4 from "@/assets/construction-4.jpg";
 import interior1 from "@/assets/interior-1.jpg";
 import interior2 from "@/assets/interior-2.jpg";
 import interior3 from "@/assets/interior-3.jpg";
-import interior4 from "@/assets/interior-4.jpg";
+import interior4 from "@/assets/interior-4.png";
 import constructionProject1 from "@/assets/project-construction-1.jpg";
 import constructionProject2 from "@/assets/project-construction-2.jpg";
 import constructionProject3 from "@/assets/project-construction-3.jpg";

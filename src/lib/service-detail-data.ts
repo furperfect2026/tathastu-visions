@@ -19,7 +19,7 @@ import construction3 from "@/assets/construction-3.jpg";
 import construction4 from "@/assets/construction-4.jpg";
 import interior1 from "@/assets/interior-1.jpg";
 import interior3 from "@/assets/interior-3.jpg";
-import interior4 from "@/assets/interior-4.jpg";
+import interior4 from "@/assets/interior-4.png";
 import realty3 from "@/assets/realty-3.jpg";
 import realty4 from "@/assets/realty-4.jpg";
 import wtgFoundationBase from "@/assets/wtg-foundation-base.png";
