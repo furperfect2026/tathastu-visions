@@ -102,7 +102,7 @@ function ServiceSocialLinks({ mobile = false }: { mobile?: boolean }) {
       className={
         mobile
           ? "mt-6 flex items-center gap-4 md:hidden"
-          : "absolute left-6 top-1/2 z-10 hidden -translate-y-1/2 flex-col items-center gap-5 md:flex lg:left-8"
+          : "fixed left-6 top-1/2 z-[85] hidden -translate-y-1/2 flex-col items-center gap-5 md:flex lg:left-8"
       }
       initial={{ opacity: 0, y: mobile ? 12 : 20 }}
       animate={{ opacity: 1, y: 0 }}
