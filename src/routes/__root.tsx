@@ -15,6 +15,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ConsultationPopup } from "@/components/ConsultationPopup";
 import { ChatbotWidget } from "@/components/ChatbotWidget";
+import { SocialSidebar } from "@/components/SocialSidebar";
 import { SeoFaqSection } from "@/components/SeoFaqSection";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -339,6 +340,7 @@ function RootComponent() {
       <SeoFaqSection />
       <SiteFooter />
       <ChatbotWidget />
+      <SocialSidebar />
       {!isAdminRoute && <ConsultationPopup />}
       <Toaster richColors position="top-center" />
     </QueryClientProvider>

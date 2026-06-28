@@ -452,7 +452,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
               </h2>
             </Reveal>
 
-            <div className="mt-10 md:mt-12 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 md:mt-12 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
               {content.offers.map(({ title, description, icon: Icon, image, href }, index) => (
                 <Reveal key={title} delay={(index % 3) * 0.06}>
                   <motion.article
