@@ -106,7 +106,7 @@ export function ConsultationPopup() {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[100] grid items-start overflow-y-auto bg-ink/55 px-3 py-3 backdrop-blur-sm sm:place-items-center sm:px-4 sm:py-6"
+          className="fixed inset-0 z-[100] grid place-items-center overflow-y-auto bg-ink/55 px-3 py-3 backdrop-blur-sm sm:px-4 sm:py-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
