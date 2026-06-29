@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePublicProjects, type PublicProject } from "@/hooks/usePublicProjects";
 import {
@@ -23,6 +23,8 @@ import {
   SlidersHorizontal,
   Share2,
 } from "lucide-react";
+
+const PropertyMap = lazy(() => import("./PropertyMap"));
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
@@ -1999,26 +2001,6 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
   const [hoveredPinId, setHoveredPinId] = useState<string | null>(null);
   const [selectedPinId, setSelectedPinId] = useState<string | null>(null);
 
-  const getCoordinates = (p: Property) => {
-    if (p.x !== 50 || p.y !== 50) {
-      return { x: p.x, y: p.y };
-    }
-    const loc = (p.location + " " + p.neighborhood).toLowerCase();
-    if (loc.includes("hinjewadi")) return { x: 15, y: 32 };
-    if (loc.includes("baner")) return { x: 25, y: 40 };
-    if (loc.includes("pashan")) return { x: 28, y: 48 };
-    if (loc.includes("kothrud")) return { x: 30, y: 58 };
-    if (loc.includes("shivajinagar") || loc.includes("central")) return { x: 45, y: 50 };
-    if (loc.includes("dhanori")) return { x: 58, y: 35 };
-    if (loc.includes("lohegaon")) return { x: 60, y: 32 };
-    if (loc.includes("charholi")) return { x: 48, y: 24 };
-    if (loc.includes("manjri")) return { x: 76, y: 48 };
-    if (loc.includes("hadapsar")) return { x: 72, y: 54 };
-    if (loc.includes("kondhwa")) return { x: 52, y: 72 };
-    if (loc.includes("undri")) return { x: 52, y: 78 };
-    return { x: 50, y: 50 };
-  };
-
   const activePinId = hoveredPinId || selectedPinId;
   const activeProperty = properties.find((p) => p.id === activePinId);
 
@@ -2072,161 +2054,17 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
 
       {/* Map Canvas */}
       <div className="relative h-[500px] rounded-3xl border border-border bg-[#05101a] overflow-hidden shadow-luxe">
-        {/* SVG Pune Schematic Map */}
-        <svg
-          className="absolute inset-0 w-full h-full text-slate-800 pointer-events-none"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          {/* Grid lines */}
-          <pattern id="map-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-            <path
-              d="M 10 0 L 0 0 0 10"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="0.08"
-              className="text-ivory/5"
-            />
-          </pattern>
-          <rect width="100" height="100" fill="url(#map-grid)" />
-
-          {/* Styled rivers (Mula & Mutha confluence) */}
-          <path
-            d="M -10,30 C 15,25 25,35 45,45"
-            fill="none"
-            stroke="#005bb7"
-            strokeWidth="1.2"
-            className="opacity-40"
+        <Suspense fallback={<div className="h-full w-full bg-slate-900 animate-pulse flex items-center justify-center text-muted-foreground">Loading interactive map...</div>}>
+          <PropertyMap
+            properties={properties}
+            activePinId={activePinId}
+            selectedPinId={selectedPinId}
+            hoveredPinId={hoveredPinId}
+            setSelectedPinId={setSelectedPinId}
+            setHoveredPinId={setHoveredPinId}
+            activeProperty={activeProperty}
           />
-          <path
-            d="M 10,110 C 20,80 30,65 45,45"
-            fill="none"
-            stroke="#005bb7"
-            strokeWidth="1.2"
-            className="opacity-40"
-          />
-          <path
-            d="M 45,45 C 55,42 70,48 110,48"
-            fill="none"
-            stroke="#005bb7"
-            strokeWidth="1.6"
-            className="opacity-45"
-          />
-
-          {/* Highways */}
-          <path
-            d="M 15,-10 L 18,30 C 20,50 25,70 35,110"
-            fill="none"
-            stroke="currentColor"
-            strokeDasharray="1,2"
-            strokeWidth="0.25"
-            className="text-ivory/15"
-          />
-          <path
-            d="M 45,45 L 60,32 L 110,10"
-            fill="none"
-            stroke="currentColor"
-            strokeDasharray="1,2"
-            strokeWidth="0.25"
-            className="text-ivory/15"
-          />
-          <path
-            d="M 45,45 L 75,55 L 110,65"
-            fill="none"
-            stroke="currentColor"
-            strokeDasharray="1,2"
-            strokeWidth="0.25"
-            className="text-ivory/15"
-          />
-
-          {/* Sector Labels */}
-          <text
-            x="12"
-            y="22"
-            className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider"
-          >
-            PUNE WEST (IT HUB)
-          </text>
-          <text
-            x="45"
-            y="15"
-            className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider"
-          >
-            PUNE NORTH
-          </text>
-          <text
-            x="75"
-            y="38"
-            className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider"
-          >
-            PUNE EAST
-          </text>
-          <text
-            x="40"
-            y="88"
-            className="text-[2.5px] font-bold fill-muted-foreground/35 tracking-wider"
-          >
-            PUNE SOUTH
-          </text>
-          <text
-            x="36"
-            y="58"
-            className="text-[2px] font-bold fill-muted-foreground/45 tracking-wider"
-          >
-            KOTHRUD
-          </text>
-          <text
-            x="46"
-            y="47"
-            className="text-[2px] font-bold fill-muted-foreground/45 tracking-wider"
-          >
-            SHIVAJINAGAR
-          </text>
-        </svg>
-
-        {/* Property Pins */}
-        {properties.map((p) => {
-          const { x, y } = getCoordinates(p);
-          const isActive = p.id === activePinId;
-          return (
-            <div
-              key={p.id}
-              className="absolute -translate-x-1/2 -translate-y-1/2 transition-all duration-300 group"
-              style={{ left: `${x}%`, top: `${y}%`, zIndex: isActive ? 50 : 10 }}
-            >
-              {/* Hover Price Pop-up */}
-              <div className="absolute bottom-full left-1/2 mb-2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
-                <div className="bg-card border border-border shadow-luxe rounded-md px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-foreground flex items-center gap-1">
-                  <span className="text-gradient-gold">
-                    {p.price?.startsWith("₹")
-                      ? p.price
-                      : p.price?.match(/^[0-9]/)
-                        ? `₹${p.price}`
-                        : p.price}
-                  </span>
-                </div>
-                {/* Tooltip triangle */}
-                <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px] border-4 border-transparent border-t-border" />
-              </div>
-
-              <button
-                onClick={() => setSelectedPinId(p.id === selectedPinId ? null : p.id)}
-                onMouseEnter={() => setHoveredPinId(p.id)}
-                onMouseLeave={() => setHoveredPinId(null)}
-                className={`relative flex items-center justify-center h-8 w-8 rounded-full border transition-all ${
-                  isActive
-                    ? "bg-gradient-gold border-amber-400 text-ink scale-110 shadow-gold"
-                    : "bg-ink/75 border-border text-primary hover:border-amber-400 hover:scale-105"
-                }`}
-              >
-                {isActive && (
-                  <span className="absolute inset-0 rounded-full bg-amber-400/40 animate-ping pointer-events-none" />
-                )}
-                <MapPin className={`h-4 w-4 ${isActive ? "fill-current" : ""}`} />
-              </button>
-            </div>
-          );
-        })}
+        </Suspense>
 
         {/* Popup Card */}
         {activeProperty && (
