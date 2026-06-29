@@ -20,9 +20,7 @@ import { BrandSocialLink, type SocialBrand } from "@/components/BrandSocialLink"
 import { PackagesSection } from "@/components/PackagesSection";
 import { PartnerLogoSection } from "@/components/PartnerLogoSection";
 import { ProjectCard } from "@/components/ProjectShowcase";
-import { RealtySearchLinks } from "@/components/RealtySearchLinks";
 import { Reveal } from "@/components/Reveal";
-import { ServiceSearchLinks } from "@/components/ServiceSearchLinks";
 import { RealtyPortal } from "@/components/RealtyPortal";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -700,12 +698,6 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
       {content.projectCategory === "construction" && (
         <PartnerLogoSection partners={partners} bankingPartners={bankingPartners} />
       )}
-
-      {content.projectCategory === "realty" && <RealtySearchLinks compact />}
-      {content.projectCategory === "construction" && (
-        <ServiceSearchLinks compact mode="construction" />
-      )}
-      {content.projectCategory === "interior" && <ServiceSearchLinks compact mode="interior" />}
 
       <section className="bg-gradient-ink py-16 md:py-24 text-ivory">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
