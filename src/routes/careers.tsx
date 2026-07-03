@@ -70,29 +70,31 @@ function CareersPage() {
   const handleApply = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedJob) return;
-    if (!resume) {
-      setError("Please attach your resume.");
-      return;
-    }
 
     setSubmitting(true);
     setError("");
 
     try {
-      // 1. Upload Resume
-      const fileExt = resume.name.split('.').pop();
-      const fileName = `${Math.random().toString(36).substring(2)}-${Date.now()}.${fileExt}`;
-      const filePath = `resumes/${fileName}`;
+      let publicUrl = "";
 
-      const { error: uploadError } = await supabase.storage
-        .from('resumes')
-        .upload(filePath, resume);
+      // 1. Upload Resume only if provided
+      if (resume) {
+        const fileExt = resume.name.split('.').pop();
+        const fileName = `${Math.random().toString(36).substring(2)}-${Date.now()}.${fileExt}`;
+        const filePath = `resumes/${fileName}`;
 
-      if (uploadError) throw uploadError;
+        const { error: uploadError } = await supabase.storage
+          .from('resumes')
+          .upload(filePath, resume);
 
-      const { data: { publicUrl } } = supabase.storage
-        .from('resumes')
-        .getPublicUrl(filePath);
+        if (uploadError) throw uploadError;
+
+        const { data } = supabase.storage
+          .from('resumes')
+          .getPublicUrl(filePath);
+          
+        publicUrl = data.publicUrl;
+      }
 
       // 2. Submit Application
       const { error: insertError } = await supabase
@@ -321,8 +323,8 @@ function CareersPage() {
                         <input required value={phone} onChange={e => setPhone(e.target.value)} type="tel" className="w-full bg-white border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm" placeholder="+91 98765 43210" />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-semibold text-ink">Years of Experience <span className="text-red-500">*</span></label>
-                        <input required value={experience} onChange={e => setExperience(e.target.value)} type="number" min="0" step="1" className="w-full bg-white border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm" placeholder="e.g. 5" />
+                        <label className="text-sm font-semibold text-ink">Years of Experience</label>
+                        <input value={experience} onChange={e => setExperience(e.target.value)} type="number" min="0" step="1" className="w-full bg-white border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm" placeholder="e.g. 5" />
                       </div>
                     </div>
 
@@ -332,10 +334,9 @@ function CareersPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-semibold text-ink">Resume (PDF/DOC) <span className="text-red-500">*</span></label>
+                      <label className="text-sm font-semibold text-ink">Resume (PDF/DOC)</label>
                       <div className="relative border-2 border-dashed border-border rounded-xl p-8 flex flex-col items-center justify-center bg-secondary/50 hover:bg-secondary transition-colors group">
                         <input 
-                          required 
                           type="file" 
                           accept=".pdf,.doc,.docx"
                           onChange={e => setResume(e.target.files?.[0] || null)} 
