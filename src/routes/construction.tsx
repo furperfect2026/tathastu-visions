@@ -16,13 +16,6 @@ const content: ServicePageContent = {
   subtitle:
     "Residential and commercial construction in Pune shaped by structure, safety, material discipline and reliable supervision.",
   heroVideoSrc: "/media/hero-construction.mp4",
-  heroSidePreview: {
-    videoSrc: "/media/apartment-model-preview.mp4",
-    eyebrow: "3D Realty Preview",
-    title: "Apartment Planning View",
-    description:
-      "Explore the structural feel of a modern apartment layout before construction begins. Tathastu Infra helps clients visualize spatial flow, dimensions and structural layout with clearer visual guidance.",
-  },
   heroImages: [
     { src: heroInfra2, alt: "Tathastu Infra large-scale construction site at dusk with cranes" },
     { src: construction1, alt: "Tathastu Infra premium residential construction site in Pune" },
