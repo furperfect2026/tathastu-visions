@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -876,13 +876,18 @@ function AdminProjectsPage() {
               Control only the project photo, name, category and description shown across the site.
             </p>
           </div>
-          <Button
-            variant="outline"
-            className="rounded-full"
-            onClick={() => supabase.auth.signOut()}
-          >
-            <LogOut className="h-4 w-4" /> Logout
-          </Button>
+          <div className="flex items-center gap-4">
+            <Link to="/admin/careers" className="text-sm font-medium text-muted-foreground hover:text-ink underline underline-offset-4">
+              Go to Careers Admin
+            </Link>
+            <Button
+              variant="outline"
+              className="rounded-full"
+              onClick={() => supabase.auth.signOut()}
+            >
+              <LogOut className="h-4 w-4" /> Logout
+            </Button>
+          </div>
         </div>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">

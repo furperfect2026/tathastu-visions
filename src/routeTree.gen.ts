@@ -15,6 +15,7 @@ import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as InteriorRouteImport } from './routes/interior'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConstructionRouteImport } from './routes/construction'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as RealtyPuneDeskRouteImport } from './routes/realty.pune-desk'
@@ -24,6 +25,7 @@ import { Route as InteriorSlugRouteImport } from './routes/interior.$slug'
 import { Route as ConstructionCostEstimatorRouteImport } from './routes/construction.cost-estimator'
 import { Route as ConstructionSlugRouteImport } from './routes/construction.$slug'
 import { Route as AdminProjectsRouteImport } from './routes/admin.projects'
+import { Route as AdminCareersRouteImport } from './routes/admin.careers'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -53,6 +55,11 @@ const ContactRoute = ContactRouteImport.update({
 const ConstructionRoute = ConstructionRouteImport.update({
   id: '/construction',
   path: '/construction',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -101,16 +108,23 @@ const AdminProjectsRoute = AdminProjectsRouteImport.update({
   path: '/admin/projects',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminCareersRoute = AdminCareersRouteImport.update({
+  id: '/admin/careers',
+  path: '/admin/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
   '/construction': typeof ConstructionRouteWithChildren
   '/contact': typeof ContactRoute
   '/interior': typeof InteriorRouteWithChildren
   '/projects': typeof ProjectsRouteWithChildren
   '/realty': typeof RealtyRouteWithChildren
   '/services': typeof ServicesRoute
+  '/admin/careers': typeof AdminCareersRoute
   '/admin/projects': typeof AdminProjectsRoute
   '/construction/$slug': typeof ConstructionSlugRoute
   '/construction/cost-estimator': typeof ConstructionCostEstimatorRoute
@@ -122,12 +136,14 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
   '/construction': typeof ConstructionRouteWithChildren
   '/contact': typeof ContactRoute
   '/interior': typeof InteriorRouteWithChildren
   '/projects': typeof ProjectsRouteWithChildren
   '/realty': typeof RealtyRouteWithChildren
   '/services': typeof ServicesRoute
+  '/admin/careers': typeof AdminCareersRoute
   '/admin/projects': typeof AdminProjectsRoute
   '/construction/$slug': typeof ConstructionSlugRoute
   '/construction/cost-estimator': typeof ConstructionCostEstimatorRoute
@@ -140,12 +156,14 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
   '/construction': typeof ConstructionRouteWithChildren
   '/contact': typeof ContactRoute
   '/interior': typeof InteriorRouteWithChildren
   '/projects': typeof ProjectsRouteWithChildren
   '/realty': typeof RealtyRouteWithChildren
   '/services': typeof ServicesRoute
+  '/admin/careers': typeof AdminCareersRoute
   '/admin/projects': typeof AdminProjectsRoute
   '/construction/$slug': typeof ConstructionSlugRoute
   '/construction/cost-estimator': typeof ConstructionCostEstimatorRoute
@@ -159,12 +177,14 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/careers'
     | '/construction'
     | '/contact'
     | '/interior'
     | '/projects'
     | '/realty'
     | '/services'
+    | '/admin/careers'
     | '/admin/projects'
     | '/construction/$slug'
     | '/construction/cost-estimator'
@@ -176,12 +196,14 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/careers'
     | '/construction'
     | '/contact'
     | '/interior'
     | '/projects'
     | '/realty'
     | '/services'
+    | '/admin/careers'
     | '/admin/projects'
     | '/construction/$slug'
     | '/construction/cost-estimator'
@@ -193,12 +215,14 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/careers'
     | '/construction'
     | '/contact'
     | '/interior'
     | '/projects'
     | '/realty'
     | '/services'
+    | '/admin/careers'
     | '/admin/projects'
     | '/construction/$slug'
     | '/construction/cost-estimator'
@@ -211,12 +235,14 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CareersRoute: typeof CareersRoute
   ConstructionRoute: typeof ConstructionRouteWithChildren
   ContactRoute: typeof ContactRoute
   InteriorRoute: typeof InteriorRouteWithChildren
   ProjectsRoute: typeof ProjectsRouteWithChildren
   RealtyRoute: typeof RealtyRouteWithChildren
   ServicesRoute: typeof ServicesRoute
+  AdminCareersRoute: typeof AdminCareersRoute
   AdminProjectsRoute: typeof AdminProjectsRoute
 }
 
@@ -262,6 +288,13 @@ declare module '@tanstack/react-router' {
       path: '/construction'
       fullPath: '/construction'
       preLoaderRoute: typeof ConstructionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -327,6 +360,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/careers': {
+      id: '/admin/careers'
+      path: '/admin/careers'
+      fullPath: '/admin/careers'
+      preLoaderRoute: typeof AdminCareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -384,12 +424,14 @@ const RealtyRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CareersRoute: CareersRoute,
   ConstructionRoute: ConstructionRouteWithChildren,
   ContactRoute: ContactRoute,
   InteriorRoute: InteriorRouteWithChildren,
   ProjectsRoute: ProjectsRouteWithChildren,
   RealtyRoute: RealtyRouteWithChildren,
   ServicesRoute: ServicesRoute,
+  AdminCareersRoute: AdminCareersRoute,
   AdminProjectsRoute: AdminProjectsRoute,
 }
 export const routeTree = rootRouteImport

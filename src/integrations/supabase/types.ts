@@ -44,6 +44,83 @@ export type Database = {
         }
         Relationships: []
       }
+      jobs: {
+        Row: {
+          created_at: string
+          department: string
+          description: string
+          id: string
+          is_active: boolean | null
+          location: string
+          requirements: string | null
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          department: string
+          description: string
+          id?: string
+          is_active?: boolean | null
+          location: string
+          requirements?: string | null
+          title: string
+        }
+        Update: {
+          created_at?: string
+          department?: string
+          description?: string
+          id?: string
+          is_active?: boolean | null
+          location?: string
+          requirements?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
+      job_applications: {
+        Row: {
+          created_at: string
+          email: string
+          experience_years: number | null
+          id: string
+          job_id: string | null
+          message: string | null
+          name: string
+          phone: string | null
+          resume_url: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          experience_years?: number | null
+          id?: string
+          job_id?: string | null
+          message?: string | null
+          name: string
+          phone?: string | null
+          resume_url: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          experience_years?: number | null
+          id?: string
+          job_id?: string | null
+          message?: string | null
+          name?: string
+          phone?: string | null
+          resume_url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "job_applications_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "jobs"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
