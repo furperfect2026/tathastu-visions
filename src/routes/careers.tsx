@@ -201,31 +201,7 @@ function CareersPage() {
         </Reveal>
       </section>
 
-      {/* Image Gallery Showcase */}
-      <section className="container mx-auto px-4 lg:px-8 mb-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Reveal delay={0.1}>
-            <div className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden group">
-              <img src={luxuryImage} alt="Luxury Interior" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
-              <div className="absolute bottom-8 left-8">
-                <h3 className="text-2xl font-bold text-white mb-2">Design Innovation</h3>
-                <p className="text-white/80">Pushing boundaries in interior aesthetics.</p>
-              </div>
-            </div>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <div className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden group">
-              <img src={craftsmanshipImage} alt="Construction Site" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
-              <div className="absolute bottom-8 left-8">
-                <h3 className="text-2xl font-bold text-white mb-2">Master Craftsmanship</h3>
-                <p className="text-white/80">Building structurally sound, lasting legacies.</p>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+
 
       {/* Open Positions Section */}
       <section className="container mx-auto px-4 lg:px-8 max-w-5xl">
