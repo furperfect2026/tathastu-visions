@@ -142,15 +142,7 @@ export const projects = [
     image: constructionProject2,
     blurb: "Civil execution with site accountability, material planning and coordinated handover.",
   },
-  {
-    id: "p7",
-    category: "construction",
-    title: "EON Venture Tower",
-    location: "Kharadi, Pune",
-    year: 2023,
-    image: constructionProject3,
-    blurb: "Premium commercial glass-facade tower in Kharadi IT corridor, executed with precision and structural integrity.",
-  },
+
   {
     id: "p8",
     category: "interior",
