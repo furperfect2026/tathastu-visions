@@ -1,3 +1,4 @@
+import realty1 from "@/assets/realty-1.jpg";
 import realty2 from "@/assets/realty-2.jpg";
 import realty3 from "@/assets/realty-3.jpg";
 import realty4 from "@/assets/realty-4.jpg";
@@ -34,6 +35,8 @@ export const pillars = [
       "Long-term client trust",
     ],
     images: [
+      { src: realty1, alt: "Premium Tathastu Infra real estate property" },
+      { src: realty2, alt: "Modern Tathastu Infra apartments under construction" },
       { src: realty3, alt: "Landscaped Tathastu Infra residential courtyard in Pune" },
       { src: realty4, alt: "Elegant Tathastu Infra residence in Pune at dusk" },
     ],
