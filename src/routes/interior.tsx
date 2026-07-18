@@ -72,9 +72,17 @@ export const Route = createFileRoute("/interior")({
   component: InteriorRoute,
 });
 
+import { VastuCalculator } from "@/components/VastuCalculator";
+
 function InteriorRoute() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const isInteriorIndex = pathname.replace(/\/$/, "") === "/interior";
 
-  return isInteriorIndex ? <ServicePage content={content} /> : <Outlet />;
+  return isInteriorIndex ? (
+    <ServicePage content={content}>
+      <VastuCalculator />
+    </ServicePage>
+  ) : (
+    <Outlet />
+  );
 }

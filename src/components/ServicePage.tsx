@@ -187,7 +187,7 @@ function useMotionSafeVideo(enabled: boolean) {
   return canPlay;
 }
 
-export function ServicePage({ content }: { content: ServicePageContent }) {
+export function ServicePage({ content, children }: { content: ServicePageContent; children?: React.ReactNode }) {
   const navigate = useNavigate();
   const guaranteeTrackRef = useRef<HTMLDivElement>(null);
   const { projects } = usePublicProjects(content.projectCategory);
@@ -698,7 +698,9 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
       {content.projectCategory === "construction" && (
         <PartnerLogoSection partners={partners} bankingPartners={bankingPartners} />
       )}
-
+      {children}
+      
+      {/* FINAL CTA */}
       <section className="bg-gradient-ink py-16 md:py-24 text-ivory">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal className="max-w-2xl">
