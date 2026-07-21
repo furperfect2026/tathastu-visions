@@ -61,20 +61,12 @@ export function VastuInteractivePlan() {
                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                        style={{ backgroundImage: `url(${zone.image})` }}
                      />
-                     {/* Dark overlay for readability */}
-                     <div className={cn(
-                       "absolute inset-0 transition-opacity duration-300",
-                       isActive ? "bg-black/60" : "bg-black/75 group-hover:bg-black/65"
-                     )} />
-
-                     <span className={cn("text-[10px] md:text-sm font-semibold uppercase tracking-widest mb-1 z-10 text-white drop-shadow-md")}>
-                       {zone.name.split(" ")[0]}
-                     </span>
-                     <span className="text-[9px] md:text-xs text-white/70 uppercase mb-2 md:mb-3 hidden md:block z-10 font-medium tracking-widest">
-                       {zone.name.includes("(") ? zone.name.split("(")[1].replace(")", "") : zone.name}
-                     </span>
-                     <div className="font-medium text-white/90 text-[10px] md:text-sm leading-tight max-w-[95%] z-10">
-                       {zone.idealFor[0]}
+                     
+                     {/* Subtle bottom gradient and text label */}
+                     <div className="absolute inset-x-0 bottom-0 p-2 md:p-3 flex justify-center bg-gradient-to-t from-black/60 to-transparent">
+                       <span className="text-[9px] md:text-xs font-semibold uppercase tracking-widest text-white drop-shadow-md backdrop-blur-sm bg-black/20 px-2 py-0.5 rounded-full border border-white/20">
+                         {zone.name.split(" ")[0]}
+                       </span>
                      </div>
                    </div>
                  );

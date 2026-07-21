@@ -1,12 +1,12 @@
-import interior1 from "@/assets/interior-1.jpg";
-import interior2 from "@/assets/interior-2.jpg";
-import interior3 from "@/assets/interior-3.jpg";
-import interior4 from "@/assets/interior-4.png";
-import projectInterior1 from "@/assets/project-interior-1.jpg";
-import projectInterior2 from "@/assets/project-interior-2.jpg";
-import projectInterior3 from "@/assets/project-interior-3.jpg";
-import projectInterior4 from "@/assets/project-interior-4.jpg";
-import project5 from "@/assets/project-5.jpg";
+import imgNW from "@/assets/vastu_nw_guest_1784658699355.png";
+import imgN from "@/assets/vastu_n_living_1784658710694.png";
+import imgNE from "@/assets/vastu_ne_puja_1784658720516.png";
+import imgW from "@/assets/vastu_w_children_1784658729507.png";
+import imgC from "@/assets/vastu_c_center_1784658739619.png";
+import imgE from "@/assets/vastu_e_entrance_1784658750755.png";
+import imgSW from "@/assets/vastu_sw_master_1784658761365.png";
+import imgS from "@/assets/vastu_s_store_1784658773325.png";
+import imgSE from "@/assets/vastu_se_kitchen_1784658784347.png";
 
 export type Element = "Water" | "Fire" | "Earth" | "Air" | "Space";
 
@@ -34,7 +34,7 @@ export const interactiveVastuZones: Record<string, VastuZoneDetails> = {
     advantages: "Support & Stability. Element of Air brings movement, helping guests leave on time and ensuring smooth business transactions.",
     color: "text-slate-500",
     bgClass: "bg-slate-50 border-slate-200",
-    image: projectInterior4,
+    image: imgNW,
   },
   n: {
     id: "n",
@@ -46,7 +46,7 @@ export const interactiveVastuZones: Record<string, VastuZoneDetails> = {
     advantages: "Wealth & Opportunity. Ruled by Kubera (Lord of Wealth). Should be kept open, clean, and bright to attract prosperity.",
     color: "text-blue-500",
     bgClass: "bg-blue-50 border-blue-200",
-    image: interior1,
+    image: imgN,
   },
   ne: {
     id: "ne",
@@ -58,7 +58,7 @@ export const interactiveVastuZones: Record<string, VastuZoneDetails> = {
     advantages: "Spiritual Growth & Positivity. The most sacred zone, receiving early morning sun. Excellent for mental clarity and health.",
     color: "text-sky-500",
     bgClass: "bg-sky-50 border-sky-200",
-    image: projectInterior1,
+    image: imgNE,
   },
   w: {
     id: "w",
@@ -70,7 +70,7 @@ export const interactiveVastuZones: Record<string, VastuZoneDetails> = {
     advantages: "Creativity & Stability. Brings gains and profits. Ideal for children's learning and dining area for better digestion.",
     color: "text-indigo-500",
     bgClass: "bg-indigo-50 border-indigo-200",
-    image: interior2,
+    image: imgW,
   },
   c: {
     id: "c",
@@ -82,7 +82,7 @@ export const interactiveVastuZones: Record<string, VastuZoneDetails> = {
     advantages: "The energetic heart of the home. Keeps the flow of energy uninterrupted. Must be clean, open, and clutter-free.",
     color: "text-amber-500",
     bgClass: "bg-amber-50 border-amber-200",
-    image: interior4,
+    image: imgC,
   },
   e: {
     id: "e",
@@ -94,7 +94,7 @@ export const interactiveVastuZones: Record<string, VastuZoneDetails> = {
     advantages: "Health & Happiness. Welcomes positive energy and maximum natural light (morning sun), ensuring a fresh and healthy environment.",
     color: "text-orange-500",
     bgClass: "bg-orange-50 border-orange-200",
-    image: projectInterior3,
+    image: imgE,
   },
   sw: {
     id: "sw",
@@ -106,7 +106,7 @@ export const interactiveVastuZones: Record<string, VastuZoneDetails> = {
     advantages: "Stability & Strength. Represents the Earth element. Should be the highest and heaviest part of the house to ensure security and protection.",
     color: "text-stone-600",
     bgClass: "bg-stone-50 border-stone-300",
-    image: projectInterior2,
+    image: imgSW,
   },
   s: {
     id: "s",
@@ -118,7 +118,7 @@ export const interactiveVastuZones: Record<string, VastuZoneDetails> = {
     advantages: "Strength & Protection. Provides structural and financial stability. Thicker walls here protect from intense afternoon heat.",
     color: "text-red-600",
     bgClass: "bg-red-50 border-red-200",
-    image: project5,
+    image: imgS,
   },
   se: {
     id: "se",
@@ -130,7 +130,7 @@ export const interactiveVastuZones: Record<string, VastuZoneDetails> = {
     advantages: "High Energy Zone. Ruled by the Fire element. Perfect for the kitchen to maintain physical health and financial stability.",
     color: "text-rose-500",
     bgClass: "bg-rose-50 border-rose-200",
-    image: interior3,
+    image: imgSE,
   },
 };
 

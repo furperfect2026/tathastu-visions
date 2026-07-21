@@ -558,6 +558,9 @@ export function ServicePage({ content, children }: { content: ServicePageContent
       </section>
       )}
 
+      {/* Dynamic Children (e.g., Vastu Calculator, Interactive Plan) rendered before Packages */}
+      {children}
+
       {content.projectCategory === "construction" && <PackagesSection mode="construction" />}
       {content.projectCategory === "interior" && <PackagesSection mode="interior" />}
 
@@ -698,7 +701,6 @@ export function ServicePage({ content, children }: { content: ServicePageContent
       {content.projectCategory === "construction" && (
         <PartnerLogoSection partners={partners} bankingPartners={bankingPartners} />
       )}
-      {children}
       
       {/* FINAL CTA */}
       <section className="bg-gradient-ink py-16 md:py-24 text-ivory">

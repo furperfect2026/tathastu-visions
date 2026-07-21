@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import founder from "@/assets/founder.jpg";
+import cofounderImage from "@/assets/cofounder.jpeg";
 import officeFront from "@/assets/office-front.jpg";
 import trustImage from "@/assets/realty-3.jpg";
 import luxuryImage from "@/assets/interior-1.jpg";
@@ -71,20 +72,9 @@ function AboutPage() {
                 <motion.div
                   whileHover={{ rotate: 1, scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 120 }}
-                  className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-luxe bg-[#0c1a2e]/40 border border-border flex flex-col items-center justify-center text-muted-foreground"
+                  className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-luxe"
                 >
-                  <div className="absolute inset-0 opacity-10 pointer-events-none">
-                    <svg className="w-full h-full text-slate-800" viewBox="0 0 100 100" preserveAspectRatio="none">
-                      <pattern id="placeholder-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.2" className="text-ivory" />
-                      </pattern>
-                      <rect width="100" height="100" fill="url(#placeholder-grid)" />
-                    </svg>
-                  </div>
-                  <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-gold text-ink shadow-gold">
-                    <Users className="h-8 w-8" />
-                  </div>
-                  <p className="mt-4 font-display text-xs uppercase tracking-wider text-gradient-gold font-semibold">Tathastu Leadership</p>
+                  <img src={cofounderImage} alt="Sneha, Co-Founder of Tathastu Infra" loading="lazy" className="h-full w-full object-cover" />
                   <div className="absolute -left-3 -top-3 h-full w-full rounded-3xl border border-primary/40 pointer-events-none" />
                 </motion.div>
               </Reveal>
