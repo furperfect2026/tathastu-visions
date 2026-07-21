@@ -193,13 +193,18 @@ export function VastuCalculator() {
                           <p className="text-sm text-ink/60">{detail.zoneName}</p>
                           <p className="text-sm text-ink/80 mt-1">{detail.message}</p>
                         </div>
-                        <div className={cn(
-                          "px-4 py-2 rounded-lg font-semibold text-sm self-start sm:self-auto uppercase tracking-wider",
-                          detail.rating === "EXCELLENT" ? "bg-green-100 text-green-700" :
-                          detail.rating === "NEUTRAL" ? "bg-orange-100 text-orange-700" :
-                          "bg-red-100 text-red-700"
-                        )}>
-                          {detail.rating}
+                        <div className="flex flex-col sm:items-end gap-1">
+                          <div className={cn(
+                            "px-4 py-2 rounded-lg font-semibold text-sm self-start sm:self-auto uppercase tracking-wider inline-block",
+                            detail.rating === "EXCELLENT" ? "bg-green-100 text-green-700" :
+                            detail.rating === "NEUTRAL" ? "bg-orange-100 text-orange-700" :
+                            "bg-red-100 text-red-700"
+                          )}>
+                            {detail.rating}
+                          </div>
+                          <span className="text-sm font-semibold text-ink/70">
+                            {detail.score}/10 points
+                          </span>
                         </div>
                       </div>
                     ))}

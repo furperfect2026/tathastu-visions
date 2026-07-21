@@ -72,7 +72,7 @@ export const Route = createFileRoute("/interior")({
   component: InteriorRoute,
 });
 
-import { VastuCalculator } from "@/components/VastuCalculator";
+import { VastuInteractivePlan } from "@/components/VastuInteractivePlan";
 
 function InteriorRoute() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
@@ -80,7 +80,7 @@ function InteriorRoute() {
 
   return isInteriorIndex ? (
     <ServicePage content={content}>
-      <VastuCalculator />
+      <VastuInteractivePlan />
     </ServicePage>
   ) : (
     <Outlet />

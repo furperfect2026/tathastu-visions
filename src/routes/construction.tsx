@@ -85,9 +85,17 @@ export const Route = createFileRoute("/construction")({
   component: ConstructionRoute,
 });
 
+import { VastuCalculator } from "@/components/VastuCalculator";
+
 function ConstructionRoute() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const isConstructionIndex = pathname.replace(/\/$/, "") === "/construction";
 
-  return isConstructionIndex ? <ServicePage content={content} /> : <Outlet />;
+  return isConstructionIndex ? (
+    <ServicePage content={content}>
+      <VastuCalculator />
+    </ServicePage>
+  ) : (
+    <Outlet />
+  );
 }
