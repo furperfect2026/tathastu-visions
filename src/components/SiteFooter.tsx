@@ -145,7 +145,22 @@ export function SiteFooter() {
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-6 text-center text-xs text-ivory/50 sm:px-6 md:flex-row md:text-left">
           <p>© {new Date().getFullYear()} All rights reserved to Tathastu Infra.</p>
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 md:justify-end">
+            <Link
+              to="/privacy-policy"
+              className="text-ivory/45 underline-offset-4 transition-colors hover:text-primary-glow hover:underline"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-ivory/20">•</span>
+            <Link
+              to="/terms-conditions"
+              className="text-ivory/45 underline-offset-4 transition-colors hover:text-primary-glow hover:underline"
+            >
+              Terms & Conditions
+            </Link>
+            <span className="text-ivory/20">•</span>
             <p>Design & build · Tathastu Infra Studio</p>
+            <span className="text-ivory/20">•</span>
             <Link
               to="/admin/projects"
               className="text-ivory/45 underline-offset-4 transition-colors hover:text-primary-glow hover:underline"

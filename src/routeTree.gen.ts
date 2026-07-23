@@ -9,9 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsConditionsRouteImport } from './routes/terms-conditions'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RealtyRouteImport } from './routes/realty'
 import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as InteriorRouteImport } from './routes/interior'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConstructionRouteImport } from './routes/construction'
@@ -27,6 +29,11 @@ import { Route as ConstructionSlugRouteImport } from './routes/construction.$slu
 import { Route as AdminProjectsRouteImport } from './routes/admin.projects'
 import { Route as AdminCareersRouteImport } from './routes/admin.careers'
 
+const TermsConditionsRoute = TermsConditionsRouteImport.update({
+  id: '/terms-conditions',
+  path: '/terms-conditions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -40,6 +47,11 @@ const RealtyRoute = RealtyRouteImport.update({
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InteriorRoute = InteriorRouteImport.update({
@@ -121,9 +133,11 @@ export interface FileRoutesByFullPath {
   '/construction': typeof ConstructionRouteWithChildren
   '/contact': typeof ContactRoute
   '/interior': typeof InteriorRouteWithChildren
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/projects': typeof ProjectsRouteWithChildren
   '/realty': typeof RealtyRouteWithChildren
   '/services': typeof ServicesRoute
+  '/terms-conditions': typeof TermsConditionsRoute
   '/admin/careers': typeof AdminCareersRoute
   '/admin/projects': typeof AdminProjectsRoute
   '/construction/$slug': typeof ConstructionSlugRoute
@@ -140,9 +154,11 @@ export interface FileRoutesByTo {
   '/construction': typeof ConstructionRouteWithChildren
   '/contact': typeof ContactRoute
   '/interior': typeof InteriorRouteWithChildren
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/projects': typeof ProjectsRouteWithChildren
   '/realty': typeof RealtyRouteWithChildren
   '/services': typeof ServicesRoute
+  '/terms-conditions': typeof TermsConditionsRoute
   '/admin/careers': typeof AdminCareersRoute
   '/admin/projects': typeof AdminProjectsRoute
   '/construction/$slug': typeof ConstructionSlugRoute
@@ -160,9 +176,11 @@ export interface FileRoutesById {
   '/construction': typeof ConstructionRouteWithChildren
   '/contact': typeof ContactRoute
   '/interior': typeof InteriorRouteWithChildren
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/projects': typeof ProjectsRouteWithChildren
   '/realty': typeof RealtyRouteWithChildren
   '/services': typeof ServicesRoute
+  '/terms-conditions': typeof TermsConditionsRoute
   '/admin/careers': typeof AdminCareersRoute
   '/admin/projects': typeof AdminProjectsRoute
   '/construction/$slug': typeof ConstructionSlugRoute
@@ -181,9 +199,11 @@ export interface FileRouteTypes {
     | '/construction'
     | '/contact'
     | '/interior'
+    | '/privacy-policy'
     | '/projects'
     | '/realty'
     | '/services'
+    | '/terms-conditions'
     | '/admin/careers'
     | '/admin/projects'
     | '/construction/$slug'
@@ -200,9 +220,11 @@ export interface FileRouteTypes {
     | '/construction'
     | '/contact'
     | '/interior'
+    | '/privacy-policy'
     | '/projects'
     | '/realty'
     | '/services'
+    | '/terms-conditions'
     | '/admin/careers'
     | '/admin/projects'
     | '/construction/$slug'
@@ -219,9 +241,11 @@ export interface FileRouteTypes {
     | '/construction'
     | '/contact'
     | '/interior'
+    | '/privacy-policy'
     | '/projects'
     | '/realty'
     | '/services'
+    | '/terms-conditions'
     | '/admin/careers'
     | '/admin/projects'
     | '/construction/$slug'
@@ -239,15 +263,24 @@ export interface RootRouteChildren {
   ConstructionRoute: typeof ConstructionRouteWithChildren
   ContactRoute: typeof ContactRoute
   InteriorRoute: typeof InteriorRouteWithChildren
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ProjectsRoute: typeof ProjectsRouteWithChildren
   RealtyRoute: typeof RealtyRouteWithChildren
   ServicesRoute: typeof ServicesRoute
+  TermsConditionsRoute: typeof TermsConditionsRoute
   AdminCareersRoute: typeof AdminCareersRoute
   AdminProjectsRoute: typeof AdminProjectsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms-conditions': {
+      id: '/terms-conditions'
+      path: '/terms-conditions'
+      fullPath: '/terms-conditions'
+      preLoaderRoute: typeof TermsConditionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -267,6 +300,13 @@ declare module '@tanstack/react-router' {
       path: '/projects'
       fullPath: '/projects'
       preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/interior': {
@@ -428,9 +468,11 @@ const rootRouteChildren: RootRouteChildren = {
   ConstructionRoute: ConstructionRouteWithChildren,
   ContactRoute: ContactRoute,
   InteriorRoute: InteriorRouteWithChildren,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   ProjectsRoute: ProjectsRouteWithChildren,
   RealtyRoute: RealtyRouteWithChildren,
   ServicesRoute: ServicesRoute,
+  TermsConditionsRoute: TermsConditionsRoute,
   AdminCareersRoute: AdminCareersRoute,
   AdminProjectsRoute: AdminProjectsRoute,
 }
