@@ -22,7 +22,7 @@ export function Logo({ className, light = false }: { className?: string; light?:
         <div
           className={`text-[7px] uppercase tracking-[0.14em] transition-all duration-300 ease-out max-[380px]:hidden sm:text-[9px] sm:tracking-[0.24em] lg:text-[10px] ${light ? "text-primary-glow drop-shadow-[0_1px_10px_rgba(0,0,0,0.5)]" : "font-semibold text-ink/70"}`}
         >
-          Building Spaces · Creating Futures
+          Engineering Pvt. Ltd
         </div>
       </div>
     </div>
