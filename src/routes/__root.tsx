@@ -286,8 +286,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: `${siteUrl}/tathastu-logo.png` },
     ],
     links: [
-      { rel: "icon", type: "image/png", href: "/favicon.png?v=2" },
-      { rel: "apple-touch-icon", href: "/favicon.png?v=2" },
+      { rel: "icon", type: "image/png", href: "/favicon-48x48.png?v=3", sizes: "48x48" },
+      { rel: "apple-touch-icon", href: "/favicon-48x48.png?v=3" },
       { rel: "canonical", href: siteUrl },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
