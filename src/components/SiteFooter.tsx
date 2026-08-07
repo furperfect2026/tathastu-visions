@@ -32,7 +32,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div>
-          <h4 className="eyebrow !text-primary-glow">Explore</h4>
+          <h3 className="eyebrow !text-primary-glow">Explore</h3>
           <ul className="mt-4 space-y-2 text-sm">
             {[
               ["/", "Home"],
@@ -50,7 +50,7 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <h4 className="eyebrow !text-primary-glow">Property Search</h4>
+          <h3 className="eyebrow !text-primary-glow">Property Search</h3>
           <ul className="mt-4 space-y-2 text-sm">
             {[
               ["/realty", "Flats in Lohegaon"],
@@ -68,7 +68,7 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <h4 className="eyebrow !text-primary-glow">Construction</h4>
+          <h3 className="eyebrow !text-primary-glow">Construction</h3>
           <ul className="mt-4 space-y-2 text-sm">
             {[
               ["/construction", "Construction Company in Lohegaon"],
@@ -86,7 +86,7 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <h4 className="eyebrow !text-primary-glow">Interiors</h4>
+          <h3 className="eyebrow !text-primary-glow">Interiors</h3>
           <ul className="mt-4 space-y-2 text-sm">
             {[
               ["/interior", "Interior Designer in Lohegaon"],
@@ -104,7 +104,7 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <h4 className="eyebrow !text-primary-glow">Reach Us</h4>
+          <h3 className="eyebrow !text-primary-glow">Reach Us</h3>
           <ul className="mt-4 space-y-3 text-sm text-ivory/70">
             <li className="flex min-w-0 gap-2">
               <MapPin className="mt-0.5 h-4 w-4 flex-none text-primary" />
@@ -147,14 +147,14 @@ export function SiteFooter() {
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 md:justify-end">
             <Link
               to="/privacy-policy"
-              className="text-ivory/45 underline-offset-4 transition-colors hover:text-primary-glow hover:underline"
+              className="text-ivory/70 underline-offset-4 transition-colors hover:text-primary-glow hover:underline"
             >
               Privacy Policy
             </Link>
             <span className="text-ivory/20">•</span>
             <Link
               to="/terms-conditions"
-              className="text-ivory/45 underline-offset-4 transition-colors hover:text-primary-glow hover:underline"
+              className="text-ivory/70 underline-offset-4 transition-colors hover:text-primary-glow hover:underline"
             >
               Terms & Conditions
             </Link>
@@ -163,7 +163,7 @@ export function SiteFooter() {
             <span className="text-ivory/20">•</span>
             <Link
               to="/admin/projects"
-              className="text-ivory/45 underline-offset-4 transition-colors hover:text-primary-glow hover:underline"
+              className="text-ivory/70 underline-offset-4 transition-colors hover:text-primary-glow hover:underline"
             >
               Admin Login
             </Link>

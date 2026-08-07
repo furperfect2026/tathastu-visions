@@ -48,6 +48,8 @@ export function AutoSlideshow({
         src={images[index].src}
         alt=""
         aria-hidden
+        fetchpriority="high"
+        loading="eager"
         className="absolute inset-0 h-full w-full object-cover"
       />
       <AnimatePresence mode="sync">

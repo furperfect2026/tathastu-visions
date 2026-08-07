@@ -163,6 +163,8 @@ export function ChatbotWidget() {
             <img
               src={chatbotAvatar}
               alt="Chat with Ronal"
+              width={109}
+              height={109}
               className="h-full w-full object-cover object-top"
             />
           </Button>

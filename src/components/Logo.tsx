@@ -6,6 +6,8 @@ export function Logo({ className, light = false }: { className?: string; light?:
       <img
         src={logoUrl}
         alt="Tathastu Infra premium gold emblem"
+        width={168}
+        height={269}
         className="h-14 w-auto flex-none object-contain drop-shadow-[0_10px_18px_rgba(0,0,0,0.24)] transition-all duration-300 ease-out sm:h-16 lg:h-[4.5rem]"
       />
       <div className="min-w-0 leading-tight">
