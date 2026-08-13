@@ -197,7 +197,14 @@ export function ServicePage({ content, children }: { content: ServicePageContent
   const [estimateFloors, setEstimateFloors] = useState("ground");
   const [heroVideoDone, setHeroVideoDone] = useState(false);
   const [isHeroPreviewOpen, setIsHeroPreviewOpen] = useState(false);
+  const [isVideoDeferred, setIsVideoDeferred] = useState(false);
   const showHeroVideo = useMotionSafeVideo(Boolean(content.heroVideoSrc)) && !heroVideoDone;
+
+  useEffect(() => {
+    // Defer heavy video mounting to allow initial LCP paint
+    const timer = setTimeout(() => setIsVideoDeferred(true), 250);
+    return () => clearTimeout(timer);
+  }, []);
 
   const quickEstimate = useMemo(() => {
     const area = Number(estimateArea);
@@ -235,7 +242,7 @@ export function ServicePage({ content, children }: { content: ServicePageContent
           rounded="rounded-none"
           className="absolute inset-0 h-full w-full"
         />
-        {content.heroVideoSrc && showHeroVideo && (
+        {content.heroVideoSrc && showHeroVideo && isVideoDeferred && (
           <video
             className={`absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-1000 ease-out ${
               content.projectCategory === "construction" ? "hidden md:block" : ""
@@ -328,7 +335,7 @@ export function ServicePage({ content, children }: { content: ServicePageContent
                 />
               ) : (
                 <>
-                  {content.heroSidePreview.videoSrc && (
+                  {content.heroSidePreview.videoSrc && isVideoDeferred && (
                     <video
                       src={content.heroSidePreview.videoSrc}
                       className="h-full w-full object-cover"
@@ -394,7 +401,7 @@ export function ServicePage({ content, children }: { content: ServicePageContent
             </button>
             <div className="grid bg-ivory lg:grid-cols-[1.35fr_0.65fr]">
               <div className="aspect-video bg-ink lg:aspect-auto lg:min-h-[560px] flex items-center justify-center">
-                {content.heroSidePreview.videoSrc ? (
+                {content.heroSidePreview.videoSrc && isVideoDeferred ? (
                   <video
                     src={content.heroSidePreview.videoSrc}
                     className="h-full w-full object-cover"
