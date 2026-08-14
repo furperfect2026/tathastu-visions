@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { MapPin, Phone, MessageCircle, CheckCircle2, Trees, Shield, Home } from "lucide-react";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
-import { ContactSection } from "@/components/ContactSection";
 import heroImg from "@/assets/pisoli-villas/villa-1.png";
 import masterPlanImg from "@/assets/pisoli-villas/villa-2.png"; // Placeholder for actual master plan
 import villa1 from "@/assets/pisoli-villas/villa-1.png";
@@ -55,10 +54,13 @@ function PisoliVillasPage() {
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <a
-                href="#contact"
-                className="rounded-full bg-gradient-gold px-8 py-3.5 text-sm font-bold text-ink shadow-gold transition-all hover:scale-105 hover:opacity-90"
+                href="https://wa.me/917820864384?text=Hi%20Tathastu%20Infra%2C%20I%20would%20like%20to%20know%20more%20about%20the%20Pisoli%20Villas%20plotting%20project."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-gradient-gold px-8 py-3.5 text-sm font-bold text-ink shadow-gold transition-all hover:scale-105 hover:opacity-90 flex items-center gap-2"
               >
-                Register Interest
+                <MessageCircle className="h-5 w-5" />
+                Register Interest via WhatsApp
               </a>
               <a
                 href="#details"
@@ -211,10 +213,28 @@ function PisoliVillasPage() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <div id="contact" className="bg-ink text-ivory">
-         <ContactSection />
-      </div>
+      {/* WhatsApp CTA Section */}
+      <section id="contact" className="bg-ink py-20 text-ivory lg:py-32">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="font-display text-4xl font-semibold sm:text-5xl">
+            Ready to <span className="text-primary-glow">Secure Your Plot?</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-ivory/70">
+            Get in touch with us directly on WhatsApp to receive the full brochure, layout plans, and pricing details.
+          </p>
+          <div className="mt-10 flex justify-center">
+            <a
+              href="https://wa.me/917820864384?text=Hi%20Tathastu%20Infra%2C%20I%20would%20like%20to%20know%20more%20about%20the%20Pisoli%20Villas%20plotting%20project."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 rounded-full bg-[#25D366] px-8 py-4 text-lg font-bold text-white shadow-lg transition-all hover:scale-105 hover:bg-[#20bd5a] hover:shadow-xl"
+            >
+              <MessageCircle className="h-6 w-6" />
+              Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
