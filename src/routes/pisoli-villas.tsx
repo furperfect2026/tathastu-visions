@@ -44,7 +44,7 @@ function PisoliVillasPage() {
             <span className="mb-4 inline-block rounded-full border border-primary/50 bg-primary/10 px-4 py-1.5 text-sm font-medium tracking-widest text-primary backdrop-blur-sm">
               PREMIUM RESIDENTIAL VILLA COMMUNITY
             </span>
-            <h1 className="mt-4 font-display text-5xl font-semibold leading-tight text-white sm:text-6xl lg:text-7xl">
+            <h1 className="mt-4 font-display text-4xl font-semibold leading-tight text-white sm:text-6xl lg:text-7xl">
               Luxury Bungalow <br />
               <span className="text-gradient-gold">Plotting Development</span>
             </h1>
@@ -52,19 +52,19 @@ function PisoliVillasPage() {
               A refined contemporary residential community in Pisoli, Pune. 
               Focused on elegance, simplicity, nature integration, and premium living experiences.
             </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:mt-10 sm:flex-row">
               <a
                 href="https://wa.me/917820864384?text=Hi%20Tathastu%20Infra%2C%20I%20would%20like%20to%20know%20more%20about%20the%20Pisoli%20Villas%20plotting%20project."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full bg-gradient-gold px-8 py-3.5 text-sm font-bold text-ink shadow-gold transition-all hover:scale-105 hover:opacity-90 flex items-center gap-2"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-8 py-3.5 text-sm font-bold text-ink shadow-gold transition-all hover:scale-105 hover:opacity-90 sm:w-auto"
               >
                 <MessageCircle className="h-5 w-5" />
-                Register Interest via WhatsApp
+                Register Interest
               </a>
               <a
                 href="#details"
-                className="rounded-full border-2 border-ivory/20 bg-ivory/5 px-8 py-3.5 text-sm font-bold text-ivory backdrop-blur-md transition-all hover:border-ivory/40 hover:bg-ivory/10"
+                className="w-full rounded-full border-2 border-ivory/20 bg-ivory/5 px-8 py-3.5 text-sm font-bold text-ivory backdrop-blur-md transition-all hover:border-ivory/40 hover:bg-ivory/10 sm:w-auto"
               >
                 Explore Project
               </a>
@@ -111,7 +111,7 @@ function PisoliVillasPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="grid gap-4 sm:grid-cols-2"
+              className="grid grid-cols-2 gap-3 sm:gap-4"
             >
               {[
                 { title: "1000 sq ft", desc: "Compact Luxury Villa Plot (1 Guntha)", icon: Home },
@@ -119,10 +119,10 @@ function PisoliVillasPage() {
                 { title: "2000 sq ft", desc: "Grand Estate Villa Plot", icon: Shield },
                 { title: "81 Plots", desc: "Total Exclusive Community Lots", icon: MapPin },
               ].map((stat, i) => (
-                <div key={i} className="rounded-2xl border border-border bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-                  <stat.icon className="mb-4 h-8 w-8 text-primary" />
-                  <h3 className="font-display text-2xl font-bold">{stat.title}</h3>
-                  <p className="mt-2 text-sm font-medium text-ink/60">{stat.desc}</p>
+                <div key={i} className="rounded-2xl border border-border bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:p-6">
+                  <stat.icon className="mb-3 h-6 w-6 text-primary sm:mb-4 sm:h-8 sm:w-8" />
+                  <h3 className="font-display text-lg font-bold sm:text-2xl">{stat.title}</h3>
+                  <p className="mt-1 text-xs font-medium text-ink/60 sm:mt-2 sm:text-sm">{stat.desc}</p>
                 </div>
               ))}
             </motion.div>
@@ -149,7 +149,7 @@ function PisoliVillasPage() {
               alt="Master Plan Layout Placeholder" 
               className="w-full rounded-2xl object-cover shadow-2xl"
             />
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-6 lg:grid-cols-4">
               {[
                 "Organized Plot Planning",
                 "Wide Internal Roads (9M)",
@@ -179,7 +179,7 @@ function PisoliVillasPage() {
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
             {galleryImages.map((imgSrc, idx) => (
               <motion.div 
                 key={idx}
@@ -194,7 +194,7 @@ function PisoliVillasPage() {
                 <img 
                   src={imgSrc} 
                   alt={`Pisoli Villa Render ${idx + 1}`} 
-                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-110 min-h-[250px]"
+                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-110 min-h-[150px] sm:min-h-[250px]"
                 />
               </motion.div>
             ))}
