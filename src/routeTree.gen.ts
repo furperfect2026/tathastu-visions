@@ -14,6 +14,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RealtyRouteImport } from './routes/realty'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as PisoliVillasRouteImport } from './routes/pisoli-villas'
 import { Route as InteriorRouteImport } from './routes/interior'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConstructionRouteImport } from './routes/construction'
@@ -52,6 +53,11 @@ const ProjectsRoute = ProjectsRouteImport.update({
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PisoliVillasRoute = PisoliVillasRouteImport.update({
+  id: '/pisoli-villas',
+  path: '/pisoli-villas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InteriorRoute = InteriorRouteImport.update({
@@ -133,6 +139,7 @@ export interface FileRoutesByFullPath {
   '/construction': typeof ConstructionRouteWithChildren
   '/contact': typeof ContactRoute
   '/interior': typeof InteriorRouteWithChildren
+  '/pisoli-villas': typeof PisoliVillasRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/projects': typeof ProjectsRouteWithChildren
   '/realty': typeof RealtyRouteWithChildren
@@ -154,6 +161,7 @@ export interface FileRoutesByTo {
   '/construction': typeof ConstructionRouteWithChildren
   '/contact': typeof ContactRoute
   '/interior': typeof InteriorRouteWithChildren
+  '/pisoli-villas': typeof PisoliVillasRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/projects': typeof ProjectsRouteWithChildren
   '/realty': typeof RealtyRouteWithChildren
@@ -176,6 +184,7 @@ export interface FileRoutesById {
   '/construction': typeof ConstructionRouteWithChildren
   '/contact': typeof ContactRoute
   '/interior': typeof InteriorRouteWithChildren
+  '/pisoli-villas': typeof PisoliVillasRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/projects': typeof ProjectsRouteWithChildren
   '/realty': typeof RealtyRouteWithChildren
@@ -199,6 +208,7 @@ export interface FileRouteTypes {
     | '/construction'
     | '/contact'
     | '/interior'
+    | '/pisoli-villas'
     | '/privacy-policy'
     | '/projects'
     | '/realty'
@@ -220,6 +230,7 @@ export interface FileRouteTypes {
     | '/construction'
     | '/contact'
     | '/interior'
+    | '/pisoli-villas'
     | '/privacy-policy'
     | '/projects'
     | '/realty'
@@ -241,6 +252,7 @@ export interface FileRouteTypes {
     | '/construction'
     | '/contact'
     | '/interior'
+    | '/pisoli-villas'
     | '/privacy-policy'
     | '/projects'
     | '/realty'
@@ -263,6 +275,7 @@ export interface RootRouteChildren {
   ConstructionRoute: typeof ConstructionRouteWithChildren
   ContactRoute: typeof ContactRoute
   InteriorRoute: typeof InteriorRouteWithChildren
+  PisoliVillasRoute: typeof PisoliVillasRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ProjectsRoute: typeof ProjectsRouteWithChildren
   RealtyRoute: typeof RealtyRouteWithChildren
@@ -307,6 +320,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy-policy'
       fullPath: '/privacy-policy'
       preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pisoli-villas': {
+      id: '/pisoli-villas'
+      path: '/pisoli-villas'
+      fullPath: '/pisoli-villas'
+      preLoaderRoute: typeof PisoliVillasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/interior': {
@@ -468,6 +488,7 @@ const rootRouteChildren: RootRouteChildren = {
   ConstructionRoute: ConstructionRouteWithChildren,
   ContactRoute: ContactRoute,
   InteriorRoute: InteriorRouteWithChildren,
+  PisoliVillasRoute: PisoliVillasRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ProjectsRoute: ProjectsRouteWithChildren,
   RealtyRoute: RealtyRouteWithChildren,
