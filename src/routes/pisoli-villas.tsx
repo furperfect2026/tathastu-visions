@@ -3,11 +3,18 @@ import { motion } from "framer-motion";
 import { MapPin, Phone, MessageCircle, CheckCircle2, Trees, Shield, Home } from "lucide-react";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { ContactSection } from "@/components/ContactSection";
-import heroImg from "@/assets/hero-building.jpg"; // Placeholder
-import masterPlanImg from "@/assets/realty-1.jpg"; // Placeholder
-import archImg1 from "@/assets/interior-1.jpg"; // Placeholder
-import archImg2 from "@/assets/interior-2.jpg"; // Placeholder
-import archImg3 from "@/assets/project-1.jpg"; // Placeholder
+import heroImg from "@/assets/pisoli-villas/villa-1.png";
+import masterPlanImg from "@/assets/pisoli-villas/villa-2.png"; // Placeholder for actual master plan
+import villa1 from "@/assets/pisoli-villas/villa-1.png";
+import villa2 from "@/assets/pisoli-villas/villa-2.png";
+import villa3 from "@/assets/pisoli-villas/villa-3.png";
+import villa4 from "@/assets/pisoli-villas/villa-4.png";
+import villa5 from "@/assets/pisoli-villas/villa-5.png";
+import villa6 from "@/assets/pisoli-villas/villa-6.png";
+import villa7 from "@/assets/pisoli-villas/villa-7.png";
+import villa8 from "@/assets/pisoli-villas/villa-8.png";
+
+const galleryImages = [villa1, villa2, villa3, villa4, villa5, villa6, villa7, villa8];
 
 export const Route = createFileRoute("/pisoli-villas")({
   component: PisoliVillasPage,
@@ -157,35 +164,48 @@ function PisoliVillasPage() {
         </div>
       </section>
 
-      {/* Architectural Theme */}
+      {/* Architectural Theme & Gallery */}
       <section className="bg-ivory py-20 lg:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div className="order-2 grid gap-4 sm:grid-cols-2 lg:order-1">
-              <img src={archImg1} alt="Architecture 1" className="h-64 w-full rounded-2xl object-cover" />
-              <img src={archImg2} alt="Architecture 2" className="mt-8 h-64 w-full rounded-2xl object-cover sm:mt-8" />
-              <img src={archImg3} alt="Architecture 3" className="col-span-full h-64 w-full rounded-2xl object-cover sm:h-80" />
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl font-semibold sm:text-5xl">
+              Modern <span className="text-primary">European</span> Style
+            </h2>
+            <p className="mx-auto mt-6 max-w-3xl text-lg text-ink/70">
+              Contemporary residential community inspired by modern European streetscapes, combining architecture, 
+              landscape, and walkable neighborhoods into a cohesive living environment.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {galleryImages.map((imgSrc, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className={`overflow-hidden rounded-2xl ${
+                  idx === 0 || idx === 3 ? "sm:col-span-2 sm:row-span-2" : ""
+                }`}
+              >
+                <img 
+                  src={imgSrc} 
+                  alt={`Pisoli Villa Render ${idx + 1}`} 
+                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-110 min-h-[250px]"
+                />
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="mt-16 grid gap-8 sm:grid-cols-2">
+            <div className="rounded-2xl border border-border bg-white p-8">
+              <h4 className="text-2xl font-display font-semibold">Design Language</h4>
+              <p className="mt-4 text-ink/70">Contemporary luxury façade, premium materials palette, uniform elevation theme, and elegant landscape integration.</p>
             </div>
-            
-            <div className="order-1 lg:order-2 lg:pl-12">
-              <h2 className="font-display text-4xl font-semibold sm:text-5xl">
-                Modern <span className="text-primary">European</span> Style
-              </h2>
-              <p className="mt-6 text-lg text-ink/70">
-                Contemporary residential community inspired by modern European streetscapes, combining architecture, 
-                landscape, and walkable neighborhoods into a cohesive living environment.
-              </p>
-              
-              <div className="mt-10 space-y-8">
-                <div>
-                  <h4 className="text-xl font-bold">Design Language</h4>
-                  <p className="mt-2 text-ink/70">Contemporary luxury façade, premium materials palette, uniform elevation theme, and elegant landscape integration.</p>
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold">Amenities & Landscape</h4>
-                  <p className="mt-2 text-ink/70">Landscaped greens, dedicated seating zones, kids play areas, internal green pockets, and a strictly walking-friendly environment.</p>
-                </div>
-              </div>
+            <div className="rounded-2xl border border-border bg-white p-8">
+              <h4 className="text-2xl font-display font-semibold">Amenities & Landscape</h4>
+              <p className="mt-4 text-ink/70">Landscaped greens, dedicated seating zones, kids play areas, internal green pockets, and a strictly walking-friendly environment.</p>
             </div>
           </div>
         </div>
