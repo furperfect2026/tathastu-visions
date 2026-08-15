@@ -224,6 +224,33 @@ function PisoliVillasPage() {
         </div>
       </section>
 
+      {/* Location Section */}
+      <section className="bg-ivory py-16 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="font-display text-3xl font-semibold text-ink sm:text-4xl">
+              Prime Location in Pisoli, Pune
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+              Strategically located for peaceful, premium living while remaining seamlessly connected to the city's major hubs.
+            </p>
+          </div>
+          <div className="mt-10 overflow-hidden rounded-3xl shadow-xl ring-1 ring-border sm:mt-12">
+            <iframe
+              src="https://maps.google.com/maps?q=Pisoli,%20Pune&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Pisoli Villas Location Map"
+              className="grayscale filter transition-all duration-700 hover:filter-none"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
       {/* WhatsApp CTA Section */}
       <section id="contact" className="bg-ink py-20 text-ivory lg:py-32">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
