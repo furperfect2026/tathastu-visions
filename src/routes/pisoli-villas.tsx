@@ -20,6 +20,16 @@ export const Route = createFileRoute("/pisoli-villas")({
 });
 
 function PisoliVillasPage() {
+  const handleWhatsAppConversion = () => {
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag('event', 'conversion', {
+        'send_to': 'AW-18120801457/RasXCKLn4qIcELH51cBD',
+        'value': 1.0,
+        'currency': 'INR'
+      });
+    }
+  };
+
   return (
     <div className="relative min-h-screen bg-ivory font-sans text-ink">
       <FloatingWhatsApp />
@@ -57,6 +67,7 @@ function PisoliVillasPage() {
                 href="https://wa.me/917820864384?text=Hi%20Tathastu%20Infra%2C%20I%20would%20like%20to%20know%20more%20about%20the%20Pisoli%20Villas%20plotting%20project."
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleWhatsAppConversion}
                 className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold px-8 py-3.5 text-sm font-bold text-ink shadow-gold transition-all hover:scale-105 hover:opacity-90 sm:w-auto"
               >
                 <MessageCircle className="h-5 w-5" />
@@ -227,6 +238,7 @@ function PisoliVillasPage() {
               href="https://wa.me/917820864384?text=Hi%20Tathastu%20Infra%2C%20I%20would%20like%20to%20know%20more%20about%20the%20Pisoli%20Villas%20plotting%20project."
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleWhatsAppConversion}
               className="group flex items-center gap-3 rounded-full bg-[#25D366] px-8 py-4 text-lg font-bold text-white shadow-lg transition-all hover:scale-105 hover:bg-[#20bd5a] hover:shadow-xl"
             >
               <MessageCircle className="h-6 w-6" />
