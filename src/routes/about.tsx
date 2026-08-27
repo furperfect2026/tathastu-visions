@@ -29,10 +29,48 @@ function AboutPage() {
     <>
       <section className="pt-28 md:pt-36 pb-12 md:pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <p className="eyebrow">About Tathastu Infra</p>
-          <h1 className="mt-4 max-w-6xl break-words font-display text-[2.75rem] font-medium leading-[1.05] sm:text-5xl md:text-7xl xl:text-[5.4rem]">
-            A name synonymous with <span className="text-gradient-gold italic">trust, luxury</span> and unparalleled craftsmanship.
-          </h1>
+          <Reveal>
+            <p className="eyebrow">About Tathastu Infra</p>
+            <h1 className="mt-4 max-w-6xl break-words font-display text-[2.75rem] font-medium leading-[1.05] sm:text-5xl md:text-7xl xl:text-[5.4rem]">
+              Shaping Pune real estate.
+            </h1>
+            <p className="mt-6 max-w-3xl text-lg text-muted-foreground leading-relaxed sm:text-xl">
+              As creators of Pune's finest developments, we bring 8 years of experience to transform the way people live and work. We combine this with the expertise to deliver both quality and scale at a pace that is unmatched in the industry.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Promise & Purpose */}
+      <section className="py-16 md:py-20 bg-gradient-ivory border-y border-border/40">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+            {/* Our Promise */}
+            <Reveal>
+              <div className="bg-card p-8 md:p-10 rounded-3xl shadow-luxe ring-1 ring-border h-full flex flex-col justify-center transition-transform hover:-translate-y-1 duration-300">
+                <p className="eyebrow !text-primary-glow">Our Promise</p>
+                <h2 className="mt-4 font-display text-3xl font-medium sm:text-4xl text-ink leading-tight">
+                  Creating the world's finest developments
+                </h2>
+                <p className="mt-5 text-muted-foreground leading-relaxed text-lg">
+                  Tathastu Infra is Pune's leading real estate developer, delivering thoughtfully designed, premium properties that shape urban lifestyle.
+                </p>
+              </div>
+            </Reveal>
+
+            {/* Our Purpose */}
+            <Reveal delay={0.15}>
+              <div className="bg-card p-8 md:p-10 rounded-3xl shadow-luxe ring-1 ring-border h-full flex flex-col justify-center transition-transform hover:-translate-y-1 duration-300">
+                <p className="eyebrow !text-primary-glow">Our Purpose</p>
+                <h2 className="mt-4 font-display text-3xl font-medium sm:text-4xl text-ink leading-tight">
+                  Do good. Do well.
+                </h2>
+                <p className="mt-5 text-muted-foreground leading-relaxed text-lg">
+                  Tathastu Infra is committed to elevating the living experience while emphasising the importance of creating a positive impact on the environment and society.
+                </p>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
