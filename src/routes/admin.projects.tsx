@@ -91,6 +91,7 @@ type ProjectForm = {
   realtyType?: string;
   realtyCategory?: string;
   isRecommended?: boolean;
+  videoUrl?: string;
 };
 
 type PartnerForm = {
@@ -149,6 +150,7 @@ const emptyForm: ProjectForm = {
   realtyType: "Under Construction",
   realtyCategory: "Residential",
   isRecommended: false,
+  videoUrl: "",
 };
 
 function freshProjectForm(): ProjectForm {
@@ -266,6 +268,8 @@ function formFromProject(project: AdminProject): ProjectForm {
   let configsText = "";
   let realtyType = "Under Construction";
   let realtyCategory = "Residential";
+  let isRecommended = false;
+  let videoUrl = "";
 
   if (project.category === "realty" && project.blurb && project.blurb.trim().startsWith("{")) {
     try {
@@ -284,6 +288,7 @@ function formFromProject(project: AdminProject): ProjectForm {
         realtyType = parsed.realtyType || "Under Construction";
         realtyCategory = parsed.realtyCategory || "Residential";
         isRecommended = parsed.isRecommended || false;
+        videoUrl = parsed.videoUrl || "";
       }
     } catch (e) {
       console.error("Error parsing JSON description for realty project", e);
@@ -313,7 +318,9 @@ function formFromProject(project: AdminProject): ProjectForm {
     amenitiesText,
     configsText,
     realtyType,
-    realtyCategory
+    realtyCategory,
+    isRecommended,
+    videoUrl
   };
 }
 
@@ -569,7 +576,8 @@ function AdminProjectsPage() {
         }).filter(cfg => cfg.bhk),
         realtyType: form.realtyType || "Under Construction",
         realtyCategory: form.realtyCategory || "Residential",
-        isRecommended: form.isRecommended || false
+        isRecommended: form.isRecommended || false,
+        videoUrl: form.videoUrl || ""
       }) : form.description.trim();
 
       const payload = {
@@ -974,7 +982,7 @@ function AdminProjectsPage() {
                           <SelectItem value="Residential">Residential</SelectItem>
                           <SelectItem value="Commercial">Commercial</SelectItem>
                           <SelectItem value="Resale">Resale</SelectItem>
-                          <SelectItem value="Rental">Rental</SelectItem>
+                          <SelectItem value="Rental">Rental Properties</SelectItem>
                           <SelectItem value="Plots / Land">Plots / Land</SelectItem>
                         </SelectContent>
                       </Select>
@@ -992,12 +1000,25 @@ function AdminProjectsPage() {
                           <SelectItem value="Under Construction">Under Construction</SelectItem>
                           <SelectItem value="Ready to Move">Ready to Move</SelectItem>
                           <SelectItem value="Upcoming New Launches">Upcoming New Launches</SelectItem>
+                          <SelectItem value="Rental">Rental</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-2 mt-2 mb-4">
+                  <div className="mt-4">
+                    <Label htmlFor="project-video">Video URL (YouTube/Vimeo)</Label>
+                    <Input
+                      id="project-video"
+                      type="url"
+                      placeholder="https://www.youtube.com/watch?v=..."
+                      value={form.videoUrl || ""}
+                      onChange={(e) => setForm((val) => ({ ...val, videoUrl: e.target.value }))}
+                      className="mt-2"
+                    />
+                  </div>
+
+                  <div className="flex items-center space-x-2 mt-6 mb-4">
                     <input
                       type="checkbox"
                       id="project-recommended"

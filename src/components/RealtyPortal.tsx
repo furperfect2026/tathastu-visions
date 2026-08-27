@@ -67,6 +67,7 @@ interface Property {
   amenities: string[];
   configs: PropertyConfig[];
   isRecommended?: boolean;
+  videoUrl?: string;
 }
 
 const realtyProperties: Property[] = [
@@ -482,6 +483,7 @@ function parseDynamicRealtyProject(p: PublicProject): Property {
   let realtyType = "Under Construction";
   let realtyCategory = "Residential";
   let isRecommended = false;
+  let videoUrl = "";
 
   if (p.blurb && p.blurb.trim().startsWith("{")) {
     try {
@@ -498,6 +500,7 @@ function parseDynamicRealtyProject(p: PublicProject): Property {
         realtyType = parsed.realtyType || "Under Construction";
         realtyCategory = parsed.realtyCategory || "Residential";
         isRecommended = parsed.isRecommended || false;
+        videoUrl = parsed.videoUrl || "";
       }
     } catch (e) {
       console.error("Error parsing dynamic project description", e);
@@ -541,6 +544,7 @@ function parseDynamicRealtyProject(p: PublicProject): Property {
     amenities,
     configs,
     isRecommended,
+    videoUrl,
   };
 }
 
@@ -632,7 +636,7 @@ export function RealtyPortal() {
   const [showCallbackModal, setShowCallbackModal] = useState(false);
   const [callbackProperty, setCallbackProperty] = useState<Property | null>(null);
   const [detailTab, setDetailTab] = useState<
-    "highlights" | "overview" | "pricing" | "gallery" | "map"
+    "highlights" | "overview" | "pricing" | "gallery" | "map" | "video"
   >("highlights");
 
   // Load favorites from local storage
@@ -1708,7 +1712,7 @@ export function RealtyPortal() {
               <div className="bg-card border border-border rounded-3xl p-6 md:p-8 space-y-8">
                 {/* Custom Tab selectors */}
                 <div className="flex flex-wrap gap-2 border-b border-border/40 pb-4 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                  {(["highlights", "overview", "pricing", "gallery", "map"] as const).map((tab) => (
+                  {(["highlights", "overview", "pricing", "gallery", "map", ...(selectedProperty?.videoUrl ? ["video"] : [])] as const).map((tab) => (
                     <button
                       key={tab}
                       onClick={() => setDetailTab(tab)}
@@ -1834,6 +1838,24 @@ export function RealtyPortal() {
                           />
                         </div>
                       ))}
+                    </motion.div>
+                  )}
+
+                  
+                  {detailTab === "video" && selectedProperty?.videoUrl && (
+                    <motion.div
+                      key="video"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="rounded-2xl overflow-hidden aspect-video bg-black mt-6"
+                    >
+                      <iframe 
+                        src={selectedProperty.videoUrl.replace('watch?v=', 'embed/').replace('youtu.be/', 'youtube.com/embed/')}
+                        className="w-full h-full border-0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
                     </motion.div>
                   )}
 
