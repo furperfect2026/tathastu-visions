@@ -22,6 +22,7 @@ import {
   PhoneCall,
   SlidersHorizontal,
   Share2,
+  Key,
 } from "lucide-react";
 
 const PropertyMap = lazy(() => import("./PropertyMap"));
@@ -704,6 +705,7 @@ export function RealtyPortal() {
           if (selectedType === "Under Construction" && p.type !== "Under Construction")
             return false;
           if (selectedType === "Ready to Move" && p.type !== "Ready to Move") return false;
+          if (selectedType === "Rental" && p.type !== "Rental" && p.category !== "Rental") return false;
         }
 
         // Sidebar Category (Residential / Commercial)
@@ -793,6 +795,7 @@ export function RealtyPortal() {
     (p) => p.type === "Under Construction",
   ).length;
   const readyToMoveCount = allProperties.filter((p) => p.type === "Ready to Move").length;
+  const rentalCount = allProperties.filter((p) => p.type === "Rental" || p.category === "Rental").length;
 
   const categories = [
     {
@@ -818,6 +821,12 @@ export function RealtyPortal() {
       type: "Ready to Move",
       icon: CheckSquare,
       count: `${readyToMoveCount} properties`,
+    },
+    {
+      label: "Rental Properties",
+      type: "Rental",
+      icon: Key,
+      count: `${rentalCount} properties`,
     },
   ];
 
@@ -870,7 +879,7 @@ export function RealtyPortal() {
 
             {/* Main Category Tabs */}
             <Reveal>
-              <div className="grid grid-cols-2 sm:grid-cols-4 max-w-4xl mx-auto gap-3 mb-8 md:mb-10 px-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 max-w-5xl mx-auto gap-3 mb-8 md:mb-10 px-2">
                 {categories.map((cat) => {
                   const isSelected = selectedType === cat.type;
                   const Icon = cat.icon;
