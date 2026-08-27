@@ -96,6 +96,74 @@ function AboutPage() {
         </div>
       </section>
 
+      {/* Our Story Section */}
+      <section className="py-16 md:py-24 overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <Reveal direction="right">
+              <div className="space-y-6">
+                <p className="eyebrow !text-primary-glow">Our Story</p>
+                <h2 className="font-display text-3xl font-medium sm:text-4xl md:text-5xl text-ink">Building dreams from the ground up.</h2>
+                <p className="text-muted-foreground leading-relaxed text-lg">
+                  What started as a humble endeavor with a small, passionate team has transformed into one of Pune's most trusted real estate and construction names. We saw a gap between ambitious architectural blueprints and the reality of their execution.
+                </p>
+                <p className="text-muted-foreground leading-relaxed text-lg">
+                  Tathastu Infra was born to bridge that gap. By combining world-class engineering, bespoke interior design, and an unwavering commitment to luxury, we ensure that every space we create isn't just lived in—it is beautifully experienced.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.2} direction="left">
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                className="relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-luxe ring-1 ring-border"
+              >
+                <img src="https://images.unsplash.com/photo-1542361345-89e58247f2d5?q=80&w=2070&auto=format&fit=crop" alt="Our Story" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-ink/10 mix-blend-overlay"></div>
+              </motion.div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Impact Section */}
+      <section className="py-16 md:py-24 bg-ivory">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <Reveal className="text-center max-w-3xl mx-auto mb-16">
+            <p className="eyebrow !text-primary-glow">Our Impact</p>
+            <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl md:text-5xl text-ink">Transforming communities and landscapes.</h2>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop", title: "Sustainable Growth", desc: "Every project is designed with ecological sustainability in mind, maximizing natural light and ventilation." },
+              { img: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?q=80&w=1984&auto=format&fit=crop", title: "Economic Empowerment", desc: "We've created thousands of direct and indirect jobs across our various construction sites in Maharashtra." },
+              { img: "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop", title: "Community Building", desc: "Beyond buildings, we design integrated spaces where families thrive and neighborhoods grow stronger together." }
+            ].map((item, i) => (
+              <Reveal key={item.title} delay={i * 0.15} direction="up">
+                <motion.div 
+                  whileHover={{ y: -12 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="group bg-card rounded-3xl overflow-hidden shadow-luxe border border-border h-full"
+                >
+                  <div className="relative h-56 overflow-hidden">
+                    <img 
+                      src={item.img} 
+                      alt={item.title} 
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+                  <div className="p-8">
+                    <h3 className="font-display text-2xl font-semibold text-ink mb-3">{item.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </div>
+                </motion.div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Values */}
       <section className="bg-gradient-ivory py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
