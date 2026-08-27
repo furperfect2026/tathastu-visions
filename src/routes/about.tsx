@@ -74,66 +74,6 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="grid gap-12 md:gap-16 md:grid-cols-2">
-            {/* Founder 1: Rohit */}
-            <div className="grid items-center gap-8 sm:grid-cols-[1fr_1.2fr] md:grid-cols-1 lg:grid-cols-[1fr_1.2fr]">
-              <Reveal>
-                <motion.div
-                  whileHover={{ rotate: -1, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 120 }}
-                  className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-luxe"
-                >
-                  <img src={founder} alt="Rohit, Founder & CEO of Tathastu Infra" loading="lazy" className="h-full w-full object-cover" />
-                  <div className="absolute -left-3 -top-3 h-full w-full rounded-3xl border border-primary/40" />
-                </motion.div>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <p className="eyebrow">Founder & CEO</p>
-                <h2 className="mt-3 font-display text-3xl font-medium">Rohit</h2>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  What began as a singular vision to redefine architectural elegance has evolved into a multi-disciplinary firm dedicated to shaping the future of modern living.
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Headquartered in Lohegaon, Pune, Tathastu Infra transforms raw structures into elegant, functional homes and commercial spaces across Maharashtra where luxury, utility and timeless design intersect.
-                </p>
-                <blockquote className="mt-6 border-l-2 border-primary pl-4 font-display text-base italic text-foreground">
-                  "Building spaces that inspire future generations."
-                </blockquote>
-              </Reveal>
-            </div>
-
-            {/* Founder 2: Sneha */}
-            <div className="grid items-center gap-8 sm:grid-cols-[1fr_1.2fr] md:grid-cols-1 lg:grid-cols-[1fr_1.2fr]">
-              <Reveal>
-                <motion.div
-                  whileHover={{ rotate: 1, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 120 }}
-                  className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-luxe"
-                >
-                  <img src={cofounderImage} alt="Sneha, Co-Founder of Tathastu Infra" loading="lazy" className="h-full w-full object-cover" />
-                  <div className="absolute -left-3 -top-3 h-full w-full rounded-3xl border border-primary/40 pointer-events-none" />
-                </motion.div>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <p className="eyebrow">Co-Founder</p>
-                <h2 className="mt-3 font-display text-3xl font-medium">Sneha</h2>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  Co-leading business operations and strategy at Tathastu Infra, guiding client relationship development, design management, and organizational growth.
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Supervising client integration, financial planning, and project management workflows to ensure client budgets, material selections, and project schedules stay fully aligned.
-                </p>
-                <blockquote className="mt-6 border-l-2 border-primary pl-4 font-display text-base italic text-foreground">
-                  "Translating design concepts and client dreams into lasting, trusted realities."
-                </blockquote>
-              </Reveal>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Our Story Section */}
       <section className="py-16 md:py-24 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -198,6 +138,87 @@ function AboutPage() {
                 </motion.div>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid gap-12 md:gap-16 md:grid-cols-2">
+            {/* Founder 1: Rohit */}
+            <div className="grid items-center gap-8 sm:grid-cols-[1fr_1.2fr] md:grid-cols-1 lg:grid-cols-[1fr_1.2fr]">
+              <Reveal>
+                <motion.div
+                  whileHover={{ rotate: -1, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 120 }}
+                  className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-luxe"
+                >
+                  <img src={founder} alt="Rohit, Founder & CEO of Tathastu Infra" loading="lazy" className="h-full w-full object-cover" />
+                  <div className="absolute -left-3 -top-3 h-full w-full rounded-3xl border border-primary/40" />
+                </motion.div>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="eyebrow">Founder & CEO</p>
+                <h2 className="mt-3 font-display text-3xl font-medium">Rohit</h2>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  What began as a singular vision to redefine architectural elegance has evolved into a multi-disciplinary firm dedicated to shaping the future of modern living.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Headquartered in Lohegaon, Pune, Tathastu Infra transforms raw structures into elegant, functional homes and commercial spaces across Maharashtra where luxury, utility and timeless design intersect.
+                </p>
+                <blockquote className="mt-6 border-l-2 border-primary pl-4 font-display text-base italic text-foreground">
+                  "Building spaces that inspire future generations."
+                </blockquote>
+              </Reveal>
+            </div>
+
+            {/* Founder 2: Sneha */}
+            <div className="grid items-center gap-8 sm:grid-cols-[1fr_1.2fr] md:grid-cols-1 lg:grid-cols-[1fr_1.2fr]">
+              <Reveal>
+                <motion.div
+                  whileHover={{ rotate: 1, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 120 }}
+                  className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-luxe"
+                >
+                  <img src={cofounderImage} alt="Sneha, Co-Founder of Tathastu Infra" loading="lazy" className="h-full w-full object-cover" />
+                  <div className="absolute -left-3 -top-3 h-full w-full rounded-3xl border border-primary/40 pointer-events-none" />
+                </motion.div>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="eyebrow">Co-Founder</p>
+                <h2 className="mt-3 font-display text-3xl font-medium">Sneha</h2>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  Co-leading business operations and strategy at Tathastu Infra, guiding client relationship development, design management, and organizational growth.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Supervising client integration, financial planning, and project management workflows to ensure client budgets, material selections, and project schedules stay fully aligned.
+                </p>
+                <blockquote className="mt-6 border-l-2 border-primary pl-4 font-display text-base italic text-foreground">
+                  "Translating design concepts and client dreams into lasting, trusted realities."
+                </blockquote>
+              </Reveal>
+            </div>
+
+            {/* Team Member: Harsh */}
+            <div className="grid items-center gap-8 sm:grid-cols-[1fr_1.2fr] md:grid-cols-1 lg:grid-cols-[1fr_1.2fr]">
+              <Reveal>
+                <motion.div
+                  whileHover={{ rotate: 1, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 120 }}
+                  className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-luxe bg-secondary/50"
+                >
+                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">[Harsh Photo]</div>
+                  <div className="absolute -left-3 -top-3 h-full w-full rounded-3xl border border-primary/40 pointer-events-none" />
+                </motion.div>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="eyebrow">Leadership Team</p>
+                <h2 className="mt-3 font-display text-3xl font-medium">Harsh</h2>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  [Description for Harsh goes here. Please provide his role and bio.]
+                </p>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>
