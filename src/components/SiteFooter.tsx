@@ -112,7 +112,7 @@ export function SiteFooter() {
             </li>
             <li className="flex min-w-0 gap-2">
               <Phone className="mt-0.5 h-4 w-4 flex-none text-primary" />
-              <span>+91 78208 64384</span>
+              <span>+91 78208 64384 <br/> +91 70584 47858</span>
             </li>
             <li className="flex min-w-0 gap-2">
               <Mail className="mt-0.5 h-4 w-4 flex-none text-primary" />

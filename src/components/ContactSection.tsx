@@ -30,7 +30,7 @@ const schema = z.object({
   message: z.string().trim().max(1000).optional().or(z.literal("")),
 });
 
-const PHONE = "+91 78208 64384";
+const PHONE = "+91 78208 64384 / +91 70584 47858";
 const PHONE_TEL = "+917820864384";
 const WHATSAPP_TEL = "+917820864384";
 const EMAIL = "tathastuinfra.info@gmail.com";
