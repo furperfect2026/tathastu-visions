@@ -19,7 +19,7 @@ import { submitInquiry } from "@/lib/contact.functions";
 const FIRST_POPUP_DELAY = 30_000;
 const REPEAT_POPUP_DELAY = 120_000;
 
-const cityOptions = ["Pune", "Lohegaon", "Kharadi", "Wagholi", "Viman Nagar", "Other"];
+
 
 export function ConsultationPopup() {
   const submit = useServerFn(submitInquiry);
@@ -200,12 +200,37 @@ export function ConsultationPopup() {
                     >
                       <SelectValue placeholder="Location of your plot - City" />
                     </SelectTrigger>
-                    <SelectContent>
-                      {cityOptions.map((option) => (
-                        <SelectItem key={option} value={option}>
-                          {option}
-                        </SelectItem>
-                      ))}
+                    <SelectContent className="z-[200]">
+                      <SelectGroup>
+                        <SelectLabel>Pune Region</SelectLabel>
+                        <SelectItem value="Pune">Pune</SelectItem>
+                        <SelectItem value="Pimpri-Chinchwad">Pimpri-Chinchwad</SelectItem>
+                        <SelectItem value="Hinjewadi">Hinjewadi</SelectItem>
+                        <SelectItem value="Ravet">Ravet</SelectItem>
+                      </SelectGroup>
+                      <SelectGroup>
+                        <SelectLabel>Mumbai Region</SelectLabel>
+                        <SelectItem value="Mumbai">Mumbai</SelectItem>
+                        <SelectItem value="Navi Mumbai">Navi Mumbai</SelectItem>
+                        <SelectItem value="South Mumbai">South Mumbai</SelectItem>
+                        <SelectItem value="Thane">Thane</SelectItem>
+                        <SelectItem value="Kalyan">Kalyan</SelectItem>
+                        <SelectItem value="Dombivali">Dombivali</SelectItem>
+                        <SelectItem value="Andheri">Andheri</SelectItem>
+                        <SelectItem value="Goregaon">Goregaon</SelectItem>
+                        <SelectItem value="Malad">Malad</SelectItem>
+                        <SelectItem value="Virar">Virar</SelectItem>
+                        <SelectItem value="Palghar">Palghar</SelectItem>
+                      </SelectGroup>
+                      <SelectGroup>
+                        <SelectLabel>Other Cities</SelectLabel>
+                        <SelectItem value="Nashik">Nashik</SelectItem>
+                        <SelectItem value="Kolhapur">Kolhapur</SelectItem>
+                        <SelectItem value="Solapur">Solapur</SelectItem>
+                        <SelectItem value="Nagpur">Nagpur</SelectItem>
+                        <SelectItem value="Ahilyanagar">Ahilyanagar</SelectItem>
+                        <SelectItem value="Chhatrapati Sambhajinagar">Chhatrapati Sambhajinagar</SelectItem>
+                      </SelectGroup>
                     </SelectContent>
                   </Select>
                   <p className="mt-1 px-1 text-[11px] text-muted-foreground">
