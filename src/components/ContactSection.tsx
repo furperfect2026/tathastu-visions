@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import {
-  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectGroup, SelectLabel,
 } from "@/components/ui/select";
 import { Reveal } from "@/components/Reveal";
 import { toast } from "sonner";
@@ -27,6 +27,7 @@ const schema = z.object({
     .regex(/^[+\d\s-()]+$/, "Digits only"),
   email: z.string().trim().email("Enter a valid email").max(160).optional().or(z.literal("")),
   interest: z.enum(["general", "realty", "construction", "interior", "infra"]).optional(),
+  city: z.string().optional(),
   message: z.string().trim().max(1000).optional().or(z.literal("")),
 });
 
@@ -48,6 +49,7 @@ export function ContactSection() {
   const submit = useServerFn(submitInquiry);
   const [loading, setLoading] = useState(false);
   const [interest, setInterest] = useState<Interest>("general");
+  const [city, setCity] = useState<string>("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -80,6 +82,7 @@ export function ContactSection() {
       }
       (e.target as HTMLFormElement).reset();
       setInterest("general");
+      setCity("");
     } catch (err) {
       console.error(err);
       toast.error("Something went wrong. Please try again.");

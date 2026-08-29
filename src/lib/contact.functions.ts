@@ -8,6 +8,7 @@ const schema = z.object({
   email: z.string().trim().email().max(255).optional().or(z.literal("")),
   phone: z.string().trim().max(30).optional().or(z.literal("")),
   interest: z.enum(["realty", "construction", "interior", "general", "infra"]).optional(),
+  city: z.string().optional(),
   message: z.string().trim().max(4000).optional().or(z.literal("")),
 });
 
@@ -67,6 +68,7 @@ async function sendInquiryEmail(data: Inquiry) {
   const subject = `New ${interest} inquiry from ${data.name}`;
   const phone = data.phone || "Not provided";
   const email = data.email || "Not provided";
+  const city = data.city || "Not provided";
   const message = data.message || "No message provided.";
   const plainText = [
     `New inquiry from Tathastu Infra website`,
@@ -75,6 +77,7 @@ async function sendInquiryEmail(data: Inquiry) {
     `Email: ${email}`,
     `Phone: ${phone}`,
     `Interest: ${interest}`,
+    `City: ${city}`,
     ``,
     `Message:`,
     message,
@@ -88,6 +91,7 @@ async function sendInquiryEmail(data: Inquiry) {
         <tr><td style="padding: 8px 0; font-weight: 700;">Email</td><td>${escapeHtml(email)}</td></tr>
         <tr><td style="padding: 8px 0; font-weight: 700;">Phone</td><td>${escapeHtml(phone)}</td></tr>
         <tr><td style="padding: 8px 0; font-weight: 700;">Interest</td><td>${escapeHtml(interest)}</td></tr>
+        <tr><td style="padding: 8px 0; font-weight: 700;">City</td><td>${escapeHtml(city)}</td></tr>
       </table>
       <div style="margin-top: 20px; padding: 18px; border-left: 4px solid #d6b57c; background: #fbf7ef;">
         ${escapeHtml(message).replace(/\n/g, "<br />")}
@@ -131,7 +135,7 @@ export const submitInquiry = createServerFn({ method: "POST" })
         email: storedEmail,
         phone: data.phone || null,
         interest: data.interest ?? null,
-        message: data.message || "No message provided.",
+        message: (data.city ? `City: ${data.city}\n\n` : "") + (data.message || "No message provided."),
       });
       if (error) {
         console.error("[contact] insert failed", error);
