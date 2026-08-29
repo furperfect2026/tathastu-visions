@@ -12,7 +12,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue, SelectGroup, SelectLabel,
 } from "@/components/ui/select";
 import { submitInquiry } from "@/lib/contact.functions";
 
