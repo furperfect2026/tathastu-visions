@@ -330,8 +330,18 @@ function RootShell({ children }: { children: React.ReactNode }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
+      
+        <style dangerouslySetInnerHTML={{ __html: `
+          body { top: 0 !important; }
+          .skiptranslate > iframe.skiptranslate { display: none !important; visibility: hidden !important; }
+          #google_translate_element { display: none !important; }
+          .goog-te-banner-frame { display: none !important; }
+        ` }} />
+        <script dangerouslySetInnerHTML={{ __html: `function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,hi,mr', autoDisplay: false}, 'google_translate_element'); }` }} />
+        <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" />
       </head>
       <body>
+        <div id="google_translate_element"></div>
         {children}
         <Scripts />
       </body>

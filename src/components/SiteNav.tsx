@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
+import { LanguageSelector } from "./LanguageSelector";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -184,7 +185,8 @@ export function SiteNav() {
             );
           })}
         </nav>
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-4 lg:flex">
+          <LanguageSelector />
           <Button
             asChild
             className="rounded-full bg-gradient-gold px-6 text-ink shadow-gold hover:opacity-90"
@@ -194,7 +196,9 @@ export function SiteNav() {
             </Link>
           </Button>
         </div>
-        <button
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageSelector />
+          <button
           aria-label="Toggle menu"
           className={cn(
             "rounded-full border p-2 transition-colors duration-300 ease-out lg:hidden",
@@ -206,6 +210,7 @@ export function SiteNav() {
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
+        </div>
       </div>
       {open && (
         <div className="border-t border-border bg-background/95 backdrop-blur-xl lg:hidden">
