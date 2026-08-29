@@ -59,7 +59,8 @@ export function ContactSection() {
       phone: form.get("phone"),
       email: form.get("email"),
       interest,
-      message: form.get("message"),
+        city,
+        message: form.get("message"),
     });
     if (!parsed.success) {
       toast.error(parsed.error.issues[0]?.message ?? "Please check the form");
