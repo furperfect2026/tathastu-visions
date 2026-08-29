@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import {
-  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectGroup, SelectLabel,
 } from "@/components/ui/select";
 import { submitInquiry } from "@/lib/contact.functions";
 
@@ -32,6 +32,7 @@ const schema = z.object({
   email: z.string().trim().email("Invalid email").max(255).optional().or(z.literal("")),
   phone: z.string().trim().max(30).optional(),
   interest: z.enum(["realty", "construction", "interior", "general", "infra"]).optional(),
+  city: z.string().optional(),
   message: z.string().trim().max(4000).optional().or(z.literal("")),
 });
 
@@ -40,6 +41,7 @@ function ContactPage() {
   const [busy, setBusy] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [interest, setInterest] = useState<"realty" | "construction" | "interior" | "general" | "infra">("general");
+  const [city, setCity] = useState<string>("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -50,6 +52,7 @@ function ContactPage() {
       email: String(fd.get("email") ?? ""),
       phone: String(fd.get("phone") ?? "") || undefined,
       interest,
+      city,
       message: String(fd.get("message") ?? ""),
     };
     const parsed = schema.safeParse(raw);
@@ -70,6 +73,7 @@ function ContactPage() {
         }
         (e.target as HTMLFormElement).reset();
         setInterest("general");
+        setCity("");
       } else {
         toast.error(res.error ?? "Could not submit.");
       }
