@@ -59,31 +59,39 @@ export function ScrollVideo({ className, children }: ScrollVideoProps) {
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    gsap.to(state, {
-      frame: frameCount - 1,
-      snap: "frame",
-      ease: "none",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "+=4000",
-        scrub: 0.15,
-        pin: true,
-      },
-      onUpdate: render
+    let mm = gsap.matchMedia(containerRef);
+    
+    mm.add("(min-width: 768px)", () => {
+      gsap.to(state, {
+        frame: frameCount - 1,
+        snap: "frame",
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=4000",
+          scrub: 0.15,
+          pin: true,
+        },
+        onUpdate: render
+      });
     });
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      mm.revert();
+    };
   }, { scope: containerRef });
 
   return (
     <div 
       ref={containerRef}
-      className={`relative w-full h-screen overflow-hidden bg-black ${className || ""}`}
+      className={`relative w-full h-screen overflow-hidden bg-black bg-cover bg-center bg-no-repeat ${className || ""}`}
+      style={{ backgroundImage: "url('/sequence/frame_0240.jpg')" }}
     >
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 h-full w-full"
+        className="absolute inset-0 h-full w-full hidden md:block"
       />
       {children && (
         <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-ivory">
