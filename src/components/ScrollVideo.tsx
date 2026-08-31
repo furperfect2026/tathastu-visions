@@ -49,33 +49,37 @@ export function ScrollVideo({ className, children }: ScrollVideoProps) {
         centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
     };
 
-    images[0].onload = render;
+    let mm = gsap.matchMedia(containerRef);
+
+    images[0].onload = () => {
+      render();
+      
+      mm.add("(min-width: 768px)", () => {
+        gsap.to(state, {
+          frame: frameCount - 1,
+          snap: "frame",
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "+=4000",
+            scrub: 0.15,
+            pin: true,
+          },
+          onUpdate: render
+        });
+      });
+    };
 
     const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      render();
+      if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        render();
+      }
     };
     handleResize();
     window.addEventListener("resize", handleResize);
-
-    let mm = gsap.matchMedia(containerRef);
-    
-    mm.add("(min-width: 768px)", () => {
-      gsap.to(state, {
-        frame: frameCount - 1,
-        snap: "frame",
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=4000",
-          scrub: 0.15,
-          pin: true,
-        },
-        onUpdate: render
-      });
-    });
 
     return () => {
       window.removeEventListener("resize", handleResize);
