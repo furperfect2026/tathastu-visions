@@ -39,7 +39,6 @@ import trustHandshake from "@/assets/trust-handshake.jpg";
 import clientRelationship from "@/assets/client-relationship.jpg";
 import clearGuidance from "@/assets/clear-guidance.jpg";
 import longTermValue from "@/assets/long-term-value.jpg";
-import heroFog from "@/assets/hero-fog.jpg";
 import { ParallaxImage } from "@/components/ParallaxImage";
 
 
@@ -218,18 +217,6 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-ink/80 via-ink/30 to-transparent" />
         {/* Warm gold tint */}
         <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_22%,transparent),transparent_55%)]" />
-
-        {/* Fog / smoke layer at bottom — parallax (moves faster) */}
-        <motion.div
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[40%]"
-          style={{ y: heroFogY }}
-        >
-          <img
-            src={heroFog}
-            alt=""
-            className="h-full w-full object-cover opacity-40 mix-blend-screen"
-          />
-        </motion.div>
 
         <HeroSocialLinks />
 
