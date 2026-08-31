@@ -46,7 +46,7 @@ export function ScrollVideo({ src, className, children }: ScrollVideoProps) {
 
   return (
     <div 
-      ref={containerRef} 
+      ref={containerRef}
       className={`relative w-full h-screen overflow-hidden bg-black ${className || ""}`}
     >
       <video
@@ -57,11 +57,12 @@ export function ScrollVideo({ src, className, children }: ScrollVideoProps) {
         playsInline
         preload="auto"
       />
-      <div className="absolute inset-0 bg-ink/40" />
-      
-      <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-ivory">
-         {children}
-      </div>
+      {/* Optional content overlay */}
+      {children && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-ivory">
+           {children}
+        </div>
+      )}
     </div>
   );
 }

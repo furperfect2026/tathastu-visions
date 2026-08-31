@@ -218,30 +218,10 @@ function HomePage() {
   return (
     <>
       {/* HERO — Cinematic Layered Parallax */}
-      <section
-        id="home"
-        ref={heroRef}
-        className="relative h-[85svh] md:h-[100svh] min-h-[600px] md:min-h-[640px] w-full overflow-hidden bg-ink"
-      >
-        {/* Background layer — parallax (moves slower) */}
-        <motion.div
-          className="absolute inset-0 z-[1]"
-          style={{ y: heroBgY, scale: 1.15 }}
-        >
-          <AutoSlideshow
-            images={heroImages}
-            interval={5500}
-            showDots={false}
-            rounded="rounded-none"
-            className="absolute inset-0 h-full w-full"
-          />
-        </motion.div>
-
-        {/* Cinematic dark gradient — bottom-up + side vignette */}
-        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-ink via-ink/55 to-ink/25" />
-        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-ink/80 via-ink/30 to-transparent" />
-        {/* Warm gold tint */}
-        <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_22%,transparent),transparent_55%)]" />
+      <ScrollVideo src="/build_from_start.mp4" className="w-full">
+        {/* Cinematic dark gradient — bottom-up + side vignette for text readability */}
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-black/60 via-transparent to-transparent" />
 
         <div className="hidden md:block">
           <HeroSocialLinks />
@@ -320,7 +300,7 @@ function HomePage() {
         >
           scroll ↓
         </motion.div>
-      </section>
+      </ScrollVideo>
 
       {/* PILLARS with auto-rotating slideshows */}
       <section id="services" className="relative py-16 md:py-24">
@@ -720,20 +700,23 @@ function HomePage() {
         </div>
       </section>
 
-      {/* VISION — GSAP SCRUB VIDEO */}
-      <ScrollVideo src="/build_from_start.mp4">
-        <Reveal variant="clip-up">
-          <p className="eyebrow !text-primary-glow">The Vision</p>
-          <p className="mt-6 max-w-4xl font-display text-2xl font-medium leading-tight sm:text-3xl md:text-5xl">
-            We don't just pour concrete. We design the{" "}
-            <span className="text-gradient-gold italic">backdrops for people's lives</span> across
-            Pune, with every project shaped by luxury, utility and timeless architecture.
-          </p>
-          <p className="mt-8 text-sm uppercase tracking-[0.28em] text-ivory/60">
-            — Rohit, Founder & CEO
-          </p>
-        </Reveal>
-      </ScrollVideo>
+      {/* VISION QUOTE — dark band */}
+      <section className="relative overflow-hidden bg-gradient-ink py-20 md:py-28 text-ivory">
+        <div className="pointer-events-none absolute -top-32 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
+        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
+          <Reveal variant="clip-up">
+            <p className="eyebrow !text-primary-glow">The Vision</p>
+            <p className="mt-6 font-display text-2xl font-medium leading-tight sm:text-3xl md:text-5xl">
+              We don't just pour concrete. We design the{" "}
+              <span className="text-gradient-gold italic">backdrops for people's lives</span> across
+              Pune, with every project shaped by luxury, utility and timeless architecture.
+            </p>
+            <p className="mt-8 text-sm uppercase tracking-[0.28em] text-ivory/60">
+              — Rohit, Founder & CEO
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
       {/* CONTACT */}
       <ContactSection />
