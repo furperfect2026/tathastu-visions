@@ -3,19 +3,19 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { MapPin, X } from "lucide-react";
-import type { RealtyProject } from "@/lib/realty-data";
+// import type { any } from "@/lib/realty-data";
 
 interface PropertyMapProps {
-  properties: RealtyProject[];
+  properties: any[];
   activePinId: string | null;
   selectedPinId: string | null;
   hoveredPinId: string | null;
   setSelectedPinId: (id: string | null) => void;
   setHoveredPinId: (id: string | null) => void;
-  activeProperty: RealtyProject | undefined;
+  activeProperty: any | undefined;
 }
 
-const getCoordinates = (p: RealtyProject): [number, number] => {
+const getCoordinates = (p: any): [number, number] => {
   const loc = (p.location + " " + p.neighborhood).toLowerCase();
   
   if (loc.includes("hinjewadi")) return [18.5913, 73.7389];
@@ -45,7 +45,7 @@ export default function PropertyMap({
   activeProperty
 }: PropertyMapProps) {
   
-  const createCustomIcon = (p: RealtyProject) => {
+  const createCustomIcon = (p: any) => {
     const isActive = p.id === activePinId;
     
     const html = `

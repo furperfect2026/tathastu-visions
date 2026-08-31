@@ -655,7 +655,7 @@ export function RealtyPortal() {
     const params = new URLSearchParams(window.location.search);
     const propertyParam = params.get("property");
     if (propertyParam && allProperties.length > 0 && !selectedProperty) {
-      const match = allProperties.find((p) => p.slug === propertyParam);
+      const match = allProperties.find((p) => p.id === propertyParam);
       if (match) {
         setSelectedProperty(match);
         setCurrentView("detail");
@@ -850,7 +850,7 @@ export function RealtyPortal() {
         "@type": "RealEstateListing",
         name: p.title,
         description: p.description,
-        url: `https://www.tathastuinfra.in/realty?property=${p.slug}`,
+        url: `https://www.tathastuinfra.in/realty?property=${p.id}`,
         image: p.images?.[0] || ""
       }
     }))
@@ -1331,7 +1331,7 @@ export function RealtyPortal() {
                                 </div>
                                 <div className="flex items-center gap-2">
                                   <a
-                                    href={`https://wa.me/917820864384?text=${encodeURIComponent(`Hi, I'm interested in ${p.title}.\n\nLocation: ${p.location}\nPrice: ${p.price}\n\nView details: https://www.tathastuinfra.in/realty/${p.slug}`)}`}
+                                    href={`https://wa.me/917820864384?text=${encodeURIComponent(`Hi, I'm interested in ${p.title}.\n\nLocation: ${p.location}\nPrice: ${p.price}\n\nView details: https://www.tathastuinfra.in/realty/${p.id}`)}`}
                                     target="_blank"
                                     rel="noreferrer"
                                     onClick={(e) => e.stopPropagation()}
@@ -1471,7 +1471,7 @@ export function RealtyPortal() {
                                   View Details
                                 </Button>
                                 <a
-                                  href={`https://wa.me/917820864384?text=${encodeURIComponent(`Hi, I'm interested in ${p.title}.\n\nLocation: ${p.location}\nPrice: ${p.price}\n\nView details: https://www.tathastuinfra.in/realty/${p.slug}`)}`}
+                                  href={`https://wa.me/917820864384?text=${encodeURIComponent(`Hi, I'm interested in ${p.title}.\n\nLocation: ${p.location}\nPrice: ${p.price}\n\nView details: https://www.tathastuinfra.in/realty/${p.id}`)}`}
                                   target="_blank"
                                   rel="noreferrer"
                                   onClick={(e) => e.stopPropagation()}
@@ -2133,7 +2133,7 @@ function InteractivePuneMap({ properties, onSelectProperty }: InteractivePuneMap
                 </span>
                 <div className="flex items-center gap-2">
                   <a
-                    href={`https://wa.me/917820864384?text=${encodeURIComponent(`Hi, I'm interested in ${activeProperty.title}.\n\nLocation: ${activeProperty.location}\nPrice: ${activeProperty.price}\n\nView details: https://www.tathastuinfra.in/realty/${activeProperty.slug}`)}`}
+                    href={`https://wa.me/917820864384?text=${encodeURIComponent(`Hi, I'm interested in ${activeProperty.title}.\n\nLocation: ${activeProperty.location}\nPrice: ${activeProperty.price}\n\nView details: https://www.tathastuinfra.in/realty/${activeProperty.id}`)}`}
                     target="_blank"
                     rel="noreferrer"
                     className="grid place-items-center h-6 w-6 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-sm transition-all"

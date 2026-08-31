@@ -687,9 +687,9 @@ function HomePage() {
                     <p className="text-xs text-ivory/70">
                       {p.location} · {p.year}
                     </p>
-                    {p.priceLabel && (
+                    {(p as any).priceLabel && (
                       <p className="mt-2 inline-flex rounded-full bg-primary-glow/90 px-3 py-1 text-[11px] font-semibold text-ink">
-                        {p.priceLabel}
+                        {(p as any).priceLabel}
                       </p>
                     )}
                   </div>
