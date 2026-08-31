@@ -6,42 +6,74 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 interface ScrollVideoProps {
-  src: string;
+  src?: string;
   className?: string;
   children?: ReactNode;
 }
 
-export function ScrollVideo({ src, className, children }: ScrollVideoProps) {
+export function ScrollVideo({ className, children }: ScrollVideoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useGSAP(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const context = canvas.getContext("2d");
+    if (!context) return;
 
-    const initScrollTrigger = () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=3000",
-          scrub: 1,
-          pin: true,
-        }
-      });
-
-      tl.to(video, {
-        currentTime: video.duration || 1,
-        ease: "none"
-      });
+    const frameCount = 240;
+    const images: HTMLImageElement[] = [];
+    const state = { frame: 0 };
+    
+    // Load first image immediately to get dimensions
+    for (let i = 1; i <= frameCount; i++) {
+      const img = new Image();
+      const frameNum = i.toString().padStart(4, "0");
+      img.src = `/sequence/frame_${frameNum}.jpg`;
+      images.push(img);
+    }
+    
+    const render = () => {
+      const img = images[state.frame];
+      if (!img || !img.complete) return;
+      
+      // Cover the canvas maintaining aspect ratio
+      const hRatio = canvas.width / img.width;
+      const vRatio = canvas.height / img.height;
+      const ratio = Math.max(hRatio, vRatio);
+      const centerShift_x = (canvas.width - img.width * ratio) / 2;
+      const centerShift_y = (canvas.height - img.height * ratio) / 2;
+      
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(img, 0, 0, img.width, img.height,
+        centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
     };
 
-    if (video.readyState >= 1) {
-      initScrollTrigger();
-    } else {
-      video.addEventListener("loadedmetadata", initScrollTrigger);
-      return () => video.removeEventListener("loadedmetadata", initScrollTrigger);
-    }
+    images[0].onload = render;
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      render();
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    gsap.to(state, {
+      frame: frameCount - 1,
+      snap: "frame",
+      ease: "none",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: "+=4000",
+        scrub: 0.15,
+        pin: true,
+      },
+      onUpdate: render
+    });
+
+    return () => window.removeEventListener("resize", handleResize);
   }, { scope: containerRef });
 
   return (
@@ -49,15 +81,10 @@ export function ScrollVideo({ src, className, children }: ScrollVideoProps) {
       ref={containerRef}
       className={`relative w-full h-screen overflow-hidden bg-black ${className || ""}`}
     >
-      <video
-        ref={videoRef}
-        src={src}
-        className="absolute inset-0 h-full w-full object-cover"
-        muted
-        playsInline
-        preload="auto"
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 h-full w-full"
       />
-      {/* Optional content overlay */}
       {children && (
         <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-ivory">
            {children}
