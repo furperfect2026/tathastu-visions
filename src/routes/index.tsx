@@ -25,6 +25,7 @@ import {
 import { AutoSlideshow } from "@/components/AutoSlideshow";
 import { BrandSocialLink, type SocialBrand } from "@/components/BrandSocialLink";
 import { Reveal } from "@/components/Reveal";
+import { ScrollVideo } from "@/components/ScrollVideo";
 import { CountUp } from "@/components/CountUp";
 import { Button } from "@/components/ui/button";
 import { ContactSection } from "@/components/ContactSection";
@@ -719,23 +720,20 @@ function HomePage() {
         </div>
       </section>
 
-      {/* VISION QUOTE — dark band */}
-      <section className="relative overflow-hidden bg-gradient-ink py-20 md:py-28 text-ivory">
-        <div className="pointer-events-none absolute -top-32 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
-        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <Reveal variant="clip-up">
-            <p className="eyebrow !text-primary-glow">The Vision</p>
-            <p className="mt-6 font-display text-2xl font-medium leading-tight sm:text-3xl md:text-5xl">
-              We don't just pour concrete. We design the{" "}
-              <span className="text-gradient-gold italic">backdrops for people's lives</span> across
-              Pune, with every project shaped by luxury, utility and timeless architecture.
-            </p>
-            <p className="mt-8 text-sm uppercase tracking-[0.28em] text-ivory/60">
-              — Rohit, Founder & CEO
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      {/* VISION — GSAP SCRUB VIDEO */}
+      <ScrollVideo src="/build_from_start.mp4">
+        <Reveal variant="clip-up">
+          <p className="eyebrow !text-primary-glow">The Vision</p>
+          <p className="mt-6 max-w-4xl font-display text-2xl font-medium leading-tight sm:text-3xl md:text-5xl">
+            We don't just pour concrete. We design the{" "}
+            <span className="text-gradient-gold italic">backdrops for people's lives</span> across
+            Pune, with every project shaped by luxury, utility and timeless architecture.
+          </p>
+          <p className="mt-8 text-sm uppercase tracking-[0.28em] text-ivory/60">
+            — Rohit, Founder & CEO
+          </p>
+        </Reveal>
+      </ScrollVideo>
 
       {/* CONTACT */}
       <ContactSection />
