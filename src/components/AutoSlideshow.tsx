@@ -47,8 +47,8 @@ export function AutoSlideshow({
       <img
         src={images[index].src}
         alt=""
-        aria-hidden
-        fetchpriority="high"
+        aria-hidden="true"
+        fetchPriority="high"
         loading="eager"
         className="absolute inset-0 h-full w-full object-cover"
       />
