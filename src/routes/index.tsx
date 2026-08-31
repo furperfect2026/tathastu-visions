@@ -218,7 +218,9 @@ function HomePage() {
         {/* Warm gold tint */}
         <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_22%,transparent),transparent_55%)]" />
 
-        <HeroSocialLinks />
+        <div className="hidden md:block">
+          <HeroSocialLinks />
+        </div>
 
         {/* Content — centered, cinematic */}
         <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6">
@@ -229,46 +231,29 @@ function HomePage() {
             transition={{ duration: 0.6 }}
           >
             <p className="eyebrow !text-primary-glow">Tathastu Infra</p>
-            <p className="max-w-4xl font-display text-xl font-medium leading-tight text-ivory drop-shadow-[0_3px_18px_rgba(0,0,0,0.4)] sm:text-2xl md:text-3xl lg:text-[2.1rem]">
+            <p className="max-w-4xl font-display text-lg font-medium leading-tight text-ivory drop-shadow-[0_3px_18px_rgba(0,0,0,0.4)] sm:text-2xl md:text-3xl lg:text-[2.1rem]">
               Building Dreams <span className="italic text-gradient-gold">Since 2018</span>
             </p>
           </motion.div>
 
-          {/* Large headline — staggered word reveal */}
-          <h1 className="mt-4 max-w-5xl font-display text-[clamp(2rem,8.5vw,2.85rem)] font-medium leading-[1.02] text-ivory sm:text-5xl md:text-7xl lg:text-[5.75rem]">
-            <span className="block">
-              {headlineLine1.split(" ").map((word, i) => (
-                <motion.span
-                  key={`w1-${i}`}
-                  initial={{ opacity: 0, y: 40, clipPath: "inset(100% 0 0 0)" }}
-                  animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)" }}
-                  transition={{ delay: 0.2 + i * 0.12, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                  className="mr-[0.3em] inline-block"
-                >
-                  {word}
-                </motion.span>
-              ))}
+          {/* Large headline — simpler reveal for better DOM performance */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 40, clipPath: "inset(100% 0 0 0)" }}
+            animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)" }}
+            transition={{ delay: 0.2, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-4 max-w-5xl font-display text-4xl sm:text-5xl md:text-7xl lg:text-[5.75rem] font-medium leading-[1.05] text-ivory"
+          >
+            <span className="block">{headlineLine1}</span>
+            <span className="mt-1 sm:mt-2 block italic text-gradient-gold">
+              {headlineLine2}
             </span>
-            <span className="mt-2 block italic text-gradient-gold">
-              {headlineLine2.split(" ").map((word, i) => (
-                <motion.span
-                  key={`w2-${i}`}
-                  initial={{ opacity: 0, y: 40, clipPath: "inset(100% 0 0 0)" }}
-                  animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)" }}
-                  transition={{ delay: 0.5 + i * 0.12, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                  className="mr-[0.3em] inline-block"
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </span>
-          </h1>
+          </motion.h1>
 
           <motion.p
-            className="mt-5 max-w-xl text-base leading-relaxed text-ivory/80 md:text-lg"
+            className="mt-5 max-w-xl text-sm sm:text-base leading-relaxed text-ivory/80 md:text-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.95, duration: 0.9 }}
+            transition={{ delay: 0.6, duration: 0.9 }}
           >
             Crafting timeless homes, properties and spaces across Pune through real estate,
             construction and interior design from our Lohegaon studio.
@@ -299,7 +284,6 @@ function HomePage() {
               <Link to="/projects">Explore Projects</Link>
             </Button>
           </motion.div>
-          <HeroSocialLinks mobile />
         </div>
 
         {/* Scroll indicator — bouncing */}
