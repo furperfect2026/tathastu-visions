@@ -57,9 +57,9 @@ export function LanguageSelector() {
     <div className="notranslate">
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="flex items-center gap-2 rounded-full border-primary/20 text-xs font-medium text-foreground hover:bg-primary/5 ">
-          <Globe className="h-3.5 w-3.5" />
-          {languages.find((l) => l.code === currentLang)?.label.split(" ")[0]}
+        <Button variant="outline" size="icon" className="h-9 w-9 rounded-full border-primary/20 text-foreground hover:bg-primary/5">
+          <Globe className="h-4 w-4" />
+          <span className="sr-only">Toggle language</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[140px] rounded-2xl p-1.5 shadow-luxe">
