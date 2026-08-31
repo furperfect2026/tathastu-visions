@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
   Award,
@@ -39,6 +39,8 @@ import trustHandshake from "@/assets/trust-handshake.jpg";
 import clientRelationship from "@/assets/client-relationship.jpg";
 import clearGuidance from "@/assets/clear-guidance.jpg";
 import longTermValue from "@/assets/long-term-value.jpg";
+import heroFog from "@/assets/hero-fog.jpg";
+import { ParallaxImage } from "@/components/ParallaxImage";
 
 
 const heroImages = [
@@ -173,6 +175,13 @@ function HomePage() {
   const { projects } = usePublicProjects();
   const { reviews: clientReviews } = usePublicReviews();
   const [reviewIndex, setReviewIndex] = useState(0);
+
+  // Hero parallax
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroBgY = useTransform(heroProgress, [0, 1], ["0%", "30%"]);
+  const heroFogY = useTransform(heroProgress, [0, 1], ["0%", "-20%"]);
+
   const visibleReviews = Array.from(
     { length: Math.min(3, clientReviews.length) },
     (_, offset) => clientReviews[(reviewIndex + offset) % clientReviews.length],
@@ -184,26 +193,48 @@ function HomePage() {
 
   return (
     <>
-      {/* HERO — cinematic full-bleed slideshow */}
+      {/* HERO — Cinematic Layered Parallax */}
       <section
         id="home"
+        ref={heroRef}
         className="relative h-[85svh] md:h-[100svh] min-h-[600px] md:min-h-[640px] w-full overflow-hidden bg-ink"
       >
-        <AutoSlideshow
-          images={heroImages}
-          interval={5500}
-          showDots={false}
-          rounded="rounded-none"
-          className="absolute inset-0 h-full w-full"
-        />
+        {/* Background layer — parallax (moves slower) */}
+        <motion.div
+          className="absolute inset-0 z-[1]"
+          style={{ y: heroBgY, scale: 1.15 }}
+        >
+          <AutoSlideshow
+            images={heroImages}
+            interval={5500}
+            showDots={false}
+            rounded="rounded-none"
+            className="absolute inset-0 h-full w-full"
+          />
+        </motion.div>
+
         {/* Cinematic dark gradient — bottom-up + side vignette */}
         <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-ink via-ink/55 to-ink/25" />
         <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-ink/80 via-ink/30 to-transparent" />
         {/* Warm gold tint */}
         <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_30%_70%,color-mix(in_oklab,var(--color-primary)_22%,transparent),transparent_55%)]" />
+
+        {/* Fog / smoke layer at bottom — parallax (moves faster) */}
+        <motion.div
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[40%]"
+          style={{ y: heroFogY }}
+        >
+          <img
+            src={heroFog}
+            alt=""
+            className="h-full w-full object-cover opacity-40 mix-blend-screen"
+          />
+        </motion.div>
+
         <HeroSocialLinks />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-16 pt-24 sm:px-6 md:justify-center md:pb-0 md:pl-20 lg:pl-20">
+        {/* Content — centered, cinematic */}
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6">
           <motion.div
             className="space-y-2"
             initial={{ opacity: 0, y: 10 }}
@@ -215,28 +246,37 @@ function HomePage() {
               Building Dreams <span className="italic text-gradient-gold">Since 2018</span>
             </p>
           </motion.div>
-          <h1 className="mt-4 max-w-4xl font-display text-[clamp(2rem,8.5vw,2.85rem)] font-medium leading-[1.02] text-ivory sm:text-5xl md:text-7xl lg:text-[5.75rem]">
-            <span className="block whitespace-nowrap">
-              <motion.span
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block"
-              >
-                {headlineLine1}
-              </motion.span>
+
+          {/* Large headline — staggered word reveal */}
+          <h1 className="mt-4 max-w-5xl font-display text-[clamp(2rem,8.5vw,2.85rem)] font-medium leading-[1.02] text-ivory sm:text-5xl md:text-7xl lg:text-[5.75rem]">
+            <span className="block">
+              {headlineLine1.split(" ").map((word, i) => (
+                <motion.span
+                  key={`w1-${i}`}
+                  initial={{ opacity: 0, y: 40, clipPath: "inset(100% 0 0 0)" }}
+                  animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)" }}
+                  transition={{ delay: 0.2 + i * 0.12, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                  className="mr-[0.3em] inline-block"
+                >
+                  {word}
+                </motion.span>
+              ))}
             </span>
-            <span className="mt-2 block whitespace-nowrap italic text-gradient-gold">
-              <motion.span
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.42, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block"
-              >
-                {headlineLine2}
-              </motion.span>
+            <span className="mt-2 block italic text-gradient-gold">
+              {headlineLine2.split(" ").map((word, i) => (
+                <motion.span
+                  key={`w2-${i}`}
+                  initial={{ opacity: 0, y: 40, clipPath: "inset(100% 0 0 0)" }}
+                  animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)" }}
+                  transition={{ delay: 0.5 + i * 0.12, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                  className="mr-[0.3em] inline-block"
+                >
+                  {word}
+                </motion.span>
+              ))}
             </span>
           </h1>
+
           <motion.p
             className="mt-5 max-w-xl text-base leading-relaxed text-ivory/80 md:text-lg"
             initial={{ opacity: 0 }}
@@ -246,6 +286,7 @@ function HomePage() {
             Crafting timeless homes, properties and spaces across Pune through real estate,
             construction and interior design from our Lohegaon studio.
           </motion.p>
+
           <motion.div
             className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap md:gap-4"
             initial={{ opacity: 0, y: 14 }}
@@ -274,11 +315,12 @@ function HomePage() {
           <HeroSocialLinks mobile />
         </div>
 
+        {/* Scroll indicator — bouncing */}
         <motion.div
           className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-[10px] uppercase tracking-[0.35em] text-ivory/60"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.6, duration: 0.8 }}
+          animate={{ opacity: 1, y: [0, 8, 0] }}
+          transition={{ opacity: { delay: 1.6, duration: 0.8 }, y: { delay: 2, duration: 1.6, repeat: Infinity, ease: "easeInOut" } }}
         >
           scroll ↓
         </motion.div>
@@ -317,7 +359,7 @@ function HomePage() {
             {pillars.map((p, i) => {
               const Icon = p.icon;
               return (
-                <Reveal key={p.key} delay={i * 0.1}>
+                <Reveal key={p.key} delay={i * 0.12} variant="scale-up">
                   <motion.div
                     whileHover={{ y: -12, scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
@@ -421,7 +463,7 @@ function HomePage() {
           </Reveal>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {trustPolicies.map(({ icon: Icon, title, body, image, alt }, index) => (
-              <Reveal key={title} delay={index * 0.05}>
+              <Reveal key={title} delay={index * 0.08} variant={index % 2 === 0 ? "fade-right" : "fade-left"}>
                 <motion.div
                   whileHover={{ y: -10, scale: 1.02 }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
@@ -612,7 +654,7 @@ function HomePage() {
             const statsIcons = [Calendar, Building2, Handshake, Award];
             const StatIcon = statsIcons[i];
             return (
-              <Reveal key={s.label} delay={i * 0.08} className="flex items-center gap-5">
+              <Reveal key={s.label} delay={i * 0.1} variant="scale-up" className="flex items-center gap-5">
                 <StatIcon
                   className="h-12 w-12 sm:h-14 sm:w-14 text-primary-glow drop-shadow-[0_0_8px_rgba(229,193,88,0.4)] shrink-0"
                   strokeWidth={1.5}
@@ -648,7 +690,7 @@ function HomePage() {
           </div>
           <div className="mt-10 md:mt-12 grid gap-6 grid-cols-1 md:grid-cols-3">
             {projects.slice(0, 6).map((p, i) => (
-              <Reveal key={p.id} delay={(i % 3) * 0.08}>
+              <Reveal key={p.id} delay={(i % 3) * 0.1} variant="scale-up">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className={`group relative overflow-hidden rounded-3xl shadow-luxe ${i % 3 === 1 ? "md:translate-y-10" : ""}`}
@@ -686,7 +728,7 @@ function HomePage() {
       <section className="relative overflow-hidden bg-gradient-ink py-20 md:py-28 text-ivory">
         <div className="pointer-events-none absolute -top-32 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <Reveal>
+          <Reveal variant="clip-up">
             <p className="eyebrow !text-primary-glow">The Vision</p>
             <p className="mt-6 font-display text-2xl font-medium leading-tight sm:text-3xl md:text-5xl">
               We don't just pour concrete. We design the{" "}
