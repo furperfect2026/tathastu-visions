@@ -1,6 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 import {
   ArrowRight,
   Award,
@@ -180,6 +185,25 @@ function HomePage() {
   const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroBgY = useTransform(heroProgress, [0, 1], ["0%", "30%"]);
   const heroFogY = useTransform(heroProgress, [0, 1], ["0%", "-20%"]);
+
+  const projectsContainerRef = useRef<HTMLDivElement>(null);
+  
+  // GSAP Cinematic Layered Scrub for Featured Projects
+  useGSAP(() => {
+    gsap.utils.toArray<HTMLElement>('.gsap-parallax-img').forEach((img) => {
+      // Start the image shifted up, and as we scroll down, it moves down (yPercent goes from negative to positive relative)
+      gsap.to(img, {
+        yPercent: 20,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: img.parentElement,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+    });
+  }, { scope: projectsContainerRef });
 
   const visibleReviews = Array.from(
     { length: Math.min(3, clientReviews.length) },
@@ -659,19 +683,19 @@ function HomePage() {
               View all →
             </Link>
           </div>
-          <div className="mt-10 md:mt-12 grid gap-6 grid-cols-1 md:grid-cols-3">
+          <div className="mt-10 md:mt-12 grid gap-6 grid-cols-1 md:grid-cols-3" ref={projectsContainerRef}>
             {projects.slice(0, 6).map((p, i) => (
               <Reveal key={p.id} delay={(i % 3) * 0.1} variant="scale-up">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className={`group relative overflow-hidden rounded-3xl shadow-luxe ${i % 3 === 1 ? "md:translate-y-10" : ""}`}
                 >
-                  <div className="aspect-[4/5] overflow-hidden">
+                  <div className="aspect-[4/5] overflow-hidden relative">
                     <img
                       src={p.image}
                       alt={p.title}
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="gsap-parallax-img absolute -top-[15%] h-[130%] w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent p-6 text-ivory">
