@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Globe } from "lucide-react";
+import { Languages } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -58,7 +58,7 @@ export function LanguageSelector() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon" className="h-9 w-9 rounded-full border-primary/20 text-foreground hover:bg-primary/5">
-          <Globe className="h-4 w-4" />
+          <Languages className="h-4 w-4" />
           <span className="sr-only">Toggle language</span>
         </Button>
       </DropdownMenuTrigger>
