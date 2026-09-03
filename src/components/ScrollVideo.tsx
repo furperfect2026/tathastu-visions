@@ -62,7 +62,7 @@ export function ScrollVideo({ className, children }: ScrollVideoProps) {
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top top",
-            end: "+=4000",
+            end: "+=1200",
             scrub: 0.15,
             pin: true,
           },
