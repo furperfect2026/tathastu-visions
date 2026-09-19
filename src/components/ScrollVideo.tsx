@@ -1,9 +1,4 @@
-import { useRef, ReactNode } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+import { ReactNode } from "react";
 
 interface ScrollVideoProps {
   src?: string;
@@ -12,93 +7,19 @@ interface ScrollVideoProps {
 }
 
 export function ScrollVideo({ className, children }: ScrollVideoProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useGSAP(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const context = canvas.getContext("2d");
-    if (!context) return;
-
-    const frameCount = 240;
-    const images: HTMLImageElement[] = [];
-    const state = { frame: 0 };
-    
-    // Load first image immediately to get dimensions
-    for (let i = 1; i <= frameCount; i++) {
-      const img = new Image();
-      const frameNum = i.toString().padStart(4, "0");
-      img.src = `/sequence/frame_${frameNum}.jpg`;
-      images.push(img);
-    }
-    
-    const render = () => {
-      const img = images[state.frame];
-      if (!img || !img.complete) return;
-      
-      // Cover the canvas maintaining aspect ratio
-      const hRatio = canvas.width / img.width;
-      const vRatio = canvas.height / img.height;
-      const ratio = Math.max(hRatio, vRatio);
-      const centerShift_x = (canvas.width - img.width * ratio) / 2;
-      const centerShift_y = (canvas.height - img.height * ratio) / 2;
-      
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      context.drawImage(img, 0, 0, img.width, img.height,
-        centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
-    };
-
-    let mm = gsap.matchMedia(containerRef);
-
-    images[0].onload = () => {
-      render();
-      
-      mm.add("(min-width: 768px)", () => {
-        gsap.to(state, {
-          frame: frameCount - 1,
-          snap: "frame",
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top top",
-            end: "+=1200",
-            scrub: 0.15,
-            pin: true,
-          },
-          onUpdate: render
-        });
-      });
-    };
-
-    const handleResize = () => {
-      if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        render();
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      mm.revert();
-    };
-  }, { scope: containerRef });
-
   return (
-    <div 
-      ref={containerRef}
-      className={`relative w-full h-screen overflow-hidden bg-black bg-cover bg-center bg-no-repeat ${className || ""}`}
-      style={{ backgroundImage: "url('/sequence/frame_0240.jpg')" }}
-    >
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 h-full w-full hidden md:block"
+    <div className={`relative w-full h-[100svh] overflow-hidden bg-black ${className || ""}`}>
+      {/* Autoplaying Hero Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        src="/hero.webm"
+        className="absolute inset-0 h-full w-full object-cover"
       />
       {children && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-ivory">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-ivory">
            {children}
         </div>
       )}
