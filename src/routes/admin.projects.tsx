@@ -1328,17 +1328,31 @@ function AdminProjectsPage() {
                             </Button>
                           </div>
                         </div>
-                        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                        <div className="mt-4 text-sm leading-relaxed text-muted-foreground">
                           {(() => {
                             if (project.blurb?.trim().startsWith('{')) {
                               try {
                                 const parsed = JSON.parse(project.blurb);
-                                if (parsed.isRealtyJson) return parsed.description || "";
+                                if (parsed.isRealtyJson) {
+                                  return (
+                                    <div className="space-y-2">
+                                      <p>{parsed.description || ""}</p>
+                                      {(parsed.beds || parsed.area) && (
+                                        <div className="flex flex-wrap gap-2 pt-1">
+                                          {parsed.beds && <span className="inline-flex items-center rounded bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary uppercase">BHK: {parsed.beds}</span>}
+                                          {parsed.area && <span className="inline-flex items-center rounded bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary uppercase">Area: {parsed.area}</span>}
+                                          {parsed.highlights?.length > 0 && <span className="inline-flex items-center rounded bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">{parsed.highlights.length} Highlights</span>}
+                                          {parsed.amenities?.length > 0 && <span className="inline-flex items-center rounded bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">{parsed.amenities.length} Amenities</span>}
+                                        </div>
+                                      )}
+                                    </div>
+                                  );
+                                }
                               } catch (e) {}
                             }
-                            return project.blurb;
+                            return <p>{project.blurb}</p>;
                           })()}
-                        </p>
+                        </div>
                         {project.galleryImages?.length ? (
                           <p className="mt-3 text-xs font-medium uppercase tracking-[0.18em] text-primary">
                             {project.galleryImages.length} popup gallery photo

@@ -90,7 +90,7 @@ function ProjectModal({ project, onClose }: { project: PublicProject; onClose: (
     [project.galleryImages, project.image],
   );
   const [activeImage, setActiveImage] = useState(gallery[0] || project.image);
-  const projectsPath = project.category === "construction" ? "/projects/construction" : "/projects";
+  const projectsPath = project.category === "construction" ? "/projects/construction" : project.category === "realty" ? "/realty" : "/projects";
 
   return (
     <motion.div
@@ -140,17 +140,42 @@ function ProjectModal({ project, onClose }: { project: PublicProject; onClose: (
                 {project.priceLabel}
               </p>
             )}
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+            <div className="mt-6 text-base leading-relaxed text-muted-foreground">
               {(() => {
                 if (project.blurb?.trim().startsWith('{')) {
                   try {
                     const parsed = JSON.parse(project.blurb);
-                    if (parsed.isRealtyJson) return parsed.description || "";
+                    if (parsed.isRealtyJson) {
+                      return (
+                        <div className="space-y-4">
+                          <p>{parsed.description || ""}</p>
+                          {parsed.tagline && <p className="font-semibold text-primary">{parsed.tagline}</p>}
+                          
+                          {(parsed.beds || parsed.area) && (
+                            <div className="flex flex-wrap gap-3">
+                              {parsed.beds && <span className="inline-flex items-center rounded-md bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground">BHK: {parsed.beds}</span>}
+                              {parsed.area && <span className="inline-flex items-center rounded-md bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground">Area: {parsed.area}</span>}
+                            </div>
+                          )}
+
+                          {parsed.highlights?.length > 0 && (
+                            <div className="pt-2">
+                              <p className="text-xs font-semibold uppercase tracking-[0.1em] text-ink mb-2">Highlights</p>
+                              <ul className="grid grid-cols-2 gap-2 text-sm">
+                                {parsed.highlights.map((h: string, i: number) => (
+                                  <li key={i} className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-primary" /> {h}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    }
                   } catch (e) {}
                 }
-                return project.blurb;
+                return <p>{project.blurb}</p>;
               })()}
-            </p>
+            </div>
 
             {gallery.length > 1 && (
               <div className="mt-8">
@@ -174,11 +199,19 @@ function ProjectModal({ project, onClose }: { project: PublicProject; onClose: (
             )}
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Button asChild className="rounded-full bg-gradient-gold px-7 text-ink shadow-gold">
-                <Link to="/" hash="contact" onClick={onClose}>
-                  Enquire About This <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
+              {project.category === "realty" ? (
+                <Button asChild className="rounded-full bg-gradient-gold px-7 text-ink shadow-gold">
+                  <a href={`/realty?property=${project.id}`} onClick={onClose}>
+                    View Property Details <ArrowRight className="h-4 w-4" />
+                  </a>
+                </Button>
+              ) : (
+                <Button asChild className="rounded-full bg-gradient-gold px-7 text-ink shadow-gold">
+                  <Link to="/" hash="contact" onClick={onClose}>
+                    Enquire About This <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              )}
               <Button asChild variant="outline" className="rounded-full px-7">
                 <Link to={projectsPath} onClick={onClose}>
                   View All Projects
