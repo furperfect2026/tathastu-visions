@@ -55,13 +55,23 @@ export function ProjectCard({ project, index = 0, label, compact = false }: Proj
           <p className="text-xs text-muted-foreground">
             {project.location} - {project.year}
           </p>
-          {project.priceLabel && (
-            <p className="mt-3 inline-flex rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary">
-              {project.priceLabel}
+            {project.priceLabel && (
+              <p className="mt-3 inline-flex rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary">
+                {project.priceLabel}
+              </p>
+            )}
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+              {(() => {
+                if (project.blurb?.trim().startsWith('{')) {
+                  try {
+                    const parsed = JSON.parse(project.blurb);
+                    if (parsed.isRealtyJson) return parsed.description || "";
+                  } catch (e) {}
+                }
+                return project.blurb;
+              })()}
             </p>
-          )}
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.blurb}</p>
-          <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+            <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
             View details <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </span>
         </div>
@@ -130,7 +140,17 @@ function ProjectModal({ project, onClose }: { project: PublicProject; onClose: (
                 {project.priceLabel}
               </p>
             )}
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground">{project.blurb}</p>
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+              {(() => {
+                if (project.blurb?.trim().startsWith('{')) {
+                  try {
+                    const parsed = JSON.parse(project.blurb);
+                    if (parsed.isRealtyJson) return parsed.description || "";
+                  } catch (e) {}
+                }
+                return project.blurb;
+              })()}
+            </p>
 
             {gallery.length > 1 && (
               <div className="mt-8">

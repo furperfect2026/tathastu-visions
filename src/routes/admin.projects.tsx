@@ -1328,7 +1328,17 @@ function AdminProjectsPage() {
                             </Button>
                           </div>
                         </div>
-                        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{project.blurb}</p>
+                        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                          {(() => {
+                            if (project.blurb?.trim().startsWith('{')) {
+                              try {
+                                const parsed = JSON.parse(project.blurb);
+                                if (parsed.isRealtyJson) return parsed.description || "";
+                              } catch (e) {}
+                            }
+                            return project.blurb;
+                          })()}
+                        </p>
                         {project.galleryImages?.length ? (
                           <p className="mt-3 text-xs font-medium uppercase tracking-[0.18em] text-primary">
                             {project.galleryImages.length} popup gallery photo
