@@ -10,14 +10,7 @@ interface ScrollVideoProps {
 export function ScrollVideo({ className, children }: ScrollVideoProps) {
   return (
     <div className={`relative w-full h-[100svh] overflow-hidden bg-black ${className || ""}`}>
-      {/* Mobile-optimized static fallback image (darker for text readability) */}
-      <img
-        src={heroBuilding}
-        alt="Tathastu Infra Building"
-        className="absolute inset-0 h-full w-full object-cover md:hidden"
-      />
-      
-      {/* Autoplaying Hero Video (Desktop/Tablet) */}
+      {/* Autoplaying Hero Video (All Devices) */}
       <video
         autoPlay
         loop
@@ -25,10 +18,14 @@ export function ScrollVideo({ className, children }: ScrollVideoProps) {
         playsInline
         poster={heroBuilding}
         src="/hero.webm"
-        className="absolute inset-0 hidden h-full w-full object-cover md:block"
+        className="absolute inset-0 h-full w-full object-cover"
       />
+      
+      {/* Mobile-specific strong darkening overlay to ensure white/gold text pops */}
+      <div className="absolute inset-0 z-[1] bg-black/60 md:hidden" />
+
       {children && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-ivory">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center text-ivory">
            {children}
         </div>
       )}
