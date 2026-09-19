@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import heroBuilding from "@/assets/hero-building.jpg";
 
 interface ScrollVideoProps {
   src?: string;
@@ -9,9 +10,9 @@ interface ScrollVideoProps {
 export function ScrollVideo({ className, children }: ScrollVideoProps) {
   return (
     <div className={`relative w-full h-[100svh] overflow-hidden bg-black ${className || ""}`}>
-      {/* Mobile-optimized static fallback image */}
+      {/* Mobile-optimized static fallback image (darker for text readability) */}
       <img
-        src="/sequence/frame_0240.jpg"
+        src={heroBuilding}
         alt="Tathastu Infra Building"
         className="absolute inset-0 h-full w-full object-cover md:hidden"
       />
@@ -22,7 +23,7 @@ export function ScrollVideo({ className, children }: ScrollVideoProps) {
         loop
         muted
         playsInline
-        poster="/sequence/frame_0240.jpg"
+        poster={heroBuilding}
         src="/hero.webm"
         className="absolute inset-0 hidden h-full w-full object-cover md:block"
       />
