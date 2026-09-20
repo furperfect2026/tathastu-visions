@@ -302,8 +302,9 @@ function HomePage() {
         </motion.div>
       </ScrollVideo>
 
+      <div className="flex flex-col md:contents">
       {/* PILLARS with auto-rotating slideshows */}
-      <section id="services" className="relative py-16 md:py-24">
+      <section id="services" className="relative py-16 md:py-24 order-1 md:order-none">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">Our Services</p>
@@ -429,7 +430,8 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="bg-gradient-ivory py-16 md:py-20">
+      {/* WHY TATHASTU */}
+      <section className="bg-gradient-ivory py-16 md:py-20 order-2 md:order-none">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">Our Promise</p>
@@ -490,7 +492,7 @@ function HomePage() {
       </section>
 
       {/* STATS — dark band */}
-      <section className="bg-card py-16 md:py-20">
+      <section className="bg-card py-16 md:py-20 order-5 md:order-none">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <Reveal className="max-w-3xl">
@@ -617,7 +619,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="relative bg-gradient-ink py-16 md:py-24 text-ivory">
+      <section className="relative bg-gradient-ink py-16 md:py-24 text-ivory order-3 md:order-none">
         <div
           className="pointer-events-none absolute inset-0 opacity-20"
           style={{
@@ -648,7 +650,7 @@ function HomePage() {
       </section>
 
       {/* FEATURED PROJECTS */}
-      <section id="projects" className="relative py-16 md:py-24">
+      <section id="projects" className="relative py-16 md:py-24 order-4 md:order-none">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex items-end justify-between gap-6">
             <Reveal>
@@ -708,7 +710,7 @@ function HomePage() {
       </section>
 
       {/* VISION QUOTE — dark band */}
-      <section className="relative overflow-hidden bg-gradient-ink py-20 md:py-28 text-ivory">
+      <section className="relative overflow-hidden bg-gradient-ink py-20 md:py-28 text-ivory order-6 md:order-none">
         <div className="pointer-events-none absolute -top-32 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
           <Reveal variant="clip-up">
@@ -726,9 +728,10 @@ function HomePage() {
       </section>
 
       {/* CONTACT */}
-      <ContactSection />
-
-
+      <div className="order-7 md:order-none">
+        <ContactSection />
+      </div>
+      </div>
     </>
   );
 }
