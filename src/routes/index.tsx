@@ -664,38 +664,45 @@ function HomePage() {
               View all →
             </Link>
           </div>
-          <div className="mt-10 md:mt-12 grid gap-6 grid-cols-1 md:grid-cols-3" ref={projectsContainerRef}>
-            {projects.slice(0, 6).map((p, i) => (
-              <Reveal key={p.id} delay={(i % 3) * 0.1} variant="scale-up">
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className={`group relative overflow-hidden rounded-3xl shadow-luxe ${i % 3 === 1 ? "md:translate-y-10" : ""}`}
-                >
-                  <div className="aspect-[4/5] overflow-hidden relative">
-                    <img
-                      src={p.image}
-                      alt={p.title}
-                      loading="lazy"
-                      className="gsap-parallax-img absolute -top-[15%] h-[130%] w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                  </div>
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent p-6 text-ivory">
-                    <p className="text-[10px] uppercase tracking-[0.22em] text-primary-glow">
-                      {p.category}
-                    </p>
-                    <h3 className="mt-1 font-display text-xl font-semibold">{p.title}</h3>
-                    <p className="text-xs text-ivory/70">
-                      {p.location} · {p.year}
-                    </p>
-                    {(p as any).priceLabel && (
-                      <p className="mt-2 inline-flex rounded-full bg-primary-glow/90 px-3 py-1 text-[11px] font-semibold text-ink">
-                        {(p as any).priceLabel}
-                      </p>
-                    )}
-                  </div>
-                </motion.div>
-              </Reveal>
-            ))}
+          <div className="mt-10 md:mt-12 flex md:grid gap-4 md:gap-6 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none md:grid-cols-3 pb-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" ref={projectsContainerRef}>
+            {projects.slice(0, 6).map((p, i) => {
+              const isRealty = p.category === "realty" || p.category?.toLowerCase() === "realty";
+              const projectsPath = p.category === "construction" ? "/projects/construction" : isRealty ? `/realty?property=${p.id}` : "/projects";
+
+              return (
+                <Reveal key={p.id} delay={(i % 3) * 0.1} variant="scale-up" className="min-w-[85vw] sm:min-w-[400px] md:min-w-0 snap-center md:snap-align-none shrink-0 md:shrink">
+                  <a href={projectsPath} className="block w-full h-full outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-3xl">
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      className={`group relative overflow-hidden rounded-3xl shadow-luxe h-full ${i % 3 === 1 ? "md:translate-y-10" : ""}`}
+                    >
+                      <div className="aspect-[4/5] overflow-hidden relative">
+                        <img
+                          src={p.image}
+                          alt={p.title}
+                          loading="lazy"
+                          className="gsap-parallax-img absolute -top-[15%] h-[130%] w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent p-6 pt-12 text-ivory">
+                        <p className="text-[10px] uppercase tracking-[0.22em] text-primary-glow">
+                          {p.category}
+                        </p>
+                        <h3 className="mt-1 font-display text-xl font-semibold">{p.title}</h3>
+                        <p className="text-xs text-ivory/80">
+                          {p.location} - {p.year}
+                        </p>
+                        {(p as any).priceLabel && (
+                          <p className="mt-3 inline-flex rounded-full bg-primary-glow/90 px-3 py-1 text-[11px] font-semibold text-ink">
+                            {(p as any).priceLabel}
+                          </p>
+                        )}
+                      </div>
+                    </motion.div>
+                  </a>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
