@@ -51,8 +51,8 @@ interface Property {
   city: "Pune" | "Mumbai" | "Bangalore";
   price: string;
   priceVal: number; // base price in Rupees
-  type: "Residential" | "Commercial" | "Under Construction" | "Ready to Move";
-  category: "Residential" | "Commercial";
+  type: string;
+  category: string;
   rating: number;
   lat: number;
   lng: number;
@@ -480,8 +480,8 @@ function parseDynamicRealtyProject(p: PublicProject): Property {
   let highlights: string[] = [];
   let amenities: string[] = [];
   let configs: PropertyConfig[] = [];
-  let realtyType = "Under Construction";
-  let realtyCategory = "Residential";
+  let realtyType: "Residential" | "Commercial" | "Under Construction" | "Ready to Move" | "Rental" = "Under Construction";
+  let realtyCategory: "Residential" | "Commercial" | "Rental" = "Residential";
   let isRecommended = false;
   let videoUrl = "";
 
@@ -1626,20 +1626,45 @@ export function RealtyPortal() {
                     <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
                     <span>5 ★ Average Rating</span>
                   </div>
-                  <button className="bg-ink/75 border border-ivory/10 px-4 py-2 rounded-xl text-xs font-semibold text-ivory backdrop-blur hover:bg-gradient-gold hover:text-ink transition-all shadow-md">
+                  <button 
+                    onClick={() => {
+                      setDetailTab("gallery");
+                      document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="bg-ink/75 border border-ivory/10 px-4 py-2 rounded-xl text-xs font-semibold text-ivory backdrop-blur hover:bg-gradient-gold hover:text-ink transition-all shadow-md"
+                  >
                     Floor Plans
                   </button>
-                  <button className="bg-ink/75 border border-ivory/10 px-4 py-2 rounded-xl text-xs font-semibold text-ivory backdrop-blur hover:bg-gradient-gold hover:text-ink transition-all shadow-md">
-                    Video Tour
-                  </button>
+                  {selectedProperty?.videoUrl && (
+                    <button 
+                      onClick={() => {
+                        setDetailTab("video");
+                        document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="bg-ink/75 border border-ivory/10 px-4 py-2 rounded-xl text-xs font-semibold text-ivory backdrop-blur hover:bg-gradient-gold hover:text-ink transition-all shadow-md"
+                    >
+                      Video Tour
+                    </button>
+                  )}
                 </div>
               </div>
 
               {/* Grid of gallery thumbs (looks like the right column in screenshot) */}
               <div className="grid grid-cols-2 gap-4 h-full">
-                <div className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer">
+                <div 
+                  onClick={() => {
+                    if (selectedProperty?.videoUrl) {
+                      setDetailTab("video");
+                      document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                      setDetailTab("gallery");
+                      document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer"
+                >
                   <img
-                    src={selectedProperty.images[1] || selectedProperty.images[0]}
+                    src={selectedProperty.images[0]}
                     alt="Video Thumbnail"
                     className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
                   />
@@ -1653,9 +1678,15 @@ export function RealtyPortal() {
                   </span>
                 </div>
 
-                <div className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer">
+                <div 
+                  onClick={() => {
+                    setDetailTab("gallery");
+                    document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer"
+                >
                   <img
-                    src={realty3}
+                    src={selectedProperty.images[1] || selectedProperty.images[0]}
                     alt="Floor Plan"
                     className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
                   />
@@ -1665,7 +1696,13 @@ export function RealtyPortal() {
                   </span>
                 </div>
 
-                <div className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer">
+                <div 
+                  onClick={() => {
+                    setDetailTab("highlights");
+                    document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer"
+                >
                   <img
                     src={selectedProperty.images[2] || selectedProperty.images[0]}
                     alt="Amenities"
@@ -1677,9 +1714,15 @@ export function RealtyPortal() {
                   </span>
                 </div>
 
-                <div className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer">
+                <div 
+                  onClick={() => {
+                    setDetailTab("gallery");
+                    document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer"
+                >
                   <img
-                    src={realty2}
+                    src={selectedProperty.images[3] || selectedProperty.images[0]}
                     alt="Sample Flat"
                     className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
                   />
@@ -1709,13 +1752,13 @@ export function RealtyPortal() {
             {/* Tabbed Info & Call Back Form */}
             <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-8 items-start">
               {/* Left Column: Description, Highlights, Map */}
-              <div className="bg-card border border-border rounded-3xl p-6 md:p-8 space-y-8">
+              <div id="property-tabs" className="bg-card border border-border rounded-3xl p-6 md:p-8 space-y-8">
                 {/* Custom Tab selectors */}
                 <div className="flex flex-wrap gap-2 border-b border-border/40 pb-4 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                   {(["highlights", "overview", "pricing", "gallery", "map", ...(selectedProperty?.videoUrl ? ["video"] : [])] as const).map((tab) => (
                     <button
                       key={tab}
-                      onClick={() => setDetailTab(tab)}
+                      onClick={() => setDetailTab(tab as any)}
                       className={`px-4 py-1.5 text-xs font-semibold uppercase tracking-wider rounded-full border transition-all ${
                         detailTab === tab
                           ? "bg-gradient-gold border-amber-400 text-ink"

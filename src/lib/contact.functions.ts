@@ -142,7 +142,7 @@ export const submitInquiry = createServerFn({ method: "POST" })
       }
     }
 
-    const email = await sendInquiryEmail(data);
+    const email = await sendInquiryEmail(data) as any;
     if (!email.sent) {
       return { ok: false as const, error: email.reason ?? "Contact notifications are not configured yet." };
     }

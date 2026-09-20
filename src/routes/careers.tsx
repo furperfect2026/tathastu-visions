@@ -59,7 +59,7 @@ function CareersPage() {
         .order("created_at", { ascending: false });
 
       if (error) throw error;
-      setJobs(data || []);
+      setJobs((data || []) as any);
     } catch (err) {
       console.error("Error fetching jobs:", err);
     } finally {
