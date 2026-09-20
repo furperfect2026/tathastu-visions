@@ -43,6 +43,31 @@ interface PropertyConfig {
   price: string;
 }
 
+function getYouTubeEmbedUrl(url: string) {
+  if (!url) return "";
+  try {
+    const urlObj = new URL(url);
+    if (urlObj.hostname.includes("youtube.com") || urlObj.hostname.includes("youtu.be")) {
+      let videoId = "";
+      if (urlObj.hostname.includes("youtu.be")) {
+        videoId = urlObj.pathname.slice(1);
+      } else if (urlObj.pathname.includes("/shorts/")) {
+        videoId = urlObj.pathname.split("/shorts/")[1];
+      } else {
+        videoId = urlObj.searchParams.get("v") || "";
+      }
+      return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+    }
+    return url;
+  } catch (e) {
+    let clean = url.replace('watch?v=', 'embed/').replace('youtu.be/', 'youtube.com/embed/');
+    if (clean.includes('embed/') && clean.includes('&') && !clean.includes('?')) {
+      clean = clean.replace('&', '?');
+    }
+    return clean;
+  }
+}
+
 interface Property {
   id: string;
   title: string;
@@ -1836,7 +1861,7 @@ export function RealtyPortal() {
                       className="rounded-2xl overflow-hidden aspect-video bg-black mt-6"
                     >
                       <iframe 
-                        src={selectedProperty.videoUrl.replace('watch?v=', 'embed/').replace('youtu.be/', 'youtube.com/embed/')}
+                        src={getYouTubeEmbedUrl(selectedProperty.videoUrl)}
                         className="w-full h-full border-0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
