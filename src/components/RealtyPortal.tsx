@@ -1649,103 +1649,45 @@ export function RealtyPortal() {
                 </div>
               </div>
 
-              {/* Grid of gallery thumbs (looks like the right column in screenshot) */}
-              <div className="grid grid-cols-2 gap-4 h-full">
-                <div 
-                  onClick={() => {
-                    if (selectedProperty?.videoUrl) {
-                      setDetailTab("video");
-                      document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                      setDetailTab("gallery");
-                      document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer"
-                >
-                  <img
-                    src={selectedProperty.images[0]}
-                    alt="Video Thumbnail"
-                    className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/45 flex items-center justify-center">
-                    <span className="grid h-12 w-12 place-items-center rounded-full bg-ivory/10 border border-ivory/20 text-ivory backdrop-blur group-hover:bg-primary group-hover:text-ink transition-all">
-                      ▶
-                    </span>
-                  </div>
-                  <span className="absolute left-3 top-3 text-[10px] font-semibold text-white uppercase tracking-wider bg-black/60 px-2 py-0.5 rounded">
-                    Video
-                  </span>
-                </div>
-
-                <div 
-                  onClick={() => {
-                    setDetailTab("gallery");
-                    document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer"
-                >
-                  <img
-                    src={selectedProperty.images[1] || selectedProperty.images[0]}
-                    alt="Floor Plan"
-                    className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/45 flex items-center justify-center" />
-                  <span className="absolute left-3 top-3 text-[10px] font-semibold text-white uppercase tracking-wider bg-black/60 px-2 py-0.5 rounded">
-                    Unit Floor Plans
-                  </span>
-                </div>
-
-                <div 
-                  onClick={() => {
-                    setDetailTab("highlights");
-                    document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer"
-                >
-                  <img
-                    src={selectedProperty.images[2] || selectedProperty.images[0]}
-                    alt="Amenities"
-                    className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/45 flex items-center justify-center" />
-                  <span className="absolute left-3 top-3 text-[10px] font-semibold text-white uppercase tracking-wider bg-black/60 px-2 py-0.5 rounded">
-                    Amenities
-                  </span>
-                </div>
-
-                <div 
-                  onClick={() => {
-                    setDetailTab("gallery");
-                    document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer"
-                >
-                  <img
-                    src={selectedProperty.images[3] || selectedProperty.images[0]}
-                    alt="Sample Flat"
-                    className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/45 flex items-center justify-center" />
-                  <span className="absolute left-3 top-3 text-[10px] font-semibold text-white uppercase tracking-wider bg-black/60 px-2 py-0.5 rounded">
-                    Sample Flat Image
-                  </span>
-                </div>
-
-                {/* +47 Photos Grid Button */}
-                <div className="col-span-2 relative aspect-[20/8] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer flex items-center justify-center">
-                  <img
-                    src={selectedProperty.images[0]}
-                    alt="Full Gallery"
-                    className="absolute inset-0 h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/65 flex items-center justify-center z-10" />
-                  <div className="relative z-20 text-center text-ivory">
-                    <span className="inline-block border border-ivory/30 bg-ivory/10 backdrop-blur px-5 py-2.5 rounded-xl text-sm font-semibold tracking-wider group-hover:bg-primary group-hover:text-ink transition-all">
-                      📷 + 47 Photos
-                    </span>
-                  </div>
-                </div>
+              {/* Grid of gallery thumbs (Dynamic) */}
+              <div className={`grid gap-4 h-full ${selectedProperty.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                {selectedProperty.images.slice(0, 4).map((img, i) => {
+                  const isLast = i === 3 && selectedProperty.images.length > 4;
+                  return (
+                    <div 
+                      key={i}
+                      onClick={() => {
+                        if (selectedProperty?.videoUrl && i === 0) {
+                          setDetailTab("video");
+                        } else {
+                          setDetailTab("gallery");
+                        }
+                        document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer"
+                    >
+                      <img
+                        src={img}
+                        alt="Property Thumbnail"
+                        className="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
+                      />
+                      {selectedProperty?.videoUrl && i === 0 && (
+                        <div className="absolute inset-0 bg-black/45 flex items-center justify-center z-10">
+                          <span className="grid h-12 w-12 place-items-center rounded-full bg-ivory/10 border border-ivory/20 text-ivory backdrop-blur group-hover:bg-primary group-hover:text-ink transition-all">
+                            ▶
+                          </span>
+                        </div>
+                      )}
+                      {isLast && (
+                        <div className="absolute inset-0 bg-black/65 flex items-center justify-center z-10 text-center text-ivory">
+                           <span className="inline-block border border-ivory/30 bg-ivory/10 backdrop-blur px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold tracking-wider group-hover:bg-primary group-hover:text-ink transition-all">
+                             +{selectedProperty.images.length - 4} Photos
+                           </span>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
