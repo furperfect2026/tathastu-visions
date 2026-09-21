@@ -664,6 +664,9 @@ export function RealtyPortal() {
     "highlights" | "overview" | "pricing" | "gallery" | "map" | "video"
   >("highlights");
 
+  // Lightbox state for zoomable photos
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
   // Load favorites from local storage
   useEffect(() => {
     const saved = localStorage.getItem("tathastu_favorites");
@@ -1684,10 +1687,13 @@ export function RealtyPortal() {
                       onClick={() => {
                         if (selectedProperty?.videoUrl && i === 0) {
                           setDetailTab("video");
-                        } else {
+                          document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
+                        } else if (isLast) {
                           setDetailTab("gallery");
+                          document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                          setLightboxIndex(i);
                         }
-                        document.getElementById('property-tabs')?.scrollIntoView({ behavior: 'smooth' });
                       }}
                       className="relative aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden bg-slate-900 border border-border group cursor-pointer"
                     >
@@ -1839,13 +1845,17 @@ export function RealtyPortal() {
                       {selectedProperty.images.map((img, idx) => (
                         <div
                           key={idx}
-                          className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-border"
+                          onClick={() => setLightboxIndex(idx)}
+                          className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-border cursor-pointer group"
                         >
                           <img
                             src={img}
                             alt={`Gallery ${idx}`}
-                            className="h-full w-full object-cover"
+                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                           />
+                          <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20 flex items-center justify-center">
+                            <Maximize2 className="text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 h-8 w-8 drop-shadow-md" />
+                          </div>
                         </div>
                       ))}
                     </motion.div>
@@ -2029,6 +2039,69 @@ export function RealtyPortal() {
           </motion.div>
         </div>
       )}
+
+      {/* Lightbox Overlay */}
+      <AnimatePresence>
+        {lightboxIndex !== null && selectedProperty && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 sm:p-8"
+            onClick={() => setLightboxIndex(null)}
+          >
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxIndex(null);
+              }}
+              className="absolute top-6 right-6 z-[110] p-2 text-white/70 hover:text-white bg-black/50 hover:bg-black rounded-full backdrop-blur transition-all"
+            >
+              <X className="h-6 w-6" />
+            </button>
+            
+            <div 
+              className="relative w-full max-w-5xl h-full max-h-[85vh] flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={selectedProperty.images[lightboxIndex]}
+                alt="Fullscreen Property"
+                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              />
+              
+              {/* Navigation Arrows */}
+              {selectedProperty.images.length > 1 && (
+                <>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setLightboxIndex((prev) => (prev! - 1 + selectedProperty.images.length) % selectedProperty.images.length);
+                    }}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 p-3 text-white/70 hover:text-white bg-black/50 hover:bg-black rounded-full backdrop-blur transition-all"
+                  >
+                    <ChevronLeft className="h-6 w-6" />
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setLightboxIndex((prev) => (prev! + 1) % selectedProperty.images.length);
+                    }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-3 text-white/70 hover:text-white bg-black/50 hover:bg-black rounded-full backdrop-blur transition-all"
+                  >
+                    <ChevronRight className="h-6 w-6" />
+                  </button>
+                </>
+              )}
+              
+              {/* Counter */}
+              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black/60 px-4 py-1.5 rounded-full text-white/90 text-sm font-semibold tracking-widest backdrop-blur">
+                {lightboxIndex + 1} / {selectedProperty.images.length}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
