@@ -362,6 +362,60 @@ function formFromReview(review: AdminReview): ReviewForm {
   };
 }
 
+async function compressImageIfNeeded(file: File, maxDim = 2048, quality = 0.85): Promise<File> {
+  if (!file.type.startsWith("image/") || file.type === "image/svg+xml" || file.type === "image/gif") {
+    return file;
+  }
+  if (file.size <= 1.5 * 1024 * 1024) {
+    return file;
+  }
+
+  return new Promise((resolve) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      let { width, height } = img;
+      if (width > maxDim || height > maxDim) {
+        if (width > height) {
+          height = Math.round((height * maxDim) / width);
+          width = maxDim;
+        } else {
+          width = Math.round((width * maxDim) / height);
+          height = maxDim;
+        }
+      }
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) {
+        resolve(file);
+        return;
+      }
+      ctx.drawImage(img, 0, 0, width, height);
+      canvas.toBlob(
+        (blob) => {
+          if (!blob || blob.size >= file.size) {
+            resolve(file);
+          } else {
+            const ext = file.type === "image/png" ? ".png" : ".jpg";
+            const newName = file.name.replace(/\.[^.]+$/, ext);
+            resolve(new File([blob], newName, { type: blob.type }));
+          }
+        },
+        file.type === "image/png" ? "image/jpeg" : file.type,
+        quality,
+      );
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      resolve(file);
+    };
+    img.src = url;
+  });
+}
+
 function AdminProjectsPage() {
   const [sessionReady, setSessionReady] = useState(false);
   const [isAuthed, setIsAuthed] = useState(false);
@@ -381,6 +435,7 @@ function AdminProjectsPage() {
   const [bankingLogoFile, setBankingLogoFile] = useState<File | null>(null);
   const [reviewPhotoFile, setReviewPhotoFile] = useState<File | null>(null);
   const [isSaving, setIsSaving] = useState(false);
+  const [saveStatus, setSaveStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const isEditing = Boolean(form.id);
@@ -519,18 +574,24 @@ function AdminProjectsPage() {
     }
   }
 
-  async function uploadImage(file: File | null, title: string, fallbackUrl: string) {
+  async function uploadImage(file: File | null, title: string, fallbackUrl: string, index = 0) {
     if (!file) return fallbackUrl;
 
-    const ext = file.name.split(".").pop() || "jpg";
+    const processedFile = await compressImageIfNeeded(file);
+    const rawExt = processedFile.name.split(".").pop() || "jpg";
+    const ext = rawExt.toLowerCase().replace(/[^a-z0-9]/g, "") || "jpg";
     const safeTitle = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-    const path = `${Date.now()}-${safeTitle || "project"}.${ext}`;
+    const randomSuffix = Math.random().toString(36).substring(2, 9);
+    const path = `${Date.now()}-${index}-${randomSuffix}-${safeTitle || "project"}.${ext}`;
 
     const { error } = await (supabase as any).storage
       .from("project-images")
-      .upload(path, file, { cacheControl: "31536000", upsert: false });
+      .upload(path, processedFile, { cacheControl: "31536000", upsert: true });
 
-    if (error) throw error;
+    if (error) {
+      console.error("Storage upload error for file:", file.name, error);
+      throw new Error(`Failed to upload ${file.name}: ${error.message || "Storage upload failed"}`);
+    }
 
     const { data } = (supabase as any).storage.from("project-images").getPublicUrl(path);
     return data.publicUrl as string;
@@ -542,17 +603,38 @@ function AdminProjectsPage() {
       toast.error("Project name and description are required.");
       return;
     }
-    if (!form.imageUrl && !imageFile) {
-      toast.error("Please upload a project photo.");
+
+    let effectiveImageFile = imageFile;
+    const effectiveGalleryFiles = [...form.galleryFiles];
+
+    // If user uploaded gallery photos but hasn't picked a cover photo, use the first gallery photo as cover!
+    if (!form.imageUrl && !effectiveImageFile && effectiveGalleryFiles.length > 0) {
+      effectiveImageFile = effectiveGalleryFiles[0];
+    }
+
+    if (!form.imageUrl && !effectiveImageFile) {
+      toast.error("Please upload at least one project photo.");
       return;
     }
 
     setIsSaving(true);
+    setSaveStatus("Uploading cover photo...");
+
     try {
-      const imageUrl = await uploadImage(imageFile, form.title, form.imageUrl);
-      const uploadedGalleryImages = await Promise.all(
-        form.galleryFiles.map((file) => uploadImage(file, `${form.title}-gallery`, "")),
-      );
+      const imageUrl = await uploadImage(effectiveImageFile, form.title, form.imageUrl, 0);
+
+      const uploadedGalleryImages: string[] = [];
+      for (let i = 0; i < effectiveGalleryFiles.length; i++) {
+        setSaveStatus(`Uploading gallery photo ${i + 1} of ${effectiveGalleryFiles.length}...`);
+        const file = effectiveGalleryFiles[i];
+        const uploadedUrl = await uploadImage(file, `${form.title}-gallery`, "", i + 1);
+        if (uploadedUrl) {
+          uploadedGalleryImages.push(uploadedUrl);
+        }
+      }
+
+      setSaveStatus("Saving project details...");
+
       const galleryImages = Array.from(
         new Set([...form.galleryImages, ...uploadedGalleryImages].filter(Boolean)),
       );
@@ -604,11 +686,13 @@ function AdminProjectsPage() {
       setForm(freshProjectForm());
       setImageFile(null);
       await fetchProjects();
-    } catch (error) {
-      console.error(error);
-      toast.error("Could not save project.");
+    } catch (error: any) {
+      console.error("Save project error:", error);
+      const detail = error?.message || error?.error_description || "";
+      toast.error(detail ? `Could not save project: ${detail}` : "Could not save project.");
     } finally {
       setIsSaving(false);
+      setSaveStatus("");
     }
   }
 
@@ -1188,22 +1272,25 @@ function AdminProjectsPage() {
               </div>
 
               <div>
-                <Label htmlFor="project-gallery">Popup gallery photos</Label>
+                <Label htmlFor="project-gallery">Popup gallery photos (Multiple)</Label>
                 <Input
                   id="project-gallery"
                   type="file"
                   accept="image/*"
                   multiple
-                  onChange={(event) =>
+                  onChange={(event) => {
+                    const newFiles = Array.from(event.target.files || []);
+                    if (newFiles.length === 0) return;
                     setForm((value) => ({
                       ...value,
-                      galleryFiles: Array.from(event.target.files || []),
-                    }))
-                  }
+                      galleryFiles: [...value.galleryFiles, ...newFiles],
+                    }));
+                    event.target.value = "";
+                  }}
                   className="mt-2"
                 />
                 <p className="mt-1 text-xs text-muted-foreground">
-                  Optional. These appear inside the project popup when visitors open the project.
+                  Select multiple photos for the gallery / popup viewer. You can select more at any time.
                 </p>
 
                 {(form.galleryImages.length > 0 || form.galleryFiles.length > 0) && (
@@ -1213,7 +1300,7 @@ function AdminProjectsPage() {
                         <img src={image} alt={`Gallery ${index + 1}`} className="h-24 w-full object-cover" />
                         <button
                           type="button"
-                          className="absolute right-2 top-2 grid h-8 w-8 place-items-center rounded-full bg-ink/80 text-ivory"
+                          className="absolute right-2 top-2 grid h-8 w-8 place-items-center rounded-full bg-ink/80 text-ivory hover:bg-destructive transition-colors"
                           onClick={() =>
                             setForm((value) => ({
                               ...value,
@@ -1227,12 +1314,25 @@ function AdminProjectsPage() {
                       </div>
                     ))}
                     {form.galleryFiles.map((file, index) => (
-                      <div key={`${file.name}-${index}`} className="overflow-hidden rounded-2xl ring-1 ring-border">
+                      <div key={`${file.name}-${index}`} className="relative overflow-hidden rounded-2xl ring-1 ring-border">
                         <img
                           src={URL.createObjectURL(file)}
                           alt={`New gallery ${index + 1}`}
                           className="h-24 w-full object-cover"
                         />
+                        <button
+                          type="button"
+                          className="absolute right-2 top-2 grid h-8 w-8 place-items-center rounded-full bg-ink/80 text-ivory hover:bg-destructive transition-colors"
+                          onClick={() =>
+                            setForm((value) => ({
+                              ...value,
+                              galleryFiles: value.galleryFiles.filter((_, i) => i !== index),
+                            }))
+                          }
+                          aria-label="Remove pending gallery image"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
                       </div>
                     ))}
                   </div>
@@ -1251,7 +1351,7 @@ function AdminProjectsPage() {
 
               <Button disabled={isSaving} className="w-full rounded-full bg-gradient-gold text-ink shadow-gold">
                 {isSaving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
-                {isEditing ? "Save changes" : "Add project"}
+                {isSaving ? (saveStatus || "Saving...") : (isEditing ? "Save changes" : "Add project")}
               </Button>
             </div>
           </form>
